@@ -12,7 +12,6 @@ $(document).ready(function() {
     $(window).on('hashchange', function() {
         newHash = window.location.hash.substr(1);
         $mainContent.load('/portal-ads/visao' + newHash, function() {
-            $mainContent.trigger('create');
             console.log('content loaded');
         });
     });
