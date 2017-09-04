@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema portalADS
+-- Schema portal-ads
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema portalADS
+-- Schema portal-ads
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `portalADS` DEFAULT CHARACTER SET utf8 ;
-USE `portalADS` ;
+CREATE SCHEMA IF NOT EXISTS `portal-ads` DEFAULT CHARACTER SET utf8 ;
+USE `portal-ads` ;
 
 -- -----------------------------------------------------
--- Table `portalADS`.`TipoUsuario`
+-- Table `portal-ads`.`TipoUsuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `portalADS`.`TipoUsuario` (
+CREATE TABLE IF NOT EXISTS `portal-ads`.`TipoUsuario` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
@@ -25,9 +25,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `portalADS`.`Usuario`
+-- Table `portal-ads`.`Usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `portalADS`.`Usuario` (
+CREATE TABLE IF NOT EXISTS `portal-ads`.`Usuario` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `siapeMatricula` VARCHAR(45) NOT NULL,
   `nome` VARCHAR(100) NOT NULL,
@@ -39,16 +39,16 @@ CREATE TABLE IF NOT EXISTS `portalADS`.`Usuario` (
   INDEX `fk_Usuarios_TipoUsuario_idx` (`TipoUsuario_id` ASC),
   CONSTRAINT `fk_Usuarios_TipoUsuario`
     FOREIGN KEY (`TipoUsuario_id`)
-    REFERENCES `portalADS`.`TipoUsuario` (`id`)
+    REFERENCES `portal-ads`.`TipoUsuario` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `portalADS`.`CategoriaNoticia`
+-- Table `portal-ads`.`CategoriaNoticia`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `portalADS`.`CategoriaNoticia` (
+CREATE TABLE IF NOT EXISTS `portal-ads`.`CategoriaNoticia` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(45) NOT NULL,
   `cor` VARCHAR(9) NOT NULL,
@@ -57,9 +57,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `portalADS`.`Noticia`
+-- Table `portal-ads`.`Noticia`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `portalADS`.`Noticia` (
+CREATE TABLE IF NOT EXISTS `portal-ads`.`Noticia` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `titulo` VARCHAR(100) NOT NULL,
   `conteudo` VARCHAR(2500) NOT NULL,
@@ -75,12 +75,12 @@ CREATE TABLE IF NOT EXISTS `portalADS`.`Noticia` (
   INDEX `fk_Noticias_CategoriaNoticia1_idx` (`CategoriaNoticia_id` ASC),
   CONSTRAINT `fk_Noticias_Usuarios1`
     FOREIGN KEY (`Usuarios_id`)
-    REFERENCES `portalADS`.`Usuario` (`id`)
+    REFERENCES `portal-ads`.`Usuario` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Noticias_CategoriaNoticia1`
     FOREIGN KEY (`CategoriaNoticia_id`)
-    REFERENCES `portalADS`.`CategoriaNoticia` (`id`)
+    REFERENCES `portal-ads`.`CategoriaNoticia` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
