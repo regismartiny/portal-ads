@@ -29,7 +29,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `portalADS`.`Usuario` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `siapeMatricula` INT NOT NULL,
+  `siapeMatricula` VARCHAR(45) NOT NULL,
   `nome` VARCHAR(100) NOT NULL,
   `email` VARCHAR(100) NULL,
   `senha` VARCHAR(100) NOT NULL,
