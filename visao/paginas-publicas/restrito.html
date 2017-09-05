@@ -1,8 +1,15 @@
+<head>
+	<meta charset="utf8">
+	<link rel="stylesheet" href="cssestilo.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+</head>
 <div class="row justify-content-center">
+   	<h1>Acesso Restrito</h1>
     <div class="col-5">
-        <form method="post" action="login.php">
+        <form method='post' action='login.php'>
             <div class="form-group row">
-                <label for="matricula" class="col-sm-4 col-md-4 col-form-label">Matrícula:</label>
+                <label for="matricula" class="col-sm-4 col-md-4 col-form-label">Matrícula / SIAPE:</label>
                 <div class="col-sm-10 col-md-8">
                     <input type="text" class="form-control" id="matricula" name="matricula" required>
                 </div>
@@ -13,7 +20,10 @@
                     <input type="password" class="form-control" id="senha" name="senha" required>
                 </div>
             </div>
-            <input type="submit" class="btn btn-primary btn-lg btn-block" name="entrar" value="Entrar">
+            <input type='submit' class='btn btn-primary btn-lg btn-block' name="botao" value="Login">
+            <a href='esquecisenha.html' class='btn btn-primary btn-lg btn-block'>Esqueci Minha Senha</a> 
+            <a href='index.html' class='btn btn-primary btn-lg btn-block'Voltar</a> 
+            
         </form>
     </div>
 </div>
