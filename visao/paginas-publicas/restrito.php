@@ -1,11 +1,11 @@
 <?php
 if(isset($_POST["login"]) && $_POST["login"]=="Login"){
-	include $_SERVER["DOCUMENT_ROOT"]."/portal-ads-master/controle/ControleUsuario.class.php";
+	include $_SERVER["DOCUMENT_ROOT"]."/portal-ads/controle/ControleUsuario.class.php";
 	$cUsuario = new ControleUsuario();
 	
 	$logado = $cUsuario->verificaLogin($_POST);
 	if ($logado){
-		header("Location: /portal-ads-master/visao/index.html");	
+		header("Location: /portal-ads/visao/index.html");	
 	}else{
 		echo "Login ou senha inválidos";
 	}
