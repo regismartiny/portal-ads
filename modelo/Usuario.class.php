@@ -1,7 +1,7 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/agenda/db/MySQL.class.php";
 
-	class Contato{
+include $_SERVER['DOCUMENT_ROOT']."/portal-ads-master/db/MySQL.class.php";
+	class Usuario{
 		private $id;
 		private $siapeMatricula;
 		private $nome;
@@ -9,7 +9,6 @@ include $_SERVER['DOCUMENT_ROOT']."/agenda/db/MySQL.class.php";
 		private $senha;
 		private $status;
 		private $tipoUsuario_id;
-
 		
 		public function __construct($id = null, $si = null, $n = null, $e = null, $se = null, $st = null, $tp = null){
 			$this->id = $id;
@@ -75,6 +74,13 @@ include $_SERVER['DOCUMENT_ROOT']."/agenda/db/MySQL.class.php";
 		
 		public function setTipoUsuario_id($status){
 			$this->tipoUsuario_id = $tipoUsuario_id;
+		}
+		
+		public function isCadastrado() {
+			$con = new MySQL();
+			$sql = "SELECT * FROM usuario WHERE siapeMatricula = '$this->siapeMatricula' AND senha = '$this->senha'";
+			$resultados = $con->consulta($sql);
+			return count($resultados)>0;
 		}
 		
 		public function inserir(){
