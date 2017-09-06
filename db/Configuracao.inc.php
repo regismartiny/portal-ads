@@ -2,5 +2,5 @@
 define("HOST","localhost");
 define("USUARIO","root");
 define("SENHA","");
-define("BANCO","portalads");
+define("BANCO","portal-ads");
 ?>
