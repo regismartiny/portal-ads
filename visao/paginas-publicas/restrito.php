@@ -2,22 +2,26 @@
 if(isset($_POST["login"]) && $_POST["login"]=="Login"){
 	include $_SERVER["DOCUMENT_ROOT"]."/portal-ads/controle/ControleUsuario.class.php";
 	$cUsuario = new ControleUsuario();
+	$usuario = new Usuario();
 	
 	$logado = $cUsuario->verificaLogin($_POST);
 	if ($logado){
 			session_start();
 			$usuario = $cUsuario->listarUm($_POST['matricula']);
-			$_SESSION['nomeUsuario'] = $usuario->getNome();
+							
+			$_SESSION["nomeUsuario"] = $usuario->getNome();
 			$_SESSION['matricula'] = $usuario->getSiapeMatricula();
 			$_SESSION['email'] = $usuario->getEmail();
-			$_SESSION['tipoUsuario']= $usuario->getTipoUsuario_id();
-				
+			$_SESSION['tipoUsuario'] = $usuario->getTipoUsuario_id();
+											
 		if($_SESSION['tipoUsuario']==1){
 			header("Location: /portal-ads/visao/coordenador/homeCoordenador.html");	
 		}elseif($_SESSION['tipoUsuario']==2) {
 			header("Location: /portal-ads/visao/professor/homeProfessor.html");	
-		}else {
+		}elseif($_SESSION['tipoUsuario']==3) {
 			header("Location: /portal-ads/visao/aluno/homeAluno.html");	
+		}else{
+			echo "Tipo de usuario não identificado";
 		}
 		
 	}else{
