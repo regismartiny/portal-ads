@@ -2,7 +2,7 @@ $(document).ready(function() {
     var newHash = '',
         $mainContent = $('#container-conteudo');
 
-    $('nav').delegate('a', 'click', function() {
+    $('body').delegate('a', 'click', function() {
         window.location.hash = $(this).attr('href');
         return false;
     });
@@ -14,5 +14,10 @@ $(document).ready(function() {
         $mainContent.load('/portal-ads/visao' + newHash, function() {
             console.log('content loaded');
         });
+    });
+
+    $('.nav-item').click(function() {
+        $('.nav-item').removeClass('active');
+        $(this).addClass('active');
     });
 });
