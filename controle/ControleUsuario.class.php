@@ -7,14 +7,13 @@ class ControleUsuario{
 		$cadastrado = $usuario->isCadastrado();
 		return $cadastrado;
 	}
-
+	
 	public function listarUm($siapeMatricula){
 		$usuario = new Usuario(null,$siapeMatricula,null,null,null,null,null);
-		$contato->listarUm();
-		return $contato;
+		$usuario->listarUm();
+		return $usuario;
 	}
 
-	
 	public function inserir($dados){
 		
 		$usuario = new Usuario(null,$dados['matricula'],$dados['nome'],$dados['email'],$dados['senha'],1,$dados['tipoUsuario_id']);
