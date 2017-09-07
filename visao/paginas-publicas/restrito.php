@@ -39,7 +39,7 @@ if(isset($_POST["login"]) && $_POST["login"]=="Login"){
    	
     <div class="col-5">
 		<h1>Acesso Restrito</h1><br><br>    
-		<form method="post" action="restrito.php">
+		<form method="post" action="../visao/paginas-publicas/restrito.php">
             <div class="form-group row">
                 <label for="matricula" class="col-sm-4 col-md-4 col-form-label">Matrícula / SIAPE:</label>
                 <div class="col-sm-10 col-md-8">
