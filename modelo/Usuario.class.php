@@ -86,25 +86,22 @@ include $_SERVER['DOCUMENT_ROOT']."/portal-ads/db/MySQL.class.php";
 		public function listarUm(){
 			$con = new MySQL();
 			$sql = "SELECT * FROM usuario WHERE siapeMatricula='$this->siapeMatricula'";
-			$resultados = $con->consulta($sql);
-			if(!empty($resultados)){
-				$usuario = new Usuario();
-				foreach($resultados as $resultado){
-					
-					$this->id = $resultado[0]['id'];
-					$this->numero = $resultado[0]['siapeMatricula'];
-					$this->nome = $resultado[0]['nome'];
-					$this->email = $resultado[0]['email'];
-					$this->senha = $resultado[0]['senha'];
-					$this->status = $resultado[0]['status'];
-					$this->tipoUsuario_id = $resultado[0]['tipoUsuario_id'];
-				}
-				return $usuario;
-			}else{
+			$resultado = $con->consulta($sql);
+			$usuario = new Usuario();
+			if(!empty($resultado)){
+				
+					$this->id = $resultado[0]["id"];
+					$this->numero = $resultado[0]["siapeMatricula"];
+					$this->nome = $resultado[0]["nome"];
+					$this->email = $resultado[0]["email"];
+					$this->senha = $resultado[0]["senha"];
+					$this->status = $resultado[0]["status"];
+					$this->tipoUsuario_id = $resultado[0]["TipoUsuario_id"];
+					return $usuario;
+				}else{
 				return false;
 			}
 		}
-		
 		
 		
 		public function listarTodos(){
