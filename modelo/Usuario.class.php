@@ -91,14 +91,13 @@ include $_SERVER['DOCUMENT_ROOT']."/portal-ads/db/MySQL.class.php";
 				$usuario = new Usuario();
 				foreach($resultados as $resultado){
 					
-					$usuario->setId($resultado['id']);
-					$usuario->setSiapeMatricula($resultado['siapeMatricula']);
-					$usuario->setNome($resultado['nome']);
-					$usuario->setEmail($resultado['email']);
-					$usuario->setSenha($resultado['senha']);
-					$usuario->setStatus($resultado['status']);
-					$usuario->setTipoUsuario($resultado['tipoUsuario_id']);
-					
+					$this->id = $resultado[0]['id'];
+					$this->numero = $resultado[0]['siapeMatricula'];
+					$this->nome = $resultado[0]['nome'];
+					$this->email = $resultado[0]['email'];
+					$this->senha = $resultado[0]['senha'];
+					$this->status = $resultado[0]['status'];
+					$this->tipoUsuario_id = $resultado[0]['tipoUsuario_id'];
 				}
 				return $usuario;
 			}else{
@@ -122,7 +121,7 @@ include $_SERVER['DOCUMENT_ROOT']."/portal-ads/db/MySQL.class.php";
 					$usuario->setEmail($resultado['email']);
 					$usuario->setSenha($resultado['senha']);
 					$usuario->setStatus($resultado['status']);
-					$usuario->setTipoUsuario($resultado['tipoUsuario_id']);
+					$usuario->setTipoUsuario_id($resultado['tipoUsuario_id']);
 					$usuarios[] = $usuario;
 				}
 				return $usuarios;
