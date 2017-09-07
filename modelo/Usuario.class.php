@@ -83,6 +83,55 @@ include $_SERVER['DOCUMENT_ROOT']."/portal-ads/db/MySQL.class.php";
 			return count($resultados)>0;
 		}
 		
+		public function listarUm(){
+			$con = new MySQL();
+			$sql = "SELECT * FROM usuario WHERE siapeMatricula='$this->siapeMatricula'";
+			$resultados = $con->consulta($sql);
+			if(!empty($resultados)){
+				$usuario = new Usuario();
+				foreach($resultados as $resultado){
+					
+					$usuario->setId($resultado['id']);
+					$usuario->setSiapeMatricula($resultado['siapeMatricula']);
+					$usuario->setNome($resultado['nome']);
+					$usuario->setEmail($resultado['email']);
+					$usuario->setSenha($resultado['senha']);
+					$usuario->setStatus($resultado['status']);
+					$usuario->setTipoUsuario($resultado['tipoUsuario_id']);
+					
+				}
+				return $usuario;
+			}else{
+				return false;
+			}
+		}
+		
+		
+		
+		public function listarTodos(){
+			$con = new MySQL();
+			$sql = "SELECT * FROM usuario";
+			$resultados = $con->consulta($sql);
+			if(!empty($resultados)){
+				$usuarios = array();
+				foreach($resultados as $resultado){
+					$usuario = new Usuario();
+					$usuario->setId($resultado['id']);
+					$usuario->setSiapeMatricula($resultado['siapeMatricula']);
+					$usuario->setNome($resultado['nome']);
+					$usuario->setEmail($resultado['email']);
+					$usuario->setSenha($resultado['senha']);
+					$usuario->setStatus($resultado['status']);
+					$usuario->setTipoUsuario($resultado['tipoUsuario_id']);
+					$usuarios[] = $usuario;
+				}
+				return $usuarios;
+			}else{
+				return false;
+			}
+		}
+		
+		
 		public function inserir(){
 			$con = new MySQL();
 			$sql = "INSERT INTO usuario (siapeMatricula,nome,email,senha,status,tipoUsuario_id) VALUES ('$this->siapeMatricula','$this->nome','$this->email','$this->senha','$this->status','$this->tipoUsuario_id')";
