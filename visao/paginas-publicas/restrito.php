@@ -5,6 +5,13 @@ if(isset($_POST["login"]) && $_POST["login"]=="Login"){
 	
 	$logado = $cUsuario->verificaLogin($_POST);
 	if ($logado){
+		session_start();
+		$usuario = $cUsuario->listaUm($_POST['matricula']);
+		$_SESSION['nomeUsuario'] = $usuario->getNome();
+		$_SESSION['matricula'] = $usuario->getSiapeMatricula();
+		$_SESSION['email'] = $usuario->getEmail();
+		$_SESSION['tipoUsuario']= $usuario->getTipoUsuario_id();
+		
 		header("Location: /portal-ads/visao/index.html");	
 	}else{
 		echo "Login ou senha inválidos";
