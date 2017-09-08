@@ -1,6 +1,6 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT']."/portal-ads/db/MySQL.class.php";
+include $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
 	class Usuario{
 		private $id;
 		private $siapeMatricula;

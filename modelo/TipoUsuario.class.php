@@ -1,6 +1,6 @@
 <?php
 
-include_once $_SERVER['DOCUMENT_ROOT']."/portal-ads/db/MySQL.class.php";
+include_once $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
 	class TipoUsuario{
 		private $id;
 		private $descricao;
