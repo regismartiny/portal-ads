@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/portal-ads/modelo/Usuario.class.php";
+include $_SERVER['DOCUMENT_ROOT']."/modelo/Usuario.class.php";
 
 class ControleUsuario{
 	public function verificaLogin($dados) {
