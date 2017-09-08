@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST["login"]) && $_POST["login"]=="Login"){
-	include $_SERVER["DOCUMENT_ROOT"]."/portal-ads/controle/ControleUsuario.class.php";
+	include $_SERVER["DOCUMENT_ROOT"]."/controle/ControleUsuario.class.php";
 	$cUsuario = new ControleUsuario();
 	$usuario = new Usuario();
 	
@@ -15,13 +15,13 @@ if(isset($_POST["login"]) && $_POST["login"]=="Login"){
 			$_SESSION['tipoUsuario'] = $usuario->getTipoUsuario_id();
 											
 		if($_SESSION['tipoUsuario']==1){
-			header("Location: /portal-ads/visao/coordenador/homeCoordenador.html");	
+			header("Location: /visao/coordenador/homeCoordenador.html");	
 		}elseif($_SESSION['tipoUsuario']==2) {
-			header("Location: /portal-ads/visao/professor/homeProfessor.html");	
+			header("Location: /visao/professor/homeProfessor.html");	
 		}elseif($_SESSION['tipoUsuario']==3) {
-			header("Location: /portal-ads/visao/aluno/homeAluno.html");	
+			header("Location: /visao/aluno/homeAluno.html");	
 		}else{
-			echo "Tipo de usuario não identificado";
+			echo "Tipo de usuário não identificado";
 		}
 		
 	}else{
@@ -29,12 +29,6 @@ if(isset($_POST["login"]) && $_POST["login"]=="Login"){
 	}
 }
 ?>
-
-<head>
-	<meta charset="utf8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" href="../index.css">
-</head>
 <div class="row justify-content-center">
    	
     <div class="col-5">

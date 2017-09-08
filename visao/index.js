@@ -11,7 +11,7 @@ $(document).ready(function() {
     // For older browser support: http://benalman.com/projects/jquery-hashchange-plugin/
     $(window).on('hashchange', function() {
         newHash = window.location.hash.substr(1);
-        $mainContent.load('/portal-ads/visao' + newHash, function() {
+        $mainContent.load('/visao' + newHash, function() {
             console.log('content loaded');
         });
     });
