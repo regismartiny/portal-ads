@@ -6,7 +6,7 @@ class MySQL{
 	private $connection;
 	
 	public function __construct(){
-		$this->connection = new mysqli(HOST,USUARIO,SENHA,BANCO);
+		$this->connection = new mysqli(HOST,USUARIO,SENHA,BANCO,PORTA);
 	}
 	public function __destruct(){
 		mysqli_close($this->connection);
