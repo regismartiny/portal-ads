@@ -28,7 +28,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
 		
 		public function getTipoUsuario(){
 			$con = new MySQL();
-			$sql = "SELECT * FROM tipousuario";
+			$sql = "SELECT * FROM TipoUsuario";
 			$resultados = $con->consulta($sql);
 			return $resultados;
 		}

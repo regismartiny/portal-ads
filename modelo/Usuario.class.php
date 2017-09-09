@@ -78,14 +78,14 @@ include $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
 		
 		public function isCadastrado() {
 			$con = new MySQL();
-			$sql = "SELECT * FROM usuario WHERE siapeMatricula = '$this->siapeMatricula' AND senha = '$this->senha'";
+			$sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula' AND senha = '$this->senha'";
 			$resultados = $con->consulta($sql);
 			return count($resultados)>0;
 		}
 		
 		public function listarUm(){
 			$con = new MySQL();
-			$sql = "SELECT * FROM usuario WHERE siapeMatricula='$this->siapeMatricula'";
+			$sql = "SELECT * FROM Usuario WHERE siapeMatricula='$this->siapeMatricula'";
 			$resultado = $con->consulta($sql);
 			$usuario = new Usuario();
 			if(!empty($resultado)){
@@ -106,7 +106,7 @@ include $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
 		
 		public function listarTodos(){
 			$con = new MySQL();
-			$sql = "SELECT * FROM usuario";
+			$sql = "SELECT * FROM Usuario";
 			$resultados = $con->consulta($sql);
 			if(!empty($resultados)){
 				$usuarios = array();
@@ -118,7 +118,7 @@ include $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
 					$usuario->setEmail($resultado['email']);
 					$usuario->setSenha($resultado['senha']);
 					$usuario->setStatus($resultado['status']);
-					$usuario->setTipoUsuario_id($resultado['tipoUsuario_id']);
+					$usuario->setTipoUsuario_id($resultado['TipoUsuario_id']);
 					$usuarios[] = $usuario;
 				}
 				return $usuarios;
@@ -130,7 +130,7 @@ include $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
 		
 		public function inserir(){
 			$con = new MySQL();
-			$sql = "INSERT INTO usuario (siapeMatricula,nome,email,senha,status,tipoUsuario_id) VALUES ('$this->siapeMatricula','$this->nome','$this->email','$this->senha','$this->status','$this->tipoUsuario_id')";
+			$sql = "INSERT INTO Usuario (siapeMatricula,nome,email,senha,status,TipoUsuario_id) VALUES ('$this->siapeMatricula','$this->nome','$this->email','$this->senha','$this->status','$this->tipoUsuario_id')";
 			$con->executa($sql);
 		}
 	}
