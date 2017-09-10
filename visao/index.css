@@ -51,6 +51,10 @@
       text-align: center;
   }
   
+  .status {
+      display: none;
+  }
+  
   .footer {
       position: absolute;
       bottom: 0;
