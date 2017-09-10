@@ -1,9 +1,9 @@
 
-INSERT INTO TipoUsuario VALUES (1,'coordenador');
+INSERT INTO TipoUsuario VALUES (1,'Coordenador');
 
-INSERT INTO TipoUsuario VALUES (2,'professor');
+INSERT INTO TipoUsuario VALUES (2,'Professor');
 
-INSERT INTO TipoUsuario VALUES (3,'aluno');
+INSERT INTO TipoUsuario VALUES (3,'Aluno');
 
 
 INSERT INTO CategoriaNoticia (descricao, cor)
