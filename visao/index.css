@@ -49,12 +49,16 @@
       background-color: white;
   }
 
-  .h-100 {
-      border: 1px dotted #cc2222;
-  }
+  /*.h-100 {
+  *    border: 1px dotted #cc2222;
+  }*/
 
   #container-conteudo {
       height: calc(100% - 60px);
+  }
+
+  .row-grid + .row-grid {
+    margin-top: 15px;
   }
   
   .titulo {
