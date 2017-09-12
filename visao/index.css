@@ -145,8 +145,14 @@
         padding-top: 147px;
         margin-bottom: -148px;
     }
-
+   
     .footer {
+        position: relative;
+        bottom: auto;
         height: 148px;
+    }
+    
+    #container-conteudo {
+      min-height: 600px;
     }
 }
