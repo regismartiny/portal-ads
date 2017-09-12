@@ -1,4 +1,4 @@
-<div class="row h-100">
+<div class="row">
 	<div class="col-sm-12 col-md-8 col-lg-6 mx-auto my-auto">
 		<h1 class="titulo">Acesso Restrito</h1><br><br>    
 		<form id="form" method="post" action="/controle/login.php">

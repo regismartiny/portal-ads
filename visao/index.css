@@ -32,6 +32,10 @@
     ul {
         line-height: 200%;
     }
+
+    #topo {
+        background-color: white;
+    }
     
     #logo {
         width: 220px;

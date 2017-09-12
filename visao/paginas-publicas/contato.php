@@ -1,4 +1,4 @@
-<div class="row h-100">
+<div class="row">
             <div class="col-sm-12 col-md-8 col-lg-6 mx-auto my-auto">
                 <form method='post' action='contato.php'>
                     <div class="form-group row">
