@@ -1,5 +1,5 @@
-<div class="row h-100">
-    <div class="col-8 mx-auto my-auto">
+<div class="row">
+    <div class="col-12 mx-auto">
         <div class="row row-grid">
             <div class="col">
                 <div class="card-deck">

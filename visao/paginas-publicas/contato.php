@@ -1,9 +1,9 @@
-<div class="row h-100">
-            <div class="col-sm-12 col-md-8 col-lg-6 mx-auto my-auto">
+<div class="row">
+            <div class="col-12 mx-auto">
                 <form method='post' action='contato.php'>
                     <div class="form-group row">
-                        <label for="categoria" class="col-sm-12 col-md-4 col-form-label">Tipo de mensagem:</label>
-                        <div class="col-sm-12 col-md-8">
+                        <label for="categoria" class="col-sm-12 col-md-6 col-form-label">Tipo de mensagem:</label>
+                        <div class="col-sm-12 col-md-6">
                         <select class="form-control" id="categoria" name="categoria" required>
                             <?php 
                                 include_once $_SERVER['DOCUMENT_ROOT']."/modelo/CategoriaNoticia.class.php";
@@ -35,7 +35,7 @@
                             <textarea class="form-control" rows="3" id="mensagem" name="mensagem" required></textarea>
                         </div>
                     </div>
-                    <input type='submit' class='btn btn-primary btn-lg btn-block' name='enviar' value='Enviar'>
+                    <input type='submit' class='text-center btn btn-primary btn-lg' name='enviar' value='Enviar'>
                 </form>
             </div>
         </div>
