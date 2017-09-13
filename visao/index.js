@@ -14,10 +14,6 @@ $(document).ready(function () {
         newHash = window.location.hash.substr(1);
         $conteudoCentral.load('/visao' + newHash, function () {
             console.log('Página carregada: ' + newHash);
-
-            /*let minHeight = $conteudoCentral.height();
-            $conteudoCentral.css('height', minHeight);
-            console.log('altura: ' + minHeight);*/
         });
     });
     ///////////////////////////////////////////////////////////////////////////////////
@@ -28,9 +24,8 @@ $(document).ready(function () {
         if (menuExpandido) {
             //fecha menu ao clicar
             $('.collapse').collapse('toggle');
-        } else {
-            $('.nav-item').removeClass('active');
-            $(this).addClass('active');
         }
+        $('.nav-item').removeClass('active');
+        $(this).addClass('active');
     });
 });

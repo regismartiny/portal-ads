@@ -35,7 +35,11 @@
                             <textarea class="form-control" rows="3" id="mensagem" name="mensagem" required></textarea>
                         </div>
                     </div>
-                    <input type='submit' class='text-center btn btn-primary btn-lg' name='enviar' value='Enviar'>
+                    <div class="form-group row">
+                        <div class="col-sm-12 col-md-6 mx-auto">
+                            <input type="submit" class="btn btn-primary btn-lg btn-block" name="enviar" value="Enviar">
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
