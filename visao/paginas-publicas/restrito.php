@@ -1,23 +1,25 @@
-<div class="row h-100">
-	<div class="col-sm-12 col-md-8 col-lg-6 mx-auto my-auto">
-		<h1 class="titulo">Acesso Restrito</h1><br><br>    
+<div class="row">
+	<div class="col mx-auto">
+		<h1 class="titulo">Acesso Restrito</h1><br><br>
 		<form id="form" method="post" action="/controle/login.php">
 			<div class="form-group row">
-				<label for="matricula" class="col-sm-4 col-md-4 col-form-label">Matrícula / SIAPE:</label>
-				<div class="col-sm-8 col-md-8">
+				<label for="matricula" class="col-sm-5 col-md-5 col-form-label">Matrícula / SIAPE:</label>
+				<div class="col-sm-7 col-md-7">
 					<input type="text" class="form-control" id="matricula" name="matricula" required>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="senha" class="col-sm-4 col-md-4 col-form-label">Senha:</label>
-				<div class="col-sm-8 col-md-8">
+				<label for="senha" class="col-sm-5 col-md-5 col-form-label">Senha:</label>
+				<div class="col-sm-7 col-md-7">
 					<input type="password" class="form-control" id="senha" name="senha" required>
 				</div>
 			</div>
 			<div id="result" class="status"></div>
 			<br>
-			<input type="submit" class="btn btn-primary btn-lg btn-block" name="login" value="Login"/>
-			<a href="esqueciSenha.html" class="btn btn-danger btn-lg btn-block">Esqueci Minha Senha</a>
+			<div class="text-center">
+				<input type="submit" class="btn btn-primary btn-lg" name="login" value="Login" />
+				<a href="esqueciSenha.html" class="btn btn-danger btn-lg">Esqueci Minha Senha</a>
+			</div>
 		</form>
 	</div>
 </div>

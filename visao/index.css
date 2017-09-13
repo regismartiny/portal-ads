@@ -1,11 +1,7 @@
   html {
       position: relative;
       font-size: 110%;
-  }
-  
-  html,
-  body {
-      height: 100%;
+      min-height: 100%;
   }
   
   @media(min-width:60em) {
@@ -16,9 +12,8 @@
   
   body {
       /* Margin bottom by footer height */
-      margin-bottom: -70px;
+      margin-bottom: 70px;
       font-size: 16px;
-      padding-top: 122px;
   }
   
   p {
@@ -64,6 +59,12 @@
       display: none;
   }
   
+  #container-conteudo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
   .footer {
       position: absolute;
       bottom: 0;
@@ -97,7 +98,6 @@
   @media(min-width:1200px) {
       body {
           padding-top: 122px;
-          margin-bottom: -78px;
       }
       .footer {
           height: 78px;
@@ -105,15 +105,11 @@
   }
   
   @media(min-width: 768px) {
-      #container-conteudo {
-          height: calc(100% - 60px);
-      }
   }
   
   @media(max-width:1199px) {
       body {
           padding-top: 122px;
-          margin-bottom: -105px;
       }
       .footer {
           height: 105px;
@@ -123,7 +119,6 @@
   @media(max-width:991px) {
       body {
           padding-top: 112px;
-          margin-bottom: -100px;
       }
       .footer {
           height: 100px;
@@ -133,7 +128,6 @@
   @media(max-width:959px) {
       body {
           padding-top: 123px;
-          margin-bottom: -110px;
       }
       .footer {
           height: 110px;
@@ -143,21 +137,11 @@
   @media(max-width:767px) {
       body {
           padding-top: 147px;
-          margin-bottom: -148px;
-      }
-      .footer {
-          position: relative;
-          height: 148px;
       }
   }
   
   @media(max-width:368px) {
       body {
           padding-top: 147px;
-          margin-bottom: -178px;
-      }
-      .footer {
-          position: relative;
-          height: 178px;
       }
   }
