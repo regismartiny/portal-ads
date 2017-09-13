@@ -1,6 +1,8 @@
 $(document).ready(function() {
+
+    //////////////////////////////Controle de navegação de páginas//////////////////////////
     var newHash = '',
-        $mainContent = $('#container-conteudo');
+        $conteudoCentral = $('#container-conteudo');
 
     $('body').delegate('a', 'click', function() {
         window.location.hash = $(this).attr('href');
@@ -11,13 +13,25 @@ $(document).ready(function() {
     // For older browser support: http://benalman.com/projects/jquery-hashchange-plugin/
     $(window).on('hashchange', function() {
         newHash = window.location.hash.substr(1);
-        $mainContent.load('/visao' + newHash, function() {
-            console.log('content loaded');
+        $conteudoCentral.load('/visao' + newHash, function() {
+            console.log('Página carregada: ' + newHash);
+
+            /*let minHeight = $conteudoCentral.height();
+            $conteudoCentral.css('height', minHeight);
+            console.log('altura: ' + minHeight);*/
         });
     });
+    ///////////////////////////////////////////////////////////////////////////////////
 
+    /////////////////////////////Controle do menu/////////////////////////////////////////
     $('.nav-item').click(function() {
-        $('.nav-item').removeClass('active');
-        $(this).addClass('active');
+        let menuExpandido = $('#navbar-toggler').attr('aria-expanded') === 'true';
+        if (menuExpandido) {
+            //fecha menu ao clicar
+            $('.collapse').collapse('toggle');
+        } else {
+            $('.nav-item').removeClass('active');
+            $(this).addClass('active');
+        }
     });
 });
