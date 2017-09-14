@@ -127,7 +127,7 @@
   
   @media(max-width:991px) {
       body {
-          padding-top: 112px;
+          padding-top: 100px;
           margin-bottom: 110px;
       }
       .footer {
@@ -146,7 +146,7 @@
   
   @media(max-width:959px) {
       body {
-          padding-top: 123px;
+          padding-top: 103px;
           margin-bottom: 130px;
       }
       .footer {
@@ -156,7 +156,7 @@
   
   @media(max-width:767px) {
       body {
-          padding-top: 147px;
+          padding-top: 103px;
           margin-bottom: 168px;
       }
       .footer {
@@ -166,7 +166,7 @@
   
   @media(max-width:368px) {
       body {
-          padding-top: 147px;
+          padding-top: 103px;
           margin-bottom: 187px;
       }
       .footer {
@@ -176,7 +176,7 @@
 
   @media(max-width:350px) {
     body {
-        padding-top: 147px;
+        padding-top: 103px;
         margin-bottom: 206px;
     }
     .footer {
