@@ -12,21 +12,31 @@
 
 <body>
     <div id="topo" class="contaner-fluid fixed-top">
-        <div class="row">
+        <div id="inf-topo" class="row">
             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-6 col-xl-7">
                 <img src="img/logo.jpg" id="logo">
             </div>
             <div class="col-xs-12 col-sm-12 col-md-7 col-lg-6 col-xl-5">
-                <small class="curso">Curso de Análise e Desenvolvimento de Sistemas</small>
+                <span class="curso">Curso de Análise e Desenvolvimento de Sistemas</span>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-						</button>
+                    <div class="toggle-button-menu col-2" style="border: solid 1px red;">
+                        <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <div class="inf-topo-menu col-10 mr-auto" style="border: solid 1px red;">
+                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-6 col-xl-7">
+                            <img src="img/logo.jpg" id="logo">
+                        </div>
+                    </div>
+                    <div class="inf-topo-menu col-12" style="border: solid 1px red;">
+                        <small class="curso">Curso de Análise e Desenvolvimento de Sistemas</small>
+                    </div>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav nav-fill w-100 align-items-start">
                             <li class="nav-item">
@@ -60,7 +70,7 @@
         </div>
     </div>
     <div class="container" id="container-conteudo">
-            
+
     </div>
     <footer class="footer">
         <div class="container">

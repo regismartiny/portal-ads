@@ -112,6 +112,18 @@
           height: 115px;
       }
   }
+
+  @media(min-width:992px) {
+    .toggle-button-menu {
+        display: none;
+    }
+    #inf-topo {
+      display: flex;
+    }
+    .inf-topo-menu {
+        display: none;
+    }
+}
   
   @media(max-width:991px) {
       body {
@@ -120,6 +132,15 @@
       }
       .footer {
           height: 100px;
+      }
+      .toggle-button-menu {
+          display: block;
+      }
+      #inf-topo {
+          display: none;
+      }
+      .inf-topo-menu {
+          display: inline;
       }
   }
   
