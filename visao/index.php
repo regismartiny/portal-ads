@@ -23,13 +23,13 @@
         <div class="row">
             <div class="col">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <div class="toggle-button-menu col-2">
+                    <div class="toggle-button-menu">
                         <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                     </div>
-                    <div class="inf-topo-menu col-10 mr-auto">
+                    <div class="inf-topo-menu mr-auto">
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-6 col-xl-7">
                             <img src="img/logo.jpg" id="logo">
                         </div>
