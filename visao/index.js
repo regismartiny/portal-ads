@@ -41,9 +41,9 @@ $(document).ready(function () {
 });
 
 function isMenuExpandido() {
-    $('#navbar-toggler').attr('aria-expanded') === 'true';
+    return $('#navbar-toggler').attr('aria-expanded') === 'true';
 }
 
 function toggleMenu() {
-    $('.collapse').collapse('toggle');
+    return $('.collapse').collapse('toggle');
 }
