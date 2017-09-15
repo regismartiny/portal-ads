@@ -39,8 +39,18 @@
                     </div>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav nav-fill w-100 align-items-start">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/paginas-publicas/oCurso.html">O Curso <span class="sr-only">(current)</span></a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                O Curso
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=infoGerais">Informações gerais</a>
+                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=coordenacao">Coordenação do curso</a>
+                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=docentes">Docentes</a>
+                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=gruposPesquisa">Grupos de Pesquisa</a>
+                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=horariosAula">Horários de Aula</a>
+                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=FAQ">Perguntas Frequentes</a>
+                                </div>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/paginas-publicas/portfolioDeProjetos.html">Portfólio de Projetos</a>
