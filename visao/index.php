@@ -13,10 +13,10 @@
 <body>
     <div id="topo" class="contaner-fluid fixed-top">
         <div id="inf-topo" class="row">
-            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-6 col-xl-7">
+            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-7 col-xl-8">
                 <img src="img/logo.jpg" id="logo">
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-6 col-xl-5">
+            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-5 col-xl-4">
                 <span class="curso">Curso de Análise e Desenvolvimento de Sistemas</span>
             </div>
         </div>
@@ -25,7 +25,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="toggle-button-menu">
                         <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Alternar navegação">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                     </div>
@@ -56,7 +56,7 @@
                                 <a class="nav-link" href="/paginas-publicas/portfolioDeProjetos.html">Portfólio de Projetos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="/paginas-publicas/discentesEEgressos.html">Discentes e Egressos</a>
+                                <a class="nav-link " href="/paginas-publicas/discentesEEgressos.php">Discentes e Egressos</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/paginas-publicas/noticias.php">Notícias</a>

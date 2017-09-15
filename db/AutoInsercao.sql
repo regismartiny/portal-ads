@@ -32,7 +32,7 @@ VALUES ('Informações Gerais', '<p>O Curso Superior de Tecnologia em Análise e
             <p>Ao concluir o curso, o tecnólogo terá competência para:</p>
             <ul>
                 <li>Compreender os conceitos básicos da computação;</li>
-                <li>Conhecer metodologias e técnicas de engenharia de software para identificação de requisitos, análise, projeto, implementação, testes, implantação e manutenção de software;
+                <li>Conhecer metodologias e técnicas de engenharia de software para identificação de requisitos, análise, projeto, implementação, testes, implantação e manutenção de software;</li>
                 <li>Projetar e administrar banco de dados;</li>
                 <li>Desenvolver sistemas computacionais para web ou desktop utilizando preceitos de qualidade de software; e
                 Analisar, desenvolver e avaliar interfaces computacionais com usabilidade e acessibilidade.</li>
@@ -76,3 +76,16 @@ INSERT INTO InformacaoDoCurso (titulo, conteudo)
 VALUES ('Perguntas Frequentes', '<p><ol><li><strong>Como faço para ingressar no curso?</strong>
         <p>Resposta: é necessário participar de um processo seletivo ou o ingresso pode ser via ENEM. O processo seletivo geralmente é divulgado em meados de setembro.</p>
         </li></ol>');
+
+INSERT INTO InformacaoDoCurso (titulo, conteudo)
+VALUES ('Discentes e Egressos', '<p>Alunos matriculados no curso ADS (em setembro de 2017):</p>
+        <ul>
+            <li><strong>Jackson Müller dos Santos</strong></li>
+            <li><strong>Maicon Dewes</strong></li>
+            <li><strong>Régis Martiny</strong></li>
+            <li><strong>Ricardo Luiz Gomes</strong></li>
+        </ul>
+        <p>Formados no curso ADS:</p>
+        <ul>
+            <li><strong>Não há formandos até o momento. Previsão de primeira formatura em 2018/1.</strong></li>
+        </ul>');

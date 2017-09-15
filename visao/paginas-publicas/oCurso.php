@@ -12,7 +12,7 @@ if (isset($_GET['q']) && !empty($_GET['q'])) {
             <p>Ao concluir o curso, o tecnólogo terá competência para:</p>
             <ul>
                 <li>Compreender os conceitos básicos da computação;</li>
-                <li>Conhecer metodologias e técnicas de engenharia de software para identificação de requisitos, análise, projeto, implementação, testes, implantação e manutenção de software;
+                <li>Conhecer metodologias e técnicas de engenharia de software para identificação de requisitos, análise, projeto, implementação, testes, implantação e manutenção de software;</li>
                 <li>Projetar e administrar banco de dados;</li>
                 <li>Desenvolver sistemas computacionais para web ou desktop utilizando preceitos de qualidade de software; e
                 Analisar, desenvolver e avaliar interfaces computacionais com usabilidade e acessibilidade.</li>
