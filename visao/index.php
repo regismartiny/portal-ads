@@ -44,13 +44,8 @@
                         </div>
                     </div>
                     <div class="inf-topo-menu col-12">
-<<<<<<< 0f043b047d0f40fbd01ba17e28c014a1401eba89
                         <small class="curso"> Curso de Análise e Desenvolvimento de Sistemas</small>
 					</div>
-=======
-                        <small class="curso-menu">Curso de Análise e Desenvolvimento de Sistemas</small>
-                    </div>
->>>>>>> Ajuste texto curso navbar
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav nav-fill w-100 align-items-start">
                             <li class="nav-item dropdown">
