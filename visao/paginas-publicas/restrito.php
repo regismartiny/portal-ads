@@ -42,10 +42,12 @@ $("#form").submit(function(event) {
 			statusLogin('Login OK');
 			console.log(response);
 			let resObj = JSON.parse(response);
-			if (resObj.tipoUsuario) {
+			if (resObj.tipoUsuario<4) {
 				direcionaPagina(resObj.tipoUsuario);
-			}else{
-				statusLogin('Login inválido!');
+			}elseif(resObj.tipoUsuario==99){
+				statusLogin('Usuário não Cadastrado!');
+			}elseif(resObj.tipoUsuario==98){
+				statusLogin('Senha inválida!!');
 			}
 		},
 		error: function(response) {
