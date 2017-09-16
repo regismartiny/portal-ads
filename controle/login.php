@@ -24,7 +24,7 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
 			   		
 		}else if($cadastrado==2){
 			//Usuário e senha Certos
-			if(!isset($_SESSION)){
+			
 				session_start();
 				$usuario = $cUsuario->listarUm($_POST['matricula']);
 				$_SESSION["nomeUsuario"] = $usuario->getNome();
@@ -34,7 +34,7 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
 
 				$tipoUsuario = array('tipoUsuario' => $_SESSION['tipoUsuario']);
 				
-			}
+			
 		}else if($cadastrado==3){
 			//Usuario não existe
 			//$user = new Usuario(null,null,null,null,null,null,99);  

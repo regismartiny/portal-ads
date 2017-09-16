@@ -1,10 +1,16 @@
 <?php
 	if(isset($_POST['botao']) && $_POST['botao']=="Trocar Senha"){
-		if()
-		
-		include_once $_SERVER['DOCUMENT_ROOT']."/portal-ads/controle/ControleUsuario.class.php";
-		$uControle = new ControleUsuario();
-		$uControle->inserir($_POST);
+		if (empty($senha)):
+			$retorno = array('codigo' => 0, 'mensagem' => 'Preencha sua nova senha!');
+			echo json_encode($retorno);
+			exit();
+			endif;
+
+		if (empty($senha2)):
+			$retorno = array('codigo' => 0, 'mensagem' => 'Preencha a confirmação da senha!');
+			echo json_encode($retorno);
+			exit();
+			endif;
 	}
 	
 	
