@@ -42,7 +42,7 @@
 		foreach ($_COOKIE as $key => $value) {
 		print($key.' - '.$value.'<br>');
 		};
-	
+        echo "teste";
 	
 	
 	?>
