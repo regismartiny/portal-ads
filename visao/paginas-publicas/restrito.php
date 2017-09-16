@@ -44,9 +44,9 @@ $("#form").submit(function(event) {
 			let resObj = JSON.parse(response);
 			if (resObj.tipoUsuario<4) {
 				direcionaPagina(resObj.tipoUsuario);
-			}elseif(resObj.tipoUsuario==99){
+			}else if(resObj.tipoUsuario==99){
 				statusLogin('Usuário não Cadastrado!');
-			}elseif(resObj.tipoUsuario==98){
+			}else if(resObj.tipoUsuario==98){
 				statusLogin('Senha inválida!!');
 			}
 		},
