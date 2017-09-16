@@ -1,22 +1,13 @@
 <?php
-	if(isset($_POST['botao']) && $_POST['botao']=="Adicionar"){
+	if(isset($_POST['botao']) && $_POST['botao']=="Trocar Senha"){
+		if()
+		
 		include_once $_SERVER['DOCUMENT_ROOT']."/portal-ads/controle/ControleUsuario.class.php";
 		$uControle = new ControleUsuario();
 		$uControle->inserir($_POST);
 	}
 	
-	function inserirTipoUsuarioNoCombo(){
-		include_once $_SERVER["DOCUMENT_ROOT"]."/portal-ads/modelo/TipoUsuario.class.php";
-		
-		$tipoUsuario = new TipoUsuario(null,null);
-		$tiposUsuarios = $tipoUsuario->getTipoUsuario();
-		$returnTipoUsuarios = "";
-		foreach($tiposUsuarios as $row => $arrayInterno){
-			$tipoUsuario = new TipoUsuario($arrayInterno['id'],$arrayInterno['descricao']);
-			$returnTipoUsuarios = $returnTipoUsuarios."<option value=".$arrayInterno['id'].">".$arrayInterno['descricao']."</option>";
-		}
-		return $returnTipoUsuarios;
-	}	
+	
 ?>
 <html lang='pt-br'>
 	<head>
@@ -25,7 +16,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 		<meta charset='utf-8'>
-		<title>Cadastro de Usuarios</title>
+		<title>Trocar Senha de Usuario</title>
 	</head>
 	<style>
 		#container {
@@ -38,37 +29,22 @@
 				<div class="col-5 ">
 					<form method='post' action='cadUsuario.php'>
 						<div class="form-group row">
-							<h1 class="col-sm-12 col-form-label">Cadastro de Usuários:</h1>
+							<h1 class="col-sm-12 col-form-label">Trocar Senha de Usuario:</h1>
 						</div>
 						<div class="form-group row">
-							<label for="nome" class="col-sm-4 col-form-label">Nome Completo:</label>
-							<div class="col-sm-8">
-							  <input type="text" class="form-control" id="nome" name='nome' required>
+							<label for="senha" class="col-sm-5 col-md-5 col-form-label">Senha:</label>
+							<div class="col-sm-7 col-md-7">
+								<input type="password" class="form-control" id="senha" name="senha" required>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="matricula" class="col-sm-4 col-form-label">Matricula / SIAPE:</label>
-							<div class="col-sm-8">
-							  <input type="number" class="form-control" id="matricula" name='matricula' required>
+							<label for="senha" class="col-sm-5 col-md-5 col-form-label"> Confirmação de Senha:</label>
+							<div class="col-sm-7 col-md-7">
+								<input type="password" class="form-control" id="senha" name="senha" required>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label for="email" class="col-sm-4 col-form-label">E-mail (Opcional):</label>
-							<div class="col-sm-8">
-							  <input type="email" class="form-control" id="email" name='email'>
-							</div>
-						</div>
-						<div class="form-group row">
-						<label for="categoria" class="col-sm-4 col-form-label">Tipo:</label>
-						<div class="col-sm-8">
-							<select class="col custom-select" id="tipoUsuario_id" name="tipoUsuario_id" required>
-								<?php 
-								echo inserirTipoUsuarioNoCombo();
-								?>
-							</select>
 						</div>
 					</div>
-						<input type='submit' class='btn btn-primary btn-lg btn-block' name='botao' value='Adicionar'>
+						<input type='submit' class='btn btn-primary btn-lg btn-block' name='botao' value='Trocar Senha'>
 					</form>
 					<a class='btn btn-danger btn-lg btn-block' href='../index.html'>Cancelar</a>
 				</div>
