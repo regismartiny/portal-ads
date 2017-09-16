@@ -11,9 +11,9 @@ class ControleUsuario
     }
     
 
-    public function listarUm($siapeMatricula)
+    public function listarUm($dados)
     {
-        $usuario = new Usuario(null, $siapeMatricula, null, null, null, null, null);
+        $usuario = new Usuario(null, $dados['matricula'], null, null, null, null, null);
         $usuario->listarUm();
 		return $usuario;
     }
