@@ -7,7 +7,11 @@ class ControleUsuario
     {
         $usuario = new Usuario(null, $dados['matricula'], null, null, null, null, null);
         $cadastrado = $usuario->isCadastrado();
-        return $cadastrado;
+        if($cadastrado != 0){
+            return $cadastrado;
+        }else{
+            return 0;
+        }
     }
     
     public function verificaLogin($dados)
