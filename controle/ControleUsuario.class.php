@@ -5,7 +5,7 @@ class ControleUsuario
 {
     public function verificaUser($dados)
     {
-        $usuario = new Usuario(null, $dados['matricula'], null, null, null, null, null);
+        $usuario = new Usuario(null, $dados['matricula'], null, null, $dados['senha'], null, null);
         $cadastrado = $usuario->isCadastrado();
         return $cadastrado;
     }
