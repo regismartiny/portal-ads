@@ -20,8 +20,10 @@
                 <span class="curso">
 						Curso de Análise e Desenvolvimento de Sistemas
 						<br>
-						<?php 
-							echo $_SESSION["nomeUsuario"];
+                        <?php 
+                        if(!empty($_SESSION)){
+                            echo $_SESSION["nomeUsuario"];
+                        }
 						?>
 				</span>
 				
