@@ -22,6 +22,7 @@
                 <form method="post" action="/controle/logout.php">
                     <div class="form-group row">
                         <h1 class="col-sm-12 col-form-label">Home do Coordenador</h1>
+						<?php echo $_SESSION["nomeUsuario"];?>
                     </div>
                     <input type="submit" class="btn btn-primary btn-lg btn-block" name="botao" value="LogOut">
                 </form>

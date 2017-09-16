@@ -69,7 +69,7 @@ function statusLogin(status) {
 
 function direcionaPagina(tipoUsuario) {
 	if (tipoUsuario === "1") {
-		navegaPagina("/visao/coordenador/homeCoordenador.html");
+		navegaPagina("/visao/coordenador/homeCoordenador.php");
 	} else if (tipoUsuario === "2") {
 		navegaPagina("/visao/professor/homeProfessor.html");
 	} else if (tipoUsuario === "3") {
