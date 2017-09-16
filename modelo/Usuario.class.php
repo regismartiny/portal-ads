@@ -98,11 +98,7 @@ class Usuario
         //$sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula' AND senha = '$this->senha'";
         $sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula'";
         $resultados = $con->consulta($sql);
-        if(count($resultados)>0){
-             return count($resultados)>0;
-        }else{
-            return 0;
-        };
+        return count($resultados)>0;
     }
     public function verificaSenha()
     {
