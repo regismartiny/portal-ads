@@ -14,23 +14,32 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
 
     $cUsuario = new ControleUsuario();
 
-    $cadastrado = $cUsuario->verificaLogin($_POST);
-    $resultado = $cadastrado;
-
+    $cadastrado = $cUsuario->verificaUser($_POST);
     if ($cadastrado) {
         
-        
-        if(!isset($_SESSION)){
-            session_start();
-            $usuario = $cUsuario->listarUm($_POST['matricula']);
-            $_SESSION["nomeUsuario"] = $usuario->getNome();
-            $_SESSION['matricula'] = $usuario->getSiapeMatricula();
-            $_SESSION['email'] = $usuario->getEmail();
-            $_SESSION['tipoUsuario'] = $usuario->getTipoUsuario_id();
+        $tudoCerto = $cUsuario->verificaLogin($_POST);
+        $resultado = $tudoCerto;
 
-            $tipoUsuario = array('tipoUsuario' => $_SESSION['tipoUsuario']);
-            $resultado = json_encode($tipoUsuario, JSON_FORCE_OBJECT);
-        }
-    }
+		if ($tudoCerto) {
+        
+        
+			if(!isset($_SESSION)){
+				session_start();
+				$usuario = $cUsuario->listarUm($_POST['matricula']);
+				$_SESSION["nomeUsuario"] = $usuario->getNome();
+				$_SESSION['matricula'] = $usuario->getSiapeMatricula();
+				$_SESSION['email'] = $usuario->getEmail();
+				$_SESSION['tipoUsuario'] = $usuario->getTipoUsuario_id();
+
+				$tipoUsuario = array('tipoUsuario' => $_SESSION['tipoUsuario']);
+				$resultado = json_encode($tipoUsuario, JSON_FORCE_OBJECT);
+			}
+		}else{
+        //senha errada
+    	}
     echo json_encode($resultado);
+    }else{
+        // usuario não existe
+    }
+    
 }
