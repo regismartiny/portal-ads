@@ -42,10 +42,9 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
     		echo json_encode($resultado);
     }else{
         // usuario não existe
-	  
-	$tipoUsuario = array('tipoUsuario' => 99);
-	$resultado = json_encode($tipoUsuario, JSON_FORCE_OBJECT);
-	echo json_encode($cUsuario); 
+	$user = new Usuario(null,null,null,null,null,null,99);  
+	$resultado = json_encode($user, JSON_FORCE_OBJECT);
+	echo json_encode($resultado); 
     }
     
 }
