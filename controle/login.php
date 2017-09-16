@@ -36,13 +36,13 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
 			}
 		}else{
         	//senha errada
-		$tipoUsuario = array('98');
+		$tipoUsuario = array('tipoUsuario' => 98);
 		$resultado = json_encode($tipoUsuario, JSON_FORCE_OBJECT);
     	}
     echo json_encode($resultado);
     }else{
         // usuario não existe
-	   $tipoUsuario = array('99');
+	   $tipoUsuario = array('tipoUsuario' => 99);
 		$resultado = json_encode($tipoUsuario, JSON_FORCE_OBJECT);
     }
     
