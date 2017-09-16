@@ -35,13 +35,14 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
 				$resultado = json_encode($tipoUsuario, JSON_FORCE_OBJECT);
 			}
 		}else{
-        	//senha errada
-		$tipoUsuario = array('tipoUsuario' => 98);
-		$resultado = json_encode($tipoUsuario, JSON_FORCE_OBJECT);
-    	}
-    echo json_encode($resultado);
+        		//senha errada
+			$tipoUsuario = array('tipoUsuario' => 98);
+			$resultado = json_encode($tipoUsuario, JSON_FORCE_OBJECT);
+    		}
+    		echo json_encode($resultado);
     }else{
         // usuario não existe
+	   echo json_encode($cUsuario); 
 	   $tipoUsuario = array('tipoUsuario' => 99);
 		$resultado = json_encode($tipoUsuario, JSON_FORCE_OBJECT);
     }
