@@ -30,12 +30,14 @@
         </div>
     </div>
 
-	<?php echo $_SESSION['nomeUsuario']+"teste "+$_SESSION['tipoUsuario']+$_SESSION['email']+$_SESSION['matricula']+" fim";
-		
-		
-		foreach ($_SESSION as $key => $value) {
-		print($key.' - '.$value.'<br>');
-		};
+    <?php 
+        if(!empty($_SESSION)){
+            echo $_SESSION['nomeUsuario']+"teste "+$_SESSION['tipoUsuario']+$_SESSION['email']+$_SESSION['matricula']+" fim";
+            
+            foreach ($_SESSION as $key => $value) {
+            print($key.' - '.$value.'<br>');
+            };
+        }
 
 		foreach ($_COOKIE as $key => $value) {
 		print($key.' - '.$value.'<br>');
