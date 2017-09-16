@@ -106,8 +106,6 @@ class Usuario
 			}else{
 				$resposta=1;
 			}
-			
-			$resposta=1;
 		}else{
 			$resposta=3;
 		}
