@@ -26,6 +26,7 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
 			//Usuário e senha Certos
 			
 				session_start();
+				$usuario = new Usuario();
 				$usuario = $cUsuario->listarUm($_POST);
 				$_SESSION['nomeUsuario'] = $usuario->getNome();
 				$_SESSION['matricula'] = $usuario->getSiapeMatricula();
