@@ -39,10 +39,11 @@ $("#form").submit(function(event) {
 		url: $form.attr('action'),
 		data: $form.serialize(),
 		success: function(response) {
-			statusLogin('Login OK');
+			
 			console.log(response);
 			let resObj = JSON.parse(response);
 			if (resObj.tipoUsuario<4) {
+				statusLogin('Login OK');
 				direcionaPagina(resObj.tipoUsuario);
 			}else if(resObj.tipoUsuario==99){
 				statusLogin('Usuário não Cadastrado!');
