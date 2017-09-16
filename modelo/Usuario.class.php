@@ -111,14 +111,7 @@ class Usuario
 		}
 		return $resposta;
     }
-    public function verificaSenha()
-    {
-        $con = new MySQL();
-        $sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula' AND senha = '$this->senha'";
-        $resultados = $con->consulta($sql);
-        return count($resultados)>0;
-    }
-        
+
     public function listarUm()
     {
         $con = new MySQL();
@@ -133,12 +126,14 @@ class Usuario
             $this->senha = $resultado[0]["senha"];
             $this->status = $resultado[0]["status"];
             $this->tipoUsuario_id = $resultado[0]["TipoUsuario_id"];
+			print_r($usuario);
             return $usuario;
+			
         } else {
             return false;
         }
     }
-        
+    
         
     public function listarTodos()
     {

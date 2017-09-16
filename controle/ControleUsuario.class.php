@@ -10,19 +10,15 @@ class ControleUsuario
         return $cadastrado;
     }
     
-    public function verificaLogin($dados)
-    {
-        $usuario = new Usuario(null, $dados['matricula'], null, null, $dados['senha'], null, null);
-        $tudoCerto = $usuario->verificaSenha();
-        return $tudoCerto;
-    }
-    
+
     public function listarUm($siapeMatricula)
     {
         $usuario = new Usuario(null, $siapeMatricula, null, null, null, null, null);
         $usuario->listarUm();
-        return $usuario;
+        print_r ($usuario);
+		return $usuario;
     }
+
 
     public function inserir($dados)
     {
