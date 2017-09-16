@@ -95,6 +95,14 @@ class Usuario
     public function isCadastrado()
     {
         $con = new MySQL();
+        //$sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula' AND senha = '$this->senha'";
+        $sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula'";
+        $resultados = $con->consulta($sql);
+        return count($resultados)>0;
+    }
+    public function verificaSenha()
+    {
+        $con = new MySQL();
         $sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula' AND senha = '$this->senha'";
         $resultados = $con->consulta($sql);
         return count($resultados)>0;
