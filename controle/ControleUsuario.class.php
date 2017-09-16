@@ -18,12 +18,7 @@ class ControleUsuario
 		return $usuario;
     }
 	
-	public function listarUm2($siapeMatricula)
-    {
-        $usuario = new Usuario(null, $siapeMatricula, null, null, null, null, null);
-        $usuario->listarUm2();
-		return $usuario;
-    }
+	
 
     public function inserir($dados)
     {

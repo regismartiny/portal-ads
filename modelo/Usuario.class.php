@@ -132,15 +132,7 @@ class Usuario
             return false;
         }
     }
-     public function listarUm2()
-    {
-        $con = new MySQL();
-        $sql = "SELECT * FROM Usuario WHERE siapeMatricula='$this->siapeMatricula'";
-        $resultado = $con->consulta($sql);
-        $retorno = $resultado->fetch(PDO::FETCH_OBJ);
-		return $retorno;
-
-    }
+     
         
     public function listarTodos()
     {
