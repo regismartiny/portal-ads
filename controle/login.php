@@ -31,6 +31,7 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
 				$_SESSION['matricula'] = $usuario->getSiapeMatricula();
 				$_SESSION['email'] = $usuario->getEmail();
 				$_SESSION['tipoUsuario'] = $usuario->getTipoUsuario_id();
+				
 
 				$tipoUsuario = array('tipoUsuario' => $_SESSION['tipoUsuario']);
 				
