@@ -42,7 +42,7 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
 			
 	
 		}
-		$resultado = json_encode($user, JSON_FORCE_OBJECT);
+		$resultado = json_encode($tipoUsuario, JSON_FORCE_OBJECT);
 		echo json_encode($resultado);
 }
 

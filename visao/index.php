@@ -18,6 +18,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-7 col-lg-5 col-xl-4">
                 <span class="curso">Curso de Análise e Desenvolvimento de Sistemas</span>
+				
             </div>
         </div>
         <div class="row">
@@ -35,8 +36,14 @@
                         </div>
                     </div>
                     <div class="inf-topo-menu col-12">
-                        <small class="curso">Curso de Análise e Desenvolvimento de Sistemas</small>
-                    </div>
+                        <small class="curso">
+						Curso de Análise e Desenvolvimento de Sistemas
+						<br>
+						<?php 
+							echo $_SESSION["nomeUsuario"];>
+							?>
+						</small>
+					</div>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav nav-fill w-100 align-items-start">
                             <li class="nav-item dropdown">
