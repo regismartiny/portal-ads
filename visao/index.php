@@ -40,7 +40,7 @@
 						Curso de Análise e Desenvolvimento de Sistemas
 						<br>
 						<?php 
-							echo $_SESSION["nomeUsuario"];>
+							echo $_SESSION["nomeUsuario"];
 							?>
 						</small>
 					</div>
