@@ -21,9 +21,7 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
 		}else if($cadastrado==1){
 			//Usuário Certo, Senha Errada
 			$tipoUsuario = array('tipoUsuario' => 98);
-			$resultado = json_encode($tipoUsuario, JSON_FORCE_OBJECT);
-    		}
-    		echo json_encode($resultado);
+			   		
 		}else if($cadastrado==2){
 			//Usuário e senha Certos
 			if(!isset($_SESSION)){
@@ -35,17 +33,20 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
 				$_SESSION['tipoUsuario'] = $usuario->getTipoUsuario_id();
 
 				$tipoUsuario = array('tipoUsuario' => $_SESSION['tipoUsuario']);
-				$resultado = json_encode($tipoUsuario, JSON_FORCE_OBJECT);
+				
 			}
 		}else if($cadastrado==3){
 			//Usuario não existe
 			//$user = new Usuario(null,null,null,null,null,null,99);  
 			$tipoUsuario = array('tipoUsuario' => 99);
-			$resultado = json_encode($user, JSON_FORCE_OBJECT);
+			
 	
 		}
+		$resultado = json_encode($user, JSON_FORCE_OBJECT);
 		echo json_encode($resultado);
 }
+
+
 
 
 /*    if ($cadastrado) {
