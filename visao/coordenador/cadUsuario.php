@@ -1,12 +1,12 @@
 <?php
 	if(isset($_POST['botao']) && $_POST['botao']=="Adicionar"){
-		include_once $_SERVER['DOCUMENT_ROOT']."/portal-ads/controle/ControleUsuario.class.php";
+		include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
 		$uControle = new ControleUsuario();
 		$uControle->inserir($_POST);
 	}
 	
 	function inserirTipoUsuarioNoCombo(){
-		include_once $_SERVER["DOCUMENT_ROOT"]."/portal-ads/modelo/TipoUsuario.class.php";
+		include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/TipoUsuario.class.php";
 		
 		$tipoUsuario = new TipoUsuario(null,null);
 		$tiposUsuarios = $tipoUsuario->getTipoUsuario();
