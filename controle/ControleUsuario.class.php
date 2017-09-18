@@ -28,4 +28,9 @@ class ControleUsuario
         $usuario = new Usuario();
         return $usuario->listarTodos();
     }
+	
+    public function desabilitarUsuario($id){
+        $usuario = new Usuario($id, null, null, null, null, 0, null);
+        $usuario->desabilitarUsuario();
+    }
 }
