@@ -71,9 +71,9 @@ function direcionaPagina(tipoUsuario) {
 	if (tipoUsuario === "1") {
 		navegaPagina("/visao/coordenador/homeCoordenador.php");
 	} else if (tipoUsuario === "2") {
-		navegaPagina("/visao/professor/homeProfessor.html");
+		navegaPagina("/visao/professor/homeProfessor.php");
 	} else if (tipoUsuario === "3") {
-		navegaPagina("/visao/aluno/homeAluno.html");
+		navegaPagina("/visao/aluno/homeAluno.php");
 	}
 }
 
