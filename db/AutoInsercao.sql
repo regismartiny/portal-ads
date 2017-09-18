@@ -27,8 +27,8 @@ INSERT INTO Usuario VALUES (2,'7777777','testeProfessor','emailtesteportalads@gm
 
 INSERT INTO Usuario VALUES (3,'121212121212','testeAluno','emailtesteportalads@gmail.com','123456789',1,3);
 
-INSERT INTO InformacaoDoCurso (titulo, conteudo)
-VALUES ('Informações Gerais', '<p>O Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas tem como objetivo a formação de um profissional capaz de analisar, projetar, documentar, especificar, testar, implantar e manter sistemas computacionais de informação. Através dessas atividades busca-se desenvolver habilidades suficientes para que o profissional aplique a informática na solução de problemas organizacionais ou administrativos de diversos tipos de empresas.</p>
+INSERT INTO InformacaoDoCurso (chave, titulo, conteudo)
+VALUES ('INFORMACOES_GERAIS', 'Informações Gerais', '<p>O Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas tem como objetivo a formação de um profissional capaz de analisar, projetar, documentar, especificar, testar, implantar e manter sistemas computacionais de informação. Através dessas atividades busca-se desenvolver habilidades suficientes para que o profissional aplique a informática na solução de problemas organizacionais ou administrativos de diversos tipos de empresas.</p>
             <p>Ao concluir o curso, o tecnólogo terá competência para:</p>
             <ul>
                 <li>Compreender os conceitos básicos da computação;</li>
@@ -40,16 +40,16 @@ VALUES ('Informações Gerais', '<p>O Curso Superior de Tecnologia em Análise e
             <strong>Duração:</strong> 7 semestres</br>
             <strong>Turno:</strong> Noite');
 
-INSERT INTO InformacaoDoCurso (titulo, conteudo)
-VALUES ('Coordenação do Curso', '<ul><li><strong>Coordenador Tiago Cinto</strong>
+INSERT INTO InformacaoDoCurso (chave, titulo, conteudo)
+VALUES ('COORDENACAO', 'Coordenação do Curso', '<ul><li><strong>Coordenador Tiago Cinto</strong>
             <p>Área de concentração: Engenharia de Software</p>
             <p><a href="#">Currículo Lattes</a></p>
             <p>Horário de atendimento presencial: terças, das 17h às 18h</p>
             <p>Contato: coordenacao.ads@feliz.ifrs.edu.br</p>
             </li></ul>');
 
-INSERT INTO InformacaoDoCurso (titulo, conteudo)
-VALUES ('Docentes', '<ul><li><strong>Ana Paula Lemke</strong>
+INSERT INTO InformacaoDoCurso (chave, titulo, conteudo)
+VALUES ('DOCENTES', 'Docentes', '<ul><li><strong>Ana Paula Lemke</strong>
             <p>Área de concentração: Engenharia de Software</p>
             <p><a href="http://lattes.cnpq.br/0604467042234952">Currículo Lattes</a></p>
             <p>Contato: <a href="mailto:ana.lemke@feliz.ifrs.edu.br">ana.lemke@feliz.ifrs.edu.br</a></p>
@@ -63,22 +63,22 @@ VALUES ('Docentes', '<ul><li><strong>Ana Paula Lemke</strong>
             <p><a href="http://lattes.cnpq.br/8839352605511604">Currículo Lattes</a></p>
             <p>Contato: <a href="mailto:vinicius.ferreira@feliz.ifrs.edu.br">vinicius.ferreira@feliz.ifrs.edu.br</a></p></li>');
 
-INSERT INTO InformacaoDoCurso (titulo, conteudo)
-VALUES ('Grupos de Pesquisa', '<p>Os professores que ministram componentes curriculares no curso ADS participam de diversos grupos de pesquisa, entre eles:</p>
+INSERT INTO InformacaoDoCurso (chave, titulo, conteudo)
+VALUES ('GRUPOS_PESQUISA', 'Grupos de Pesquisa', '<p>Os professores que ministram componentes curriculares no curso ADS participam de diversos grupos de pesquisa, entre eles:</p>
         <ul><li><a href="http://dgp.cnpq.br/dgp/espelhogrupo/6324317869152542">Práticas de Ensino e Análises Educacionais</a></li>
         <li><a href="http://dgp.cnpq.br/dgp/espelhogrupo/8793964384755538">Engenharia de Software e Sistemas Autônomos</a></li></ul>');
 
-INSERT INTO InformacaoDoCurso (titulo, conteudo)
-VALUES ('Horários de Aula', '<p>Os horários de aula estão disponíveis no site do IFRS-Campus Feliz, menu Ensino, submenu Horários de Aula.</p>
+INSERT INTO InformacaoDoCurso (chave, titulo, conteudo)
+VALUES ('HORARIOS_AULA', 'Horários de Aula', '<p>Os horários de aula estão disponíveis no site do IFRS-Campus Feliz, menu Ensino, submenu Horários de Aula.</p>
         Clique <a href="http://moodle.feliz.ifrs.edu.br/horarios/arquivos/turmas.html">aqui</a> para acessar.');
 
-INSERT INTO InformacaoDoCurso (titulo, conteudo)
-VALUES ('Perguntas Frequentes', '<p><ol><li><strong>Como faço para ingressar no curso?</strong>
+INSERT INTO InformacaoDoCurso (chave, titulo, conteudo)
+VALUES ('FAQ', 'Perguntas Frequentes', '<p><ol><li><strong>Como faço para ingressar no curso?</strong>
         <p>Resposta: é necessário participar de um processo seletivo ou o ingresso pode ser via ENEM. O processo seletivo geralmente é divulgado em meados de setembro.</p>
         </li></ol>');
 
-INSERT INTO InformacaoDoCurso (titulo, conteudo)
-VALUES ('Discentes e Egressos', '<p>Alunos matriculados no curso ADS (em setembro de 2017):</p>
+INSERT INTO InformacaoDoCurso (chave, titulo, conteudo)
+VALUES ('DISCENTES_E_EGRESSOS', 'Discentes e Egressos', '<p>Alunos matriculados no curso ADS (em setembro de 2017):</p>
         <ul>
             <li><strong>Jackson Müller dos Santos</strong></li>
             <li><strong>Maicon Dewes</strong></li>
