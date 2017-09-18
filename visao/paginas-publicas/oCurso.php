@@ -36,7 +36,7 @@ if (isset($_GET['q']) && !empty($_GET['q'])) {
         </li>
         <li><strong>Cecília Brasil Biguelini</strong>
         <p>Área de concentração: Estatística</p>
-        <p><a href="#">Currículo Lattes</a></p>
+        <p><a href="http://lattes.cnpq.br/0295662079875789">Currículo Lattes</a></p>
         <p>Contato: <a href="mailto:cecilia.biguelini@feliz.ifrs.edu.br">cecilia.biguelini@feliz.ifrs.edu.br</a></p></li>
         <li><strong>Vinicius Hartmann Ferreira</strong>
         <p>Área de concentração: Programação</p>
