@@ -157,12 +157,17 @@ class Usuario
             return false;
         }
     }
-        
-        
+    
     public function inserir()
     {
         $con = new MySQL();
         $sql = "INSERT INTO Usuario (siapeMatricula,nome,email,senha,status,TipoUsuario_id) VALUES ('$this->siapeMatricula','$this->nome','$this->email','$this->senha','$this->status','$this->tipoUsuario_id')";
         $con->executa($sql);
     }
+	
+    public function desabilitarUsuario(){
+        $con = new MySQL();
+        $sql = "UPDATE Usuario SET status = $this->status WHERE id = $this->id";
+        $con->executa($sql);
+    } 
 }
