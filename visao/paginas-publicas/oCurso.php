@@ -1,6 +1,10 @@
 <?php
+include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleInformacaoCurso.class.php";
+
 if (isset($_GET['q']) && !empty($_GET['q'])) {
     $q = $_GET['q'];
+
+    $cInfoCurso = new ControleInformacaoCurso();
 
     $titulo = '';
     $conteudo = '';
