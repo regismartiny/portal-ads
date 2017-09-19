@@ -8,6 +8,6 @@ CREATE TABLE IF NOT EXISTS `portal-ads`.`InformacaoDoCurso` (
   `chave` VARCHAR(100) NOT NULL,
   `titulo` VARCHAR(100) NOT NULL,
   `conteudo` VARCHAR(10000) NOT NULL,
-  PRIMARY KEY (`id`)),
+  PRIMARY KEY (`id`),
   UNIQUE INDEX `chave_UNIQUE` (`chave` ASC))
 ENGINE = InnoDB;
