@@ -21,11 +21,11 @@ INSERT INTO CategoriaNoticia (descricao, cor)
 VALUES ('Tendência', '#00FF00');
 
 
-INSERT INTO Usuario VALUES (1,'admin','testeCoordenador','emailtesteportalads@gmail.com','admin',1,1);
+INSERT INTO Usuario VALUES (1,'admin','testeCoordenador','emailtesteportalads1@gmail.com','admin',1,1);
 
-INSERT INTO Usuario VALUES (2,'7777777','testeProfessor','emailtesteportalads@gmail.com','123456789',1,2);
+INSERT INTO Usuario VALUES (2,'7777777','testeProfessor','emailtesteportalads2@gmail.com','123456789',1,2);
 
-INSERT INTO Usuario VALUES (3,'121212121212','testeAluno','emailtesteportalads@gmail.com','123456789',1,3);
+INSERT INTO Usuario VALUES (3,'121212121212','testeAluno','emailtesteportalads3@gmail.com','123456789',1,3);
 
 INSERT INTO InformacaoDoCurso (chave, titulo, conteudo)
 VALUES ('INFORMACOES_GERAIS', 'Informações Gerais', '<p>O Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas tem como objetivo a formação de um profissional capaz de analisar, projetar, documentar, especificar, testar, implantar e manter sistemas computacionais de informação. Através dessas atividades busca-se desenvolver habilidades suficientes para que o profissional aplique a informática na solução de problemas organizacionais ou administrativos de diversos tipos de empresas.</p>
