@@ -14,7 +14,7 @@
     <div id="topo" class="contaner-fluid fixed-top">
         <div id="inf-topo" class="row">
             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-7 col-xl-8">
-                <img src="img/logo.jpg" id="logo">
+                <a href="/paginas-publicas/home.php"><img src="img/logo.jpg" id="logo"></a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-7 col-lg-5 col-xl-4">
                 <span class="curso">
@@ -40,7 +40,7 @@
                     </div>
                     <div class="inf-topo-menu mr-auto">
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-6 col-xl-7">
-                            <img src="img/logo.jpg" id="logo">
+                            <a href="/paginas-publicas/home.php"><img src="img/logo.jpg" id="logo"></a>
                         </div>
                     </div>
                     <div class="inf-topo-menu col-12">
