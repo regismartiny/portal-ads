@@ -4,12 +4,14 @@ include $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
 class InformacaoCurso
 {
     private $id;
+    private $chave;
     private $titulo;
     private $conteudo;
         
-    public function __construct($id = null, $titulo = null, $conteudo = null)
+    public function __construct($id = null, $chave = null, $titulo = null, $conteudo = null)
     {
         $this->id = $id;
+        $this->chave = $chave;
         $this->titulo = $titulo;
         $this->conteudo = $conteudo;
     }
@@ -22,6 +24,16 @@ class InformacaoCurso
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    public function getChave()
+    {
+        return $this->chave;
+    }
+        
+    public function setChave($chave)
+    {
+        $this->chave = $chave;
     }
         
     public function getTitulo()
@@ -47,11 +59,12 @@ class InformacaoCurso
     public function listarUm()
     {
         $con = new MySQL();
-        $sql = "SELECT * FROM InformacaoCurso WHERE titulo='$this->titulo'";
+        $sql = "SELECT * FROM InformacaoCurso WHERE titulo='$this->chave'";
         $resultado = $con->consulta($sql);
         $informacao = new InformacaoCurso();
         if (!empty($resultado)) {
             $this->id = $resultado[0]["id"];
+            $this->chave = $resultado[0]["chave"];
             $this->titulo = $resultado[0]["titulo"];
             $this->conteudo = $resultado[0]["conteudo"];
             return $informacao;
@@ -70,6 +83,7 @@ class InformacaoCurso
             foreach ($informacoes as $informacao) {
                 $informacao = new InformacaoCurso();
                 $informacao->setId($resultado['id']);
+                $informacao->setChave($resultado['chave']);
                 $informacao->setTitulo($resultado['titulo']);
                 $informacao->setConteudo($resultado['conteudo']);
                 $informacoes[] = $informacao;
@@ -84,7 +98,7 @@ class InformacaoCurso
     public function inserir()
     {
         $con = new MySQL();
-        $sql = "INSERT INTO InformacaoCurso (titulo, conteudo) VALUES ('$this->titulo', '$this->conteudo')";
+        $sql = "INSERT INTO InformacaoCurso (chave, titulo, conteudo) VALUES ('$this->chave', '$this->titulo', '$this->conteudo')";
         $con->executa($sql);
     }
 }
