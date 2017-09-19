@@ -1,7 +1,7 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
 
-class InformacaoCurso
+class InformacaoDoCurso
 {
     private $id;
     private $chave;
@@ -56,12 +56,29 @@ class InformacaoCurso
         $this->conteudo = $conteudo;
     }
 
-    public function listarUm()
+    public function listarPorId()
     {
         $con = new MySQL();
-        $sql = "SELECT * FROM InformacaoCurso WHERE titulo='$this->chave'";
+        $sql = "SELECT * FROM InformacaoDoCurso WHERE id='$this->id'";
         $resultado = $con->consulta($sql);
-        $informacao = new InformacaoCurso();
+        $informacao = new InformacaoDoCurso();
+        if (!empty($resultado)) {
+            $this->id = $resultado[0]["id"];
+            $this->chave = $resultado[0]["chave"];
+            $this->titulo = $resultado[0]["titulo"];
+            $this->conteudo = $resultado[0]["conteudo"];
+            return $informacao;
+        } else {
+            return false;
+        }
+    }
+
+    public function listarPorChave()
+    {
+        $con = new MySQL();
+        $sql = "SELECT * FROM InformacaoDoCurso WHERE chave LIKE '$this->chave'";
+        $resultado = $con->consulta($sql);
+        $informacao = new InformacaoDoCurso();
         if (!empty($resultado)) {
             $this->id = $resultado[0]["id"];
             $this->chave = $resultado[0]["chave"];
@@ -76,12 +93,12 @@ class InformacaoCurso
     public function listarTodos()
     {
         $con = new MySQL();
-        $sql = "SELECT * FROM InformacaoCurso";
+        $sql = "SELECT * FROM InformacaoDoCurso";
         $resultados = $con->consulta($sql);
         if (!empty($resultados)) {
             $informacoes = array();
             foreach ($informacoes as $informacao) {
-                $informacao = new InformacaoCurso();
+                $informacao = new InformacaoDoCurso();
                 $informacao->setId($resultado['id']);
                 $informacao->setChave($resultado['chave']);
                 $informacao->setTitulo($resultado['titulo']);
@@ -98,7 +115,7 @@ class InformacaoCurso
     public function inserir()
     {
         $con = new MySQL();
-        $sql = "INSERT INTO InformacaoCurso (chave, titulo, conteudo) VALUES ('$this->chave', '$this->titulo', '$this->conteudo')";
+        $sql = "INSERT INTO InformacaoDoCurso (chave, titulo, conteudo) VALUES ('$this->chave', '$this->titulo', '$this->conteudo')";
         $con->executa($sql);
     }
 }

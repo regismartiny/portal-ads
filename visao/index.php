@@ -53,11 +53,11 @@
                                 O Curso
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=infoGerais">Informações gerais</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=coordenacao">Coordenação do curso</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=docentes">Docentes</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=gruposPesquisa">Grupos de Pesquisa</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=horariosAula">Horários de Aula</a>
+                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=INFORMACOES_GERAIS">Informações gerais</a>
+                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=COORDENACAO">Coordenação do curso</a>
+                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=DOCENTES">Docentes</a>
+                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=GRUPOS_PESQUISA">Grupos de Pesquisa</a>
+                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=HORARIOS_AULA">Horários de Aula</a>
                                     <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=FAQ">Perguntas Frequentes</a>
                                 </div>
                             </li>
