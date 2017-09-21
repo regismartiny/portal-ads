@@ -14,7 +14,7 @@
     <div id="topo" class="contaner-fluid fixed-top">
         <div id="inf-topo" class="row">
             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-7 col-xl-8">
-                <img src="img/logo.jpg" id="logo">
+                <a href="/paginas-publicas/home.php"><img src="img/logo.jpg" id="logo"></a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-7 col-lg-5 col-xl-4">
                 <span class="curso">
@@ -40,11 +40,11 @@
                     </div>
                     <div class="inf-topo-menu mr-auto">
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-6 col-xl-7">
-                            <img src="img/logo.jpg" id="logo">
+                            <a href="/paginas-publicas/home.php"><img src="img/logo.jpg" id="logo"></a>
                         </div>
                     </div>
                     <div class="inf-topo-menu col-12">
-                        <small class="curso"> Curso de Análise e Desenvolvimento de Sistemas</small>
+                        <small class="curso-menu"> Curso de Análise e Desenvolvimento de Sistemas</small>
 					</div>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav nav-fill w-100 align-items-start">
@@ -53,11 +53,11 @@
                                 O Curso
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=infoGerais">Informações gerais</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=coordenacao">Coordenação do curso</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=docentes">Docentes</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=gruposPesquisa">Grupos de Pesquisa</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=horariosAula">Horários de Aula</a>
+                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=INFORMACOES_GERAIS">Informações gerais</a>
+                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=COORDENACAO">Coordenação do curso</a>
+                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=DOCENTES">Docentes</a>
+                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=GRUPOS_PESQUISA">Grupos de Pesquisa</a>
+                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=HORARIOS_AULA">Horários de Aula</a>
                                     <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=FAQ">Perguntas Frequentes</a>
                                 </div>
                             </li>
