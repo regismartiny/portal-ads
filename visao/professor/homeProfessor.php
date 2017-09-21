@@ -34,8 +34,11 @@ session_start();
                         }
 						?>
 						<form method="post" action="/controle/logout.php">
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" name="botao" value="LogOut">
-                </form>
+							<input type="submit" class="btn btn-primary btn-lg btn-block" name="botao" value="LogOut">
+						</form>
+						<form method="post" action="/controle/trocaSenha.php">
+							<input type="submit" class="btn btn-primary btn-lg btn-block" name="botao2" value="TrocaSenha">
+						</form>
 				</span>
 				
             </div>
