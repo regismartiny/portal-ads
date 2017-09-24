@@ -36,9 +36,7 @@ session_start();
 						<form method="post" action="/controle/logout.php">
 							<input type="submit" class="btn btn-primary btn-lg btn-block" name="botao" value="LogOut">
 						</form>
-						<form method="post" action="/controle/trocaSenha.php">
-							<input type="submit" class="btn btn-primary btn-lg btn-block" name="botao2" value="TrocaSenha">
-						</form>
+						
 				</span>
 				
             </div>
@@ -92,10 +90,17 @@ session_start();
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/paginas-publicas/mapa.html">Mapa</a>
+                                                       	<li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?php echo $_SESSION['nomeUsuario'];?>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="/paginas-publicas/frontTrocaSenha.php">Trocar Senha</a>
+                                    <a class="dropdown-item" href="/controle/logout.php">Sair</a>
+                                    
+                                </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/paginas-publicas/restrito.php">Restrito</a>
-                            </li>
+
                         </ul>
                     </div>
                 </nav>

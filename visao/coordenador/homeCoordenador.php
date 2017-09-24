@@ -32,6 +32,9 @@ session_start();
                     </div>
                     <input type="submit" class="btn btn-primary btn-lg btn-block" name="botao" value="LogOut">
                 </form>
+				<form method="post" action="/visao/paginas-publicas/frontTrocaSenha.php">
+					<input type="submit" class="btn btn-primary btn-lg btn-block" name="botao2" value="TrocaSenha">
+				</form>
             </div>
         </div>
     </div>

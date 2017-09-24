@@ -9,11 +9,16 @@ class ControleUsuario
         $cadastrado = $usuario->isCadastrado();
         return $cadastrado;
     }
-    public function trocaSenha($siapeMatricula,$dados)
+    public function trocaSenha($siapeMatricula, $dados)
     {
-        $usuario = new Usuario(null, $siapeMatricula, null, null, $dados['senhaVelha'], null, null);
-        $cadastrado = $usuario->trocaSenha($dados['senhaNova']);
-        return $cadastrado;
+        $comparaSenha = strcasecmp($dados['senhaNova'], $dados['confSenha']); //se são iguais retorna zero
+		if($comparaSenha==0){
+			$usuario = new Usuario(null, $siapeMatricula, null, null, $dados['senhaAntiga'], null, null);
+			$cadastrado = $usuario->trocaSenha($dados['senhaNova']);
+			return $cadastrado;
+		}else{
+			return 5;
+		}
     }
     
 
