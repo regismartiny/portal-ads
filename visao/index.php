@@ -14,7 +14,7 @@
     <div id="topo" class="contaner-fluid fixed-top">
         <div id="inf-topo" class="row">
             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-7 col-xl-8">
-                <a href="/paginas-publicas/home.php"><img src="img/logo.jpg" id="logo"></a>
+                <a href="/visao/paginas-publicas/home.php"><img src="img/logo.jpg" id="logo"></a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-7 col-lg-5 col-xl-4">
                 <span class="curso">
@@ -40,7 +40,7 @@
                     </div>
                     <div class="inf-topo-menu mr-auto">
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-6 col-xl-7">
-                            <a href="/paginas-publicas/home.php"><img src="img/logo.jpg" id="logo"></a>
+                            <a href="/visao/paginas-publicas/home.php"><img src="img/logo.jpg" id="logo"></a>
                         </div>
                     </div>
                     <div class="inf-topo-menu col-12">
@@ -53,34 +53,34 @@
                                 O Curso
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=INFORMACOES_GERAIS">Informações gerais</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=COORDENACAO">Coordenação do curso</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=DOCENTES">Docentes</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=GRUPOS_PESQUISA">Grupos de Pesquisa</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=HORARIOS_AULA">Horários de Aula</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=FAQ">Perguntas Frequentes</a>
+                                    <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=INFORMACOES_GERAIS">Informações gerais</a>
+                                    <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=COORDENACAO">Coordenação do curso</a>
+                                    <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=DOCENTES">Docentes</a>
+                                    <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=GRUPOS_PESQUISA">Grupos de Pesquisa</a>
+                                    <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=HORARIOS_AULA">Horários de Aula</a>
+                                    <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=FAQ">Perguntas Frequentes</a>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/paginas-publicas/portfolioDeProjetos.html">Portfólio de Projetos</a>
+                                <a class="nav-link" href="/visao/paginas-publicas/portfolioDeProjetos.html">Portfólio de Projetos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="/paginas-publicas/discentesEEgressos.php">Discentes e Egressos</a>
+                                <a class="nav-link " href="/visao/paginas-publicas/discentesEEgressos.php">Discentes e Egressos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/paginas-publicas/noticias.php">Notícias</a>
+                                <a class="nav-link" href="/visao/paginas-publicas/noticias.php">Notícias</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="/paginas-publicas/eventos.html">Eventos</a>
+                                <a class="nav-link" href="/visao/paginas-publicas/eventos.html">Eventos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/paginas-publicas/contato.php">Contato</a>
+                                <a class="nav-link" href="/visao/paginas-publicas/contato.php">Contato</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/paginas-publicas/mapa.html">Mapa</a>
+                                <a class="nav-link" href="/visao/paginas-publicas/mapa.html">Mapa</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/paginas-publicas/restrito.php">Restrito</a>
+                                <a class="nav-link" href="/visao/paginas-publicas/restrito.php">Restrito</a>
                             </li>
                         </ul>
                     </div>

@@ -2,6 +2,7 @@ $(document).ready(function() {
     //////////////////////////////Controle de navegação de páginas//////////////////////////
     var newHash = '';
 
+	//Quando clicado em algum link, guarda na barra de endereços o caminho para onde ir
     $('body').delegate('a', 'click', function() {
         let attr = $(this).attr('href')
         if (attr.startsWith('/')) {
@@ -11,12 +12,11 @@ $(document).ready(function() {
         return true;
     });
 
-    // Not all browsers support hashchange
-    // For older browser support: http://benalman.com/projects/jquery-hashchange-plugin/
+    //Quando o caminho na barra de endereços muda, carrega o arquivo dentro da div container-conteudo
     $(window).on('hashchange', function() {
         newHash = window.location.hash.substr(1);
         $('.loader').fadeIn(100);
-        $('#conteudo').load('/visao' + newHash, function() {
+        $('#conteudo').load(newHash, function() {
             $('.loader').fadeOut(100);
             console.log('Página carregada: ' + newHash);
         });

@@ -32,11 +32,7 @@ session_start();
                         if(!empty($_SESSION)){
                             echo $_SESSION["nomeUsuario"];
                         }
-						?>
-						<form method="post" action="/controle/logout.php">
-							<input type="submit" class="btn btn-primary btn-lg btn-block" name="botao" value="LogOut">
-						</form>
-						
+						?>						
 				</span>
 				
             </div>
@@ -52,7 +48,7 @@ session_start();
                     </div>
                     <div class="inf-topo-menu mr-auto">
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-6 col-xl-7">
-                            <img src="img/logo.jpg" id="logo">
+                            <img src="/visao/img/logo.jpg" id="logo">
                         </div>
                     </div>
                     <div class="inf-topo-menu col-12">
@@ -65,40 +61,41 @@ session_start();
                                 O Curso
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=infoGerais">Informações gerais</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=coordenacao">Coordenação do curso</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=docentes">Docentes</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=gruposPesquisa">Grupos de Pesquisa</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=horariosAula">Horários de Aula</a>
-                                    <a class="dropdown-item" href="/paginas-publicas/oCurso.php?q=FAQ">Perguntas Frequentes</a>
+                                    <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=infoGerais">Informações gerais</a>
+                                    <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=coordenacao">Coordenação do curso</a>
+                                    <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=docentes">Docentes</a>
+                                    <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=gruposPesquisa">Grupos de Pesquisa</a>
+                                    <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=horariosAula">Horários de Aula</a>
+                                    <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=FAQ">Perguntas Frequentes</a>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/paginas-publicas/portfolioDeProjetos.html">Portfólio de Projetos</a>
+                                <a class="nav-link" href="/visao/paginas-publicas/portfolioDeProjetos.html">Portfólio de Projetos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="/paginas-publicas/discentesEEgressos.php">Discentes e Egressos</a>
+                                <a class="nav-link " href="/visao/paginas-publicas/discentesEEgressos.php">Discentes e Egressos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/paginas-publicas/noticias.php">Notícias</a>
+                                <a class="nav-link" href="/visao/paginas-publicas/noticias.php">Notícias</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="/paginas-publicas/eventos.html">Eventos</a>
+                                <a class="nav-link" href="/visao/paginas-publicas/eventos.html">Eventos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/paginas-publicas/contato.php">Contato</a>
+                                <a class="nav-link" href="/visao/paginas-publicas/contato.php">Contato</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/paginas-publicas/mapa.html">Mapa</a>
+                                <a class="nav-link" href="/visao/paginas-publicas/mapa.html">Mapa</a>
                             </li>
                            	<li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php echo $_SESSION['nomeUsuario'];?>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="/paginas-publicas/frontTrocaSenha.php">Trocar Senha</a>
-                                    <a class="dropdown-item" href="/controle/logout.php">Sair</a>
-                                    
+                                    <a class="dropdown-item" href="/visao/paginas-publicas/frontTrocaSenha.php">Trocar Senha</a>
+									<form method="post" action="/controle/logout.php">
+										<input type="submit" class="dropdown-item" name="botao" value="Sair">
+									</form>
                                 </div>
                             </li>
 
@@ -109,7 +106,8 @@ session_start();
         </div>
     </div>
     <div class="container" id="container-conteudo">
-
+		<div class="loader mx-auto my-auto"></div>
+		<div id="conteudo"></div>
     </div>
     <footer class="footer">
         <div class="container">
