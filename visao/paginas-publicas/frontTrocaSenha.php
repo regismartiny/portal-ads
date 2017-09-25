@@ -47,6 +47,8 @@
 	</div>
 </div>
 <script>
+
+
 $("#form").submit(function(event) {
 	event.preventDefault();
 	$form = $(this);
@@ -61,19 +63,10 @@ $("#form").submit(function(event) {
 			
 			console.log(response);
 			let resObj = JSON.parse(response);
-			
-			if(resObj.tipoUsuario==99){
-				statusLogin('Usuário não Cadastrado!');
-			}else if(resObj.tipoUsuario==98){
-				statusLogin('Senha Antiga inválida!!');
-			}else if(resObj.tipoUsuario==96){
-				statusLogin('Troca de Senha Efetuada!');
-				direcionaPagina(resObj.tipoUsuario);
-			}else if(resObj.tipoUsuario==97){
-				statusLogin('Senha Antiga inválida!!');
-			}else if(resObj.tipoUsuario==95){
-				statusLogin('Confirmação de senha inválida!!');
-			}
+			let sucesso = resObj.status;
+			let mensagem = resObj.mensagem;
+	
+			statusLogin(mensagem);	
 		},
 		error: function(response) {
 			console.log(response);
@@ -89,16 +82,6 @@ function statusProcessando() {
 
 function statusLogin(status) {
 	$("#result").html(status);
-}
-
-function direcionaPagina(tipoUsuario) {
-	//if (tipoUsuario == 96) {
-	//	navegaPagina("/visao/index.php");
-	//} else if (tipoUsuario === "2") {
-	//	navegaPagina("/visao/professor/homeProfessor.php");
-	//} else if (tipoUsuario === "3") {
-	//	navegaPagina("/visao/aluno/homeAluno.php");
-	//}
 }
 
 function navegaPagina(pagina) {
