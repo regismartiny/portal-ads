@@ -9,6 +9,7 @@ class ControleUsuario
         $cadastrado = $usuario->isCadastrado();
         return $cadastrado;
     }
+	
     public function trocaSenha($siapeMatricula, $dados)
     {
         $comparaSenha = strcasecmp($dados['senhaNova'], $dados['confSenha']); //se são iguais retorna zero
@@ -21,7 +22,6 @@ class ControleUsuario
 		}
     }
     
-
     public function listarUm($dados)
     {
         $usuario = new Usuario(null, $dados['matricula'], null, null, null, null, null);
@@ -29,11 +29,20 @@ class ControleUsuario
 		return $usuario;
     }
 	
-	
-
     public function inserir($dados)
     {
         $usuario = new Usuario(null, $dados['matricula'], $dados['nome'], $dados['email'], '123456', 1, $dados['tipoUsuario_id']);
         $usuario->inserir();
+    }
+	
+    public function consultar()
+    {   
+        $usuario = new Usuario();
+        return $usuario->listarTodos();
+    }
+	
+    public function desabilitarUsuario($id){
+        $usuario = new Usuario($id, null, null, null, null, 0, null);
+        $usuario->desabilitarUsuario();
     }
 }
