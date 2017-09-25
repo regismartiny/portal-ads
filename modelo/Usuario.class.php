@@ -94,54 +94,67 @@ class Usuario
         
     public function isCadastrado()
     {	
-		$resposta=0;
+	$resposta=0;
         $con = new MySQL();
         $sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula'";
         $resultados = $con->consulta($sql);
-        if (count($resultados)==1){
-			$sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula' AND senha = '$this->senha'";
-			$resultados2 = $con->consulta($sql);
-			if (count($resultados2)==1){
-				$resposta=2;
-			}else{
-				$resposta=1;
-			}
-		}else{
-			$resposta=3;
+        if (count($resultados)==1)
+	{
+		$sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula' AND senha = '$this->senha'";
+		$resultados2 = $con->consulta($sql);
+		if (count($resultados2)==1)
+		{
+			$resposta=2;
+		}else
+		{
+			$resposta=1;
 		}
-		return $resposta;
+	}
+	else
+	{
+		$resposta=3;
+	}
+	return $resposta;
     }
 
     public function trocaSenha($senhaNova)
     {	
-		$resposta=0;
+	$resposta=0;
         $con = new MySQL();
         $sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula'";
         $resultados = $con->consulta($sql);
-        if (count($resultados)==1){
-			$sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula' AND senha = '$this->senha'";
-			$resultados2 = $con->consulta($sql);
-			if (count($resultados2)==1){//tudo certo
-				$comparaSenha = strcasecmp($this->siapeMatricula, $senhaNova); //se são iguais retorna zero
-				if($comparaSenha!=0){
-					$sql = "UPDATE Usuario SET Senha = '$senhaNova' WHERE siapeMatricula = '$this->siapeMatricula'";
-					$con->executa($sql);
-					$resposta=2;
-				}else{//senha nova e velha iguais
-					$resposta=4;
-				}
-				
-			}else{//senha errada
-				$resposta=1;
+        if (count($resultados)==1)
+	{
+		$sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula' AND senha = '$this->senha'";
+		$resultados2 = $con->consulta($sql);
+		if (count($resultados2)==1)
+		{//tudo certo
+			$comparaSenha = strcasecmp($this->siapeMatricula, $senhaNova); //se são iguais retorna zero
+			if($comparaSenha!=0)
+			{
+				$sql = "UPDATE Usuario SET Senha = '$senhaNova' WHERE siapeMatricula = '$this->siapeMatricula'";
+				$con->executa($sql);
+				$resposta=2;
 			}
-		}else{//usuario não existe
-			$resposta=3;
+			else
+			{//senha nova e velha iguais
+				$resposta=4;
+			}
 		}
-		return $resposta;
+		else
+		{//senha errada
+			$resposta=1;
+		}
+	}
+	else
+	{//usuario não existe
+		$resposta=3;
+	}
+	return $resposta;
     }
 
 	
-	public function listarUm()
+    public function listarUm()
     {
         $con = new MySQL();
         $sql = "SELECT * FROM Usuario WHERE siapeMatricula='$this->siapeMatricula'";
@@ -155,8 +168,7 @@ class Usuario
             $this->senha = $resultado[0]["senha"];
             $this->status = $resultado[0]["status"];
             $this->tipoUsuario_id = $resultado[0]["TipoUsuario_id"];
-            return $usuario;
-			
+            return $usuario;	
         } else {
             return false;
         }
@@ -168,9 +180,11 @@ class Usuario
         $con = new MySQL();
         $sql = "SELECT * FROM Usuario";
         $resultados = $con->consulta($sql);
-        if (!empty($resultados)) {
+        if (!empty($resultados)) 
+	{
             $usuarios = array();
-            foreach ($resultados as $resultado) {
+            foreach ($resultados as $resultado) 
+	    {
                 $usuario = new Usuario();
                 $usuario->setId($resultado['id']);
                 $usuario->setSiapeMatricula($resultado['siapeMatricula']);
@@ -182,7 +196,9 @@ class Usuario
                 $usuarios[] = $usuario;
             }
             return $usuarios;
-        } else {
+        } 
+	else 
+	{
             return false;
         }
     }
@@ -194,4 +210,10 @@ class Usuario
         $sql = "INSERT INTO Usuario (siapeMatricula,nome,email,senha,status,TipoUsuario_id) VALUES ('$this->siapeMatricula','$this->nome','$this->email','$this->senha','$this->status','$this->tipoUsuario_id')";
         $con->executa($sql);
     }
+	
+    public function desabilitarUsuario(){
+        $con = new MySQL();
+        $sql = "UPDATE Usuario SET status = $this->status WHERE id = $this->id";
+        $con->executa($sql);
+    } 
 }
