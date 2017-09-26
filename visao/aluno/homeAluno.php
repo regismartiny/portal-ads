@@ -21,18 +21,9 @@ session_start();
                 <img src="/visao/img/logo.jpg" id="logo">
             </div>
             <div class="col-xs-12 col-sm-12 col-md-7 col-lg-5 col-xl-4">
-					<div class="form-group row">
-                        <h1 class="col-sm-12 col-form-label">Home do Aluno</h1>
-                    </div>
-		
 			   <span class="curso">
 						Curso de Análise e Desenvolvimento de Sistemas
-						<br>
-                        <?php 
-                        if(!empty($_SESSION)){
-                            echo $_SESSION["nomeUsuario"];
-                        }
-						?>						
+						<br>				
 				</span>
 				
             </div>
