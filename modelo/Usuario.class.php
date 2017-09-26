@@ -129,7 +129,7 @@ class Usuario
 		$resultados2 = $con->consulta($sql);
 		if (count($resultados2)==1)
 		{//tudo certo
-			$comparaSenha = strcasecmp($this->siapeMatricula, $senhaNova); //se são iguais retorna zero
+			$comparaSenha = strcasecmp($this->senha, $senhaNova); //se são iguais retorna zero
 			if($comparaSenha!=0)
 			{
 				$sql = "UPDATE Usuario SET Senha = '$senhaNova' WHERE siapeMatricula = '$this->siapeMatricula'";
