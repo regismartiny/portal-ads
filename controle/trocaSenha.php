@@ -35,7 +35,7 @@
 	
 				}else if($cadastrado==4){
 					//Senha nova e antiga iguais
-					$status = array('sucesso' => false, 'mensagem' => 'Senha Antiga inválida!');
+					$status = array('sucesso' => false, 'mensagem' => 'Senha Nova deve ser diferente da antiga!');
 			
 	
 				}else if($cadastrado==5){
