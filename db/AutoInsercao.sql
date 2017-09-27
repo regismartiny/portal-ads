@@ -41,11 +41,11 @@ VALUES ('INFORMACOES_GERAIS', 'Informações Gerais', '<p>O Curso Superior de Te
             <strong>Turno:</strong> Noite');
 
 INSERT INTO InformacaoDoCurso (chave, titulo, conteudo)
-VALUES ('COORDENACAO', 'Coordenação do Curso', '<ul><li><strong>Coordenador Tiago Cinto</strong>
+VALUES ('COORDENACAO', 'Coordenação do Curso', '<ul><li><strong>Professor Tiago Cinto</strong>
             <p>Área de concentração: Engenharia de Software</p>
             <p><a href="#">Currículo Lattes</a></p>
             <p>Horário de atendimento presencial: terças, das 17h às 18h</p>
-            <p>Contato: coordenacao.ads@feliz.ifrs.edu.br</p>
+            <p><a href="mailto:ads@feliz.ifrs.edu.br">Contato: coordenacao.ads@feliz.ifrs.edu.br</a></p>
             </li></ul>');
 
 INSERT INTO InformacaoDoCurso (chave, titulo, conteudo)
