@@ -1,25 +1,16 @@
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function(event) {
+    console.log('pagina principal carregada');
     //////////////////////////////Controle de navegação de páginas//////////////////////////
-    var newHash = '';
 
-	//Quando clicado em algum link, guarda na barra de endereços o caminho para onde ir
+    //Quando clicado em algum link, guarda na barra de endereços o caminho e carrega a página dentro da div conteudo
     $('body').delegate('a', 'click', function() {
         let attr = $(this).attr('href')
         if (attr.startsWith('/')) {
             window.location.hash = attr;
+            carregaPagina();
             return false;
         }
         return true;
-    });
-
-    //Quando o caminho na barra de endereços muda, carrega o arquivo dentro da div container-conteudo
-    $(window).on('hashchange', function() {
-        newHash = window.location.hash.substr(1);
-        $('.loader').fadeIn(100);
-        $('#conteudo').load(newHash, function() {
-            $('.loader').fadeOut(100);
-            console.log('Página carregada: ' + newHash);
-        });
     });
     ///////////////////////////////////////////////////////////////////////////////////
 
@@ -39,7 +30,19 @@ $(document).ready(function() {
         $('.nav-item').removeClass('active');
         $(this).addClass('active');
     });
+    //////////////////////////////////////////////////////////////////////////////////////
+    //carrega página indicada na barra de endereços dentro da div conteudo
+    carregaPagina();
 });
+
+function carregaPagina() {
+    let newHash = window.location.hash.substr(1);
+    $('.loader').fadeIn(100);
+    $('#conteudo').load(newHash, function() {
+        $('.loader').fadeOut(100);
+        console.log('Página carregada: ' + newHash);
+    });
+}
 
 function isMenuExpandido() {
     return $('#navbar-toggler').attr('aria-expanded') === 'true';
