@@ -32,7 +32,7 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
 				$_SESSION['matricula'] = $usuario->getSiapeMatricula();
 				$_SESSION['email'] = $usuario->getEmail();
 				$_SESSION['tipoUsuario'] = $usuario->getTipoUsuario_id();
-
+				setcookie('702741445', $usuario->getSiapeMatricula(), (time() + (1 * 3600)));//define o cookie pra sessão em n horas
 				$tipoUsuario = array('tipoUsuario' => $_SESSION['tipoUsuario']);
 				
 			

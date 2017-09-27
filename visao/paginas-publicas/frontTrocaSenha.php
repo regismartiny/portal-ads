@@ -32,12 +32,12 @@
 			<div class="row">
 			
 			
-				<div class="col-xs-12 col-sm-12 col-md-4">
+				<div class="col-xs-12 col-sm-12 col-md-6">
 					<input type='submit' class='btn btn-primary btn-lg btn-block' name='login' value='Trocar Senha'>
 				</div>
 				
 				
-				<div class="col-xs-12 col-sm-12 col-md-8">
+				<div class="col-xs-12 col-sm-12 col-md-6">
 					<a href="/visao/index.php" class="btn btn-danger btn-lg btn-block">Cancelar</a>
 				</div>
 			</div>
