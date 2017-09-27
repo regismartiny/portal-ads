@@ -202,6 +202,34 @@ class Usuario
             return false;
         }
     }
+	
+    public function filtrarUsuario()
+    {
+        $con = new MySQL();
+        $sql = "SELECT * FROM Usuario WHERE id='$this->id'";
+        $resultados = $con->consulta($sql);
+        if (!empty($resultados)) 
+	{
+            $usuarios = array();
+            foreach ($resultados as $resultado) 
+	    {
+                $usuario = new Usuario();
+                $usuario->setId($resultado['id']);
+                $usuario->setSiapeMatricula($resultado['siapeMatricula']);
+                $usuario->setNome($resultado['nome']);
+                $usuario->setEmail($resultado['email']);
+                $usuario->setSenha($resultado['senha']);
+                $usuario->setStatus($resultado['status']);
+                $usuario->setTipoUsuario_id($resultado['TipoUsuario_id']);
+                $usuarios[] = $usuario;
+            }
+            return $usuarios;
+        } 
+	else 
+	{
+            return false;
+        }
+    }	
         
         
     public function inserir()

@@ -16,7 +16,7 @@
             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-7 col-xl-8">
                 <a href="/visao/paginas-publicas/home.php"><img src="img/logo.jpg" id="logo"></a>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-5 col-xl-4">
+            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-5 col-xl-4 my-auto">
                 <span class="curso">
 						Curso de Análise e Desenvolvimento de Sistemas
 						<br>
@@ -62,7 +62,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/visao/paginas-publicas/portfolioDeProjetos.html">Portfólio de Projetos</a>
+                                <a class="nav-link" href="/visao/paginas-publicas/portfolioDeProjetos.php">Portfólio de Projetos</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " href="/visao/paginas-publicas/discentesEEgressos.php">Discentes e Egressos</a>
@@ -96,11 +96,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-                    <p>Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul - Campus Feliz</p>
-                    <p>Rua Princesa Isabel, 60 | Bairro Vila Rica | CEP: 95770-000 | Feliz - RS | Tel. 51 3637-4400</p>
+                    <p>Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul - Campus Feliz</br>
+                    Rua Princesa Isabel, 60 | Bairro Vila Rica | CEP: 95770-000 | Feliz - RS | Tel. 51 3637-4400</p>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                    <p>Desenvolvido por ...</p>
+                    <p>Desenvolvido e mantido pelos alunos do curso. <a href="#">Saiba mais</a></p>
                 </div>
             </div>
         </div>
