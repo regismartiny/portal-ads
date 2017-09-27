@@ -34,6 +34,7 @@
             <div class="card-footer">
                 <small class="text-muted">Fonte: Google</small>
                 <div><small class="text-muted">Categoria: Tecnologia</small></div>
+                <div><small class="text-muted">Data de publicação: 01/10/2017</small></div>
             </div>
         </div>
     </div>
