@@ -53,8 +53,8 @@
                                 O Curso
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=INFORMACOES_GERAIS">Informações gerais</a>
-                                    <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=COORDENACAO">Coordenação do curso</a>
+                                    <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=INFORMACOES_GERAIS">Informações Gerais</a>
+                                    <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=COORDENACAO">Coordenação do Curso</a>
                                     <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=DOCENTES">Docentes</a>
                                     <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=GRUPOS_PESQUISA">Grupos de Pesquisa</a>
                                     <a class="dropdown-item" href="/visao/paginas-publicas/oCurso.php?q=HORARIOS_AULA">Horários de Aula</a>
@@ -77,7 +77,7 @@
                                 <a class="nav-link" href="/visao/paginas-publicas/contato.php">Contato</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/visao/paginas-publicas/mapa.html">Mapa</a>
+                                <a class="nav-link" href="/visao/paginas-publicas/mapa.php">Mapa</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/visao/paginas-publicas/restrito.php">Restrito</a>
