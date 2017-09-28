@@ -45,7 +45,7 @@ VALUES ('COORDENACAO', 'Coordenação do Curso', '<ul><li><strong>Professor Tiag
             <p>Área de concentração: Engenharia de Software</p>
             <p><a href="http://lattes.cnpq.br/3206039376378317">Currículo Lattes</a></p>
             <p>Horário de atendimento presencial: terças, das 17h às 18h</p>
-            <p><a href="mailto:ads@feliz.ifrs.edu.br">Contato: coordenacao.ads@feliz.ifrs.edu.br</a></p>
+            <p>Contato: <a href="mailto:ads@feliz.ifrs.edu.br">coordenacao.ads@feliz.ifrs.edu.br</a></p>
             </li></ul>');
 
 INSERT INTO InformacaoDoCurso (chave, titulo, conteudo)
