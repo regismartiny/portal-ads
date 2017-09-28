@@ -50,4 +50,32 @@ class ControleUsuario
 		$usuario = new Usuario($id, null, null, null, null, null, null);
 		$usuario->filtrarUsuario();
 	}	
+	
+	public function editar($dados)
+    {		
+        $usuario = new Usuario(null, $dados['matricula'], $dados['nome'], $dados['email'], $dados['senha'], null, $dados['tipoUsuario_id']);
+        $usuario->editar();
+    }	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
