@@ -12,7 +12,7 @@
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Data de publicação: 01/10/2017</small>
-                            <span class="see-more"><a href="/visao/paginas-publicas/noticia-detalhe.php" title="Ver mais">+</a></span>
+                            <span class="see-more"><a href="/visao/paginas-publicas/noticia-detalhe.php?id=1" title="Ver mais">+</a></span>
                         </div>
                     </div>
                     <div class="card">
@@ -24,7 +24,7 @@
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Data de publicação: 01/10/2017</small>
-                            <span class="see-more"><a href="/visao/paginas-publicas/noticia-detalhe.php" title="Ver mais">+</a></span>
+                            <span class="see-more"><a href="/visao/paginas-publicas/noticia-detalhe.php?id=2" title="Ver mais">+</a></span>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Data de publicação: 01/10/2017</small>
-                            <span class="see-more"><a href="/visao/paginas-publicas/noticia-detalhe.php" title="Ver mais">+</a></span>
+                            <span class="see-more"><a href="/visao/paginas-publicas/noticia-detalhe.php?id=3" title="Ver mais">+</a></span>
                         </div>
                     </div>
                     <div class="card">
@@ -54,7 +54,7 @@
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Data de publicação: 01/10/2017</small>
-                            <span class="see-more"><a href="/visao/paginas-publicas/noticia-detalhe.php" title="Ver mais">+</a></span>
+                            <span class="see-more"><a href="/visao/paginas-publicas/noticia-detalhe.php?id=4" title="Ver mais">+</a></span>
                         </div>
                     </div>
                 </div>
