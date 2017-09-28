@@ -27,6 +27,11 @@ ul {
 }
 
 #topo {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
     background-color: white;
 }
 
@@ -178,6 +183,9 @@ ul {
     .footer {
         height: 158px;
     }
+    #topo {
+        position: absolute;
+    }
 }
 
 @media(max-width:368px) {
@@ -287,6 +295,8 @@ ul {
         -moz-transform: rotate(360deg);
     }
 }
+
+/*   */
 
 #link {
     cursor: pointer;

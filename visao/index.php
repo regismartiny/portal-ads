@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div id="topo" class="contaner-fluid fixed-top">
+    <div id="topo" class="contaner-fluid">
         <div id="inf-topo" class="row">
             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-7 col-xl-8">
                 <a href="/visao/paginas-publicas/home.php"><img src="img/logo.jpg" id="logo"></a>
