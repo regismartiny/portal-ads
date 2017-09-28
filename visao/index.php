@@ -71,7 +71,7 @@
                                 <a class="nav-link" href="/visao/paginas-publicas/noticias.php">Notícias</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="/visao/paginas-publicas/eventos.html">Eventos</a>
+                                <a class="nav-link" href="/visao/paginas-publicas/eventos.php">Eventos</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/visao/paginas-publicas/contato.php">Contato</a>

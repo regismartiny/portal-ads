@@ -91,11 +91,15 @@ ul {
     float: right;
 }
 
-.noticia-detalhe.card-title {
+.noticia-detalhe.card-title,
+.projeto-detalhe.card-title,
+.evento-detalhe.card-title {
     margin-bottom: 50px;
 }
 
-.noticia-detalhe.card-img-bottom {
+.noticia-detalhe.card-img-bottom,
+.projeto-detalhe.card-img-bottom,
+.evento-detalhe.card-img-bottom {
     display: block;
     max-width: 100%;
     max-height: 100%;
@@ -284,8 +288,6 @@ ul {
     }
 }
 
-#link{
-
-   cursor: pointer;
-
+#link {
+    cursor: pointer;
 }
