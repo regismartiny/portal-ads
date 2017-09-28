@@ -64,4 +64,10 @@ class CategoriaNoticia
             return false;
         }
     }
+	public function getCategoriaNoticia(){
+			$con = new MySQL();
+			$sql = "SELECT * FROM noticia";
+			$resultados = $con->consulta($sql);
+			return $resultados;
+		}
 }
