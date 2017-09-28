@@ -230,8 +230,7 @@ class Usuario
             return false;
         }
     }	
-        
-        
+         
     public function inserir()
     {
         $con = new MySQL();
@@ -241,7 +240,15 @@ class Usuario
 	
     public function desabilitarUsuario(){
         $con = new MySQL();
-        $sql = "UPDATE Usuario SET status = $this->status WHERE id = $this->id";
+        $sql = "UPDATE Usuario SET status = '$this->status' WHERE id = '$this->id'";
         $con->executa($sql);
-    } 
+    }
+	
+    public function editar()
+    {
+        $con = new MySQL();		
+        $sql = "UPDATE Usuario SET siapeMatricula = '$this->siapeMatricula', nome = '$this->nome', email = '$this->email', senha = '$this->senha', status = '$this->status', TipoUsuario_id = '$this->tipoUsuario_id' WHERE id = '$this->id'";
+        $con->executa($sql);		
+    }
+	
 }
