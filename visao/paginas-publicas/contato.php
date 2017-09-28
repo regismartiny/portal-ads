@@ -5,15 +5,9 @@
                         <label for="categoria" class="col-sm-12 col-md-6 col-form-label">Tipo de mensagem:</label>
                         <div class="col-sm-12 col-md-6">
                         <select class="form-control" id="categoria" name="categoria" required>
-                            <?php 
-                                include_once $_SERVER['DOCUMENT_ROOT']."/modelo/CategoriaNoticia.class.php";
-
-                                $categoria = new CategoriaNoticia();
-                                $categorias = $categoria->listarTodos();
-                                foreach ($categorias as $categoria) {
-                                    echo '<option value="' . $categoria->getId() . '">' . $categoria->getDescricao() . '</option>';
-                                }
-                            ?>
+                            <option value="cat1">Categoria 1</option>
+                            <option value="cat2">Categoria 2</option>
+                            <option value="cat3">Categoria 3</option>
                         </select>
                         </div>
                     </div>
