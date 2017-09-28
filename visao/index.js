@@ -7,11 +7,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
         let attr = $(this).attr('href')
         if (attr.startsWith('/')) {
             window.location.hash = attr;
-            carregaPagina();
             return false;
         }
         return true;
     });
+
+    window.onhashchange = function() {
+        carregaPagina();
+    };
     ///////////////////////////////////////////////////////////////////////////////////
 
     /////////////////////////////Controle do menu/////////////////////////////////////////
@@ -37,6 +40,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 function carregaPagina() {
     let newHash = window.location.hash.substr(1);
+    //carrega a página inicial, se não houver página definida na barra de endereços
+    newHash = newHash === '' ? '/visao/paginas-publicas/home.php' : newHash;
     $('.loader').fadeIn(100);
     $('#conteudo').load(newHash, function() {
         $('.loader').fadeOut(100);
