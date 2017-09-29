@@ -173,7 +173,18 @@ class Usuario
             return false;
         }
     }
-     
+    
+    public function getUsuarioStatus($id)
+    {
+        $con = new MySQL();
+        $sql = "SELECT status FROM Usuario WHERE id='$id'";
+        $resultado = $con->consulta($sql);
+        if (!empty($resultado)) {
+            return $resultado[0]["status"];
+        } else {
+            return false;
+        }
+    }
         
     public function listarTodos()
     {
@@ -238,9 +249,13 @@ class Usuario
         $con->executa($sql);
     }
 	
-    public function desabilitarUsuario(){
+    public function modificarStatusUsuario(){
         $con = new MySQL();
-        $sql = "UPDATE Usuario SET status = '$this->status' WHERE id = '$this->id'";
+        if($this->getUsuarioStatus($this->id)==1){
+            $sql = "UPDATE Usuario SET status = 0 WHERE id = '$this->id'";
+        }else{
+            $sql = "UPDATE Usuario SET status = 1 WHERE id = '$this->id'";
+        }
         $con->executa($sql);
     }
 	

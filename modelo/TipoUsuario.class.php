@@ -32,5 +32,16 @@ include_once $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
 			$resultados = $con->consulta($sql);
 			return $resultados;
 		}
+
+		public function getUmTipoUsuario($id){
+			$con = new MySQL();
+			$sql = "SELECT * FROM TipoUsuario WHERE id='$id'";
+			$resultado = $con->consulta($sql);
+			if (!empty($resultado)) {
+				return $resultado[0]["descricao"];
+			} else {
+				return false;
+			}
+		}
 	}
 ?>

@@ -1,9 +1,22 @@
 <?php
 	include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
+	include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/TipoUsuario.class.php";
 	$uControle = new ControleUsuario();
+	$tipoUsuario = new TipoUsuario();
+
 	$usuarios = $uControle->consultar();
+	
 ?>
 <html lang='pt-br'>
+	<script>
+		function modificaStatus(id) {
+			$.ajax({
+				type: "POST",
+				url: 'modificarStatusUsuario.php',
+				data: "id="+id,
+			});
+		}
+	</script>
 	<head>
 		<meta charset='utf-8'>
 		<title>Listagem de Usuarios</title>
@@ -81,17 +94,19 @@
 									<tr>
 									<th>Matricula</th>
 									<th>Nome</th>
+									<th>Tipo</th>
 									<th>Status</th>
 									</tr>
 								</thead>";
 						foreach($usuarios as $usuario){
 							echo "<tr><th scope='row'>".$usuario->getSiapeMatricula()."</th>";
 							echo "<td>".$usuario->getNome()."</td>";
+							echo "<td>".$tipoUsuario->getUmTipoUsuario($usuario->getTipoUsuario_id())."</td>";
 							if($usuario->getStatus()==1){
 								//echo "<td>".$usuario->getStatus()."</td></tr>";
-								echo "<td><label class='switch'><input type='checkbox' checked><span class='slider round'></span></label><td>";
+								echo "<td><label class='switch'><input type='checkbox' onclick='modificaStatus(".$usuario->getId().")' checked><span class='slider round'></span></label><td>";
 							}else{
-								echo "<td><label class='switch'><input type='checkbox'><span class='slider round'></span></label><td>";
+								echo "<td><label class='switch'><input type='checkbox' onclick='modificaStatus(".$usuario->getId().")'><span class='slider round'></span></label><td>";
 							}
 
 						}
