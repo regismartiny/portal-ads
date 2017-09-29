@@ -87,7 +87,7 @@ class Usuario
         return $this->tipoUsuario_id;
     }
         
-    public function setTipoUsuario_id($status)
+    public function setTipoUsuario_id($tipoUsuario_id)
     {
         $this->tipoUsuario_id = $tipoUsuario_id;
     }
