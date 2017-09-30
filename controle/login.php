@@ -28,6 +28,7 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
 				session_start();
 				$usuario = new Usuario();
 				$usuario = $cUsuario->listarUm($_POST);
+				$_SESSION['usuario_id'] = $usuario->getId();
 				$_SESSION['nomeUsuario'] = $usuario->getNome();
 				$_SESSION['matricula'] = $usuario->getSiapeMatricula();
 				$_SESSION['email'] = $usuario->getEmail();

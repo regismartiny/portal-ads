@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 include $_SERVER['DOCUMENT_ROOT']."/modelo/Noticia.class.php";
 
 class ControleNoticia
@@ -13,9 +15,9 @@ class ControleNoticia
 	
     public function inserir($dados)
     {
-    
-        $noticia = new Noticia(null, $dados['titulo'], $dados['conteudo'], $dados['fonte'], $dados['imagem'],0, date(), null, $dados['usuario_id'], $dados['categoriaNoticia_id']);
-        $noticia->inserir();
+	
+        $noticia = new Noticia(null, $dados['titulo'], $dados['conteudo'], $dados['fonte'], $dados['imagem'],1,null, null, $_SESSION['usuario_id'], $dados['categoriaNoticia_id']);
+		$noticia->inserir();
     }
 	
     public function consultar()

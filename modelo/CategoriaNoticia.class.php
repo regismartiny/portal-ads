@@ -66,7 +66,7 @@ class CategoriaNoticia
     }
 	public function getCategoriaNoticia(){
 			$con = new MySQL();
-			$sql = "SELECT * FROM noticia";
+			$sql = "SELECT * FROM categorianoticia";
 			$resultados = $con->consulta($sql);
 			return $resultados;
 		}

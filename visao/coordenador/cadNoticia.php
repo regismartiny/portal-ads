@@ -1,73 +1,112 @@
 <?php
-	if(isset($_POST['botao']) && $_POST['botao']=="Adicionar"){
-		include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
-		$uControle = new ControleUsuario();
-		$uControle->inserir($_POST);
-	}
-	
-	function inserircategoriaNoticiaNoCombo(){
-		include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/categoriaNoticia.class.php";
+	function inserirCategoriaNoticiaNoCombo(){
+		include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/CategoriaNoticia.class.php";
 		
-		$categoriaNoticia = new categoriaNoticia(null,null,null);
-		$categoriasNoticias = $categoriaNoticia->getcategoriaNoticia();
-		$returncategoriaNoticia = "";
+		$categoriaNoticia = new CategoriaNoticia(null,null,null);
+		$categoriasNoticias = $categoriaNoticia->getCategoriaNoticia();
+		$returnCategoriaNoticia = "";
 		foreach($categoriasNoticias as $row => $arrayInterno){
 			$categoriaNoticia = new categoriaNoticia($arrayInterno['id'],$arrayInterno['descricao'], $arrayInterno['cor']);
-			$returncategoriaNoticia = $returncategoriaNoticia."<option value=".$arrayInterno['id'].">".$arrayInterno['descricao']."</option>";
+			$returnCategoriaNoticia = $returnCategoriaNoticia."<option value=".$arrayInterno['id'].">".$arrayInterno['descricao']."</option>";
 		}
-		return $returncategoriaNoticia;
+		return $returnCategoriaNoticia;
 	}	
 ?>
 	<head>
 		<meta charset='utf-8'>
 		<title>Cadastro de Noticias</title>
 	</head>
-	<style>
-		#container {
-			margin-top: 100px;
-		}
-	</style>
 	<body>
 		<div class='container-fluid' id="container">
 			<div class="row justify-content-center" style='height:100%;'>
 				<div >
-					<form method='post' action='cadUsuario.php'>
+					<form id="ajax-form" method='post' action=''>
 						<div class="form-group row">
 							<h1 class="col-sm-12 col-form-label">Cadastro de Noticias:</h1>
 						</div>
+						
+						
 						<div class="form-group row">
-						<label for="categoria" class="col-sm-4 col-form-label">Categotia:</label>
-						<div class="col-sm-8">
-							<select class="col custom-select" id="categoria_id" name="categoria_id" required>
-								<?php 
-								echo inserircategoriaNoticiaNoCombo();
-								?>
-							</select>
+							<label for="categoriaNoticia_id" class="col-sm-4 col-form-label">Categotia:</label>
+								<div class="col-sm-8">
+									<select class="col custom-select" id="categoriaNoticia_id" name="categoriaNoticia_id" required>
+										<?php 
+										echo inserirCategoriaNoticiaNoCombo();
+										?>
+									</select>
+								</div>
+						</div>
+
+								
+						<div class="form-group row">
+							<label for="titulo" class="col-sm-4 col-form-label">Título da Notícia:</label>
+								<div class="col-sm-8">
+								<input type="text" class="form-control" id="titulo" name='titulo' required>
+								</div><br>
+										
+						</div>
+								
+						<div class="form-group row">
+							<label for="conteudo" class="col-sm-4 col-form-label">Conteúdo:</label>
+								<div class="col-sm-8">
+									<textarea class="form-control" id="conteudo" name='conteudo' required></textarea>
+								</div>
 						</div>
 						<div class="form-group row">
-							<label for="nome" class="col-sm-4 col-form-label">Título da Notícia:</label>
-							<div class="col-sm-8">
-							  <input type="text" class="form-control" id="titulo" name='titulo' required>
-							</div>
+							<label for="fonte" class="col-sm-4 col-form-label">Fonte da Notícia:</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="fonte" name='fonte' required>
+								</div>
 						</div>
 						<div class="form-group row">
-							<label for="matricula" class="col-sm-4 col-form-label">Texto da Notícia:</label>
-							<div class="col-sm-8">
-							  <textarea class="form-control" id="texto" name='texto' required>
-							</div>
+							<label for="imagem" class="col-sm-4 col-form-label">Link para Imagem:</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="imagem" name='imagem' required>
+								</div>
 						</div>
-						<div class="form-group row">
-							<label for="nome" class="col-sm-4 col-form-label">Link para Imagem:</label>
-							<div class="col-sm-8">
-							  <input type="text" class="form-control" id="linkImagem" name='linkImagem' required>
-							</div>
-						</div>
-												
-					</div>
-						<input type='submit' class='btn btn-primary btn-lg btn-block' name='botao' value='Adicionar'>
-					</form>
+						
+					<input type='submit' class='btn btn-primary btn-lg btn-block' name='botao' value='Adicionar'>
+				
 					<a class='btn btn-danger btn-lg btn-block' href='/visao/index.html'>Cancelar</a>
+					
+					</form>						
 				</div>
+						
+				
 			</div>
 		</div>
+			
 	</body>
+	<script>
+		$("#ajax-form").submit(function(event) {
+			event.preventDefault();
+			
+			statusProcessando();
+			
+			$.ajax({
+				type: "POST",
+				url: "processaCadNoticia.php",
+				data: $("#ajax-form").serialize(),
+				success: function(response) {
+				
+					console.log(response);
+					let resObj = JSON.parse(response);
+					let mensagem = resObj.mensagem;
+					printaMensagem(mensagem);
+				},
+				error: function(response) {
+					console.log(response);
+					printaMensagem('Erro no envio do formulário');
+				}
+			});
+		});
+
+		function statusProcessando() {
+			$("#result").html("Processando...");
+			$("#result").fadeIn(400);
+		}
+		function printaMensagem(status) {
+			$("#result").html(status);
+		}
+	</script>
+</html>
