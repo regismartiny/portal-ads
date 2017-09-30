@@ -1,10 +1,4 @@
 <?php
-	if(isset($_POST['botao']) && $_POST['botao']=="Adicionar"){
-		include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
-		$uControle = new ControleUsuario();
-		$uControle->inserir($_POST);
-	}
-	
 	function inserirTipoUsuarioNoCombo(){
 		include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/TipoUsuario.class.php";
 		
@@ -22,6 +16,20 @@
 	<head>
 		<meta charset='utf-8'>
 		<title>Cadastro de Usuarios</title>
+		<<script>
+		$("#ajax-form").submit(function(e) {
+			$.ajax({
+				type: "POST",
+				url: "mailer.php",
+				data: $("#ajax-form").serialize(),
+				success: function(data)
+				{
+					alert(data); // show response from the php script.
+				}
+			});
+			e.preventDefault(); // avoid to execute the actual submit of the form.
+		})
+		</script>
 	</head>
 	<style>
 		#container {
@@ -32,7 +40,7 @@
 		<div class='container-fluid' id="container">
 			<div class="row justify-content-center" style='height:100%;'>
 				<div >
-					<form method='post' action='cadUsuario.php'>
+					<form id="ajax-form" method='post' action=''>
 						<div class="form-group row">
 							<h1 class="col-sm-12 col-form-label">Cadastro de Usuários:</h1>
 						</div>
@@ -55,18 +63,20 @@
 							</div>
 						</div>
 						<div class="form-group row">
-						<label for="categoria" class="col-sm-4 col-form-label">Tipo:</label>
-						<div class="col-sm-8">
-							<select class="col custom-select" id="tipoUsuario_id" name="tipoUsuario_id" required>
-								<?php 
-								echo inserirTipoUsuarioNoCombo();
-								?>
-							</select>
+							<label for="categoria" class="col-sm-4 col-form-label">Tipo:</label>
+							<div class="col-sm-8">
+								<select class="col custom-select" id="tipoUsuario_id" name="tipoUsuario_id" required>
+									<?php 
+									echo inserirTipoUsuarioNoCombo();
+									?>
+								</select>
+							</div>
 						</div>
-					</div>
+						<div id="form-messages"></div>
 						<input type='submit' class='btn btn-primary btn-lg btn-block' name='botao' value='Adicionar'>
+						<a class='btn btn-danger btn-lg btn-block' href='#'>Cancelar</a>
 					</form>
-					<a class='btn btn-danger btn-lg btn-block' href='/visao/index.html'>Cancelar</a>
+					
 				</div>
 			</div>
 		</div>
