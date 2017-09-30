@@ -1,10 +1,4 @@
 <?php
-	if(isset($_POST['botao']) && $_POST['botao']=="Adicionar"){
-		include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
-		$uControle = new ControleUsuario();
-		$uControle->inserir($_POST);
-	}
-	
 	function inserirTipoUsuarioNoCombo(){
 		include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/TipoUsuario.class.php";
 		
@@ -12,8 +6,10 @@
 		$tiposUsuarios = $tipoUsuario->getTipoUsuario();
 		$returnTipoUsuarios = "";
 		foreach($tiposUsuarios as $row => $arrayInterno){
-			$tipoUsuario = new TipoUsuario($arrayInterno['id'],$arrayInterno['descricao']);
-			$returnTipoUsuarios = $returnTipoUsuarios."<option value=".$arrayInterno['id'].">".$arrayInterno['descricao']."</option>";
+			if($arrayInterno['id']>1){
+				$tipoUsuario = new TipoUsuario($arrayInterno['id'],$arrayInterno['descricao']);
+				$returnTipoUsuarios = $returnTipoUsuarios."<option value=".$arrayInterno['id'].">".$arrayInterno['descricao']."</option>";
+			}
 		}
 		return $returnTipoUsuarios;
 	}	
@@ -23,16 +19,12 @@
 		<meta charset='utf-8'>
 		<title>Cadastro de Usuarios</title>
 	</head>
-	<style>
-		#container {
-			margin-top: 100px;
-		}
-	</style>
+		
 	<body>
 		<div class='container-fluid' id="container">
 			<div class="row justify-content-center" style='height:100%;'>
 				<div >
-					<form method='post' action='cadUsuario.php'>
+					<form id="ajax-form" method='post' action=''>
 						<div class="form-group row">
 							<h1 class="col-sm-12 col-form-label">Cadastro de Usuários:</h1>
 						</div>
@@ -55,20 +47,55 @@
 							</div>
 						</div>
 						<div class="form-group row">
-						<label for="categoria" class="col-sm-4 col-form-label">Tipo:</label>
-						<div class="col-sm-8">
-							<select class="col custom-select" id="tipoUsuario_id" name="tipoUsuario_id" required>
-								<?php 
-								echo inserirTipoUsuarioNoCombo();
-								?>
-							</select>
+							<label for="categoria" class="col-sm-4 col-form-label">Tipo:</label>
+							<div class="col-sm-8">
+								<select class="col custom-select" id="tipoUsuario_id" name="tipoUsuario_id" required>
+									<?php 
+									echo inserirTipoUsuarioNoCombo();
+									?>
+								</select>
+							</div>
 						</div>
-					</div>
+						<div id="result"></div>
+						<br>
 						<input type='submit' class='btn btn-primary btn-lg btn-block' name='botao' value='Adicionar'>
+						<a class='btn btn-danger btn-lg btn-block' href='#'>Cancelar</a>
 					</form>
-					<a class='btn btn-danger btn-lg btn-block' href='/visao/index.html'>Cancelar</a>
+					
 				</div>
 			</div>
 		</div>
 	</body>
+	<script>
+		$("#ajax-form").submit(function(event) {
+			event.preventDefault();
+			
+			statusProcessando();
+			
+			$.ajax({
+				type: "POST",
+				url: "processaCadUsuario.php",
+				data: $("#ajax-form").serialize(),
+				success: function(response) {
+				
+					console.log(response);
+					let resObj = JSON.parse(response);
+					let mensagem = resObj.mensagem;
+					printaMensagem(mensagem);
+				},
+				error: function(response) {
+					console.log(response);
+					printaMensagem('Erro no envio do formulário');
+				}
+			});
+		});
+
+		function statusProcessando() {
+			$("#result").html("Processando...");
+			$("#result").fadeIn(400);
+		}
+		function printaMensagem(status) {
+			$("#result").html(status);
+		}
+	</script>
 </html>

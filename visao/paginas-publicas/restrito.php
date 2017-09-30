@@ -16,14 +16,8 @@
 			</div>
 			<div id="result" class="status"></div>
 			<br>
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-4">
-					<input type="submit" class="btn btn-primary btn-lg btn-block" name="login" value="Login" />
-				</div>
-				<div class="col-xs-12 col-sm-12 col-md-8">
-					<a href="esqueciSenha.html" class="btn btn-danger btn-lg btn-block">Esqueci Minha Senha</a>
-				</div>
-			</div>
+			<input type="submit" class="btn btn-primary btn-lg btn-block" name="login" value="Login" />
+			<a class='btn btn-danger btn-lg btn-block' href='esqueciSenha.html'>Esqueci Minha Senha</a>
 		</form>
 	</div>
 </div>
