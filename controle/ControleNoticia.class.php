@@ -4,16 +4,17 @@ include $_SERVER['DOCUMENT_ROOT']."/modelo/Noticia.class.php";
 class ControleNoticia
 {
     
-    public function listarUm($dados)
+    public function listarUm($id)
     {
-        $noticia = new Noticia(null, $dados['matricula'], null, null, null, null, null);
+        $noticia = new Noticia($id, null, null, null, null, null, null, null, null, null);
         $noticia->listarUm();
 		return $noticia;
     }
 	
     public function inserir($dados)
     {
-        $noticia = new Noticia(null, $dados['matricula'], $dados['nome'], $dados['email'], '123456', 1, $dados['tipoNoticia_id']);
+    
+        $noticia = new Noticia(null, $dados['titulo'], $dados['conteudo'], $dados['fonte'], $dados['imagem'],0, date(), null, $dados['usuario_id'], $dados['categoriaNoticia_id']);
         $noticia->inserir();
     }
 	
@@ -24,12 +25,8 @@ class ControleNoticia
     }
 	
     public function desabilitarNoticia($id){
-        $noticia = new Noticia($id, null, null, null, null, 0, null);
+        $noticia = new Noticia($id, null, null, null, null, 0, null, null, null, null);
         $noticia->desabilitarNoticia();
     }
 
-	public function filtrarNoticia($id){
-		$noticia = new Noticia($id, null, null, null, null, null, null);
-		$noticia->filtrarNoticia();
-	}	
 }

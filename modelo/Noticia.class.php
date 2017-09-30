@@ -153,24 +153,27 @@ class Noticia
     public function listarTodos()
     {
         $con = new MySQL();
-        $sql = "SELECT * FROM Usuario";
+        $sql = "SELECT * FROM Noticia";
         $resultados = $con->consulta($sql);
         if (!empty($resultados)) 
 	{
-            $usuarios = array();
+            $noticias = array();
             foreach ($resultados as $resultado) 
 	    {
-                $usuario = new Usuario();
-                $usuario->setId($resultado['id']);
-                $usuario->setSiapeMatricula($resultado['siapeMatricula']);
-                $usuario->setNome($resultado['nome']);
-                $usuario->setEmail($resultado['email']);
-                $usuario->setSenha($resultado['senha']);
-                $usuario->setStatus($resultado['status']);
-                $usuario->setTipoUsuario_id($resultado['TipoUsuario_id']);
-                $usuarios[] = $usuario;
+		
+                $noticia = new Noticia();
+                $noticia->setId($resultado['id']);
+                $noticia->setConteudo($resultado['conteudo']);
+                $noticia->setFonte($resultado['fonte']);
+                $noticia->setImagem($resultado['imagem']);
+                $noticia->setStatus($resultado['status']);
+                $noticia->setDataCadastro($resultado['dataCadastro']);
+				$noticia->setDataPublicacao($resultado['dataPublicacao']);
+                $noticia->setUsuario_id($resultado['usuario_id']);
+                $noticia->setCategoriaNoticia_id($resultado['categoriaNoticia_id']);
+				$noticias[] = $noticia;
             }
-            return $usuarios;
+            return $noticias;
         } 
 	else 
 	{
@@ -178,45 +181,19 @@ class Noticia
         }
     }
 	
-    public function filtrarUsuario()
-    {
-        $con = new MySQL();
-        $sql = "SELECT * FROM Usuario WHERE id='$this->id'";
-        $resultados = $con->consulta($sql);
-        if (!empty($resultados)) 
-	{
-            $usuarios = array();
-            foreach ($resultados as $resultado) 
-	    {
-                $usuario = new Usuario();
-                $usuario->setId($resultado['id']);
-                $usuario->setSiapeMatricula($resultado['siapeMatricula']);
-                $usuario->setNome($resultado['nome']);
-                $usuario->setEmail($resultado['email']);
-                $usuario->setSenha($resultado['senha']);
-                $usuario->setStatus($resultado['status']);
-                $usuario->setTipoUsuario_id($resultado['TipoUsuario_id']);
-                $usuarios[] = $usuario;
-            }
-            return $usuarios;
-        } 
-	else 
-	{
-            return false;
-        }
-    }	
-        
+    
         
     public function inserir()
     {
         $con = new MySQL();
-        $sql = "INSERT INTO Usuario (siapeMatricula,nome,email,senha,status,TipoUsuario_id) VALUES ('$this->siapeMatricula','$this->nome','$this->email','$this->senha','$this->status','$this->tipoUsuario_id')";
+        $sql = "INSERT INTO Noticia (conteudo, fonte, imagem, status, dataCadastro, dataPublicacao, usuario_id, categoriaNoticia_id) VALUES ('$this->titulo', '$this->conteudo', '$this->fonte', '$this->imagem', '1', '$this->dataCadastro', '$this->dataPublicacao', '$this->usuario_id', '$this->categoriaNoticia_id')";
         $con->executa($sql);
     }
 	
-    public function desabilitarUsuario(){
+    public function desabilitarNoticia(){
         $con = new MySQL();
-        $sql = "UPDATE Usuario SET status = $this->status WHERE id = $this->id";
+        $sql = "UPDATE Noticia SET status = $this->status WHERE id = $this->id";
         $con->executa($sql);
     } 
 }
+
