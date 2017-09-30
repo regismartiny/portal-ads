@@ -22,9 +22,6 @@
 		<title>Listagem de Usuarios</title>
 	</head>
 	<style>
-		#container {
-			margin-top: 100px;
-		}
 		/* The switch - the box around the slider */
 		.switch {
 		position: relative;
@@ -88,6 +85,7 @@
 		<div class='container-fluid' id="container">
 			<div class="row justify-content-center" style='height:100%;'>
 				<?php
+					echo "<div class='form-group row'><h1 class='col-sm-12 col-form-label'>Lista de Usuários:</h1></div>";
 					if($usuarios!=false){
 						echo "<table class='table table-hover'>
 								<thead>

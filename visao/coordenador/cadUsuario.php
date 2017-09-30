@@ -56,8 +56,10 @@
 								</select>
 							</div>
 						</div>
-						<div id="result"></div>
+
+						<div id="result" class="status"></div>
 						<br>
+						
 						<input type='submit' class='btn btn-primary btn-lg btn-block' name='botao' value='Adicionar'>
 						<a class='btn btn-danger btn-lg btn-block' href='#'>Cancelar</a>
 					</form>
