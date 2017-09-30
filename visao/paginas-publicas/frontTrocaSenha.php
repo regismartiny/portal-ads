@@ -3,46 +3,32 @@
 		<h1 class="titulo">Troca de Senha</h1><br><br>
 		<form id="form" method="post" action="/controle/trocaSenha.php">
 						
-						<div class="form-group row">
-							<label for="senha" class="col-sm-5 col-md-5 col-form-label">Senha Antiga:</label>
-							<div class="col-sm-7 col-md-7">
-								<input type="password" class="form-control" id="senhaAntiga " name="senhaAntiga" required>
-							</div>
-						</div>
-						
-						<div class="form-group row">
-							<label for="senha" class="col-sm-5 col-md-5 col-form-label">Senha Nova:</label>
-							<div class="col-sm-7 col-md-7">
-								<input type="password" class="form-control" id="senhaNova" name="senhaNova" required>
-							</div>
-						</div>
-
-						<div class="form-group row">
-							<label for="senha" class="col-sm-5 col-md-5 col-form-label"> Confirmação de Senha:</label>
-							<div class="col-sm-7 col-md-7">
-								<input type="password" class="form-control" id="confSenha" name="confSenha" required>
-							</div>
-						</div>						
-			
-			
-			<div id="result" class="status"></div>
-			
-				
-			<br>
-			<div class="row">
-			
-			
-				<div class="col-xs-12 col-sm-12 col-md-6">
-					<input type='submit' class='btn btn-primary btn-lg btn-block' name='login' value='Trocar Senha'>
-				</div>
-				
-				
-				<div class="col-xs-12 col-sm-12 col-md-6">
-					<a href="/visao/index.php" class="btn btn-danger btn-lg btn-block">Cancelar</a>
+			<div class="form-group row">
+				<label for="senha" class="col-sm-5 col-md-5 col-form-label">Senha Antiga:</label>
+				<div class="col-sm-7 col-md-7">
+					<input type="password" class="form-control" id="senhaAntiga " name="senhaAntiga" required>
 				</div>
 			</div>
+						
+			<div class="form-group row">
+				<label for="senha" class="col-sm-5 col-md-5 col-form-label">Senha Nova:</label>
+				<div class="col-sm-7 col-md-7">
+					<input type="password" class="form-control" id="senhaNova" name="senhaNova" required>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="senha" class="col-sm-5 col-md-5 col-form-label"> Confirmação de Senha:</label>
+				<div class="col-sm-7 col-md-7">
+					<input type="password" class="form-control" id="confSenha" name="confSenha" required>
+				</div>
+			</div>						
 			
-			
+			<div id="result" class="status"></div>
+			<br>
+
+			<input type='submit' class='btn btn-primary btn-lg btn-block' name='login' value='Trocar Senha'>
+			<a class='btn btn-danger btn-lg btn-block' href='#'>Cancelar</a>			
 		</form>
 	</div>
 </div>

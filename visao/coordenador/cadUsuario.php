@@ -6,8 +6,10 @@
 		$tiposUsuarios = $tipoUsuario->getTipoUsuario();
 		$returnTipoUsuarios = "";
 		foreach($tiposUsuarios as $row => $arrayInterno){
-			$tipoUsuario = new TipoUsuario($arrayInterno['id'],$arrayInterno['descricao']);
-			$returnTipoUsuarios = $returnTipoUsuarios."<option value=".$arrayInterno['id'].">".$arrayInterno['descricao']."</option>";
+			if($arrayInterno['id']>1){
+				$tipoUsuario = new TipoUsuario($arrayInterno['id'],$arrayInterno['descricao']);
+				$returnTipoUsuarios = $returnTipoUsuarios."<option value=".$arrayInterno['id'].">".$arrayInterno['descricao']."</option>";
+			}
 		}
 		return $returnTipoUsuarios;
 	}	
@@ -16,26 +18,8 @@
 	<head>
 		<meta charset='utf-8'>
 		<title>Cadastro de Usuarios</title>
-		<<script>
-		$("#ajax-form").submit(function(e) {
-			$.ajax({
-				type: "POST",
-				url: "mailer.php",
-				data: $("#ajax-form").serialize(),
-				success: function(data)
-				{
-					alert(data); // show response from the php script.
-				}
-			});
-			e.preventDefault(); // avoid to execute the actual submit of the form.
-		})
-		</script>
 	</head>
-	<style>
-		#container {
-			margin-top: 100px;
-		}
-	</style>
+		
 	<body>
 		<div class='container-fluid' id="container">
 			<div class="row justify-content-center" style='height:100%;'>
@@ -72,7 +56,8 @@
 								</select>
 							</div>
 						</div>
-						<div id="form-messages"></div>
+						<div id="result"></div>
+						<br>
 						<input type='submit' class='btn btn-primary btn-lg btn-block' name='botao' value='Adicionar'>
 						<a class='btn btn-danger btn-lg btn-block' href='#'>Cancelar</a>
 					</form>
@@ -81,4 +66,36 @@
 			</div>
 		</div>
 	</body>
+	<script>
+		$("#ajax-form").submit(function(event) {
+			event.preventDefault();
+			
+			statusProcessando();
+			
+			$.ajax({
+				type: "POST",
+				url: "processaCadUsuario.php",
+				data: $("#ajax-form").serialize(),
+				success: function(response) {
+				
+					console.log(response);
+					let resObj = JSON.parse(response);
+					let mensagem = resObj.mensagem;
+					printaMensagem(mensagem);
+				},
+				error: function(response) {
+					console.log(response);
+					printaMensagem('Erro no envio do formulário');
+				}
+			});
+		});
+
+		function statusProcessando() {
+			$("#result").html("Processando...");
+			$("#result").fadeIn(400);
+		}
+		function printaMensagem(status) {
+			$("#result").html(status);
+		}
+	</script>
 </html>
