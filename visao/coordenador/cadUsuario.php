@@ -1,19 +1,3 @@
-<?php
-	function inserirTipoUsuarioNoCombo(){
-		include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/TipoUsuario.class.php";
-		
-		$tipoUsuario = new TipoUsuario(null,null);
-		$tiposUsuarios = $tipoUsuario->getTipoUsuario();
-		$returnTipoUsuarios = "";
-		foreach($tiposUsuarios as $row => $arrayInterno){
-			if($arrayInterno['id']>1){
-				$tipoUsuario = new TipoUsuario($arrayInterno['id'],$arrayInterno['descricao']);
-				$returnTipoUsuarios = $returnTipoUsuarios."<option value=".$arrayInterno['id'].">".$arrayInterno['descricao']."</option>";
-			}
-		}
-		return $returnTipoUsuarios;
-	}	
-?>
 <html lang='pt-br'>
 	<head>
 		<meta charset='utf-8'>
@@ -46,17 +30,6 @@
 							  <input type="email" class="form-control" id="email" name='email'>
 							</div>
 						</div>
-						<div class="form-group row">
-							<label for="categoria" class="col-sm-4 col-form-label">Tipo:</label>
-							<div class="col-sm-8">
-								<select class="col custom-select" id="tipoUsuario_id" name="tipoUsuario_id" required>
-									<?php 
-									echo inserirTipoUsuarioNoCombo();
-									?>
-								</select>
-							</div>
-						</div>
-
 						<div id="result" class="status"></div>
 						<br>
 						

@@ -218,16 +218,16 @@ class Usuario{
                 if (count($resultados2)==0){//tudo certo
                     $sql = "INSERT INTO Usuario (siapeMatricula,nome,email,senha,status,TipoUsuario_id) VALUES ('$this->siapeMatricula','$this->nome','$this->email','$this->senha','$this->status','$this->tipoUsuario_id')";
                     $con->executa($sql);
-                    $resposta=2;
+                    $resposta=1;
 
                 }else{
                     //Email ja existe
-                    $resposta=1;
+                    $resposta=2;
                 }
             }else{
-                $sql = "INSERT INTO Usuario (siapeMatricula,nome,email,senha,status,TipoUsuario_id) VALUES ('$this->siapeMatricula','$this->nome','$this->email','$this->senha','$this->status','$this->tipoUsuario_id')";
+                $sql = "INSERT INTO Usuario (siapeMatricula,nome,email,senha,status,TipoUsuario_id) VALUES ('$this->siapeMatricula','$this->nome',null,'$this->senha','$this->status','$this->tipoUsuario_id')";
                 $con->executa($sql);
-                $resposta=2;
+                $resposta=1;
             }
         }else{
             //Matricula ja existe

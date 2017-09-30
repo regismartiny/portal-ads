@@ -6,27 +6,46 @@
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (!empty($_POST) && isset($_POST['nome']) && isset($_POST['matricula'])&& isset($_POST['tipoUsuario_id'])) {
+        if (!empty($_POST) && isset($_POST['nome']) && isset($_POST['matricula'])) {
             
             include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
             $uControle = new ControleUsuario();
+
+            $_POST['tipoUsuario_id']=0;
+
+            if(strlen($_POST['matricula'])==7){
+                $_POST['tipoUsuario_id']=2;
+            }else if(strlen($_POST['matricula'])==12){
+                $_POST['tipoUsuario_id']=3;
+            }
         
             $estado = $uControle->inserir($_POST);
 
             if ($estado!=0){
                     
-                if($estado==2){
+                if($estado==1){
                     //Usuario inserido com sucesso
-                    // Set a 200 (okay) response code.
-                    $status = array('sucesso' => true, 'mensagem' => 'Concluido! Usuario adicionado!');
+                    if($_POST['tipoUsuario_id']==2){
+                        $status = array('sucesso' => true, 'mensagem' => 'Concluido! Professor adicionado!');
+                    }else{
+                        $status = array('sucesso' => true, 'mensagem' => 'Concluido! Aluno adicionado!');
+                    }
                 }
-                else if($estado==1){
+                else if($estado==2){
                     //Email ja existe
                     $status = array('sucesso' => true, 'mensagem' => 'Já existe algum usuario com esse email!');	
                 }
                 else if($estado==3){
                     //Matricula ja existe 
-                    $status = array('sucesso' => true, 'mensagem' => 'Já existe algum usuario com essa matricula!');
+                    if($_POST['tipoUsuario_id']==2){
+                        $status = array('sucesso' => true, 'mensagem' => 'Já existe outro professor com esse SIAPE!');
+                    }else{
+                        $status = array('sucesso' => true, 'mensagem' => 'Já existe outro aluno com essa matricula!');
+                    }
+                }
+                else if($estado==4){
+                    //Matricula / SIAPE não valido
+                    $status = array('sucesso' => true, 'mensagem' => 'Verifique a Matricula / SIAPE!!');
                 }
                 
                 $resultado = json_encode($status, JSON_FORCE_OBJECT);

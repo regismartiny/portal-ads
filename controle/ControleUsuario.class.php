@@ -32,7 +32,10 @@ class ControleUsuario
     public function inserir($dados)
     {
         $usuario = new Usuario(null, $dados['matricula'], $dados['nome'], $dados['email'], $dados['matricula'], 1, $dados['tipoUsuario_id']);
-        $estado = $usuario->inserir();
+        $estado=4;
+        if($dados['tipoUsuario_id']!=0){
+            $estado = $usuario->inserir();
+        }
         return $estado;
     }
 	
