@@ -26,8 +26,6 @@ class Noticia
 		$this->dataPublicacao = $dataPublicacao;
 		$this->usuario_id = $usuario_id;
 		$this->categoriaNoticia_id = $categoriaNoticia_id;
-		
-		
     }
         
     public function getId()
@@ -186,8 +184,11 @@ class Noticia
     public function inserir()
     {
         $con = new MySQL();
-        $sql = "INSERT INTO Noticia (conteudo, fonte, imagem, status, dataCadastro, dataPublicacao, usuario_id, categoriaNoticia_id) VALUES ('$this->titulo', '$this->conteudo', '$this->fonte', '$this->imagem', '1', now(), '$this->dataPublicacao', '$this->usuario_id', '$this->categoriaNoticia_id')";
+        
+        $sql = "INSERT INTO Noticia (titulo, conteudo, fonte, imagem, status, dataCadastro, dataPublicacao, Usuarios_id, CategoriaNoticia_id) 
+                VALUES ('$this->titulo', '$this->conteudo', '$this->fonte', '$this->imagem', '1', now(), now(), '$this->usuario_id', '$this->categoriaNoticia_id')";
         $con->executa($sql);
+        return 1;
     }
 	
     public function desabilitarNoticia(){

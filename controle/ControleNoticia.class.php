@@ -17,7 +17,7 @@ class ControleNoticia
     {
 	
         $noticia = new Noticia(null, $dados['titulo'], $dados['conteudo'], $dados['fonte'], $dados['imagem'],1,null, null, $_SESSION['usuario_id'], $dados['categoriaNoticia_id']);
-		$noticia->inserir();
+		return $noticia->inserir();
     }
 	
     public function consultar()

@@ -13,25 +13,12 @@
         
             $estado = $nControle->inserir($_POST);
 
-            if ($estado!=0){
-                    
-                if($estado==2){
-                    //Usuario inserido com sucesso
-                    // Set a 200 (okay) response code.
-                    $status = array('sucesso' => true, 'mensagem' => 'Concluido! Usuario adicionado!');
-                }
-                else if($estado==1){
-                    //Email ja existe
-                    $status = array('sucesso' => true, 'mensagem' => 'Já existe algum usuario com esse email!');	
-                }
-                else if($estado==3){
-                    //Matricula ja existe 
-                    $status = array('sucesso' => true, 'mensagem' => 'Já existe algum usuario com essa matricula!');
-                }
-                
-                $resultado = json_encode($status, JSON_FORCE_OBJECT);
-                echo json_encode($resultado);
+            if ($estado==1){
+                $status = array('sucesso' => true, 'mensagem' => 'Concluido! Noticia adicionado!');
             }
+
+            $resultado = json_encode($status, JSON_FORCE_OBJECT);
+            echo json_encode($resultado);
         }else{
             http_response_code(400);
             echo "Oops! Houve um problema com o envio do formulario. Por favor complete o formulario e tente novamente.";

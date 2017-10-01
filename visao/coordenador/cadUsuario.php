@@ -36,7 +36,6 @@
 						<input type='submit' class='btn btn-primary btn-lg btn-block' name='botao' value='Adicionar'>
 						<a class='btn btn-danger btn-lg btn-block' href='#'>Cancelar</a>
 					</form>
-					
 				</div>
 			</div>
 		</div>
