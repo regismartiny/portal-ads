@@ -109,11 +109,16 @@ class Usuario{
         $resultados = $con->consulta($sql);
 
         if (count($resultados)==1) {
-            $sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula' AND senha = '$this->senha'";
-            $resultados2 = $con->consulta($sql);
-            if (count($resultados2)==1){//tudo certo
-                $comparaSenha = strcasecmp($this->senha, $senhaNova); //se são iguais retorna zero
-                if($comparaSenha!=0){
+            //$sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula' AND senha = '$this->senha'";
+            //$resultados2 = $con->consulta($sql);
+            //if (count($resultados2)==1){//tudo certo
+
+			$comparaSenha = strcasecmp($this->senha, $resultados[0]['senha']); //se são iguais retorna zero
+			
+			if($comparaSenha==0){					
+            				
+				$comparaSenha1 = strcasecmp($this->senha, $senhaNova); //se são iguais retorna zero
+                if($comparaSenha1!=0){
                     $sql = "UPDATE Usuario SET Senha = '$senhaNova' WHERE siapeMatricula = '$this->siapeMatricula'";
                     $con->executa($sql);
                     $resposta=2;
