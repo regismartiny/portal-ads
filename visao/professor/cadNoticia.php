@@ -12,17 +12,11 @@
 		return $returnCategoriaNoticia;
 	}	
 ?>
-	<head>
-		<meta charset='utf-8'>
-		<title>Cadastro de Noticias</title>
-	</head>
-	<body>
-		<div class='container-fluid' id="container">
-			<div class="row justify-content-center" style='height:100%;'>
-				<div >
+			<div class="row justify-content-center" >
+				<div class="col-12 mx-auto">
 					<form id="ajax-form" method='post' action=''>
 						<div class="form-group row">
-							<h1 class="col-sm-12 col-form-label">Cadastro de Noticias:</h1>
+							<h1 class="col-sm-12 col-form-label">Cadastro de Noticias</h1>
 						</div>
 						<div class="form-group row">
 							<label for="categoriaNoticia_id" class="col-sm-4 col-form-label">Categotia:</label>
@@ -35,8 +29,8 @@
 							</div>
 						</div>	
 						<div class="form-group row">
-							<label for="titulo" class="col-sm-4 col-form-label">Título da Notícia:</label>
-							<div class="col-sm-8">
+							<label for="titulo" class="col-sm-5 col-form-label">Título da Notícia:</label>
+							<div class="col-sm-7">
 								<input type="text" class="form-control" id="titulo" name='titulo' required>
 							</div>
 						</div>
@@ -67,7 +61,6 @@
 					</form>						
 				</div>
 			</div>
-		</div>
 	</body>
 	<script>
 		$("#ajax-form").submit(function(event) {

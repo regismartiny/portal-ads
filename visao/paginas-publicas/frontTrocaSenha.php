@@ -10,7 +10,7 @@
 				<div >
 				<form id="form" method="post" action="/controle/trocaSenha.php">
 					<div class="form-group row">
-						<h1 class="col-sm-12 col-form-label">Troca de Senha:</h1>
+						<h1 class="col-sm-12 col-form-label">Troca de Senha</h1>
 					</div>
 					<div class="form-group row">
 						<label for="senha" class="col-sm-4 col-form-label">Senha Antiga:</label>
