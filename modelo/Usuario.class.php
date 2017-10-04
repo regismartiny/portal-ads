@@ -83,15 +83,21 @@ class Usuario{
         $sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula'";
         $resultados = $con->consulta($sql);
         if (count($resultados)==1){
-            $sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula' AND senha = '$this->senha'";
-            $resultados2 = $con->consulta($sql);
-            if (count($resultados2)==1){
-		        $resposta=2;
-		    }else{
-			    $resposta=1;
-		    }
+			if($resultados[0]['status']==1){//se usuário está ativo (1)  -  Bloqueado (0)
+				//$sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula' AND senha = '$this->senha'";
+				//$resultados2 = $con->consulta($sql);
+				//if (count($resultados2)==1){
+					$comparaSenha = strcasecmp($this->senha, $resultados[0]['senha']); //se são iguais retorna zero
+					if($comparaSenha==0){					
+					$resposta=2; // tudo certo
+				}else{
+			    $resposta=1; //senha errada
+				}
+			}else{
+				$resposta=4; //usuário bloqueado
+			}
 	    }else{
-		    $resposta=3;
+		    $resposta=3; //usuario não existe
 	    }
 	    return $resposta;
     }

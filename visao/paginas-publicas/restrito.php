@@ -49,6 +49,8 @@ $("#form").submit(function(event) {
 				statusLogin('Usuário não Cadastrado!');
 			}else if(resObj.tipoUsuario==98){
 				statusLogin('Senha inválida!!');
+			}else if(resObj.tipoUsuario==97){
+				statusLogin('Usuário Bloquado!!');
 			}
 		},
 		error: function(response) {

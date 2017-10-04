@@ -42,6 +42,11 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
 			$tipoUsuario = array('tipoUsuario' => 99);
 			
 	
+		}else if($cadastrado==4){
+			//Usuario bloqueado
+			$tipoUsuario = array('tipoUsuario' => 97);
+			
+	
 		}
 		$resultado = json_encode($tipoUsuario, JSON_FORCE_OBJECT);
 		echo json_encode($resultado);
