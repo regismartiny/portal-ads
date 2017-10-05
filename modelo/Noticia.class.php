@@ -179,13 +179,47 @@ class Noticia
         }
     }
 	
+	
+	    public function listarMinhasNoticias($siapeMatricula)
+    {
+        $con = new MySQL();
+        $sql = "SELECT * FROM Noticia WHERE usuario_id = 'this->$siapeMatricula'";
+        $resultados = $con->consulta($sql);
+        if (!empty($resultados)) 
+	{
+            $noticias = array();
+            foreach ($resultados as $resultado) 
+	    {
+		
+                $noticia = new Noticia();
+                $noticia->setId($resultado['id']);
+                $noticia->setConteudo($resultado['conteudo']);
+                $noticia->setFonte($resultado['fonte']);
+                $noticia->setImagem($resultado['imagem']);
+                $noticia->setStatus($resultado['status']);
+                $noticia->setDataCadastro($resultado['dataCadastro']);
+				$noticia->setDataPublicacao($resultado['dataPublicacao']);
+                $noticia->setUsuario_id($resultado['usuario_id']);
+                $noticia->setCategoriaNoticia_id($resultado['categoriaNoticia_id']);
+				$noticias[] = $noticia;
+            }
+            return $noticias;
+        } 
+	else 
+	{
+            return false;
+        }
+    }
+	
+	
+	
     
         
     public function inserir()
     {
         $con = new MySQL();
         
-        $sql = "INSERT INTO Noticia (titulo, conteudo, fonte, imagem, status, dataCadastro, dataPublicacao, Usuarios_id, CategoriaNoticia_id) 
+        $sql = "INSERT INTO Noticia (titulo, conteudo, fonte, imagem, status, dataCadastro, dataPublicacao, Usuario_id, CategoriaNoticia_id) 
                 VALUES ('$this->titulo', '$this->conteudo', '$this->fonte', '$this->imagem', '1', now(), now(), '$this->usuario_id', '$this->categoriaNoticia_id')";
         $con->executa($sql);
         return 1;

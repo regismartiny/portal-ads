@@ -26,9 +26,26 @@ class ControleNoticia
         return $noticia->listarTodos();
     }
 	
-    public function desabilitarNoticia($id){
-        $noticia = new Noticia($id, null, null, null, null, 0, null, null, null, null);
-        $noticia->desabilitarNoticia();
+	public function minhasNoticias($siapeMatricula)
+    {   
+        $noticia = new Noticia();
+        return $noticia->listarMinhasNoticias($siapeMatricula);
     }
+	
+	public function modificarStatusNoticia($id,$status){
+        $noticia = new Noticia($id, null, null, null, null, $status, null, null, null, null);
+        $noticia->modificarStatusNoticia();
+    }
+
+	public function filtrarNoticia($id){
+		$noticia = new Noticia($id, null, null, null, null, $status, null, null, null, null);
+        $noticia->filtrarNoticia();
+	}	
+	
+	//public function editar($dados)
+    //{		
+     //   $usuario = new Usuario(null, $dados['matricula'], $dados['nome'], $dados['email'], $dados['senha'], null, $dados['tipoUsuario_id']);
+     //   $usuario->editar();
+    //}	
 
 }
