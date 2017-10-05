@@ -68,6 +68,10 @@ ul {
     margin-bottom: 3px;
 }
 
+.btn {
+    cursor: pointer!important;
+}
+
 .status {
     display: none;
 }
@@ -113,7 +117,9 @@ ul {
     margin-top: 50px;
 }
 
+
 /* Tablets e desktops - topo fixo*/
+
 @media(min-width:1200px) {
     body {
         padding-top: 123px;
@@ -174,9 +180,13 @@ ul {
         height: 120px;
     }
 }
+
+
 /*   */
 
+
 /*Smartphones - topo rola com a tela*/
+
 @media(max-width:767px) {
     body {
         padding-top: 103px;
@@ -218,8 +228,9 @@ ul {
         height: 196px;
     }
 }
-/*   */
 
+
+/*   */
 
 
 /* LOADER */
@@ -305,6 +316,7 @@ ul {
         -moz-transform: rotate(360deg);
     }
 }
+
 
 /*   */
 

@@ -214,32 +214,32 @@ class Usuario{
     }	
          
     public function inserir(){
-        $resposta="0";
+        $resposta = 0;
         $con = new MySQL();
         $sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula'";
         $resultados = $con->consulta($sql);
-        if (count($resultados)==0) {
-            if(strlen($this->email)>0){
+        if (count($resultados) == 0) {
+            if(strlen($this->email) > 0){
                 $sql = "SELECT * FROM Usuario WHERE email = '$this->email'";
                 $resultados2 = $con->consulta($sql);
 
-                if (count($resultados2)==0){//tudo certo
+                if (count($resultados2) == 0){//tudo certo
                     $sql = "INSERT INTO Usuario (siapeMatricula,nome,email,senha,status,TipoUsuario_id) VALUES ('$this->siapeMatricula','$this->nome','$this->email','$this->senha','$this->status','$this->tipoUsuario_id')";
                     $con->executa($sql);
-                    $resposta=1;
+                    $resposta = 1;
 
                 }else{
                     //Email ja existe
-                    $resposta=2;
+                    $resposta = 2;
                 }
             }else{
                 $sql = "INSERT INTO Usuario (siapeMatricula,nome,email,senha,status,TipoUsuario_id) VALUES ('$this->siapeMatricula','$this->nome',null,'$this->senha','$this->status','$this->tipoUsuario_id')";
                 $con->executa($sql);
-                $resposta=1;
+                $resposta = 1;
             }
         }else{
             //Matricula ja existe
-	        $resposta=3;
+	        $resposta = 3;
 	    }
 	    return $resposta;
     }

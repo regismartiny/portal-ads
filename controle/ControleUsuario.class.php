@@ -31,12 +31,25 @@ class ControleUsuario
 	
     public function inserir($dados)
     {
-        $usuario = new Usuario(null, $dados['matricula'], $dados['nome'], $dados['email'], $dados['matricula'], 1, $dados['tipoUsuario_id']);
-        $estado=4;
-        if($dados['tipoUsuario_id']!=0){
-            $estado = $usuario->inserir();
+        $tipoUsuario = $this->getTipoUsuario($dados['matricula']);
+
+        if($tipoUsuario != 0){
+            $usuario = new Usuario(null, $dados['matricula'], $dados['nome'], $dados['email'], $dados['matricula'], 1, $tipoUsuario);
+            return $usuario->inserir();
         }
-        return $estado;
+        return 4;//Matricula / SIAPE não valido
+    }
+
+    public function getTipoUsuario($matricula) {
+        $tipoUsuario = 0;
+        
+        if(strlen($matricula) == 7){
+            $tipoUsuario = 2;
+        }else if(strlen($matricula) == 12){
+            $tipoUsuario = 3;
+        }
+
+        return $tipoUsuario;
     }
 	
     public function consultar()
