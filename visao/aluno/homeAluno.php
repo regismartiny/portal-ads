@@ -83,7 +83,7 @@ session_start();
                                 <?php echo $_SESSION['nomeUsuario'];?>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="/visao/paginas-publicas/frontTrocaSenha.php">Trocar Senha</a>
+                                    <a class="dropdown-item" href="/visao/paginas-publicas/trocaSenha.php">Trocar Senha</a>
 									<form method="post" action="/controle/logout.php">
 										<input type="submit" class="dropdown-item" name="botao" value="Sair">
 									</form>
