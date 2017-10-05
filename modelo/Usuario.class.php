@@ -76,31 +76,6 @@ class Usuario{
     public function setTipoUsuario_id($tipoUsuario_id){
         $this->tipoUsuario_id = $tipoUsuario_id;
     }
-        
-    public function isCadastrado(){	
-	    $resposta=0;
-        $con = new MySQL();
-        $sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula'";
-        $resultados = $con->consulta($sql);
-        if (count($resultados)==1){
-			if($resultados[0]['status']==1){//se usuário está ativo (1)  -  Bloqueado (0)
-				//$sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula' AND senha = '$this->senha'";
-				//$resultados2 = $con->consulta($sql);
-				//if (count($resultados2)==1){
-					$comparaSenha = strcasecmp($this->senha, $resultados[0]['senha']); //se são iguais retorna zero
-					if($comparaSenha==0){					
-					$resposta=2; // tudo certo
-				}else{
-			    $resposta=1; //senha errada
-				}
-			}else{
-				$resposta=4; //usuário bloqueado
-			}
-	    }else{
-		    $resposta=3; //usuario não existe
-	    }
-	    return $resposta;
-    }
 
     public function trocaSenha($senhaNova){	
 	    $resposta=0;
@@ -246,7 +221,7 @@ class Usuario{
 	
     public function modificarStatusUsuario(){
         $con = new MySQL();
-        if($this->getUsuarioStatus($this->id)==1){
+        if($this->getUsuarioStatus($this->id) == 1){
             $sql = "UPDATE Usuario SET status = 0 WHERE id = '$this->id'";
         }else{
             $sql = "UPDATE Usuario SET status = 1 WHERE id = '$this->id'";

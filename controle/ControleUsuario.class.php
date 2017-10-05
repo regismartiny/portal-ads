@@ -3,13 +3,30 @@ include $_SERVER['DOCUMENT_ROOT']."/modelo/Usuario.class.php";
 
 class ControleUsuario
 {
-    public function verificaUser($dados)
+    public function validarDadosLogin($dados)
     {
-        $usuario = new Usuario(null, $dados['matricula'], null, null, $dados['senha'], null, null);
-        $cadastrado = $usuario->isCadastrado();
-        return $cadastrado;
+        $usuario = new Usuario(null, $dados['matricula'], null, null, null, null, null);
+        $resposta = $usuario->listarUm();
+        if ($resposta != false) { //se existe um usuario com a matricula informada
+            $senhaCorreta = $this->verificarSenha($dados['senha'], $usuario->getSenha());
+            if ($senhaCorreta) {
+                $status = $usuario->getStatus();
+                if ($status == 1) { //usuario ativo
+                    return 2; //tudo ok
+                }
+                return 4; //usuario bloqueado
+            }
+            return 1; //senha incorreta
+        }
+        return 3; //usuario inexistente
     }
-	
+    
+    public function verificarSenha($senhaInformada, $senhaArmazenada) {
+        //após implementar criptografia da senha, ajustar essa verificação, 
+        //para encriptar senha informada antes de comparar
+        return strcasecmp($senhaInformada, $senhaArmazenada) == 0;
+    }
+
     public function trocaSenha($siapeMatricula, $dados)
     {
         $comparaSenha = strcasecmp($dados['senhaNova'], $dados['confSenha']); //se são iguais retorna zero

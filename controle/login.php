@@ -14,9 +14,9 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
     $cUsuario = new ControleUsuario();
 
     $status = array();
-    $cadastrado = $cUsuario->verificaUser($_POST);
-    if($cadastrado == 2) {
-        //Usuário e senha Certos
+    $validacao = $cUsuario->validarDadosLogin($_POST);
+    if($validacao == 2) {
+        //tudo ok
         session_start();
         $usuario = new Usuario();
         $usuario = $cUsuario->listarUm($_POST);
@@ -25,17 +25,23 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
         $_SESSION['matricula'] = $usuario->getSiapeMatricula();
         $_SESSION['email'] = $usuario->getEmail();
         $_SESSION['tipoUsuario'] = $usuario->getTipoUsuario_id();
-        setcookie('702741445', $usuario->getSiapeMatricula(), (time() + (1 * 3600)));//define o cookie pra sessão em n horas
+        definirCookie($usuario->getSiapeMatricula(), 1); //define o cookie pra sessão em 1 hora
         $status = array('sucesso' => true, 'mensagem' => 'Usuário autenticado com sucesso.', 'tipoUsuario' => $_SESSION['tipoUsuario']);
-    } elseif ($cadastrado == 0) {
-        //Erro no processo
+    } elseif ($validacao == 0) {
         $status = array('sucesso' => false, 'mensagem' => 'Erro desconhecido.');
-    } elseif ($cadastrado == 1) {
+    } elseif ($validacao == 1) {
         //Usuário Certo, Senha Errada
         $status = array('sucesso' => false, 'mensagem' => 'Senha inválida!');
-    } elseif ($cadastrado == 3) {
+    } elseif ($validacao == 3) {
         $status = array('sucesso' => false, 'mensagem' => 'Usuário inexistente!');
+    } elseif ($validacao == 4){
+        //usuario bloqueado
+        $status = array('sucesso' => false, 'mensagem' => 'Usuário está bloqueado!');
     }
     $resultado = json_encode($status, JSON_FORCE_OBJECT);
     echo json_encode($resultado);
+}
+
+function definirCookie($identificacao, $nHoras) {
+    setcookie('702741445', $identificacao, (time() + ($nHoras * 3600)));
 }
