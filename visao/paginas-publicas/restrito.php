@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col mx-auto">
-		<h1 class="titulo">Acesso Restrito</h1>
+		<h2 class="titulo">Acesso Restrito</h2>
 		<form id="form" method="post" action="/controle/login.php">
 			<div class="form-group row">
 				<label for="matricula" class="col-sm-5 col-md-5 col-form-label">Matrícula / SIAPE:</label>

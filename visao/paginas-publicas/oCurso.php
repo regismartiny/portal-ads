@@ -14,7 +14,7 @@ if (isset($_GET['q']) && !empty($_GET['q'])) {
         $conteudo = $informacaoCurso->getConteudo();
 ?>
     <div>
-        <h4 class="noticia-detalhe card-title text-center"><?php echo $titulo ?></h4>
+        <h2 class="noticia-detalhe card-title text-center"><?php echo $titulo ?></h2>
         <p class="card-text"><?php echo $conteudo ?></p>
     </div>
 <?php 

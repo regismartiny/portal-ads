@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12 mx-auto">
-        <h1 class="titulo">Contato</h1>
+        <h2 class="titulo">Contato</h2>
         <form method="post" action="contato.php">
             <div class="form-group row">
                 <label for="categoria" class="col-sm-12 col-md-6 col-form-label">Tipo de mensagem:</label>

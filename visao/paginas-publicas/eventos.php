@@ -2,6 +2,7 @@
     <div class="col-12 mx-auto">
         <div class="row row-grid">
             <div class="col">
+                <h2 class="titulo">Eventos</h2>
                 <div class="card-deck">
                     <div class="card">
                         <img class="card-img-top" src="" alt="Card image cap">
