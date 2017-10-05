@@ -6,7 +6,8 @@
 	$nControle = new ControleNoticia();
 	$categoriaNoticia = new CategoriaNoticia();
 
-	$noticias = $nControle->minhasNoticias($_SESSION['usuario_id']);
+	$noticias = $nControle->minhasNoticias($_SESSION['matricula']);
+	
 	
 ?>
 <html lang='pt-br'>
@@ -83,16 +84,17 @@
 						echo "<table class='table table-hover'>
 								<thead>
 									<tr>
-									<th>Matricula</th>
-									<th>Nome</th>
-									<th>Tipo</th>
+									<th>Número</th>
+									<th>Titulo</th>
+									<th>Data da Publicação</th>
 									<th>Status</th>
 									</tr>
 								</thead>";
 						foreach($noticias as $noticia){
+							
 							echo "<tr><th scope='row'>".$noticia->getId()."</th>";
 							echo "<td>".$noticia->getTitulo()."</td>";
-							echo "<td>".$noticia->getDataPublicacao()."</td>";
+							echo "<td>".$noticia->getDataCadastro()."</td>";
 							if($noticia->getStatus()==1){
 								echo "<td><label class='switch'><input type='checkbox' checked><span class='slider round'></span></label><td>";
 							}else{

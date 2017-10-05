@@ -183,7 +183,7 @@ class Noticia
 	    public function listarMinhasNoticias($siapeMatricula)
     {
         $con = new MySQL();
-        $sql = "SELECT * FROM Noticia WHERE usuario_id = 'this->$siapeMatricula'";
+        $sql = "SELECT n.id, n.titulo, n.dataCadastro, n.status FROM Noticia n, Usuario u WHERE u.siapeMatricula = $siapeMatricula and u.id = n.usuario_id";
         $resultados = $con->consulta($sql);
         if (!empty($resultados)) 
 	{
@@ -193,14 +193,15 @@ class Noticia
 		
                 $noticia = new Noticia();
                 $noticia->setId($resultado['id']);
-                $noticia->setConteudo($resultado['conteudo']);
-                $noticia->setFonte($resultado['fonte']);
-                $noticia->setImagem($resultado['imagem']);
+                //$noticia->setConteudo($resultado['conteudo']);
+                //$noticia->setFonte($resultado['fonte']);
+                //$noticia->setImagem($resultado['imagem']);
                 $noticia->setStatus($resultado['status']);
-                $noticia->setDataCadastro($resultado['dataCadastro']);
-				$noticia->setDataPublicacao($resultado['dataPublicacao']);
-                $noticia->setUsuario_id($resultado['usuario_id']);
-                $noticia->setCategoriaNoticia_id($resultado['categoriaNoticia_id']);
+                $noticia->setTitulo($resultado['titulo']);
+				$noticia->setDataCadastro($resultado['dataCadastro']);
+				//$noticia->setDataPublicacao($resultado['dataPublicacao']);
+                //$noticia->setUsuario_id($resultado['usuario_id']);
+                //$noticia->setCategoriaNoticia_id($resultado['categoriaNoticia_id']);
 				$noticias[] = $noticia;
             }
             return $noticias;

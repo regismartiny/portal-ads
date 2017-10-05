@@ -1,6 +1,4 @@
 <?php
-
-session_start();
 include $_SERVER['DOCUMENT_ROOT']."/modelo/Noticia.class.php";
 
 class ControleNoticia
