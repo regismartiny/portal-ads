@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col mx-auto">
-		<h1 class="titulo">Acesso Restrito</h1><br><br>
+		<h1 class="titulo">Acesso Restrito</h1>
 		<form id="form" method="post" action="/controle/login.php">
 			<div class="form-group row">
 				<label for="matricula" class="col-sm-5 col-md-5 col-form-label">Matrícula / SIAPE:</label>
@@ -28,29 +28,26 @@
 	</div>
 </div>
 <script>
-$("#form").submit(function(event) {
+$('#form').submit(function(event) {
 	event.preventDefault();
 	$form = $(this);
 
 	statusProcessando();
 
 	$.ajax({
-		type: "POST",
+		type: 'POST',
 		url: $form.attr('action'),
 		data: $form.serialize(),
 		success: function(response) {
 			
 			console.log(response);
 			let resObj = JSON.parse(response);
-			if (resObj.tipoUsuario<4) {
-				statusLogin('Login OK');
-				direcionaPagina(resObj.tipoUsuario);
-			}else if(resObj.tipoUsuario==99){
-				statusLogin('Usuário não Cadastrado!');
-			}else if(resObj.tipoUsuario==98){
-				statusLogin('Senha inválida!!');
-			}else if(resObj.tipoUsuario==97){
-				statusLogin('Usuário Bloquado!!');
+			if (resObj) {
+				statusLogin(resObj.mensagem);
+				let tipoUsuario = resObj.tipoUsuario;
+				if (resObj.sucesso === true && tipoUsuario) {
+					direcionaPagina(tipoUsuario);
+				}
 			}
 		},
 		error: function(response) {
@@ -61,21 +58,21 @@ $("#form").submit(function(event) {
 });
 
 function statusProcessando() {
-	$("#result").html("Processando...");
-	$("#result").fadeIn(400);
+	$('#result').html('Processando...');
+	$('#result').fadeIn(400);
 }
 
 function statusLogin(status) {
-	$("#result").html(status);
+	$('#result').html(status);
 }
 
 function direcionaPagina(tipoUsuario) {
-	if (tipoUsuario === "1") {
-		navegaPagina("/visao/coordenador/homeCoordenador.php");
-	} else if (tipoUsuario === "2") {
-		navegaPagina("/visao/professor/homeProfessor.php");
-	} else if (tipoUsuario === "3") {
-		navegaPagina("/visao/aluno/homeAluno.php");
+	if (tipoUsuario === '1') {
+		navegaPagina('/visao/coordenador/homeCoordenador.php');
+	} else if (tipoUsuario === '2') {
+		navegaPagina('/visao/professor/homeProfessor.php');
+	} else if (tipoUsuario === '3') {
+		navegaPagina('/visao/aluno/homeAluno.php');
 	}
 }
 
