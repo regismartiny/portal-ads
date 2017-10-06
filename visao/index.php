@@ -100,7 +100,7 @@
                     Rua Princesa Isabel, 60 | Bairro Vila Rica | CEP: 95770-000 | Feliz - RS | Tel. 51 3637-4400</p>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                    <p>Desenvolvido e mantido pelos alunos do curso. <a href="#">Saiba mais</a></p>
+                    <p>Desenvolvido e mantido pelos alunos do curso. <a href="/visao/paginas-publicas/saibaMais.html">Saiba mais</a></p>
                 </div>
             </div>
         </div>
