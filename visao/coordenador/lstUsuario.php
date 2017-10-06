@@ -136,7 +136,8 @@
 						<td scope="row"><?php echo $usuario->getNome();?></td>
 						<td scope="row"><?php echo $tipoUsuario->getUmTipoUsuario($usuario->getTipoUsuario_id());?></td>
 				<?php
-					if($usuario->getStatus()==1){
+					if($usuario->getId()!=1){
+						if($usuario->getStatus()==1){
 				?>
 						<td>
 							<label class="switch">
@@ -145,7 +146,7 @@
 							</label>
 						<td>
 				<?php
-					}else{
+						}else{
 				?>
 						<td>
 							<label class='switch'>
@@ -154,6 +155,11 @@
 							</label>
 						<td>
 					</tr>
+			<?php
+						}
+					}else{
+			?>
+						<td>Ativo</th>
 			<?php
 					}
 				}
