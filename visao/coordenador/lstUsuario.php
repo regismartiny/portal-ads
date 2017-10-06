@@ -15,16 +15,36 @@
 			data: "id="+id,
 		});
 	}
+	function procuraNomes() {
+		var input, filter, table, tr, td, i;
+		input = document.getElementById("myInput");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("tabelaUsuarios");
+		tr = table.getElementsByTagName("tr");
+		for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[1];
+			if (td) {
+				if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}       
+		}
+	}
 </script>
 <div class="row">
 	<div class="col mx-auto">
-		<div class="form-group row">
-			<h1 class="col-sm-12 col-form-label">Lista de Usuários</h1>
-		</div>
+		<h1 class="titulo">Lista de Usuários</h1>
+		
+		<input type="text" id="myInput" onkeyup="procuraNomes()" placeholder="Procure por um nome..." title="Digite um nome">
+
+
+		
 		<?php
 			if($usuarios!=false){
 		?>
-			<table class="table table-hover">
+			<table id="tabelaUsuarios" class="table table-responsive table-hover">
 				<thead>
 					<tr>
 						<th>Matricula</th>
