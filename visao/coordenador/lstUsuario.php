@@ -110,14 +110,14 @@
 		
 		<input type="text" id="myInput" onkeyup="procuraNomes()" placeholder="Procure por um nome..." title="Digite um nome">
 		<p>Mostrar usuario por tipo</p>
-            <p>
-                <button type="button" class="btn btn-outline-default btn-filter selected" data-target="todos">Todos</button>
-                <button type="button" class="btn btn-outline-primary btn-filter" data-target="3">Alunos</button>
-                <button type="button" class="btn btn-outline-success btn-filter" data-target="2">Professores</button>
-            </p>
-		<?php
+		<p>
+			<button type="button" class="btn btn-outline-default btn-filter selected" data-target="todos">Todos</button>
+			<button type="button" class="btn btn-outline-primary btn-filter" data-target="3">Alunos</button>
+			<button type="button" class="btn btn-outline-success btn-filter" data-target="2">Professores</button>
+		</p>
+<?php
 			if($usuarios!=false){
-		?>
+?>
 		<div class="table-responsive">
 			<table id="tabelaUsuarios" class="table table-hover">
 				<thead>
@@ -128,26 +128,27 @@
 						<th onclick="sortTable(3)">Status</th>
 					</tr>
 				</thead>
-			<?php
+<?php
 				foreach($usuarios as $usuario){
-			?>
+?>
 					<tr data-status="<?php echo $usuario->getTipoUsuario_id();?>">
 						<td scope="row"><?php echo $usuario->getSiapeMatricula();?></td>
 						<td scope="row"><?php echo $usuario->getNome();?></td>
 						<td scope="row"><?php echo $tipoUsuario->getUmTipoUsuario($usuario->getTipoUsuario_id());?></td>
-				<?php
+<?php
 					if($usuario->getId()!=1){
 						if($usuario->getStatus()==1){
-				?>
+?>
 						<td>
 							<label class="switch">
 								<input type="checkbox" onclick=modificaStatus(<?php echo $usuario->getId();?>) checked>
 								<span class="slider round"></span>
 							</label>
 						<td>
-				<?php
+					</tr>
+<?php
 						}else{
-				?>
+?>
 						<td>
 							<label class='switch'>
 							<input type="checkbox" onclick=modificaStatus(<?php echo $usuario->getId();?>)>
@@ -155,19 +156,20 @@
 							</label>
 						<td>
 					</tr>
-			<?php
+<?php
 						}
 					}else{
-			?>
+?>
 						<td>Ativo</th>
-			<?php
+					</tr>
+<?php
 					}
 				}
-			?>
+?>
 			</table>
 		</div>
-		<?php
+<?php
 			}
-		?>
+?>
 	</div>
 </div>
