@@ -85,7 +85,7 @@ session_start();
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="/visao/paginas-publicas/trocaSenha.php">Trocar Senha</a>
 									<a class="dropdown-item" href="/visao/coordenador/cadUsuario.php">Cadastro de Usuarios</a>
-                                    <a class="dropdown-item" href="/visao/coordenador/lstUSuario.php">Lista de Usuarios</a>
+                                    <a class="dropdown-item" href="/visao/coordenador/lstUsuario.php">Lista de Usuarios</a>
 									<form method="post" action="/controle/logout.php">
 										<input type="submit" id="link" class="dropdown-item" name="botao" value="Sair">
 									</form>
