@@ -11,8 +11,8 @@
         $conteudo = $informacaoCurso->getConteudo();
 ?>
     <div>
-        <h2 class="noticia-detalhe card-title text-center"><?php echo $titulo ?></h2>
-        <p class="card-text"><?php echo $conteudo ?></p>
+        <h2 class="titulo"><?php echo $titulo ?></h2>
+        <p><?php echo $conteudo ?></p>
     </div>
 <?php 
     } else {
