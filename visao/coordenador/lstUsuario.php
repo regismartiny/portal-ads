@@ -111,7 +111,7 @@
 		<input type="text" id="myInput" onkeyup="procuraNomes()" placeholder="Procure por um nome..." title="Digite um nome">
 		<p>Mostrar usuario por tipo</p>
             <p>
-                <button type="button" class="btn btn-outline-default btn-filter" data-target="todos">Todos</button>
+                <button type="button" class="btn btn-outline-default btn-filter selected" data-target="todos">Todos</button>
                 <button type="button" class="btn btn-outline-primary btn-filter" data-target="3">Alunos</button>
                 <button type="button" class="btn btn-outline-success btn-filter" data-target="2">Professores</button>
             </p>
