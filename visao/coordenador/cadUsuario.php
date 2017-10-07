@@ -46,12 +46,14 @@
 			url: $form.attr('action'),
 			data: $form.serialize(),
 			success: function(response) {
-			
-				console.log(response);
+				console.log(response);			
 				let resObj = JSON.parse(response);
 				let mensagem = resObj.mensagem;
+				let sucesso = resObj.sucesso;
 				printaMensagem(mensagem);
-				navegaPagina("/visao/coordenador/lstUsuario.php");
+				if(sucesso==true){
+					navegaPagina("/visao/coordenador/lstUsuario.php");
+				}
 			},
 			error: function(response) {
 				console.log(response);
