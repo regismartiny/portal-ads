@@ -451,7 +451,7 @@ input:checked + .slider:before {
         display:none;
     }
 }
-@media (max-width:426px) {
+@media (max-width:412px) {
     .un{
         display:none;
     }
