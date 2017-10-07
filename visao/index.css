@@ -446,8 +446,16 @@ input:checked + .slider:before {
     border-color: #2ecc71;
 }
 
-@media (max-width:480px) {
+@media (max-width:546px) {
     .un{
+        display:none;
+    }
+}
+@media (max-width:412px) {
+    .un{
+        display:none;
+    }
+    .un2{
         display:none;
     }
 }

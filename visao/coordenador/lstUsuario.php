@@ -107,79 +107,75 @@
 <div class="container">
 	<div class="row">
 		<div class="col-mx-auto">
-			<div class="table-responsive">
-				<h1 class="titulo">Lista de Usuários</h1>
-				
-				<input type="text" id="myInput" onkeyup="procuraNomes()" placeholder="Procure por um nome..." title="Digite um nome">
+			<h1 class="titulo col-sm-12">Lista de Usuários</h1>
+			
+			<input class="col-sm-12" type="text" id="myInput" onkeyup="procuraNomes()" placeholder="Procure por um nome..." title="Digite um nome">
 
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-6">
-						<span>Mostrar usuario por tipo</span>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-6">
-					<div>
+			<div class="row">
+				<label class="col-sm-12 col-md-5">Selecione o tipo de usuario a se exibir:</label>
+				<div class="col-sm-12 col-md-7">
+					<div class="float-md-right">	
 						<button type="button" class="btn btn-outline-default btn-filter selected" data-target="todos">Todos</button>
 						<button type="button" class="btn btn-outline-primary btn-filter" data-target="3">Alunos</button>
 						<button type="button" class="btn btn-outline-success btn-filter" data-target="2">Professores</button>
 					</div>
-					</div>
 				</div>
-				
+			</div>
+			
 <?php
-				if($usuarios!=false){
+			if($usuarios!=false){
 ?>
-				<table id="tabelaUsuarios" class="table table-hover">
-					<thead>
-						<tr data-status="topo">
-							<th onclick="sortTable(0)">Matricula</th>
-							<th onclick="sortTable(1)">Nome</th>
-							<th onclick="sortTable(2)" class="un">Tipo</th>
-							<th onclick="sortTable(3)" class="un">Status</th>
-						</tr>
-					</thead>
+			<table id="tabelaUsuarios" class="table table-hover">
+				<thead>
+					<tr data-status="topo">
+						<th onclick="sortTable(0)">Matricula</th>
+						<th onclick="sortTable(1)">Nome</th>
+						<th onclick="sortTable(2)" class="un">Tipo</th>
+						<th onclick="sortTable(3)" class="un2">Status</th>
+					</tr>
+				</thead>
 <?php
-					foreach($usuarios as $usuario){
+				foreach($usuarios as $usuario){
 ?>
-						<tr data-status="<?php echo $usuario->getTipoUsuario_id();?>">
-							<td scope="row"><?php echo $usuario->getSiapeMatricula();?></td>
-							<td scope="row"><?php echo $usuario->getNome();?></td>
-							<td scope="row" class="un"><?php echo $tipoUsuario->getUmTipoUsuario($usuario->getTipoUsuario_id());?></td>
+					<tr data-status="<?php echo $usuario->getTipoUsuario_id();?>">
+						<td scope="row"><?php echo $usuario->getSiapeMatricula();?></td>
+						<td scope="row"><?php echo $usuario->getNome();?></td>
+						<td scope="row" class="un"><?php echo $tipoUsuario->getUmTipoUsuario($usuario->getTipoUsuario_id());?></td>
 <?php
-						if($usuario->getId()!=1){
-							if($usuario->getStatus()==1){
+					if($usuario->getId()!=1){
+						if($usuario->getStatus()==1){
 ?>
-							<td class="un">
-								<label class="switch">
-									<input type="checkbox" onclick=modificaStatus(<?php echo $usuario->getId();?>) checked>
-									<span class="slider round"></span>
-								</label>
-							<td>
-						</tr>
+						<td class="un2">
+							<label class="switch">
+								<input type="checkbox" onclick=modificaStatus(<?php echo $usuario->getId();?>) checked>
+								<span class="slider round"></span>
+							</label>
+						</td>
+					</tr>
 <?php
-							}else{
-?>
-							<td class="un">
-								<label class='switch'>
-									<input type="checkbox" onclick=modificaStatus(<?php echo $usuario->getId();?>)>
-									<span class="slider round"></span>
-								</label>
-							<td>
-						</tr>
-<?php
-							}
 						}else{
 ?>
-							<td class="un" style="text-align: center">Ativo</th>
-						</tr>
+						<td class="un2">
+							<label class='switch'>
+								<input type="checkbox" onclick=modificaStatus(<?php echo $usuario->getId();?>)>
+								<span class="slider round"></span>
+							</label>
+						</td>
+					</tr>
 <?php
 						}
-					}
+					}else{
 ?>
-				</table>
+						<td class="un2">Ativo</td>
 <?php
+					}
 				}
 ?>
-			</div>
+					</tr>
+			</table>
+<?php
+			}
+?>
 		</div>
 	</div>
 </div>
