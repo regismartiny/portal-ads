@@ -104,72 +104,82 @@
 		$(this).addClass('selected');
 	});
 </script>
-<div class="row">
-	<div class="col mx-auto">
-		<h1 class="titulo">Lista de Usuários</h1>
-		
-		<input type="text" id="myInput" onkeyup="procuraNomes()" placeholder="Procure por um nome..." title="Digite um nome">
-		<p>Mostrar usuario por tipo</p>
-		<p>
-			<button type="button" class="btn btn-outline-default btn-filter selected" data-target="todos">Todos</button>
-			<button type="button" class="btn btn-outline-primary btn-filter" data-target="3">Alunos</button>
-			<button type="button" class="btn btn-outline-success btn-filter" data-target="2">Professores</button>
-		</p>
+<div class="container">
+	<div class="row">
+		<div class="col-mx-auto">
+			<div class="table-responsive">
+				<h1 class="titulo">Lista de Usuários</h1>
+				
+				<input type="text" id="myInput" onkeyup="procuraNomes()" placeholder="Procure por um nome..." title="Digite um nome">
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-6">
+						<span>Mostrar usuario por tipo</span>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-6">
+					<div>
+						<button type="button" class="btn btn-outline-default btn-filter selected" data-target="todos">Todos</button>
+						<button type="button" class="btn btn-outline-primary btn-filter" data-target="3">Alunos</button>
+						<button type="button" class="btn btn-outline-success btn-filter" data-target="2">Professores</button>
+					</div>
+					</div>
+				</div>
+				
 <?php
-			if($usuarios!=false){
+				if($usuarios!=false){
 ?>
-		<div class="table-responsive">
-			<table id="tabelaUsuarios" class="table table-hover">
-				<thead>
-					<tr data-status="topo">
-						<th onclick="sortTable(0)">Matricula</th>
-						<th onclick="sortTable(1)">Nome</th>
-						<th onclick="sortTable(2)">Tipo</th>
-						<th onclick="sortTable(3)">Status</th>
-					</tr>
-				</thead>
+				<table id="tabelaUsuarios" class="table table-hover">
+					<thead>
+						<tr data-status="topo">
+							<th onclick="sortTable(0)">Matricula</th>
+							<th onclick="sortTable(1)">Nome</th>
+							<th onclick="sortTable(2)" class="un">Tipo</th>
+							<th onclick="sortTable(3)" class="un">Status</th>
+						</tr>
+					</thead>
 <?php
-				foreach($usuarios as $usuario){
+					foreach($usuarios as $usuario){
 ?>
-					<tr data-status="<?php echo $usuario->getTipoUsuario_id();?>">
-						<td scope="row"><?php echo $usuario->getSiapeMatricula();?></td>
-						<td scope="row"><?php echo $usuario->getNome();?></td>
-						<td scope="row"><?php echo $tipoUsuario->getUmTipoUsuario($usuario->getTipoUsuario_id());?></td>
+						<tr data-status="<?php echo $usuario->getTipoUsuario_id();?>">
+							<td scope="row"><?php echo $usuario->getSiapeMatricula();?></td>
+							<td scope="row"><?php echo $usuario->getNome();?></td>
+							<td scope="row" class="un"><?php echo $tipoUsuario->getUmTipoUsuario($usuario->getTipoUsuario_id());?></td>
 <?php
-					if($usuario->getId()!=1){
-						if($usuario->getStatus()==1){
+						if($usuario->getId()!=1){
+							if($usuario->getStatus()==1){
 ?>
-						<td>
-							<label class="switch">
-								<input type="checkbox" onclick=modificaStatus(<?php echo $usuario->getId();?>) checked>
-								<span class="slider round"></span>
-							</label>
-						<td>
-					</tr>
+							<td class="un">
+								<label class="switch">
+									<input type="checkbox" onclick=modificaStatus(<?php echo $usuario->getId();?>) checked>
+									<span class="slider round"></span>
+								</label>
+							<td>
+						</tr>
 <?php
+							}else{
+?>
+							<td class="un">
+								<label class='switch'>
+									<input type="checkbox" onclick=modificaStatus(<?php echo $usuario->getId();?>)>
+									<span class="slider round"></span>
+								</label>
+							<td>
+						</tr>
+<?php
+							}
 						}else{
 ?>
-						<td>
-							<label class='switch'>
-							<input type="checkbox" onclick=modificaStatus(<?php echo $usuario->getId();?>)>
-							<span class="slider round"></span>
-							</label>
-						<td>
-					</tr>
+							<td class="un" style="text-align: center">Ativo</th>
+						</tr>
 <?php
 						}
-					}else{
-?>
-						<td>Ativo</th>
-					</tr>
-<?php
 					}
+?>
+				</table>
+<?php
 				}
 ?>
-			</table>
+			</div>
 		</div>
-<?php
-			}
-?>
 	</div>
 </div>
