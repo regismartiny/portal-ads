@@ -146,20 +146,20 @@
 						if($usuario->getStatus()==1){
 ?>
 						<td class="un2">
-							<label class="switch">
+							<div class="switch">
 								<input type="checkbox" onclick=modificaStatus(<?php echo $usuario->getId();?>) checked>
 								<span class="slider round"></span>
-							</label>
+							</div>
 						</td>
 					</tr>
 <?php
 						}else{
 ?>
 						<td class="un2">
-							<label class='switch'>
+							<div class='switch'>
 								<input type="checkbox" onclick=modificaStatus(<?php echo $usuario->getId();?>)>
 								<span class="slider round"></span>
-							</label>
+							</div>
 						</td>
 					</tr>
 <?php
