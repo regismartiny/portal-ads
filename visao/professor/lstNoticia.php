@@ -1,5 +1,4 @@
 <?php
-	session_start();
 
 	include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleNoticia.class.php";
 	include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/CategoriaNoticia.class.php";
@@ -91,11 +90,11 @@
 									</tr>
 								</thead>";
 						foreach($noticias as $noticia){
-							
-							echo "<tr><th scope='row'>".$noticia->getId()."</th>";
-							echo "<td>".$noticia->getTitulo()."</td>";
-							echo "<td>".$noticia->getDataCadastro()."</td>";
-							if($noticia->getStatus()==1){
+							//print_r($noticia);	
+							echo "<tr><th scope='row'>".$noticia->id."</th>";
+							echo "<td><a href='/visao/professor/editaNoticia.php?idNoticia=".$noticia->id."'>".$noticia->titulo."</td>";
+							echo "<td>".$noticia->dataCadastro."</td>";
+							if($noticia->status == 1){
 								echo "<td><label class='switch'><input type='checkbox' checked><span class='slider round'></span></label><td>";
 							}else{
 								echo "<td><label class='switch'><input type='checkbox' ><span class='slider round'></span></label><td>";

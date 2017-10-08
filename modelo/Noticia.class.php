@@ -1,6 +1,6 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
+include_once $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
 class Noticia
 {
     private $id;
@@ -27,101 +27,15 @@ class Noticia
 		$this->usuario_id = $usuario_id;
 		$this->categoriaNoticia_id = $categoriaNoticia_id;
     }
-        
-    public function getId()
-    {
-        return $this->id;
-    }
-        
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 	
-	public function getTitulo()
-    {
-        return $this->titulo;
-    }
+	public function __get($valor){
+			return $this->$valor;
+		}
+	public function __set($propriedade,$valor){
+			$this->$propriedade = $valor;
+		}
         
-    public function setTitulo($titulo)
-    {
-        $this->titulo = $titulo;
-    }
-    public function getConteudo()
-    {
-        return $this->conteudo;
-    }
-        
-    public function setConteudo($conteudo)
-    {
-        $this->conteudo = $conteudo;
-    }    
-    public function getFonte()
-    {
-        return $this->fonte;
-    }
-        
-    public function setFonte($fonte)
-    {
-        $this->fonte = $fonte;
-    }
-    public function getImagem()
-    {
-        return $this->imagem;
-    }
-        
-    public function setImagem($id)
-    {
-        $this->imagem = $imagem;
-    }
-	public function getStatus()
-    {
-        return $this->status;
-    }
-        
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    }
-	public function getDataCadastro()
-    {
-        return $this->dataCadastro;
-    }
-        
-    public function setDataCadastro($dataCadastro)
-    {
-        $this->dataCadastro = $dataCadastro;
-    }
-	
-	public function getDataPublicacao()
-    {
-        return $this->dataPublicacao;
-    }
-        
-    public function setDataPublicacao($dataPublicacao)
-    {
-        $this->dataPublicacao = $dataPublicacao;
-    }
-	public function getUsuario_id()
-    {
-        return $this->usuario_id;
-    }
-        
-    public function setUsuario_id($usuario_id)
-    {
-        $this->usuario_id = $usuario_id;
-    }
-	public function getCategoriaNoticia_id()
-    {
-        return $this->categoriaNoticia_id;
-    }
-        
-    public function setCategoriaNoticia_id($categoriaNoticia_id)
-    {
-        $this->categoriaNoticia_id = $categoriaNoticia_id;
-    }
-	
-	  
+
 	
     public function listarUm()
     {
@@ -138,8 +52,8 @@ class Noticia
 			$this->status = $resultado[0]["status"];
 			$this->dataCadastro = $resultado[0]["dataCadastro"];
 			$this->dataPublicacao = $resultado[0]["dataPublicacao"];
-			$this->usuario_id = $resultado[0]["usuario_id"];
-			$this->categoriaNoticia_id = $resultado[0]["categoriaNoticia_id"];
+			$this->usuario_id = $resultado[0]["Usuario_id"];
+			$this->categoriaNoticia_id = $resultado[0]["CategoriaNoticia_id"];
 			
 			return $noticia;	
         } else {
@@ -159,17 +73,22 @@ class Noticia
             foreach ($resultados as $resultado) 
 	    {
 		
-                $noticia = new Noticia();
-                $noticia->setId($resultado['id']);
-                $noticia->setConteudo($resultado['conteudo']);
-                $noticia->setFonte($resultado['fonte']);
-                $noticia->setImagem($resultado['imagem']);
-                $noticia->setStatus($resultado['status']);
-                $noticia->setDataCadastro($resultado['dataCadastro']);
-				$noticia->setDataPublicacao($resultado['dataPublicacao']);
-                $noticia->setUsuario_id($resultado['usuario_id']);
-                $noticia->setCategoriaNoticia_id($resultado['categoriaNoticia_id']);
+				$noticia = new Noticia();
+				
+					
+                $noticia->id = ($resultado['id']);
+                $noticia->titulo = ($resultado['titulo']);
+				$noticia->conteudo = ($resultado['conteudo']);
+                $noticia->fonte = ($resultado['fonte']);
+                $noticia->imagem =($resultado['imagem']);
+                $noticia->status = ($resultado['status']);
+                $noticia->dataCadastro = ($resultado['dataCadastro']);
+				$noticia->dataPublicacao = ($resultado['dataPublicacao']);
+                $noticia->usuario_id = ($resultado['usuario_id']);
+                $noticia->categoriaNoticia_id = ($resultado['categoriaNoticia_id']);
 				$noticias[] = $noticia;
+		
+		
             }
             return $noticias;
         } 
@@ -192,16 +111,10 @@ class Noticia
 	    {
 		
                 $noticia = new Noticia();
-                $noticia->setId($resultado['id']);
-                //$noticia->setConteudo($resultado['conteudo']);
-                //$noticia->setFonte($resultado['fonte']);
-                //$noticia->setImagem($resultado['imagem']);
-                $noticia->setStatus($resultado['status']);
-                $noticia->setTitulo($resultado['titulo']);
-				$noticia->setDataCadastro($resultado['dataCadastro']);
-				//$noticia->setDataPublicacao($resultado['dataPublicacao']);
-                //$noticia->setUsuario_id($resultado['usuario_id']);
-                //$noticia->setCategoriaNoticia_id($resultado['categoriaNoticia_id']);
+                $noticia->id = ($resultado['id']);
+                $noticia->status = ($resultado['status']);
+                $noticia->titulo = ($resultado['titulo']);
+				$noticia->dataCadastro = ($resultado['dataCadastro']);
 				$noticias[] = $noticia;
             }
             return $noticias;
@@ -225,6 +138,18 @@ class Noticia
         $con->executa($sql);
         return 1;
     }
+	
+	
+	public function atualizar($idAtualiza)
+    {
+        $con = new MySQL();
+        
+        $sql = "UPDATE Noticia SET titulo = '$this->titulo', conteudo = '$this->conteudo', fonte = '$this->fonte', imagem = '$this->imagem', status = '1', dataCadastro = now(), dataPublicacao = now(), CategoriaNoticia_id = '$this->categoriaNoticia_id' WHERE id = $idAtualiza";
+        $con->executa($sql);
+        return 1;
+    }
+	
+	
 	
     public function desabilitarNoticia(){
         $con = new MySQL();

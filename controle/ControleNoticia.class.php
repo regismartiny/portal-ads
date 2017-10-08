@@ -1,5 +1,6 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/modelo/Noticia.class.php";
+session_start();
+include_once $_SERVER['DOCUMENT_ROOT']."/modelo/Noticia.class.php";
 
 class ControleNoticia
 {
@@ -40,10 +41,11 @@ class ControleNoticia
         $noticia->filtrarNoticia();
 	}	
 	
-	//public function editar($dados)
-    //{		
-     //   $usuario = new Usuario(null, $dados['matricula'], $dados['nome'], $dados['email'], $dados['senha'], null, $dados['tipoUsuario_id']);
-     //   $usuario->editar();
-    //}	
+	public function atualizar($dados)
+    {
+	
+        $noticia = new Noticia(null, $dados['titulo'], $dados['conteudo'], $dados['fonte'], $dados['imagem'],1,null, null,null, $dados['categoriaNoticia_id']);
+		return $noticia->atualizar($dados['idNoticia']);
+    }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-include_once $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
+include_once $_SERVER['DOCUMENT_ROOT']."/modelo/Noticia.class.php";
 
 class CategoriaNoticia
 {
@@ -64,6 +64,8 @@ class CategoriaNoticia
             return false;
         }
     }
+	
+		
 	public function getCategoriaNoticia(){
 			$con = new MySQL();
 			$sql = "SELECT * FROM categorianoticia";
