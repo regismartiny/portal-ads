@@ -34,6 +34,10 @@ ul {
     background-color: white;
 }
 
+#if-topo-dir {
+    text-align: right;
+}
+
 #logo {
     width: 220px;
 }
@@ -327,6 +331,7 @@ ul {
 
 
 /* The switch - the box around the slider */
+
 .switch {
     position: relative;
     display: inline-block;
@@ -334,12 +339,16 @@ ul {
     height: 34px;
 }
 
+
 /* Hide default HTML checkbox */
+
 .switch input {
-    display:none;
+    display: none;
 }
 
+
 /* The slider */
+
 .slider {
     position: absolute;
     cursor: pointer;
@@ -364,21 +373,23 @@ ul {
     transition: .4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
     background-color: #2196F3;
 }
 
-input:focus + .slider {
+input:focus+.slider {
     box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
 }
 
+
 /* Rounded sliders */
+
 .slider.round {
     border-radius: 34px;
 }
@@ -404,26 +415,31 @@ input:checked + .slider:before {
     background-color: #fff;
     border-color: #333;
 }
+
 .btn-outline-default:hover {
     color: #fff;
     background-color: #7DAAC9;
     border-color: #7DAAC9;
 }
+
 .btn-outline-default.selected {
     color: #fff;
     background-color: #7DAAC9;
     border-color: #7DAAC9;
 }
+
 .btn-outline-primary {
     color: #2980b9;
     background-color: #fff;
     border-color: #2980b9;
 }
+
 .btn-outline-primary:hover {
     color: #fff;
     background-color: #3498db;
     border-color: #3498db;
 }
+
 .btn-outline-primary.selected {
     color: #fff;
     background-color: #3498db;
@@ -435,11 +451,13 @@ input:checked + .slider:before {
     background-color: #fff;
     border-color: #27ae60;
 }
+
 .btn-outline-success:hover {
     color: #fff;
     background-color: #2ecc71;
     border-color: #2ecc71;
 }
+
 .btn-outline-success.selected {
     color: #fff;
     background-color: #2ecc71;
@@ -447,15 +465,16 @@ input:checked + .slider:before {
 }
 
 @media (max-width:546px) {
-    .un{
-        display:none;
+    .un {
+        display: none;
     }
 }
+
 @media (max-width:412px) {
-    .un{
-        display:none;
+    .un {
+        display: none;
     }
-    .un2{
-        display:none;
+    .un2 {
+        display: none;
     }
 }
