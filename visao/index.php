@@ -13,20 +13,18 @@
 <body>
     <div id="topo" class="contaner-fluid">
         <div id="inf-topo" class="row">
-            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-7 col-xl-8">
+            <div class="col-xs-12 col-sm-12 col-md-auto">
                 <a href="/visao/paginas-publicas/home.php"><img src="img/logo.jpg" id="logo"></a>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-5 col-xl-4 my-auto">
-                <span class="curso">
-						Curso de Análise e Desenvolvimento de Sistemas
-						<br>
-                        <?php 
-                        if(!empty($_SESSION)){
-                            echo $_SESSION["nomeUsuario"];
-                        }
-						?>
-				</span>
-				
+            <div id="if-topo-dir" class="col-xs-12 col-sm-12 col-md-auto ml-auto my-auto">
+                <span class="curso">Curso de Análise e Desenvolvimento de Sistemas
+                    <br>
+                    <?php 
+                    if(!empty($_SESSION)){
+                        echo $_SESSION["nomeUsuario"];
+                    }
+                    ?>
+				</span>			
             </div>
         </div>
         <div class="row">
@@ -100,7 +98,7 @@
                     Rua Princesa Isabel, 60 | Bairro Vila Rica | CEP: 95770-000 | Feliz - RS | Tel. 51 3637-4400</p>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                    <p>Desenvolvido e mantido pelos alunos do curso. <a href="#">Saiba mais</a></p>
+                    <p>Desenvolvido e mantido pelos alunos do curso. <a href="/visao/paginas-publicas/saibaMais.html">Saiba mais</a></p>
                 </div>
             </div>
         </div>
