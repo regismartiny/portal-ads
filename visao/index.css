@@ -88,6 +88,10 @@ ul {
     padding-top: 30px;
 }
 
+.card-img-top {
+    max-height: 200px!important;
+}
+
 .separador-h {
     margin-top: 50px;
     margin-bottom: 50px;
