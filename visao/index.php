@@ -16,7 +16,7 @@
             <div class="col-xs-12 col-sm-12 col-md-auto">
                 <a href="/visao/paginas-publicas/home.php"><img src="img/logo.jpg" id="logo"></a>
             </div>
-            <div id="if-topo-dir" class="col-xs-12 col-sm-12 col-md-auto ml-auto my-auto">
+            <div id="inf-topo-dir" class="col-xs-12 col-sm-12 col-md-auto ml-auto my-auto">
                 <span class="curso">Curso de Análise e Desenvolvimento de Sistemas
                     <br>
                     <?php 
