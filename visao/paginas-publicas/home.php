@@ -33,6 +33,7 @@
                 </div>
             </div>
         </div>
+        <hr class="separador-h"/>
         <div class="row row-grid">
             <div class="col">
                 <div class="lista">

@@ -88,6 +88,11 @@ ul {
     padding-top: 30px;
 }
 
+.separador-h {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
