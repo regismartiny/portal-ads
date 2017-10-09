@@ -121,7 +121,7 @@
 			<div class="form-group row">
                 <label for="nome" class="col-sm-12 col-md-5 col-form-label">Filtro por tipo:</label>
                 <div class="col-sm-12 col-md-7">
-					<div class="btn-group  col-ml-auto" role="group" aria-label="Basic example">
+					<div class="btn-group  col-ml-auto" role="group" aria-label="Tipos de Usuário">
 						<button type="button" class="btn btn btn-outline-default btn-filter selected" data-target="todos">Todos</button>
 						<button type="button" class="btn btn btn-outline-default btn-filter" data-target="3">Alunos</button>
 						<button type="button" class="btn btn btn-outline-default btn-filter" data-target="2">Professores</button>
