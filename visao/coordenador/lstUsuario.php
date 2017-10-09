@@ -1,5 +1,12 @@
 <?php
 	include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
+
+	if (!empty($_POST['alterarStatusId'])) {
+		$uControle = new ControleUsuario();
+		$uControle->modificarStatusUsuario($_POST['alterarStatusId']);
+		return;
+	}
+
 	include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/TipoUsuario.class.php";
 	$uControle = new ControleUsuario();
 	$tipoUsuario = new TipoUsuario();
@@ -11,8 +18,8 @@
 	function modificaStatus(id) {
 		$.ajax({
 			type: "POST",
-			url: 'modificarStatusUsuario.php',
-			data: "id="+id,
+			url: 'lstUsuario.php',
+			data: 'alterarStatusId=' + id
 		});
 	}
 	function procuraNomes() {
@@ -99,7 +106,7 @@
 			}
 		}
 	}
-	$('button').on('click', function(){
+	$('button').on('click', function() {
 		$('button').removeClass('selected');
 		$(this).addClass('selected');
 	});
@@ -111,60 +118,49 @@
 			
 			<!--<input class="col-sm-12" type="text" id="myInput" onkeyup="procuraNomes()" placeholder="Procure por um nome..." title="A busca realizada incluirá usuários de todos os tipos">-->
 
-			<div class="row">
-				<label class="col-sm-12 col-md-5">Selecione o tipo de usuario a se exibir:</label>
-				<div class="col-sm-12 col-md-7">
-					<div class="float-md-right">	
-						<button type="button" class="btn btn-outline-default btn-filter selected" data-target="todos">Todos</button>
-						<button type="button" class="btn btn-outline-primary btn-filter" data-target="3">Alunos</button>
-						<button type="button" class="btn btn-outline-success btn-filter" data-target="2">Professores</button>
+			<div class="form-group row">
+                <label for="nome" class="col-sm-12 col-md-5 col-form-label">Filtro por tipo:</label>
+                <div class="col-sm-12 col-md-7">
+					<div class="btn-group  col-ml-auto" role="group" aria-label="Basic example">
+						<button type="button" class="btn btn btn-outline-default btn-filter selected" data-target="todos">Todos</button>
+						<button type="button" class="btn btn btn-outline-default btn-filter" data-target="3">Alunos</button>
+						<button type="button" class="btn btn btn-outline-default btn-filter" data-target="2">Professores</button>
 					</div>
 				</div>
-			</div>
-			
+            </div>
+			<div class="row">
+
 <?php
-			if($usuarios!=false){
+			if($usuarios != false) {
 ?>
 			<table id="tabelaUsuarios" class="table table-hover">
 				<thead>
 					<tr data-status="topo">
-						<th onclick="sortTable(0)">Matricula</th>
+						<th onclick="sortTable(0)">Matrícula</th>
 						<th onclick="sortTable(1)">Nome</th>
 						<th onclick="sortTable(2)" class="un">Tipo</th>
 						<th onclick="sortTable(3)" class="un2">Status</th>
 					</tr>
 				</thead>
 <?php
-				foreach($usuarios as $usuario){
+				foreach($usuarios as $usuario) {
 ?>
 					<tr data-status="<?php echo $usuario->getTipoUsuario_id();?>">
 						<td scope="row"><?php echo $usuario->getSiapeMatricula();?></td>
 						<td scope="row"><?php echo $usuario->getNome();?></td>
 						<td scope="row" class="un"><?php echo $tipoUsuario->getUmTipoUsuario($usuario->getTipoUsuario_id());?></td>
 <?php
-					if($usuario->getId()!=1){
-						if($usuario->getStatus()==1){
+					if($uControle->usuarioPodeSerDesativado($usuario->getId())) {
 ?>
 						<td class="un2">
 							<label class="switch">
-								<input type="checkbox" onclick=modificaStatus(<?php echo $usuario->getId();?>) checked>
+								<input type="checkbox" onclick="modificaStatus(<?php echo $usuario->getId();?>)" <?php if ($usuario->isAtivo()) echo 'checked';?>>
 								<span class="slider round"></span>
 							</label>
 						</td>
 					</tr>
 <?php
-						}else{
-?>
-						<td class="un2">
-							<label class='switch'>
-								<input type="checkbox" onclick=modificaStatus(<?php echo $usuario->getId();?>)>
-								<span class="slider round"></span>
-							</label>
-						</td>
-					</tr>
-<?php
-						}
-					}else{
+					}else {
 ?>
 						<td class="un2">Ativo</td>
 <?php
@@ -176,6 +172,7 @@
 <?php
 			}
 ?>
+			</div>
 		</div>
 	</div>
 </div>

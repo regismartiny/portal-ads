@@ -1,7 +1,7 @@
 <?php
 
 include $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
-class Usuario{
+class Usuario {
 
     private $id;
     private $siapeMatricula;
@@ -11,7 +11,7 @@ class Usuario{
     private $status;
     private $tipoUsuario_id;
         
-    public function __construct($id = null, $si = null, $n = null, $e = null, $se = null, $st = null, $tp = null){
+    public function __construct($id = null, $si = null, $n = null, $e = null, $se = null, $st = null, $tp = null) {
         $this->id = $id;
         $this->siapeMatricula = $si;
         $this->nome = $n;
@@ -21,103 +21,107 @@ class Usuario{
         $this->tipoUsuario_id = $tp;
     }
         
-    public function getId(){
+    public function getId() {
         return $this->id;
     }
         
-    public function setId($id){
+    public function setId($id) {
         $this->id = $id;
     }
         
-    public function getSiapeMatricula(){
+    public function getSiapeMatricula() {
         return $this->siapeMatricula;
     }
         
-    public function setSiapeMatricula($siapeMatricula){
+    public function setSiapeMatricula($siapeMatricula) {
         $this->siapeMatricula = $siapeMatricula;
     }
         
-    public function getNome(){
+    public function getNome() {
         return $this->nome;
     }
         
-    public function setNome($nome){
+    public function setNome($nome) {
         $this->nome = $nome;
     }
         
-    public function getEmail(){
+    public function getEmail() {
         return $this->email;
     }
         
-    public function setEmail($email){
+    public function setEmail($email) {
         $this->email = $email;
     }
         
-    public function getSenha(){
+    public function getSenha() {
         return $this->senha;
     }
         
-    public function setSenha($senha){
+    public function setSenha($senha) {
         $this->senha = $senha;
     }
         
-    public function getStatus(){
+    public function getStatus() {
         return $this->status;
     }
         
-    public function setStatus($status){
+    public function setStatus($status) {
         $this->status = $status;
     }
         
-    public function getTipoUsuario_id(){
+    public function getTipoUsuario_id() {
         return $this->tipoUsuario_id;
     }
         
-    public function setTipoUsuario_id($tipoUsuario_id){
+    public function setTipoUsuario_id($tipoUsuario_id) {
         $this->tipoUsuario_id = $tipoUsuario_id;
     }
 
-    public function trocaSenha($senhaNova){	
-	    $resposta=0;
+    public function isAtivo() {
+        return $this->status == 1;
+    }
+
+    public function trocaSenha($senhaNova) {	
+	    $resposta = 0;
         $con = new MySQL();
         $sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula'";
         $resultados = $con->consulta($sql);
 
-        if (count($resultados)==1) {
+        if (count($resultados) == 1) {
 
 			$comparaSenha = strcasecmp($this->senha, $resultados[0]['senha']); //se são iguais retorna zero
 			
-			if($comparaSenha==0){					
+			if($comparaSenha == 0) {					
             				
 				$comparaSenha1 = strcasecmp($this->senha, $senhaNova); //se são iguais retorna zero
-                if($comparaSenha1!=0){
+                if($comparaSenha1 != 0) {
                     $sql = "UPDATE Usuario SET Senha = '$senhaNova' WHERE siapeMatricula = '$this->siapeMatricula'";
                     $con->executa($sql);
-                    $resposta=2;
+                    $resposta = 2;
                 }
-                else{
+                else {
                     //senha nova e velha iguais
-                    $resposta=4;
+                    $resposta = 4;
                 }
             }
-            else{
+            else {
                 //senha errada
-                $resposta=1;
+                $resposta = 1;
             }
-        }else{
+        }else {
             //usuario não existe
-	        $resposta=3;
+	        $resposta = 3;
 	    }
 	    return $resposta;
     }
 
 	
-    public function listarUm(){
+    public function listarUm() {
         $con = new MySQL();
         $sql = "SELECT * FROM Usuario WHERE siapeMatricula='$this->siapeMatricula'";
         $resultado = $con->consulta($sql);
         $usuario = new Usuario();
-        if (!empty($resultado)){
+        if (!empty($resultado)) {
             $this->id = $resultado[0]["id"];
             $this->numero = $resultado[0]["siapeMatricula"];
             $this->nome = $resultado[0]["nome"];
@@ -131,7 +135,7 @@ class Usuario{
         }
     }
     
-    public function getUsuarioStatus($id){
+    public function getUsuarioStatus($id) {
         $con = new MySQL();
         $sql = "SELECT status FROM Usuario WHERE id='$id'";
         $resultado = $con->consulta($sql);
@@ -142,13 +146,13 @@ class Usuario{
         }
     }
         
-    public function listarTodos(){
+    public function listarTodos() {
         $con = new MySQL();
         $sql = "SELECT * FROM Usuario";
         $resultados = $con->consulta($sql);
-        if (!empty($resultados)){
+        if (!empty($resultados)) {
             $usuarios = array();
-            foreach ($resultados as $resultado){
+            foreach ($resultados as $resultado) {
                 $usuario = new Usuario();
                 $usuario->setId($resultado['id']);
                 $usuario->setSiapeMatricula($resultado['siapeMatricula']);
@@ -160,16 +164,16 @@ class Usuario{
                 $usuarios[] = $usuario;
             }
             return $usuarios;
-        }else{
+        }else {
             return false;
         }
     }
 	
-    public function filtrarUsuario(){
+    public function filtrarUsuario() {
         $con = new MySQL();
         $sql = "SELECT * FROM Usuario WHERE id='$this->id'";
         $resultados = $con->consulta($sql);
-        if (!empty($resultados)){
+        if (!empty($resultados)) {
             $usuarios = array();
             foreach ($resultados as $resultado){
                 $usuario = new Usuario();
@@ -183,53 +187,53 @@ class Usuario{
                 $usuarios[] = $usuario;
             }
             return $usuarios;
-        }else{
+        }else {
             return false;
         }
     }	
          
-    public function inserir(){
+    public function inserir() {
         $resposta = 0;
         $con = new MySQL();
         $sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula'";
         $resultados = $con->consulta($sql);
         if (count($resultados) == 0) {
-            if(strlen($this->email) > 0){
+            if(strlen($this->email) > 0) {
                 $sql = "SELECT * FROM Usuario WHERE email = '$this->email'";
                 $resultados2 = $con->consulta($sql);
 
-                if (count($resultados2) == 0){//tudo certo
+                if (count($resultados2) == 0) {//tudo certo
                     $sql = "INSERT INTO Usuario (siapeMatricula,nome,email,senha,status,TipoUsuario_id) VALUES ('$this->siapeMatricula','$this->nome','$this->email','$this->senha','$this->status','$this->tipoUsuario_id')";
                     $con->executa($sql);
                     $resposta = 1;
 
-                }else{
+                }else {
                     //Email ja existe
                     $resposta = 2;
                 }
-            }else{
+            }else {
                 $sql = "INSERT INTO Usuario (siapeMatricula,nome,email,senha,status,TipoUsuario_id) VALUES ('$this->siapeMatricula','$this->nome',null,'$this->senha','$this->status','$this->tipoUsuario_id')";
                 $con->executa($sql);
                 $resposta = 1;
             }
-        }else{
+        }else {
             //Matricula ja existe
 	        $resposta = 3;
 	    }
 	    return $resposta;
     }
 	
-    public function modificarStatusUsuario(){
+    public function modificarStatusUsuario() {
         $con = new MySQL();
-        if($this->getUsuarioStatus($this->id) == 1){
+        if($this->isAtivo) {
             $sql = "UPDATE Usuario SET status = 0 WHERE id = '$this->id'";
-        }else{
+        }else {
             $sql = "UPDATE Usuario SET status = 1 WHERE id = '$this->id'";
         }
         $con->executa($sql);
     }
 	
-    public function editar(){
+    public function editar() {
         $con = new MySQL();		
         $sql = "UPDATE Usuario SET siapeMatricula = '$this->siapeMatricula', nome = '$this->nome', email = '$this->email', senha = '$this->senha', status = '$this->status', TipoUsuario_id = '$this->tipoUsuario_id' WHERE id = '$this->id'";
         $con->executa($sql);		
