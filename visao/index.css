@@ -92,6 +92,10 @@ ul {
     max-height: 200px!important;
 }
 
+.card {
+    margin-bottom: 20px;
+}
+
 .separador-h {
     margin-top: 50px;
     margin-bottom: 50px;
