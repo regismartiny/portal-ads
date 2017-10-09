@@ -32,6 +32,19 @@
 			}       
 		}
 	}
+	$(document).ready(function () {
+		$('.btn-filter').on('click', function () {
+			var $target = $(this).data('target');
+			if ($target != 'todos') {
+				$('.table tr').css('display', 'none');
+				$('.table tr[data-status="topo"]').fadeIn('slow');
+				$('.table tr[data-status="' + $target + '"]').fadeIn('slow');
+			} else {
+				$('.table tr').css('display', 'none').fadeIn('slow');
+			}
+		});
+
+	});
 	function sortTable(n) {
 		var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
 		table = document.getElementById("tabelaUsuarios");
@@ -86,19 +99,6 @@
 			}
 		}
 	}
-	$(document).ready(function () {
-		$('.btn-filter').on('click', function () {
-			var $target = $(this).data('target');
-			if ($target != 'todos') {
-				$('.table tr').css('display', 'none');
-				$('.table tr[data-status="topo"]').fadeIn('slow');
-				$('.table tr[data-status="' + $target + '"]').fadeIn('slow');
-			} else {
-				$('.table tr').css('display', 'none').fadeIn('slow');
-			}
-		});
-
-	});
 	$('button').on('click', function(){
 		$('button').removeClass('selected');
 		$(this).addClass('selected');
@@ -109,7 +109,7 @@
 		<div class="col-mx-auto">
 			<h1 class="titulo col-sm-12">Lista de Usuários</h1>
 			
-			<input class="col-sm-12" type="text" id="myInput" onkeyup="procuraNomes()" placeholder="Procure por um nome..." title="Digite um nome">
+			<!--<input class="col-sm-12" type="text" id="myInput" onkeyup="procuraNomes()" placeholder="Procure por um nome..." title="A busca realizada incluirá usuários de todos os tipos">-->
 
 			<div class="row">
 				<label class="col-sm-12 col-md-5">Selecione o tipo de usuario a se exibir:</label>
