@@ -18,7 +18,7 @@
 	function modificaStatus(id) {
 		$.ajax({
 			type: "POST",
-			url: 'lstUsuario.php',
+			url: '/visao/coordenador/lstUsuario.php',
 			data: 'alterarStatusId=' + id
 		});
 	}

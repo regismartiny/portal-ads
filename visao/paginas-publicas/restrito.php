@@ -67,13 +67,17 @@ function statusLogin(status) {
 }
 
 function direcionaPagina(tipoUsuario) {
+	navegaPagina('/visao/index.php');
+	/*
+	// Implementar atualização do menu por AJAX
+	//
 	if (tipoUsuario === '1') {
 		navegaPagina('/visao/coordenador/homeCoordenador.php');
 	} else if (tipoUsuario === '2') {
 		navegaPagina('/visao/professor/homeProfessor.php');
 	} else if (tipoUsuario === '3') {
 		navegaPagina('/visao/aluno/homeAluno.php');
-	}
+	}*/
 }
 
 function navegaPagina(pagina) {

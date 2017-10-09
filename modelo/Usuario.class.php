@@ -224,8 +224,9 @@ class Usuario {
     }
 	
     public function modificarStatusUsuario() {
+        $status = $this->getUsuarioStatus($this->getId());
         $con = new MySQL();
-        if($this->isAtivo) {
+        if ($status == 1) {
             $sql = "UPDATE Usuario SET status = 0 WHERE id = '$this->id'";
         }else {
             $sql = "UPDATE Usuario SET status = 1 WHERE id = '$this->id'";

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
+<?php session_start(); ?>
 <head>
     <meta charset="utf-8">
     <title>Portal ADS</title>
@@ -17,14 +17,7 @@
                 <a href="/visao/paginas-publicas/home.php"><img src="img/logo.jpg" id="logo"></a>
             </div>
             <div id="inf-topo-dir" class="col-xs-12 col-sm-12 col-md-auto ml-auto my-auto">
-                <span class="curso">Curso de Análise e Desenvolvimento de Sistemas
-                    <br>
-                    <?php 
-                    if(!empty($_SESSION)){
-                        echo $_SESSION["nomeUsuario"];
-                    }
-                    ?>
-				</span>			
+                <span class="curso">Curso de Análise e Desenvolvimento de Sistemas</span>			
             </div>
         </div>
         <div class="row">
@@ -77,9 +70,55 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/visao/paginas-publicas/mapa.php">Mapa</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/visao/paginas-publicas/restrito.php">Restrito</a>
-                            </li>
+                            <?php if (!isset($_SESSION['nomeUsuario'])) { ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/visao/paginas-publicas/restrito.php">Restrito</a>
+                                </li>
+                            <?php }else if (!empty($_SESSION['nomeUsuario'])) { 
+                                if ($_SESSION['tipoUsuario'] == 1) { ?>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <?php echo $_SESSION['nomeUsuario']; ?>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" href="/visao/paginas-publicas/trocaSenha.php">Trocar Senha</a>
+                                            <a class="dropdown-item" href="/visao/coordenador/cadUsuario.php">Cadastro de Usuários</a>
+                                            <a class="dropdown-item" href="/visao/coordenador/lstUsuario.php">Lista de Usuários</a>
+                                            <form method="post" action="/controle/logout.php">
+                                                <input type="submit" id="link" class="dropdown-item" name="botao" value="Sair">
+                                            </form>
+                                        </div>
+                                    </li>
+                            <?php 
+                                }else if($_SESSION['tipoUsuario'] == 2) { ?>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <?php echo $_SESSION['nomeUsuario'];?>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" href="/visao/paginas-publicas/trocaSenha.php">Trocar Senha</a>
+                                            <a class="dropdown-item" href="/visao/professor/cadNoticia.php">Cadastro de Notícias</a>
+                                            <a class="dropdown-item" href="/visao/professor/lstNoticia.php">Lista de Noticías</a>
+                                            <form method="post" action="/controle/logout.php">
+                                                <input type="submit" class="dropdown-item" name="botao" value="Sair">
+                                            </form>
+                                        </div>
+                                    </li>
+                            <?php 
+                                }else if($_SESSION['tipoUsuario'] == 3) { ?>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <?php echo $_SESSION['nomeUsuario'];?>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" href="/visao/paginas-publicas/trocaSenha.php">Trocar Senha</a>
+                                            <form method="post" action="/controle/logout.php">
+                                                <input type="submit" class="dropdown-item" name="botao" value="Sair">
+                                            </form>
+                                        </div>
+                                    </li>
+                            <?php }
+                                } ?>
                         </ul>
                     </div>
                 </nav>
