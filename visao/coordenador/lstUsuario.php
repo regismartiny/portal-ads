@@ -15,10 +15,26 @@
 	
 ?>
 <script>
+	$(document).ready(function () {
+		$('.btn-filter').on('click', function () {
+			var $target = $(this).data('target');
+			if ($target != 'todos') {
+				$('.table tr').css('display', 'none');
+				$('.table tr[data-status="topo"]').fadeIn('slow');
+				$('.table tr[data-status="' + $target + '"]').fadeIn('slow');
+			} else {
+				$('.table tr').css('display', 'none').fadeIn('slow');
+			}
+		});
+		$('button').on('click', function() {
+			$('button').removeClass('selected');
+			$(this).addClass('selected');
+		});
+	});
 	function modificaStatus(id) {
 		$.ajax({
-			type: "POST",
-			url: '/visao/coordenador/lstUsuario.php',
+			type: 'POST',
+			url: '<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>',
 			data: 'alterarStatusId=' + id
 		});
 	}
@@ -39,19 +55,6 @@
 			}       
 		}
 	}
-	$(document).ready(function () {
-		$('.btn-filter').on('click', function () {
-			var $target = $(this).data('target');
-			if ($target != 'todos') {
-				$('.table tr').css('display', 'none');
-				$('.table tr[data-status="topo"]').fadeIn('slow');
-				$('.table tr[data-status="' + $target + '"]').fadeIn('slow');
-			} else {
-				$('.table tr').css('display', 'none').fadeIn('slow');
-			}
-		});
-
-	});
 	function sortTable(n) {
 		var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
 		table = document.getElementById("tabelaUsuarios");
@@ -106,15 +109,11 @@
 			}
 		}
 	}
-	$('button').on('click', function() {
-		$('button').removeClass('selected');
-		$(this).addClass('selected');
-	});
 </script>
 <div class="container">
 	<div class="row">
 		<div class="col-mx-auto">
-			<h1 class="titulo col-sm-12">Lista de Usuários</h1>
+			<h2 class="titulo col-sm-12">Lista de Usuários</h2>
 			
 			<!--<input class="col-sm-12" type="text" id="myInput" onkeyup="procuraNomes()" placeholder="Procure por um nome..." title="A busca realizada incluirá usuários de todos os tipos">-->
 
