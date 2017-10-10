@@ -8,10 +8,13 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST) && isset($_POST['nome']) && isset($_POST['matricula'])) {
             
         include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
+        include $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
+
         $uControle = new ControleUsuario();
+
+        $dados = clearArray($_POST);
     
-        $estado = $uControle->inserir($_POST);
-        $status = array();
+        $estado = $uControle->inserir($dados);
   
         if($estado == 1){
             //Usuario inserido com sucesso
@@ -29,11 +32,9 @@
             //Matricula / SIAPE não valido
             $status = array('sucesso' => false, 'mensagem' => 'Verifique a Matrícula/SIAPE!');
         }
-        $resultado = json_encode($status, JSON_FORCE_OBJECT);
-        echo json_encode($resultado);
-    }else{
+    }else {
         $status = array('sucesso' => false, 'mensagem' => 'Oops! Houve um problema com o envio do formulário. Por favor tente enviar novamente.');
-        $resultado = json_encode($status, JSON_FORCE_OBJECT);
-        echo json_encode($resultado);
     }
+    $resultado = json_encode($status, JSON_FORCE_OBJECT);
+    echo json_encode($resultado);
 ?>
