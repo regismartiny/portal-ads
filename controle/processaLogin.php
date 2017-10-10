@@ -10,16 +10,19 @@
 if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
         && !empty($_POST['matricula']) && !empty($_POST['senha'])) {
     include $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
+    include $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
+
+    $dados = clearArray($_POST);
 
     $cUsuario = new ControleUsuario();
 
     $status = array();
-    $validacao = $cUsuario->validarLogin($_POST['matricula'], $_POST['senha']);
+    $validacao = $cUsuario->validarLogin($dados['matricula'], $dados['senha']);
     if($validacao == 2) {
         //tudo ok
         session_start();
         $usuario = new Usuario();
-        $usuario = $cUsuario->listarUm($_POST);
+        $usuario = $cUsuario->listarUm($dados);
         $_SESSION['usuario_id'] = $usuario->getId();
         $_SESSION['nomeUsuario'] = $usuario->getNome();
         $_SESSION['matricula'] = $usuario->getSiapeMatricula();
