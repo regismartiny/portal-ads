@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col mx-auto">
 		<h2 class="titulo">Acesso Restrito</h2>
-		<form id="form" method="post" action="/controle/login.php">
+		<form id="form" method="post" action="/controle/processaLogin.php">
 			<div class="form-group row">
 				<label for="matricula" class="col-sm-5 col-md-5 col-form-label">Matrícula / SIAPE:</label>
 				<div class="col-sm-7 col-md-7">
@@ -14,7 +14,7 @@
 					<input type="password" class="form-control" id="senha" name="senha" required>
 				</div>
 			</div>
-			<div id="result" class="status"></div>
+			<div id="result" class="status alert" role="alert"></div>
 			<br>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-4">
@@ -28,59 +28,52 @@
 	</div>
 </div>
 <script>
-$('#form').submit(function(event) {
-	event.preventDefault();
-	$form = $(this);
+	$('#form').submit(function(event) {
+		event.preventDefault();
+		$form = $(this);
 
-	statusProcessando();
+		statusProcessando();
 
-	$.ajax({
-		type: 'POST',
-		url: $form.attr('action'),
-		data: $form.serialize(),
-		success: function(response) {
-			
-			console.log(response);
-			let resObj = JSON.parse(response);
-			if (resObj) {
-				statusLogin(resObj.mensagem);
-				let tipoUsuario = resObj.tipoUsuario;
-				if (resObj.sucesso === true && tipoUsuario) {
-					direcionaPagina(tipoUsuario);
+		$.ajax({
+			type: 'POST',
+			url: $form.attr('action'),
+			data: $form.serialize(),
+			success: function(response) {
+				
+				console.log(response);
+				let resObj = JSON.parse(response);
+				if (resObj) {
+					let sucesso = resObj.sucesso;
+					if (sucesso) {
+						statusSucesso(resObj.mensagem);
+					} else {
+						statusErro(resObj.mensagem);
+					}
+					let tipoUsuario = resObj.tipoUsuario;
+					if (sucesso && tipoUsuario) {
+						direcionaPagina(tipoUsuario);
+					}
 				}
+			},
+			error: function(response) {
+				console.log(response);
+				statusErro('Erro no envio do formulário');
 			}
-		},
-		error: function(response) {
-			console.log(response);
-			statusLogin('Erro no envio do formulário');
-		}
+		});
 	});
-});
 
-function statusProcessando() {
-	$('#result').html('Processando...');
-	$('#result').fadeIn(400);
-}
-
-function statusLogin(status) {
-	$('#result').html(status);
-}
-
-function direcionaPagina(tipoUsuario) {
-	navegaPagina('/visao/index.php');
-	/*
-	// Implementar atualização do menu por AJAX
-	//
-	if (tipoUsuario === '1') {
-		navegaPagina('/visao/coordenador/homeCoordenador.php');
-	} else if (tipoUsuario === '2') {
-		navegaPagina('/visao/professor/homeProfessor.php');
-	} else if (tipoUsuario === '3') {
-		navegaPagina('/visao/aluno/homeAluno.php');
-	}*/
-}
-
-function navegaPagina(pagina) {
-	window.location.href = pagina;
-}
+	function direcionaPagina(tipoUsuario) {
+		/*
+		// Implementar atualização do menu por AJAX
+		*/
+		navegaPagina('/visao/index.php');
+		/*
+		if (tipoUsuario === '1') {
+			navegaPagina('/visao/coordenador/homeCoordenador.php');
+		} else if (tipoUsuario === '2') {
+			navegaPagina('/visao/professor/homeProfessor.php');
+		} else if (tipoUsuario === '3') {
+			navegaPagina('/visao/aluno/homeAluno.php');
+		}*/
+	}
 </script>

@@ -2,11 +2,24 @@
 include $_SERVER['DOCUMENT_ROOT']."/modelo/Usuario.class.php";
 
 class ControleUsuario
-{
-    public function validarDadosLogin($dados) {
-        return $this->validarLogin($dados['matricula'], $dados['senha']);
+{    
+    public function validarLogin($matricula, $senha) {
+        $usuario = new Usuario(null, $matricula);
+        $resposta = $usuario->listarUm();
+        if ($resposta != false) { //se existe um usuário com a matrícula informada
+            $senhaCorreta = $this->verificarSenha($senha, $usuario->getSenha());
+            if ($senhaCorreta) {
+                $status = $usuario->getStatus();
+                if ($status == 1) { //usuario ativo
+                    return 2; //tudo ok
+                }
+                return 4; //usuário bloqueado
+            }
+            return 1; //senha incorreta
+        }
+        return 3; //usuário inexistente
     }
-    
+
     public function verificarSenha($senhaInformada, $senhaArmazenada) {
         //após implementar criptografia da senha, ajustar essa verificação, 
         //para encriptar senha informada antes de comparar
@@ -36,23 +49,6 @@ class ControleUsuario
 		}
     }
 
-    public function validarLogin($matricula, $senha) {
-        $usuario = new Usuario(null, $matricula);
-        $resposta = $usuario->listarUm();
-        if ($resposta != false) { //se existe um usuário com a matrícula informada
-            $senhaCorreta = $this->verificarSenha($senha, $usuario->getSenha());
-            if ($senhaCorreta) {
-                $status = $usuario->getStatus();
-                if ($status == 1) { //usuario ativo
-                    return 2; //tudo ok
-                }
-                return 4; //usuário bloqueado
-            }
-            return 1; //senha incorreta
-        }
-        return 3; //usuário inexistente
-    }
-    
     public function listarUm($dados) {
         $usuario = new Usuario(null, $dados['matricula']);
         $usuario->listarUm();

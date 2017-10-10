@@ -56,28 +56,8 @@
 			},
 			error: function(response) {
 				console.log(response);
-				statusLogin('Erro no envio do formulário');
+				statusErro('Erro no envio do formulário');
 			}
 		});
 	});
-	function statusProcessando() {
-		status("Processando...");
-		$("#result").fadeIn(400);
-	}
-	function statusSucesso(msg) {
-		$("#result").removeClass('alert-danger').addClass('alert-success');
-		status(msg);
-		console.log('sucesso');
-	}
-	function statusErro(msg) {
-		$("#result").removeClass('alert-success').addClass('alert-danger');
-		status(msg);
-		console.log('erro');
-	}
-	function status(msg) {
-		$("#result").html(msg);
-	}
-	function navegaPagina(pagina) {
-		window.location.href = pagina;
-	}
 </script>

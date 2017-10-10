@@ -14,7 +14,7 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
     $cUsuario = new ControleUsuario();
 
     $status = array();
-    $validacao = $cUsuario->validarDadosLogin($_POST);
+    $validacao = $cUsuario->validarLogin($_POST['matricula'], $_POST['senha']);
     if($validacao == 2) {
         //tudo ok
         session_start();
@@ -31,12 +31,12 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
         $status = array('sucesso' => false, 'mensagem' => 'Erro desconhecido.');
     } elseif ($validacao == 1) {
         //Usuário Certo, Senha Errada
-        $status = array('sucesso' => false, 'mensagem' => 'Senha inválida!');
+        $status = array('sucesso' => false, 'mensagem' => 'Senha inválida.');
     } elseif ($validacao == 3) {
-        $status = array('sucesso' => false, 'mensagem' => 'Usuário inexistente!');
+        $status = array('sucesso' => false, 'mensagem' => 'O usuário não existe.');
     } elseif ($validacao == 4){
         //usuario bloqueado
-        $status = array('sucesso' => false, 'mensagem' => 'Usuário está bloqueado!');
+        $status = array('sucesso' => false, 'mensagem' => 'O usuário está bloqueado.');
     }
     $resultado = json_encode($status, JSON_FORCE_OBJECT);
     echo json_encode($resultado);
