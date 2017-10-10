@@ -60,6 +60,7 @@ function toggleMenu() {
 
 //////////////////Funções utilitárias///////////////////////
 function statusProcessando() {
+    $("#result").removeClass('alert-success alert-danger');
 	$('#result').html('Processando...');
 	$('#result').fadeIn(400);
 }
