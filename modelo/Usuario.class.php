@@ -81,41 +81,13 @@ class Usuario {
         return $this->status == 1;
     }
 
-    public function trocaSenha($senhaNova) {	
-	    $resposta = 0;
+    public function atualizarSenha() {	
         $con = new MySQL();
-        $sql = "SELECT * FROM Usuario WHERE siapeMatricula = '$this->siapeMatricula'";
-        $resultados = $con->consulta($sql);
-
-        if (count($resultados) == 1) {
-
-			$comparaSenha = strcasecmp($this->senha, $resultados[0]['senha']); //se são iguais retorna zero
-			
-			if($comparaSenha == 0) {					
-            				
-				$comparaSenha1 = strcasecmp($this->senha, $senhaNova); //se são iguais retorna zero
-                if($comparaSenha1 != 0) {
-                    $sql = "UPDATE Usuario SET Senha = '$senhaNova' WHERE siapeMatricula = '$this->siapeMatricula'";
-                    $con->executa($sql);
-                    $resposta = 2;
-                }
-                else {
-                    //senha nova e velha iguais
-                    $resposta = 4;
-                }
-            }
-            else {
-                //senha errada
-                $resposta = 1;
-            }
-        }else {
-            //usuario não existe
-	        $resposta = 3;
-	    }
-	    return $resposta;
+        $sql = "UPDATE Usuario SET Senha = '$this->senha' WHERE siapeMatricula = '$this->siapeMatricula'";
+        $ok = $con->executa($sql) == 1; //ok
+        return $ok;
     }
 
-	
     public function listarUm() {
         $con = new MySQL();
         $sql = "SELECT * FROM Usuario WHERE siapeMatricula='$this->siapeMatricula'";

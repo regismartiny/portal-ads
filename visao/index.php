@@ -81,7 +81,7 @@
                                             <?php echo $_SESSION['nomeUsuario']; ?>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <a class="dropdown-item" href="/visao/paginas-publicas/trocaSenha.php">Trocar Senha</a>
+                                            <a class="dropdown-item" href="/visao/common/alteracaoSenha.php">Alterar Senha</a>
                                             <a class="dropdown-item" href="/visao/coordenador/cadUsuario.php">Cadastro de Usuários</a>
                                             <a class="dropdown-item" href="/visao/coordenador/lstUsuario.php">Lista de Usuários</a>
                                             <form method="post" action="/controle/logout.php">
@@ -96,7 +96,7 @@
                                             <?php echo $_SESSION['nomeUsuario'];?>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <a class="dropdown-item" href="/visao/paginas-publicas/trocaSenha.php">Trocar Senha</a>
+                                            <a class="dropdown-item" href="/visao/common/alteracaoSenha.php">Alterar Senha</a>
                                             <a class="dropdown-item" href="/visao/professor/cadNoticia.php">Cadastro de Notícias</a>
                                             <a class="dropdown-item" href="/visao/professor/lstNoticia.php">Lista de Noticías</a>
                                             <form method="post" action="/controle/logout.php">
@@ -111,7 +111,7 @@
                                             <?php echo $_SESSION['nomeUsuario'];?>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <a class="dropdown-item" href="/visao/paginas-publicas/trocaSenha.php">Trocar Senha</a>
+                                            <a class="dropdown-item" href="/visao/common/alteracaoSenha.php">Alterar Senha</a>
                                             <form method="post" action="/controle/logout.php">
                                                 <input type="submit" class="dropdown-item" name="botao" value="Sair">
                                             </form>
