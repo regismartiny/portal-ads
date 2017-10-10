@@ -21,9 +21,8 @@ class ControleUsuario
     }
 
     public function verificarSenha($senhaInformada, $senhaArmazenada) {
-        //após implementar criptografia da senha, ajustar essa verificação, 
-        //para encriptar senha informada antes de comparar
-        return strcasecmp($senhaInformada, $senhaArmazenada) == 0;
+        $senhaInformadaEncriptada = $this->encriptarSenha($senhaInformada);
+        return strcasecmp($senhaInformadaEncriptada, $senhaArmazenada) == 0;
     }
 
     public function alterarSenha($siapeMatricula, $dados) {
@@ -33,7 +32,8 @@ class ControleUsuario
             if ($senhaAtualENovaDiferentes) {
                 $validacaoLogin = $this->validarLogin($siapeMatricula, $dados['senhaAtual']);
                 if ($validacaoLogin == 2) { //login válido
-                    $usuario = new Usuario(null, $siapeMatricula, null, null, $dados['senhaNova']);
+                    $senhaEncriptada = $this->encriptarSenha($dados['senhaNova']);
+                    $usuario = new Usuario(null, $siapeMatricula, null, null, $senhaEncriptada);
                     $resposta = $usuario->atualizarSenha();
                     if ($resposta) {
                         return 2; //senha alterada com sucesso
@@ -49,6 +49,10 @@ class ControleUsuario
 		}
     }
 
+    public function encriptarSenha($senha) {
+        return md5($senha);
+    }
+
     public function listarUm($dados) {
         $usuario = new Usuario(null, $dados['matricula']);
         $usuario->listarUm();
@@ -59,10 +63,11 @@ class ControleUsuario
         $tipoUsuario = $this->getTipoUsuario($dados['matricula']);
 
         if($tipoUsuario != 0){
-            $usuario = new Usuario(null, $dados['matricula'], $dados['nome'], $dados['email'], $dados['matricula'], 1, $tipoUsuario);
+            $senhaEncriptada = $this->encriptarSenha($dados['senha']);
+            $usuario = new Usuario(null, $dados['matricula'], $dados['nome'], $dados['email'], $senhaEncriptada, 1, $tipoUsuario);
             return $usuario->inserir();
         }
-        return 4;//Matricula / SIAPE inválido
+        return 4; //Matricula / SIAPE inválido
     }
 
     public function getTipoUsuario($matricula) {
