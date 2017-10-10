@@ -12,10 +12,13 @@
 	if (!empty($_POST) && isset($_POST['senhaAtual']) && isset($_POST['senhaNova']) && isset($_POST['confSenha'])) {
 
 		include $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
+		include $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
 
-		$cUsuario = new ControleUsuario();	
+		$cUsuario = new ControleUsuario();
 
-		$resposta = $cUsuario->alterarSenha($_SESSION['matricula'], $_POST);
+		$dados = clearArray($_POST);
+
+		$resposta = $cUsuario->alterarSenha($_SESSION['matricula'], $dados);
 		
 		if ($resposta == 0) {
 			//Erro no processo
