@@ -70,7 +70,7 @@
 			
 			$.ajax({
 				type: "POST",
-				url: "processaCadNoticia.php",
+				url: "/controle/processaCadNoticia.php",
 				data: $("#ajax-form").serialize(),
 				success: function(response) {
 				
