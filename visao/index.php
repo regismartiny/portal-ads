@@ -1,6 +1,6 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
-<?php session_start(); ?>
 <head>
     <meta charset="utf-8">
     <title>Portal ADS</title>
