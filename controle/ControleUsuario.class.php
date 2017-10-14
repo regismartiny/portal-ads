@@ -5,8 +5,8 @@ class ControleUsuario
 {    
     public function validarLogin($matricula, $senha) {
         $usuario = new Usuario(null, $matricula);
-        $resposta = $usuario->listarUm();
-        if ($resposta != false) { //se existe um usuário com a matrícula informada
+        $ok = $usuario->listarUm();
+        if ($ok) { //se existe um usuário com a matrícula informada
             $senhaCorreta = $this->verificarSenha($senha, $usuario->getSenha());
             if ($senhaCorreta) {
                 $status = $usuario->getStatus();

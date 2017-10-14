@@ -45,6 +45,22 @@ class CategoriaNoticia
         $this->cor = $cor;
     }
 
+    public function listarUm() {
+        $con = new MySQL();
+        $sql = "SELECT * FROM CategoriaNoticia WHERE id='$this->id'";
+        $resultado = $con->consulta($sql);
+        $categoria = new CategoriaNoticia();
+        if (!empty($resultado)) {
+            $categoria = new CategoriaNoticia();
+            $categoria->setId($resultado[0]["id"]);
+            $categoria->setDescricao($resultado[0]["descricao"]);
+            $categoria->setCor($resultado[0]["cor"]);
+			return $categoria;	
+        } else {
+            return false;
+        }
+    }
+
     public function listarTodos()
     {
         $con = new MySQL();
@@ -64,12 +80,4 @@ class CategoriaNoticia
             return false;
         }
     }
-	
-		
-	public function getCategoriaNoticia(){
-			$con = new MySQL();
-			$sql = "SELECT * FROM categorianoticia";
-			$resultados = $con->consulta($sql);
-			return $resultados;
-		}
 }

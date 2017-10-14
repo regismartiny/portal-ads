@@ -1,14 +1,15 @@
 <?php
 	
-	//include $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
 	include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/CategoriaNoticia.class.php";
 	include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleNoticia.class.php";
+	include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
+
+	$dados = clearArray($_GET);
 
 	$nControle = new ControleNoticia();
-	$noticia = new Noticia;
-	$noticia = $nControle->listarUm($_GET['idNoticia']);
-	
 
+	$noticia = $nControle->listarUm($dados['idNoticia']);
+	
 	$titulo = $noticia->titulo;
 	$conteudo = $noticia->conteudo;
 	$fonte = $noticia->fonte;
@@ -18,115 +19,102 @@
 	
 	
 	function inserirCategoriaNoticiaNoCombo($idSelecionado){
-		
-		
-		$categoriaNoticia = new CategoriaNoticia(null,null,null);
-		$categoriasNoticias = $categoriaNoticia->getCategoriaNoticia();
+
+		$categoriaNoticia = new CategoriaNoticia();
+		$categoriasNoticias = $categoriaNoticia->listarTodos();
 		$returnCategoriaNoticia = "";
-		foreach($categoriasNoticias as $row => $arrayInterno){
-			$categoriaNoticia = new categoriaNoticia($arrayInterno['id'],$arrayInterno['descricao'], $arrayInterno['cor']);
-			
-			$returnCategoriaNoticia = $returnCategoriaNoticia."<option value=".$arrayInterno['id'];
-			if($arrayInterno['id'] == $idSelecionado){$returnCategoriaNoticia = $returnCategoriaNoticia." selected";}
-			$returnCategoriaNoticia = $returnCategoriaNoticia.">".$arrayInterno['descricao']."</option>";
+		foreach($categoriasNoticias as $categoria){
+			$returnCategoriaNoticia = $returnCategoriaNoticia."<option value=".$categoria->getId();
+			if($categoria->getId() == $idSelecionado) {
+				$returnCategoriaNoticia = $returnCategoriaNoticia." selected";
+			}
+			$returnCategoriaNoticia = $returnCategoriaNoticia.">".$categoria->getDescricao()."</option>";
 		}
 		return $returnCategoriaNoticia;
 	}
-	
-	
-	
-
 ?>
 
-   <div class="row justify-content-center" >
-				<div class="col-12 mx-auto">
-					<form id="ajax-form" method='post' action=''>
-						<div class="form-group row">
-							<h1 class="col-sm-12 col-form-label">Edição de Notícia</h1>
+   <div class="row" >
+			<div class="col mx-auto">
+				<h2 class="titulo">Edição de Notícia</h2>
+				<form id="ajax-form" method='post' action='/controle/processaEditaNoticia.php'>
+					<input type="hidden" class="form-control" id="idNoticia"  name="idNoticia"  value="<?php echo $idNoticia; ?>">
+					<div class="form-group row">
+						<label for="categoriaNoticia_id" class="col-sm-4 col-form-label">Categoria:</label>
+						<div class="col-sm-8">
+							<select class="col custom-select" id="categoriaNoticia_id" name="categoriaNoticia_id" required>
+								<?php 
+									echo inserirCategoriaNoticiaNoCombo($categoriaNoticia_id);
+								?>
+							</select>
 						</div>
-						<div>
-						<input type="hidden" class="form-control" id="idNoticia"  name="idNoticia"  value="<?php echo $idNoticia; ?>">
+					</div>	
+					<div class="form-group row">
+						<label for="titulo" class="col-sm-12 col-md-4 col-form-label">Título:</label>
+						<div class="col-sm-12 col-md-8">
+							<input type="text" class="form-control" id="titulo" name='titulo' value="<?php echo $titulo; ?>" required>
 						</div>
-						<div class="form-group row">
-							<label for="categoriaNoticia_id" class="col-sm-4 col-form-label">Categoria:</label>
-							<div class="col-sm-8">
-								<select class="col custom-select" id="categoriaNoticia_id" name="categoriaNoticia_id" required>
-									<?php 
-										echo inserirCategoriaNoticiaNoCombo($categoriaNoticia_id);
-									?>
-								</select>
-							</div>
-						</div>	
-						<div class="form-group row">
-							<label for="titulo" class="col-sm-12 col-md-4 col-form-label">Título:</label>
-							<div class="col-sm-12 col-md-8">
-								<input type="text" class="form-control" id="titulo" name='titulo' value="<?php echo $titulo; ?>" required>
-							</div>
+					</div>
+					<div class="form-group row">
+						<label for="conteudo" class="col-sm-12 col-md-4 col-form-label">Conteúdo:</label>
+						<div class="col-sm-12 col-md-8">
+							<textarea class="form-control" id="conteudo" name="conteudo" required><?php echo $conteudo; ?></textarea>
 						</div>
-						<div class="form-group row">
-							<label for="conteudo" class="col-sm-12 col-md-4 col-form-label">Conteúdo:</label>
-							<div class="col-sm-12 col-md-8">
-								<textarea class="form-control" id="conteudo" name='conteudo' "required><?php echo $conteudo; ?></textarea>
-							</div>
+					</div>
+					<div class="form-group row">
+						<label for="fonte" class="col-sm-12 col-md-4 col-form-label">Fonte:</label>
+						<div class="col-sm-12 col-md-8">
+							<input type="text" class="form-control" id="fonte" name="fonte" value="<?php echo $fonte; ?>" required>
 						</div>
-						<div class="form-group row">
-							<label for="fonte" class="col-sm-12 col-md-4 col-form-label">Fonte:</label>
-							<div class="col-sm-12 col-md-8">
-								<input type="text" class="form-control" id="fonte" name='fonte' value="<?php echo $fonte; ?>"required>
-							</div>
+					</div>
+					<div class="form-group row">
+						<label for="imagem" class="col-sm-12 col-md-4 col-form-label">Link para Imagem:</label>
+						<div class="col-sm-12 col-md-8">
+							<input type="text" class="form-control" id="imagem" name="imagem" value="<?php echo $imagem; ?>" required>
 						</div>
-						<div class="form-group row">
-							<label for="imagem" class="col-sm-12 col-md-4 col-form-label">Link para Imagem:</label>
-							<div class="col-sm-12 col-md-8">
-								<input type="text" class="form-control" id="imagem" name='imagem' value="<?php echo $imagem; ?>"required>
-							</div>
+					</div>
+					<div id="result" class="status"></div>
+					<br>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-6">
+							<input type="submit" class="btn-login btn btn-primary btn-lg btn-block" name="botao" value="Atualizar" />
 						</div>
-						<div id="result" class="status"></div>
-						<br>
-						<div class="row">
-							<div class="col-xs-12 col-sm-12 col-md-6">
-								<input type="submit" class="btn-login btn btn-primary btn-lg btn-block" name="botao" value="Atualizar" />
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-6">
-								<a href="/visao/professor/lstNoticia.php" class="btn btn-danger btn-lg btn-block">Cancelar</a>
-							</div>
+						<div class="col-xs-12 col-sm-12 col-md-6">
+							<a href="/visao/professor/lstNoticia.php" class="btn btn-danger btn-lg btn-block">Cancelar</a>
 						</div>
-									
-					</form>		
-					
-				</div>
+					</div>
+								
+				</form>		
+				
+			</div>
 	</div>
 
 	<script>
 		$("#ajax-form").submit(function(event) {
 			event.preventDefault();
+			$form = $(this);
 			
 			statusProcessando();
 			
 			$.ajax({
-				type: "POST",
-				url: "/controle/processaEditaNoticia.php",
-				data: $("#ajax-form").serialize(),
+				type: $form.attr('method'),
+				url: $form.attr('action'),
+				data: $form.serialize(),
 				success: function(response) {
-				
-					console.log(response);
 					let resObj = JSON.parse(response);
-					let mensagem = resObj.mensagem;
-					printaMensagem(mensagem);
+					if (resObj) {
+						let sucesso = resObj.sucesso;
+						if (sucesso) {
+							statusSucesso(resObj.mensagem);
+						} else {
+							statusErro(resObj.mensagem);
+						}
+					}
 				},
 				error: function(response) {
 					console.log(response);
-					printaMensagem('Erro no envio do formulário');
+					statusErro('Erro no envio do formulário');
 				}
 			});
 		});
-
-		function statusProcessando() {
-			$("#result").html("Processando...");
-			$("#result").fadeIn(400);
-		}
-		function printaMensagem(status) {
-			$("#result").html(status);
-		}
 	</script>
-</html>

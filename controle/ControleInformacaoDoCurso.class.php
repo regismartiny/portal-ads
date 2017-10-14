@@ -2,31 +2,38 @@
 
 include $_SERVER['DOCUMENT_ROOT']."/modelo/InformacaoDoCurso.class.php";
 
-class ControleInformacaoDoCurso
-{   
-    public function listarPorId($id)
-    {
+class ControleInformacaoDoCurso {   
+    public function listarPorId($id) {
         $informacao = new InformacaoDoCurso($id);
-        $informacao->listarPorId();
-		return $informacao;
+        $ok = $informacao->listarPorId();
+        if ($ok) {
+            return $informacao;
+        } else {
+            return false;
+        }
     }
 
-    public function listarPorChave($chave)
-    {
+    public function listarPorChave($chave) {
         $informacao = new InformacaoDoCurso(null, $chave);
-        $informacao->listarPorChave();
-		return $informacao;
+        $ok = $informacao->listarPorChave();
+		if ($ok) {
+            return $informacao;
+        } else {
+            return false;
+        }
     }
 
-    public function listarTodos()
-    {
+    public function listarTodos() {
         $informacoes = new InformacaoDoCurso();
-        $informacoes->listarTodos();
-		return $informacoes;
+        $ok = $informacoes->listarTodos();
+		if ($ok) {
+            return $informacao;
+        } else {
+            return false;
+        }
     }
 	
-    public function inserir($dados)
-    {
+    public function inserir($dados) {
         $informacao = new InformacaoDoCurso(null, $dados['chave'], $dados['titulo'], $dados['conteudo']);
         $informacao->inserir();
     }

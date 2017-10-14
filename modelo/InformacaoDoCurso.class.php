@@ -56,42 +56,37 @@ class InformacaoDoCurso
         $this->conteudo = $conteudo;
     }
 
-    public function listarPorId()
-    {
+    public function listarPorId() {
         $con = new MySQL();
         $sql = "SELECT * FROM InformacaoDoCurso WHERE id='$this->id'";
         $resultado = $con->consulta($sql);
-        $informacao = new InformacaoDoCurso();
         if (!empty($resultado)) {
             $this->id = $resultado[0]["id"];
             $this->chave = $resultado[0]["chave"];
             $this->titulo = $resultado[0]["titulo"];
             $this->conteudo = $resultado[0]["conteudo"];
-            return $informacao;
+            return true;
         } else {
             return false;
         }
     }
 
-    public function listarPorChave()
-    {
+    public function listarPorChave() {
         $con = new MySQL();
         $sql = "SELECT * FROM InformacaoDoCurso WHERE chave LIKE '$this->chave'";
         $resultado = $con->consulta($sql);
-        $informacao = new InformacaoDoCurso();
         if (!empty($resultado)) {
             $this->id = $resultado[0]["id"];
             $this->chave = $resultado[0]["chave"];
             $this->titulo = $resultado[0]["titulo"];
             $this->conteudo = $resultado[0]["conteudo"];
-            return $informacao;
+            return true;
         } else {
             return false;
         }
     }
 
-    public function listarTodos()
-    {
+    public function listarTodos() {
         $con = new MySQL();
         $sql = "SELECT * FROM InformacaoDoCurso";
         $resultados = $con->consulta($sql);
@@ -112,10 +107,9 @@ class InformacaoDoCurso
     }
         
         
-    public function inserir()
-    {
+    public function inserir() {
         $con = new MySQL();
         $sql = "INSERT INTO InformacaoDoCurso (chave, titulo, conteudo) VALUES ('$this->chave', '$this->titulo', '$this->conteudo')";
-        $con->executa($sql);
+        return $con->executa($sql) > 0;
     }
 }

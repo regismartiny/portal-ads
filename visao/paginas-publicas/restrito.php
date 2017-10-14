@@ -35,7 +35,7 @@
 		statusProcessando();
 
 		$.ajax({
-			type: 'POST',
+			type: $form.attr('method'),
 			url: $form.attr('action'),
 			data: $form.serialize(),
 			success: function(response) {

@@ -92,7 +92,6 @@ class Usuario {
         $con = new MySQL();
         $sql = "SELECT * FROM Usuario WHERE siapeMatricula='$this->siapeMatricula'";
         $resultado = $con->consulta($sql);
-        $usuario = new Usuario();
         if (!empty($resultado)) {
             $this->id = $resultado[0]["id"];
             $this->numero = $resultado[0]["siapeMatricula"];
@@ -101,7 +100,7 @@ class Usuario {
             $this->senha = $resultado[0]["senha"];
             $this->status = $resultado[0]["status"];
             $this->tipoUsuario_id = $resultado[0]["TipoUsuario_id"];
-            return $usuario;	
+            return true;	
         } else {
             return false;
         }

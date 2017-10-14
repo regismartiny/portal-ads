@@ -33,12 +33,13 @@ include_once $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
 			return $resultados;
 		}
 
-		public function getUmTipoUsuario($id){
+		public function listarUm(){
 			$con = new MySQL();
-			$sql = "SELECT * FROM TipoUsuario WHERE id='$id'";
+			$sql = "SELECT * FROM TipoUsuario WHERE id='$this->id'";
 			$resultado = $con->consulta($sql);
 			if (!empty($resultado)) {
-				return $resultado[0]["descricao"];
+				$this->setDescricao($resultado[0]["descricao"]);
+				return true;
 			} else {
 				return false;
 			}
