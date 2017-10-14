@@ -3,24 +3,24 @@
 		<h2 class="titulo">Acesso Restrito</h2>
 		<form id="form" method="post" action="/controle/processaLogin.php">
 			<div class="form-group row">
-				<label for="matricula" class="col-sm-5 col-md-5 col-form-label">Matrícula / SIAPE:</label>
-				<div class="col-sm-7 col-md-7">
+				<label for="matricula" class="col-sm-12 col-md-12 col-form-label">Matrícula / SIAPE:</label>
+				<div class="col-sm-12 col-md-12">
 					<input type="text" class="form-control" id="matricula" name="matricula" required>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="senha" class="col-sm-5 col-md-5 col-form-label">Senha:</label>
-				<div class="col-sm-7 col-md-7">
+				<label for="senha" class="col-sm-12 col-md-12 col-form-label">Senha:</label>
+				<div class="col-sm-12 col-md-12">
 					<input type="password" class="form-control" id="senha" name="senha" required>
 				</div>
 			</div>
 			<div id="result" class="status alert" role="alert"></div>
 			<br>
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-4">
+				<div class="col-sm-12 col-md-4">
 					<input type="submit" class="btn-login btn btn-primary btn-lg btn-block" name="login" value="Login" />
 				</div>
-				<div class="col-xs-12 col-sm-12 col-md-8">
+				<div class="col-sm-12 col-md-8">
 					<a href="esqueciSenha.html" class="btn btn-danger btn-lg btn-block">Esqueci Minha Senha</a>
 				</div>
 			</div>
