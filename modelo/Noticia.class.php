@@ -28,21 +28,18 @@ class Noticia
 		$this->categoriaNoticia_id = $categoriaNoticia_id;
     }
 	
-	public function __get($valor){
+	public function __get($valor) {
 			return $this->$valor;
-		}
-	public function __set($propriedade,$valor){
+	}
+	public function __set($propriedade,$valor) {
 			$this->$propriedade = $valor;
-		}
-        
+    }   
 
 	
-    public function listarUm()
-    {
+    public function listarUm() {
         $con = new MySQL();
         $sql = "SELECT * FROM Noticia WHERE id='$this->id'";
         $resultado = $con->consulta($sql);
-        $noticia = new Noticia();
         if (!empty($resultado)) {
             $this->id = $resultado[0]["id"];
             $this->titulo = $resultado[0]["titulo"];
@@ -54,28 +51,21 @@ class Noticia
 			$this->dataPublicacao = $resultado[0]["dataPublicacao"];
 			$this->usuario_id = $resultado[0]["Usuario_id"];
 			$this->categoriaNoticia_id = $resultado[0]["CategoriaNoticia_id"];
-			
-			return $noticia;	
+			return true;	
         } else {
             return false;
         }
     }
      
         
-    public function listarTodos()
-    {
+    public function listarTodos() {
         $con = new MySQL();
         $sql = "SELECT * FROM Noticia";
         $resultados = $con->consulta($sql);
-        if (!empty($resultados)) 
-	{
+        if (!empty($resultados)) {
             $noticias = array();
-            foreach ($resultados as $resultado) 
-	    {
-		
-				$noticia = new Noticia();
-				
-					
+            foreach ($resultados as $resultado) {
+				$noticia = new Noticia();	
                 $noticia->id = ($resultado['id']);
                 $noticia->titulo = ($resultado['titulo']);
 				$noticia->conteudo = ($resultado['conteudo']);
@@ -87,71 +77,77 @@ class Noticia
                 $noticia->usuario_id = ($resultado['usuario_id']);
                 $noticia->categoriaNoticia_id = ($resultado['categoriaNoticia_id']);
 				$noticias[] = $noticia;
-		
-		
             }
             return $noticias;
-        } 
-	else 
-	{
+        } else {
             return false;
         }
     }
 	
 	
-	    public function listarMinhasNoticias($siapeMatricula)
-    {
+    public function listarPorMatricula($siapeMatricula) {
         $con = new MySQL();
         $sql = "SELECT n.id, n.titulo, n.dataCadastro, n.status FROM Noticia n, Usuario u WHERE u.siapeMatricula = $siapeMatricula and u.id = n.usuario_id";
         $resultados = $con->consulta($sql);
-        if (!empty($resultados)) 
-	{
+        if (!empty($resultados)) {
             $noticias = array();
-            foreach ($resultados as $resultado) 
-	    {
-		
+            foreach ($resultados as $resultado) {
                 $noticia = new Noticia();
                 $noticia->id = ($resultado['id']);
                 $noticia->status = ($resultado['status']);
                 $noticia->titulo = ($resultado['titulo']);
-				$noticia->dataCadastro = ($resultado['dataCadastro']);
-				$noticias[] = $noticia;
+                $noticia->dataCadastro = ($resultado['dataCadastro']);
+                $noticias[] = $noticia;
             }
             return $noticias;
-        } 
-	else 
-	{
+        } else {
             return false;
         }
     }
-	
-	
-	
+
+    public function listarPaginado($pagina, $quantidade) {
+        $inicio = ($quantidade * $pagina) - $quantidade;
+        $con = new MySQL();
+        $sql = "SELECT * FROM noticia ORDER BY dataPublicacao DESC LIMIT $inicio, $quantidade";
+        $resultados  = $con->consulta($sql);
+        if (!empty($resultados)) {
+            $noticias = array();
+            foreach ($resultados as $resultado){
+                $noticia = new Noticia();
+                $noticia->id = $resultado['id'];
+                $noticia->titulo = $resultado['titulo'];
+                $noticia->conteudo = $resultado['conteudo'];
+                $noticia->fonte = $resultado['fonte'];
+                $noticia->imagem = $resultado['imagem'];
+                $noticia->status = $resultado['status'];
+                $noticia->dataCadastro = $resultado['dataCadastro'];
+                $noticia->dataPublicacao = $resultado['dataPublicacao'];
+                $noticia->usuario_id = $resultado['Usuario_id'];
+                $noticia->categoriaNoticia_id = $resultado['CategoriaNoticia_id'];
+                $noticias[] = $noticia;
+            }
+            return $noticias;
+        } else {
+            return false;
+        }
+    }
     
         
-    public function inserir()
-    {
+    public function inserir() {
         $con = new MySQL();
-        
         $sql = "INSERT INTO Noticia (titulo, conteudo, fonte, imagem, status, dataCadastro, dataPublicacao, Usuario_id, CategoriaNoticia_id) 
                 VALUES ('$this->titulo', '$this->conteudo', '$this->fonte', '$this->imagem', '1', now(), now(), '$this->usuario_id', '$this->categoriaNoticia_id')";
-        $con->executa($sql);
-        return 1;
+        return $con->executa($sql) > 0 ? 1 : 0;
     }
 	
 	
-	public function atualizar($idAtualiza)
-    {
+	public function atualizar($idAtualiza) {
         $con = new MySQL();
-        
         $sql = "UPDATE Noticia SET titulo = '$this->titulo', conteudo = '$this->conteudo', fonte = '$this->fonte', imagem = '$this->imagem', status = '1', dataCadastro = now(), dataPublicacao = now(), CategoriaNoticia_id = '$this->categoriaNoticia_id' WHERE id = $idAtualiza";
-        $con->executa($sql);
-        return 1;
+        return $con->executa($sql) > 0 ? 1 : 0;
     }
 	
-	
-	
-    public function desabilitarNoticia(){
+    public function desabilitar(){
         $con = new MySQL();
         $sql = "UPDATE Noticia SET status = $this->status WHERE id = $this->id";
         $con->executa($sql);
