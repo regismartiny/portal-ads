@@ -3,14 +3,14 @@
 		<h2 class="titulo">Acesso Restrito</h2>
 		<form id="form" method="post" action="/controle/processaLogin.php">
 			<div class="form-group row">
-				<label for="matricula" class="col-sm-12 col-md-12 col-form-label">Matrícula / SIAPE:</label>
-				<div class="col-sm-12 col-md-12">
+				<label for="matricula" class="col-sm-12 col-form-label">Matrícula / SIAPE:</label>
+				<div class="col-sm-12">
 					<input type="text" class="form-control" id="matricula" name="matricula" required>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="senha" class="col-sm-12 col-md-12 col-form-label">Senha:</label>
-				<div class="col-sm-12 col-md-12">
+				<label for="senha" class="col-sm-12 col-form-label">Senha:</label>
+				<div class="col-sm-12">
 					<input type="password" class="form-control" id="senha" name="senha" required>
 				</div>
 			</div>
