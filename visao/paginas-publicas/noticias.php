@@ -13,7 +13,7 @@
                 $noticias = $cNoticia->listarPaginado($pagina, 10);
                 
                 if ($noticias == false) {
-                    echo "Nenhum notícia encontrada.";
+                    echo "Nenhuma notícia encontrada.";
                     return;
                 }
                 

@@ -74,8 +74,8 @@ class Noticia
                 $noticia->status = ($resultado['status']);
                 $noticia->dataCadastro = ($resultado['dataCadastro']);
 				$noticia->dataPublicacao = ($resultado['dataPublicacao']);
-                $noticia->usuario_id = ($resultado['usuario_id']);
-                $noticia->categoriaNoticia_id = ($resultado['categoriaNoticia_id']);
+                $noticia->usuario_id = ($resultado['Usuario_id']);
+                $noticia->categoriaNoticia_id = ($resultado['CategoriaNoticia_id']);
 				$noticias[] = $noticia;
             }
             return $noticias;
@@ -87,7 +87,7 @@ class Noticia
 	
     public function listarPorMatricula($siapeMatricula) {
         $con = new MySQL();
-        $sql = "SELECT n.id, n.titulo, n.dataCadastro, n.status FROM Noticia n, Usuario u WHERE u.siapeMatricula = $siapeMatricula and u.id = n.usuario_id";
+        $sql = "SELECT n.id, n.titulo, n.dataCadastro, n.status FROM Noticia n, Usuario u WHERE u.siapeMatricula = $siapeMatricula and u.id = n.Usuario_id";
         $resultados = $con->consulta($sql);
         if (!empty($resultados)) {
             $noticias = array();
@@ -108,7 +108,7 @@ class Noticia
     public function listarPaginado($pagina, $quantidade) {
         $inicio = ($quantidade * $pagina) - $quantidade;
         $con = new MySQL();
-        $sql = "SELECT * FROM noticia ORDER BY dataPublicacao DESC LIMIT $inicio, $quantidade";
+        $sql = "SELECT * FROM Noticia ORDER BY dataPublicacao DESC LIMIT $inicio, $quantidade";
         $resultados  = $con->consulta($sql);
         if (!empty($resultados)) {
             $noticias = array();

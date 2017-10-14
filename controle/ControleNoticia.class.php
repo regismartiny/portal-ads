@@ -29,8 +29,8 @@ class ControleNoticia {
     }
 
     public function listarPaginado($pagina, $quantidade) {
-        $pagina = !empty($pagina) ? 1 : $pagina;
-        $quantidade = !empty($quantidade) ? 10 : $quantidade;
+        $pagina = !empty($pagina) ? $pagina : 1;
+        $quantidade = !empty($quantidade) ? $quantidade : 10;
         $noticia = new Noticia();
         $noticias = $noticia->listarPaginado($pagina, $quantidade);
         if ($noticias == false || empty($noticias)) {
