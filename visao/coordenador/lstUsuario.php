@@ -16,13 +16,14 @@
 	$usuarios = $uControle->consultar();
 ?>
 <script>
+	var filtroSelecionado = 0;
 	$(document).ready(function () {
 		$('.btn-filter').on('click', function () {
-			var $target = $(this).data('target');
-			if ($target != 'todos') {
+			filtroSelecionado = $(this).data('target');
+			if (filtroSelecionado != 0) {
 				$('.table tr').css('display', 'none');
-				$('.table tr[data-status="topo"]').fadeIn('slow');
-				$('.table tr[data-status="' + $target + '"]').fadeIn('slow');
+				$('.table tr[data-status=0]').fadeIn('slow');
+				$('.table tr[data-status="' + filtroSelecionado + '"]').fadeIn('slow');
 			} else {
 				$('.table tr').css('display', 'none').fadeIn('slow');
 			}
@@ -46,16 +47,38 @@
 		table = document.getElementById("tabelaUsuarios");
 		tr = table.getElementsByTagName("tr");
 		for (i = 0; i < tr.length; i++) {
-			td = tr[i].getElementsByTagName("td")[1];
-			if (td) {
-				if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-					tr[i].style.display = "";
-				} else {
-					tr[i].style.display = "none";
-				}
-			}       
+			var tipo = $(tr[i]).data('tipo');
+			if(filtroSelecionado == tipo){
+				td = tr[i].getElementsByTagName("td")[1];
+				if (td) {
+					if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}    
+			}else if(filtroSelecionado == 0
+			){
+				td = tr[i].getElementsByTagName("td")[1];
+				if (td) {
+					if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				} 
+			}
 		}
 	}
+
+	function renderizarTabela(arrayFiltrado) {
+		var divTabela = $("#tabelaUsuarios");
+
+		var tabelaAtualizada = '';
+
+		divTabela.html(tabelaAtualizada);
+	}
+
 	function sortTable(n) {
 		var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
 		table = document.getElementById("tabelaUsuarios");
@@ -115,13 +138,13 @@
 	<div class="col mx-auto">
 		<h2 class="titulo">Lista de Usuários</h2>
 		
-		<!--<input class="col-sm-12" type="text" id="myInput" onkeyup="procuraNomes()" placeholder="Procure por um nome..." title="A busca realizada incluirá usuários de todos os tipos">-->
+		<input class="col-sm-12" type="text" id="myInput" onkeyup="procuraNomes()" placeholder="Procure por um nome..." title="A busca realizada incluirá usuários de todos os tipos">
 
 		<div class="form-group row">
 			<label for="nome" class="col-sm-12 col-md-5 col-form-label">Filtro por tipo:</label>
 			<div class="col-sm-12 col-md-7">
 				<div class="btn-group  col-ml-auto" role="group" aria-label="Tipos de Usuário">
-					<button type="button" class="btn btn btn-outline-default btn-filter selected" data-target="todos">Todos</button>
+					<button type="button" class="btn btn btn-outline-default btn-filter selected" data-target="0">Todos</button>
 					<button type="button" class="btn btn btn-outline-default btn-filter" data-target="3">Alunos</button>
 					<button type="button" class="btn btn btn-outline-default btn-filter" data-target="2">Professores</button>
 				</div>
@@ -146,8 +169,9 @@
 			$tipoUsuario = new TipoUsuario($usuario->getId());
 			$tipoUsuario->listarUm();
 			$descricaoTipo = $tipoUsuario->getDescricao();
+			$idTipo = $tipoUsuario->getId();
 ?>
-				<tr data-status="<?php echo $usuario->getTipoUsuario_id();?>">
+				<tr data-tipo = "<?php echo $idTipo; ?>" data-status="<?php echo $usuario->getTipoUsuario_id();?>">
 					<td scope="row"><?php echo $usuario->getSiapeMatricula();?></td>
 					<td scope="row"><?php echo $usuario->getNome();?></td>
 					<td scope="row" class="un"><?php echo $descricaoTipo;?></td>
