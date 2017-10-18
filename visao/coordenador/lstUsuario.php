@@ -41,9 +41,10 @@
 		});
 	}
 	function procuraNomes() {
-		var input, filter, table, tr, td, i;
-		input = document.getElementById("myInput");
-		filter = input.value.toUpperCase();
+		filtroTipoEProcuraNomes();
+		/*var filter, table, tr, td, i;
+		filter = document.getElementById("myInput").value.toUpperCase();
+		console.log(filter);
 		table = document.getElementById("tabelaUsuarios");
 		tr = table.getElementsByTagName("tr");
 		for (i = 0; i < tr.length; i++) {
@@ -68,12 +69,21 @@
 					}
 				} 
 			}
-		}
+		}*/
+	}
+
+	function filtroTipoEProcuraNomes() {
+		var filtro = document.getElementById("myInput").value.toUpperCase();
+		var arrayUsuarios = <?php echo json_encode($usuarios); ?>;
+		console.log(arrayUsuarios);
+		var arrayFiltrado;
+
+		//renderizarTabela(arrayFiltrado);
 	}
 
 	function renderizarTabela(arrayFiltrado) {
 		var divTabela = $("#tabelaUsuarios");
-
+		
 		var tabelaAtualizada = '';
 
 		divTabela.html(tabelaAtualizada);
