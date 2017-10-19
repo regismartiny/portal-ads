@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //Quando clicado em algum link, guarda na barra de endereços o caminho e carrega a página dentro da div conteudo
     $('body').delegate('a', 'click', function() {
+        //Limpa status atividade do menu
+        if (!$(this).hasClass('nav-link') && !$(this).hasClass('dropdown-item')) {
+            $('.nav-item').removeClass('active');
+        }
         let attr = $(this).attr('href')
         if (attr.startsWith('/')) {
             window.location.hash = attr;
@@ -61,24 +65,24 @@ function toggleMenu() {
 //////////////////Funções utilitárias///////////////////////
 function statusProcessando() {
     $("#result").removeClass('alert-success alert-danger');
-	$('#result').html('Processando...');
-	$('#result').fadeIn(400);
+    $('#result').html('Processando...');
+    $('#result').fadeIn(400);
 }
 
 function statusSucesso(msg) {
-	$("#result").removeClass('alert-danger').addClass('alert-success');
-	status(msg);
-	console.log('sucesso');
+    $("#result").removeClass('alert-danger').addClass('alert-success');
+    status(msg);
+    console.log('sucesso');
 }
 
 function statusErro(msg) {
-	$("#result").removeClass('alert-success').addClass('alert-danger');
-	status(msg);
-	console.log('erro');
+    $("#result").removeClass('alert-success').addClass('alert-danger');
+    status(msg);
+    console.log('erro');
 }
 
 function status(msg) {
-	$("#result").html(msg);
+    $("#result").html(msg);
 }
 
 function navegaPagina(pagina) {
