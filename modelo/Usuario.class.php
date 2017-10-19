@@ -1,7 +1,7 @@
 <?php
 
 include $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
-class Usuario {
+class Usuario implements JsonSerializable{
 
     private $id;
     private $siapeMatricula;
@@ -209,6 +209,10 @@ class Usuario {
         $con = new MySQL();		
         $sql = "UPDATE Usuario SET siapeMatricula = '$this->siapeMatricula', nome = '$this->nome', email = '$this->email', senha = '$this->senha', status = '$this->status', TipoUsuario_id = '$this->tipoUsuario_id' WHERE id = '$this->id'";
         $con->executa($sql);		
+    }
+
+    public function jsonSerialize(){
+        return (object) get_object_vars($this);
     }
 
 }

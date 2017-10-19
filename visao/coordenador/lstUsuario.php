@@ -16,21 +16,21 @@
 	$usuarios = $uControle->consultar();
 ?>
 <script>
-	var filtroSelecionado = 0;
+	var filtroTipo = 0;
+	var filtroNome = '';
 	$(document).ready(function () {
 		$('.btn-filter').on('click', function () {
-			filtroSelecionado = $(this).data('target');
-			if (filtroSelecionado != 0) {
-				$('.table tr').css('display', 'none');
-				$('.table tr[data-status=0]').fadeIn('slow');
-				$('.table tr[data-status="' + filtroSelecionado + '"]').fadeIn('slow');
-			} else {
-				$('.table tr').css('display', 'none').fadeIn('slow');
-			}
+			filtroTipo = $(this).data('target');
+			filtroTipoEProcuraNomes();
+			
 		});
 		$('button').on('click', function() {
 			$('button').removeClass('selected');
 			$(this).addClass('selected');
+		});
+		$('#myInput').on('keyup', function() {
+			filtroNome = $(this).val();
+			filtroTipoEProcuraNomes();
 		});
 	});
 	function modificaStatus(id) {
@@ -40,51 +40,44 @@
 			data: 'alterarStatusId=' + id
 		});
 	}
-	function procuraNomes() {
-		filtroTipoEProcuraNomes();
-		/*var filter, table, tr, td, i;
-		filter = document.getElementById("myInput").value.toUpperCase();
-		console.log(filter);
-		table = document.getElementById("tabelaUsuarios");
-		tr = table.getElementsByTagName("tr");
-		for (i = 0; i < tr.length; i++) {
-			var tipo = $(tr[i]).data('tipo');
-			if(filtroSelecionado == tipo){
-				td = tr[i].getElementsByTagName("td")[1];
-				if (td) {
-					if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-						tr[i].style.display = "";
-					} else {
-						tr[i].style.display = "none";
-					}
-				}    
-			}else if(filtroSelecionado == 0
-			){
-				td = tr[i].getElementsByTagName("td")[1];
-				if (td) {
-					if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-						tr[i].style.display = "";
-					} else {
-						tr[i].style.display = "none";
-					}
-				} 
-			}
-		}*/
-	}
 
 	function filtroTipoEProcuraNomes() {
-		var filtro = document.getElementById("myInput").value.toUpperCase();
-		var arrayUsuarios = <?php echo json_encode($usuarios); ?>;
-		console.log(arrayUsuarios);
-		var arrayFiltrado;
-
-		//renderizarTabela(arrayFiltrado);
+		filtroNomeUpper = filtroNome.toUpperCase();
+		var jsonArrayUsuarios = <?php echo json_encode($usuarios); ?>;
+		var arrayIntermediario = [];
+		var arrayFiltrado = [];
+		for (var indice in jsonArrayUsuarios) {
+			if (jsonArrayUsuarios.hasOwnProperty(indice)) {
+				var usuario = jsonArrayUsuarios[indice];
+				if (filtroTipo == 2) {
+					if(usuario.tipoUsuario_id == 2) {
+						arrayIntermediario.push(usuario);
+					}
+				}else if(filtroTipo == 3){
+					if(usuario.tipoUsuario_id == 3) {
+						arrayIntermediario.push(usuario);
+					}
+				}else{
+					arrayIntermediario = jsonArrayUsuarios;
+				}
+			}
+		}
+		for(var indice in arrayIntermediario){
+			if (arrayIntermediario.hasOwnProperty(indice)) {
+				var usuario = arrayIntermediario[indice];
+				if(usuario.nome.toUpperCase().indexOf(filtroNomeUpper) > -1){
+					arrayFiltrado.push(usuario);
+				}
+			}
+		}
+		renderizarTabela(arrayFiltrado);
 	}
-
+	
 	function renderizarTabela(arrayFiltrado) {
 		var divTabela = $("#tabelaUsuarios");
 		
-		var tabelaAtualizada = '';
+		
+		var tabelaAtualizada = "<table id='tabelaUsuarios' class='table table-hover'><thead><tr data-status='topo'><th onclick='sortTable(0)'>Matrícula</th><th onclick='sortTable(1)'>Nome</th><th onclick='sortTable(2)' class='un'>Tipo</th><th onclick='sortTable(3)' class='un2'>Status</th></tr></thead>";
 
 		divTabela.html(tabelaAtualizada);
 	}
@@ -148,7 +141,7 @@
 	<div class="col mx-auto">
 		<h2 class="titulo">Lista de Usuários</h2>
 		
-		<input class="col-sm-12" type="text" id="myInput" onkeyup="procuraNomes()" placeholder="Procure por um nome..." title="A busca realizada incluirá usuários de todos os tipos">
+		<input class="col-sm-12" type="text" id="myInput" placeholder="Procure por um nome..." title="A busca realizada incluirá usuários de todos os tipos">
 
 		<div class="form-group row">
 			<label for="nome" class="col-sm-12 col-md-5 col-form-label">Filtro por tipo:</label>
