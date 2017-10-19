@@ -28,8 +28,12 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
         $_SESSION['matricula'] = $usuario->getSiapeMatricula();
         $_SESSION['email'] = $usuario->getEmail();
         $_SESSION['tipoUsuario'] = $usuario->getTipoUsuario_id();
+		//$_SESSION['DataUltimoAcesso'] = $usuario->getDataUltimoAcesso();
+		
+		
         definirCookie($usuario->getSiapeMatricula(), 1); //define o cookie pra sessão em 1 hora
         $status = array('sucesso' => true, 'mensagem' => 'Usuário autenticado com sucesso.', 'tipoUsuario' => $_SESSION['tipoUsuario']);
+		
     } elseif ($validacao == 0) {
         $status = array('sucesso' => false, 'mensagem' => 'Erro desconhecido.');
     } elseif ($validacao == 1) {
@@ -40,7 +44,10 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
     } elseif ($validacao == 4){
         //usuario bloqueado
         $status = array('sucesso' => false, 'mensagem' => 'O usuário está bloqueado.');
-    }
+    } elseif ($validacao == 5){
+        //primeiro acesso
+        $status = array('sucesso' => true, 'mensagem' => 'Primeiro acesso. Usuário deve mudar a senha e Cadastrar Email válido.', 'primeiroAcesso' => true);
+    }	
     $resultado = json_encode($status, JSON_FORCE_OBJECT);
     echo json_encode($resultado);
 }

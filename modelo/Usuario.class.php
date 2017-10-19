@@ -10,8 +10,9 @@ class Usuario {
     private $senha;
     private $status;
     private $tipoUsuario_id;
+	private $dataUltimoAcesso;
         
-    public function __construct($id = null, $si = null, $n = null, $e = null, $se = null, $st = null, $tp = null) {
+    public function __construct($id = null, $si = null, $n = null, $e = null, $se = null, $st = null, $tp = null, $dua= null) {
         $this->id = $id;
         $this->siapeMatricula = $si;
         $this->nome = $n;
@@ -19,6 +20,7 @@ class Usuario {
         $this->senha = $se;
         $this->status = $st;
         $this->tipoUsuario_id = $tp;
+		$this->dataUltimoAcesso = $dua;
     }
         
     public function getId() {
@@ -76,7 +78,17 @@ class Usuario {
     public function setTipoUsuario_id($tipoUsuario_id) {
         $this->tipoUsuario_id = $tipoUsuario_id;
     }
+	
+	public function getDataUltimoAcesso() {
+        return $this->dataUltimoAcesso;
+    }
+        
+    public function setDataUltimoAcesso($dua) {
+        $this->dataUltimoAcesso = $dua;
+    }
 
+	
+	
     public function isAtivo() {
         return $this->status == 1;
     }
@@ -100,11 +112,34 @@ class Usuario {
             $this->senha = $resultado[0]["senha"];
             $this->status = $resultado[0]["status"];
             $this->tipoUsuario_id = $resultado[0]["TipoUsuario_id"];
+			//$this->dataUltimoAcesso = $resultado[0]["dataUltimoAcesso"];
             return true;	
         } else {
             return false;
         }
     }
+	
+	
+	public function listarUmEmail() {
+        $con = new MySQL();
+        $sql = "SELECT * FROM Usuario WHERE email='$this->email'";
+        $resultado = $con->consulta($sql);
+        if (!empty($resultado)) {
+            $this->id = $resultado[0]["id"];
+            $this->numero = $resultado[0]["siapeMatricula"];
+            $this->nome = $resultado[0]["nome"];
+            $this->email = $resultado[0]["email"];
+            $this->status = $resultado[0]["status"];
+            $this->tipoUsuario_id = $resultado[0]["TipoUsuario_id"];
+			//$this->dataUltimoAcesso = $resultado[0]["dataUltimoAcesso"];
+            return true;	
+        } else {
+            return false;
+        }
+    }
+	
+	
+	
     
     public function getUsuarioStatus($id) {
         $con = new MySQL();
@@ -132,6 +167,7 @@ class Usuario {
                 $usuario->setSenha($resultado['senha']);
                 $usuario->setStatus($resultado['status']);
                 $usuario->setTipoUsuario_id($resultado['TipoUsuario_id']);
+				//$usuario->setDataUltimoAcesso($resultado['dataUltimoAcesso'];
                 $usuarios[] = $usuario;
             }
             return $usuarios;
@@ -155,6 +191,7 @@ class Usuario {
                 $usuario->setSenha($resultado['senha']);
                 $usuario->setStatus($resultado['status']);
                 $usuario->setTipoUsuario_id($resultado['TipoUsuario_id']);
+				//$usuario->setDataUltimoAcesso($resultado['dataUltimoAcesso'];
                 $usuarios[] = $usuario;
             }
             return $usuarios;
@@ -210,5 +247,13 @@ class Usuario {
         $sql = "UPDATE Usuario SET siapeMatricula = '$this->siapeMatricula', nome = '$this->nome', email = '$this->email', senha = '$this->senha', status = '$this->status', TipoUsuario_id = '$this->tipoUsuario_id' WHERE id = '$this->id'";
         $con->executa($sql);		
     }
+	
+	public function atualizaDataSenha($matricula){
+	
+		$con = new MySQL();		
+        $sql = "UPDATE Usuario SET dataUltimoAcesso = now() WHERE siapeMatricula = '$matricula'";
+        $con->executa($sql);
+	
+	}
 
 }

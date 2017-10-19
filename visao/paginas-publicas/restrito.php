@@ -50,6 +50,12 @@
 						statusErro(resObj.mensagem);
 					}
 					let tipoUsuario = resObj.tipoUsuario;
+					
+					if (sucesso && primeiroAcesso) {
+						direcionaPaginaPrimeiroAcesso();
+					}
+					
+					
 					if (sucesso && tipoUsuario) {
 						direcionaPagina(tipoUsuario);
 					}
@@ -75,5 +81,12 @@
 		} else if (tipoUsuario === '3') {
 			navegaPagina('/visao/aluno/homeAluno.php');
 		}*/
+	}
+
+	function direcionaPaginaPrimeiroAcesso() {
+		
+		var siapeMatricula = $('#matricula').val();
+		navegaPagina('/visao/common/primeiroAcesso.php?siapeMatricula='+siapeMatricula);
+		
 	}
 </script>

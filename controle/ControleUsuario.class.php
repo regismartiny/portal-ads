@@ -10,8 +10,15 @@ class ControleUsuario
             $senhaCorreta = $this->verificarSenha($senha, $usuario->getSenha());
             if ($senhaCorreta) {
                 $status = $usuario->getStatus();
+				$dua = $usuario->getDataUltimoAcesso();
                 if ($status == 1) { //usuario ativo
-                    return 2; //tudo ok
+                    //if($dua!=null){
+						return 2; //tudo ok
+						//$usuario->atualizaDataAcesso($matricula);
+					//}else{
+						//return 5; //tudo ok mas primeiro acesso. direciona para troca de senha;
+					//}
+										
                 }
                 return 4; //usuário bloqueado
             }
@@ -49,6 +56,42 @@ class ControleUsuario
 		}
     }
 
+    public function alterarEmail($dados) {
+        $confirmacaoDeEmailCorreta = strcasecmp($dados['email'], $dados['confEmail']) == 0;
+		if($confirmacaoDeEmailCorreta) {
+            $validacaoEmail = $this->validarEmail($dados['email']);
+                if ($validacaoEmail == 2) { //login válido
+                    $usuario = new Usuario(null, null, null, $email);
+                    $resposta = $usuario->atualizarEmail();
+                    if ($resposta) {
+                        return 2; //senha alterada com sucesso
+                    }
+                } else {
+                    return $validacaoLogin;
+                }
+           
+		}else {
+			return 5;
+		}
+    }
+
+	public function validarEmail($email) {
+        $usuario = new Usuario(null, null, null, $email);
+        $ok = $usuario->listarUmEmail();
+        if (!$ok) { //se não existe um usuário com esse email informado
+						return 2; //tudo ok
+									
+        }else{  return 4; //email já existe
+            }
+       
+    }
+
+
+
+
+	
+	
+	
     public function encriptarSenha($senha) {
         return md5($senha);
     }
