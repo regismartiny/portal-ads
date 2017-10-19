@@ -1,7 +1,7 @@
 <?php
 
 include $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
-class Usuario {
+class Usuario implements JsonSerializable{
 
     private $id;
     private $siapeMatricula;
@@ -255,5 +255,9 @@ class Usuario {
         $con->executa($sql);
 	
 	}
+
+    public function jsonSerialize(){
+        return (object) get_object_vars($this);
+    }
 
 }

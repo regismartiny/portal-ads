@@ -57,6 +57,10 @@
 					
 					
 					if (sucesso && tipoUsuario) {
+						// TUDO OK! Agora, passa os dados para a sessão e redireciona o usuário 
+						$_SESSION["id_usuario"]= $dados["id"]; 
+						$_SESSION["name"] = stripslashes($dados["resObj.matricula"]); 
+						$_SESSION["tipoUsuario"]= $dados["tipoUsuario"]; 
 						direcionaPagina(tipoUsuario);
 					}
 				}
