@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
+include_once $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
 
 class InformacaoDoCurso
 {
