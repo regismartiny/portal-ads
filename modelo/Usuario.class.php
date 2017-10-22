@@ -1,6 +1,6 @@
 <?php
+include_once $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
 
-include $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
 class Usuario implements JsonSerializable{
 
     private $id;
@@ -102,11 +102,29 @@ class Usuario implements JsonSerializable{
 
     public function listarUm() {
         $con = new MySQL();
+        $sql = "SELECT * FROM Usuario WHERE id=$this->id";
+        $resultado = $con->consulta($sql);
+        if (!empty($resultado)) {
+            $this->id = $resultado[0]["id"];
+            $this->siapeMatricula = $resultado[0]["siapeMatricula"];
+            $this->nome = $resultado[0]["nome"];
+            $this->email = $resultado[0]["email"];
+            $this->senha = $resultado[0]["senha"];
+            $this->status = $resultado[0]["status"];
+            $this->tipoUsuario_id = $resultado[0]["TipoUsuario_id"];
+            return true;	
+        } else {
+            return false;
+        }
+    }
+
+    public function listarUmPorSiapeMatricula() {
+        $con = new MySQL();
         $sql = "SELECT * FROM Usuario WHERE siapeMatricula='$this->siapeMatricula'";
         $resultado = $con->consulta($sql);
         if (!empty($resultado)) {
             $this->id = $resultado[0]["id"];
-            $this->numero = $resultado[0]["siapeMatricula"];
+            $this->siapeMatricula = $resultado[0]["siapeMatricula"];
             $this->nome = $resultado[0]["nome"];
             $this->email = $resultado[0]["email"];
             $this->senha = $resultado[0]["senha"];
@@ -120,7 +138,7 @@ class Usuario implements JsonSerializable{
     }
 	
 	
-	public function listarUmEmail() {
+	public function listarUmPorEmail() {
         $con = new MySQL();
         $sql = "SELECT * FROM Usuario WHERE email='$this->email'";
         $resultado = $con->consulta($sql);

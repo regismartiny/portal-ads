@@ -5,7 +5,7 @@ class ControleUsuario
 {    
     public function validarLogin($matricula, $senha) {
         $usuario = new Usuario(null, $matricula);
-        $ok = $usuario->listarUm();
+        $ok = $usuario->listarUmPorSiapeMatricula();
         if ($ok) { //se existe um usuário com a matrícula informada
             $senhaCorreta = $this->verificarSenha($senha, $usuario->getSenha());
             if ($senhaCorreta) {
@@ -77,13 +77,13 @@ class ControleUsuario
 
 	public function validarEmail($email) {
         $usuario = new Usuario(null, null, null, $email);
-        $ok = $usuario->listarUmEmail();
+        $ok = $usuario->listarUmPorEmail();
         if (!$ok) { //se não existe um usuário com esse email informado
-						return 2; //tudo ok
+			return 2; //tudo ok
 									
-        }else{  return 4; //email já existe
-            }
-       
+        }else {  
+            return 4; //email já existe
+        }
     }
 
 
@@ -96,29 +96,29 @@ class ControleUsuario
         return md5($senha);
     }
 
-    public function listarUm($dados) {
-        $usuario = new Usuario(null, $dados['matricula']);
+    public function listarUm($idUsuario) {
+        $usuario = new Usuario($idUsuario);
         $usuario->listarUm();
 		return $usuario;
     }
 	
     public function inserir($dados) {
-        $tipoUsuario = $this->getTipoUsuario($dados['matricula']);
+        $tipoUsuario = $this->getTipoUsuario($dados['siapeMatricula']);
 
         if($tipoUsuario != 0){
             $senhaEncriptada = $this->encriptarSenha($dados['senha']);
-            $usuario = new Usuario(null, $dados['matricula'], $dados['nome'], $dados['email'], $senhaEncriptada, 1, $tipoUsuario);
+            $usuario = new Usuario(null, $dados['siapeMatricula'], $dados['nome'], $dados['email'], $senhaEncriptada, 1, $tipoUsuario);
             return $usuario->inserir();
         }
         return 4; //Matricula / SIAPE inválido
     }
 
-    public function getTipoUsuario($matricula) {
+    public function getTipoUsuario($siapeMatricula) {
         $tipoUsuario = 0;
 
-        if(strlen($matricula) == 7){
+        if(strlen($siapeMatricula) == 7){
             $tipoUsuario = 2;
-        }else if(strlen($matricula) == 12){
+        }else if(strlen($siapeMatricula) == 12){
             $tipoUsuario = 3;
         }
         return $tipoUsuario;
@@ -140,7 +140,7 @@ class ControleUsuario
 	}	
 	
 	public function editar($dados) {		
-        $usuario = new Usuario(null, $dados['matricula'], $dados['nome'], $dados['email'], $dados['senha'], null, $dados['tipoUsuario_id']);
+        $usuario = new Usuario(null, $dados['siapeMatricula'], $dados['nome'], $dados['email'], $dados['senha'], null, $dados['tipoUsuario_id']);
         $usuario->editar();
     }
 
