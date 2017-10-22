@@ -44,24 +44,18 @@
 				let resObj = JSON.parse(response);
 				if (resObj) {
 					let sucesso = resObj.sucesso;
+					let mensagem = resObj.mensagem;
 					if (sucesso) {
-						statusSucesso(resObj.mensagem);
+						statusSucesso(mensagem);
+						let primeiroAcesso = resObj.primeiroAcesso;
+						let tipoUsuario = resObj.tipoUsuario;
+						if (primeiroAcesso) {
+							direcionaPaginaPrimeiroAcesso();
+						} else if (tipoUsuario) {
+							direcionaPagina(tipoUsuario);
+						}
 					} else {
-						statusErro(resObj.mensagem);
-					}
-					let tipoUsuario = resObj.tipoUsuario;
-					
-					if (sucesso && primeiroAcesso) {
-						direcionaPaginaPrimeiroAcesso();
-					}
-					
-					
-					if (sucesso && tipoUsuario) {
-						// TUDO OK! Agora, passa os dados para a sessão e redireciona o usuário 
-						$_SESSION["id_usuario"]= $dados["id"]; 
-						$_SESSION["name"] = stripslashes($dados["resObj.matricula"]); 
-						$_SESSION["tipoUsuario"]= $dados["tipoUsuario"]; 
-						direcionaPagina(tipoUsuario);
+						statusErro(mensagem);
 					}
 				}
 			},
@@ -88,9 +82,7 @@
 	}
 
 	function direcionaPaginaPrimeiroAcesso() {
-		
 		var siapeMatricula = $('#matricula').val();
 		navegaPagina('/visao/common/primeiroAcesso.php?siapeMatricula='+siapeMatricula);
-		
 	}
 </script>

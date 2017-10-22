@@ -102,7 +102,7 @@ class Usuario implements JsonSerializable{
 
     public function listarUm() {
         $con = new MySQL();
-        $sql = "SELECT * FROM Usuario WHERE id=$this->id";
+        $sql = "SELECT * FROM Usuario WHERE id='$this->id'";
         $resultado = $con->consulta($sql);
         if (!empty($resultado)) {
             $this->id = $resultado[0]["id"];
