@@ -38,7 +38,7 @@
 			<div class="col mx-auto">
 				<h2 class="titulo">Edição de Notícia</h2>
 				<form id="ajax-form" method='post' action='/controle/processaEditaNoticia.php'>
-					<input type="hidden" class="form-control" id="idNoticia"  name="idNoticia"  value="<?php echo $idNoticia; ?>">
+					<input type="hidden" class="form-control" id="idNoticia"  name="id"  value="<?php echo $idNoticia; ?>">
 					<div class="form-group row">
 						<label for="categoriaNoticia_id" class="col-sm-4 col-form-label">Categoria:</label>
 						<div class="col-sm-8">

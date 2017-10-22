@@ -46,8 +46,8 @@ class ControleNoticia {
     }
 	
 	public function atualizar($dados) {
-        $noticia = new Noticia(null, $dados['titulo'], $dados['conteudo'], $dados['fonte'], $dados['imagem'],1,null, null,null, $dados['categoriaNoticia_id']);
-		return $noticia->atualizar($dados['idNoticia']);
+        $noticia = new Noticia($dados['id'], $dados['titulo'], $dados['conteudo'], $dados['fonte'], $dados['imagem'],1,null, null,null, $dados['categoriaNoticia_id']);
+		return $noticia->atualizar();
     }
 
 }

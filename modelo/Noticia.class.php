@@ -141,9 +141,9 @@ class Noticia
     }
 	
 	
-	public function atualizar($idAtualiza) {
+	public function atualizar() {
         $con = new MySQL();
-        $sql = "UPDATE Noticia SET titulo = '$this->titulo', conteudo = '$this->conteudo', fonte = '$this->fonte', imagem = '$this->imagem', status = '1', dataCadastro = now(), dataPublicacao = now(), CategoriaNoticia_id = '$this->categoriaNoticia_id' WHERE id = $idAtualiza";
+        $sql = "UPDATE Noticia SET titulo = '$this->titulo', conteudo = '$this->conteudo', fonte = '$this->fonte', imagem = '$this->imagem', status = '1', dataCadastro = now(), dataPublicacao = now(), CategoriaNoticia_id = '$this->categoriaNoticia_id' WHERE id = $this->id";
         return $con->executa($sql) > 0 ? 1 : 0;
     }
 	
