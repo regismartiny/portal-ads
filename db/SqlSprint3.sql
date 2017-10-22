@@ -29,17 +29,17 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `portal-ads`.`Usuario` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `siapeMatricula` VARCHAR(45) NOT NULL,
+  `siapeMatricula` INT NOT NULL,
   `nome` VARCHAR(100) NOT NULL,
   `email` VARCHAR(100) NULL,
   `senha` VARCHAR(100) NOT NULL,
   `status` TINYINT(1) NOT NULL,
   `TipoUsuario_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_Usuarios_TipoUsuario_idx` (`TipoUsuario_id` ASC),
+  INDEX `fk_Usuario_TipoUsuario_idx` (`TipoUsuario_id` ASC),
   UNIQUE INDEX `siapeMatricula_UNIQUE` (`siapeMatricula` ASC),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC),
-  CONSTRAINT `fk_Usuarios_TipoUsuario`
+  CONSTRAINT `fk_Usuario_TipoUsuario`
     FOREIGN KEY (`TipoUsuario_id`)
     REFERENCES `portal-ads`.`TipoUsuario` (`id`)
     ON DELETE NO ACTION
@@ -73,10 +73,10 @@ CREATE TABLE IF NOT EXISTS `portal-ads`.`Noticia` (
   `Usuario_id` INT NOT NULL,
   `CategoriaNoticia_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_Noticias_Usuarios1_idx` (`Usuarios_id` ASC),
+  INDEX `fk_Noticias_Usuario1_idx` (`Usuario_id` ASC),
   INDEX `fk_Noticias_CategoriaNoticia1_idx` (`CategoriaNoticia_id` ASC),
-  CONSTRAINT `fk_Noticias_Usuarios1`
-    FOREIGN KEY (`Usuarios_id`)
+  CONSTRAINT `fk_Noticias_Usuario1`
+    FOREIGN KEY (`Usuario_id`)
     REFERENCES `portal-ads`.`Usuario` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,

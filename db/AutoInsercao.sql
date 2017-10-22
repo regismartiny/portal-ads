@@ -21,7 +21,7 @@ INSERT INTO CategoriaNoticia (descricao, cor)
 VALUES ('Tendência', '#00FF00');
 
 
-INSERT INTO Usuario VALUES (1,'admin','testeCoordenador','emailtesteportalads1@gmail.com','21232f297a57a5a743894a0e4a801fc3',1,1);
+INSERT INTO Usuario VALUES (1,'1','testeCoordenador','emailtesteportalads1@gmail.com','21232f297a57a5a743894a0e4a801fc3',1,1);
 
 INSERT INTO Usuario VALUES (2,'7777777','testeProfessor','emailtesteportalads2@gmail.com','25f9e794323b453885f5181f1b624d0b',1,2);
 
