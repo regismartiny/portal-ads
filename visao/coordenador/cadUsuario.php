@@ -30,7 +30,6 @@
 					<input type="reset" class="btn btn-danger btn-lg btn-block" value="Limpar">
 				</div>
 			</div>
-		</div>
 		</form>
 	</div>
 </div>
