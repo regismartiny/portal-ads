@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `portal-ads`.`Noticia` (
   `imagem` VARCHAR(200) NULL,
   `status` CHAR(1) NOT NULL,
   `dataCadastro` DATE NOT NULL,
-  `dataPublicacao` DATE NOT NULL,
+  `dataPublicacao` DATE NULL,
   `Usuario_id` INT NOT NULL,
   `CategoriaNoticia_id` INT NOT NULL,
   PRIMARY KEY (`id`),
