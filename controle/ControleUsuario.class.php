@@ -85,12 +85,6 @@ class ControleUsuario
             return 4; //email já existe
         }
     }
-
-
-
-
-	
-	
 	
     public function encriptarSenha($senha) {
         return md5($senha);
@@ -140,8 +134,8 @@ class ControleUsuario
 	}	
 	
 	public function editar($dados) {		
-        $usuario = new Usuario(null, $dados['siapeMatricula'], $dados['nome'], $dados['email'], $dados['senha'], null, $dados['tipoUsuario_id']);
-        $usuario->editar();
+        $usuario = new Usuario($dados['id'], $dados['siapeMatricula'], $dados['nome'], $dados['email']);
+        return $usuario->atualizar();
     }
 
     public function usuarioPodeSerDesativado($id) {

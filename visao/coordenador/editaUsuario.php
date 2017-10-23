@@ -7,7 +7,7 @@
 
 	$nControle = new ControleUsuario();
 
-	$usuario = $nControle->listarUm($dados['idUsuario']);
+	$usuario = $nControle->listarUm($dados['id']);
 	
 	$idUsuario = $usuario->getId();
 	$nome = $usuario->getNome();
@@ -20,7 +20,7 @@
 			<div class="col mx-auto">
 				<h2 class="titulo">Edição de Usuário</h2>
 				<form id="ajax-form" method='post' action='/controle/processaEditaUsuario.php'>
-					<input type="hidden" class="form-control" id="idUsuario" name="id" value="<?php echo $idUsuario; ?>">
+					<input type="hidden" class="form-control" id="id" name="id" value="<?php echo $idUsuario; ?>">
 					<div class="form-group row">
 						<label for="nome" class="col-12 col-md-5 col-form-label">Nome Completo:</label>
 						<div class="col-12 col-md-7">
@@ -43,7 +43,7 @@
 					<br>
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-6">
-							<input type="submit" class="btn-login btn btn-primary btn-lg btn-block" name="botao" value="Adicionar" />
+							<input type="submit" class="btn-login btn btn-primary btn-lg btn-block" name="botao" value="Salvar" />
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-6">
 							<input type="reset" class="btn btn-danger btn-lg btn-block" value="Limpar">

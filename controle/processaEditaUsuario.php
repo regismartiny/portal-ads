@@ -9,12 +9,12 @@
         if (!empty($_POST)) {
             include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
             $dados = clearArray($_POST);
-            if (isset($dados['id']) && isset($dados['siapeMatricula']) && isset($dados['nome']) && isset($dados['email']) && isset($dados['senha']) && isset($dados['status']) && isset($dados['tipoUsuario_id'])) {
+            if (isset($dados['id']) && isset($dados['siapeMatricula']) && isset($dados['nome']) && isset($dados['email'])) {
             
                 include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
                 $uControle = new ControleUsuario();
             
-                $estado = $uControle->atualizar($dados);
+                $estado = $uControle->editar($dados);
                 
                 if ($estado == 1){
                     $status = array('sucesso' => true, 'mensagem' => 'Usuário atualizado.');

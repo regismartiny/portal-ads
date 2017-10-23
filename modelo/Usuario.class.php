@@ -260,21 +260,19 @@ class Usuario implements JsonSerializable{
         $con->executa($sql);
     }
 	
-    public function editar() {
+    public function atualizar() {
         $con = new MySQL();		
-        $sql = "UPDATE Usuario SET siapeMatricula = '$this->siapeMatricula', nome = '$this->nome', email = '$this->email', senha = '$this->senha', status = '$this->status', TipoUsuario_id = '$this->tipoUsuario_id' WHERE id = '$this->id'";
-        $con->executa($sql);		
+        $sql = "UPDATE Usuario SET siapeMatricula = COALESCE(".(empty($this->siapeMatricula)?'NULL':$this->siapeMatricula).",siapeMatricula), nome = COALESCE('$this->nome',nome), email = COALESCE('$this->email',email), senha = COALESCE('$this->senha',senha), status = COALESCE(".(empty($this->status)?'NULL':$this->status).",status), TipoUsuario_id = COALESCE(".(empty($this->tipoUsuario_id)?'NULL':$this->tipoUsuario_id).",TipoUsuario_id) WHERE id = $this->id";
+        return $con->executa($sql) > 0 ? 1 : 0;
     }
 	
-	public function atualizaDataSenha($matricula){
-	
+	public function atualizaDataSenha($matricula) {
 		$con = new MySQL();		
         $sql = "UPDATE Usuario SET dataUltimoAcesso = now() WHERE siapeMatricula = '$matricula'";
         $con->executa($sql);
-	
-	}
+    }
 
-    public function jsonSerialize(){
+    public function jsonSerialize() {
         return (object) get_object_vars($this);
     }
 
