@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         //Limpa status atividade do menu
         if (!$(this).hasClass('nav-link') && !$(this).hasClass('dropdown-item')) {
             $('.nav-item').removeClass('active');
+			$('.dropdown-item').removeClass('active');			
         }
         let attr = $(this).attr('href')
         if (attr.startsWith('/')) {
