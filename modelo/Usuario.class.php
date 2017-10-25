@@ -262,7 +262,7 @@ class Usuario implements JsonSerializable{
 	
     public function atualizar() {
         $con = new MySQL();		
-        $sql = "UPDATE Usuario SET siapeMatricula = COALESCE(".(empty($this->siapeMatricula)?'NULL':$this->siapeMatricula).",siapeMatricula), nome = COALESCE('$this->nome',nome), email = COALESCE('$this->email',email), senha = COALESCE('$this->senha',senha), status = COALESCE(".(empty($this->status)?'NULL':$this->status).",status), TipoUsuario_id = COALESCE(".(empty($this->tipoUsuario_id)?'NULL':$this->tipoUsuario_id).",TipoUsuario_id) WHERE id = $this->id";
+        $sql = "UPDATE Usuario SET siapeMatricula = COALESCE(".(is_null($this->siapeMatricula)?'NULL':$this->siapeMatricula).",siapeMatricula), nome = COALESCE('$this->nome',nome), email = COALESCE('$this->email',email), senha = COALESCE(". (is_null($this->senha)?'NULL':$this->senha) .",senha), status = COALESCE(".(is_null($this->status)?'NULL':$this->status).",status), TipoUsuario_id = COALESCE(".(is_null($this->tipoUsuario_id)?'NULL':$this->tipoUsuario_id).",TipoUsuario_id) WHERE id = $this->id";
         return $con->executa($sql) > 0 ? 1 : 0;
     }
 	

@@ -3,19 +3,19 @@
 		<h2 class="titulo">Alteração de senha</h2>
 		<form id="form" method="post" action="/controle/processaAlteracaoSenha.php">
 			<div class="form-group row">
-				<label for="senha" class="col-sm-12 col-md-5 col-form-label">Senha Atual:</label>
+				<label for="senha" class="col-sm-12 col-md-5 col-form-label">Senha Atual</label>
 				<div class="col-sm-12 col-md-7">
 					<input type="password" class="form-control" id="senhaAtual " name="senhaAtual" required>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="senha" class="col-sm-12 col-md-5 col-form-label">Senha Nova:</label>
+				<label for="senha" class="col-sm-12 col-md-5 col-form-label">Senha Nova</label>
 				<div class="col-sm-12 col-md-7">
 					<input type="password" class="form-control" id="senhaNova" name="senhaNova" required>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="senha" class="col-sm-12 col-md-5 col-form-label">Confirmação:</label>
+				<label for="senha" class="col-sm-12 col-md-5 col-form-label">Confirmação</label>
 				<div class="col-sm-12 col-md-7">
 					<input type="password" class="form-control" id="confSenha" name="confSenha" required>
 				</div>

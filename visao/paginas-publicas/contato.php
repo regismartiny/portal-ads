@@ -12,19 +12,19 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="nome" class="col-sm-12 col-md-4 col-form-label">Seu nome:</label>
+                <label for="nome" class="col-sm-12 col-md-4 col-form-label">Seu nome</label>
                 <div class="col-sm-12 col-md-8">
                     <input type="text" class="form-control" id="nome" name="nome" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="email" class="col-sm-12 col-md-4 col-form-label">Seu e-mail:</label>
+                <label for="email" class="col-sm-12 col-md-4 col-form-label">Seu e-mail</label>
                 <div class="col-sm-12 col-md-8">
                     <input type="email" class="form-control" id="email" name="email" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="mensagem" class="col-sm-12 col-md-4 col-form-label">Digite sua mensagem:</label>
+                <label for="mensagem" class="col-sm-12 col-md-4 col-form-label">Digite sua mensagem</label>
                 <div class="col-sm-12 col-md-8">
                     <textarea class="form-control" rows="3" id="mensagem" name="mensagem" cols="50" required></textarea>
                 </div>

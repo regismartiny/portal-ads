@@ -3,19 +3,19 @@
 		<h1 class="titulo">Cadastro de Usuários</h1>
 		<form id="ajax-form" method="post" action="/controle/processaCadUsuario.php">
 			<div class="form-group row">
-				<label for="nome" class="col-12 col-md-5 col-form-label">Nome Completo:</label>
+				<label for="nome" class="col-12 col-md-5 col-form-label">Nome Completo</label>
 				<div class="col-12 col-md-7">
 					<input type="text" class="form-control" id="nome" name="nome" required>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="matricula" class="col-12 col-md-5 col-form-label">Matricula / SIAPE:</label>
+				<label for="matricula" class="col-12 col-md-5 col-form-label">Matrícula / SIAPE</label>
 				<div class="col-12 col-md-7">
 					<input type="number" class="form-control" id="matricula" name="matricula" required>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="email" class="col-12 col-md-5 col-form-label">E-mail (Opcional):</label>
+				<label for="email" class="col-12 col-md-5 col-form-label">E-mail (Opcional)</label>
 				<div class="col-12 col-md-7">
 					<input type="email" class="form-control" id="email" name="email">
 				</div>

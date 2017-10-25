@@ -141,8 +141,10 @@ class ControleUsuario
 		$usuario->filtrarUsuario();
 	}	
 	
-	public function editar($dados) {		
-        $usuario = new Usuario($dados['id'], $dados['siapeMatricula'], $dados['nome'], $dados['email']);
+	public function editar($dados) {
+        $desativar = !isset($dados['status']);
+        $status =  $desativar && $this->usuarioPodeSerDesativado($dados['id']) ? 0 : 1;
+        $usuario = new Usuario($dados['id'], $dados['siapeMatricula'], $dados['nome'], $dados['email'], null, $status);
         return $usuario->atualizar();
     }
 

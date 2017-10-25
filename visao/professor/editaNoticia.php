@@ -36,11 +36,11 @@
 
    <div class="row" >
 			<div class="col mx-auto">
-				<h2 class="titulo">Edição de Notícia</h2>
+				<h2 class="titulo">Edição de Notícias</h2>
 				<form id="ajax-form" method='post' action='/controle/processaEditaNoticia.php'>
 					<input type="hidden" class="form-control" id="idNoticia"  name="id"  value="<?php echo $idNoticia; ?>">
 					<div class="form-group row">
-						<label for="categoriaNoticia_id" class="col-sm-4 col-form-label">Categoria:</label>
+						<label for="categoriaNoticia_id" class="col-sm-4 col-form-label">Categoria</label>
 						<div class="col-sm-8">
 							<select class="col custom-select" id="categoriaNoticia_id" name="categoriaNoticia_id" required>
 								<?php 
@@ -50,25 +50,25 @@
 						</div>
 					</div>	
 					<div class="form-group row">
-						<label for="titulo" class="col-sm-12 col-md-4 col-form-label">Título:</label>
+						<label for="titulo" class="col-sm-12 col-md-4 col-form-label">Título</label>
 						<div class="col-sm-12 col-md-8">
 							<input type="text" class="form-control" id="titulo" name='titulo' value="<?php echo $titulo; ?>" required>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="conteudo" class="col-sm-12 col-md-4 col-form-label">Conteúdo:</label>
+						<label for="conteudo" class="col-sm-12 col-md-4 col-form-label">Conteúdo</label>
 						<div class="col-sm-12 col-md-8">
 							<textarea class="form-control" id="conteudo" name="conteudo" required><?php echo $conteudo; ?></textarea>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="fonte" class="col-sm-12 col-md-4 col-form-label">Fonte:</label>
+						<label for="fonte" class="col-sm-12 col-md-4 col-form-label">Fonte</label>
 						<div class="col-sm-12 col-md-8">
 							<input type="text" class="form-control" id="fonte" name="fonte" value="<?php echo $fonte; ?>" required>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="imagem" class="col-sm-12 col-md-4 col-form-label">Link para Imagem:</label>
+						<label for="imagem" class="col-sm-12 col-md-4 col-form-label">Link para Imagem</label>
 						<div class="col-sm-12 col-md-8">
 							<input type="text" class="form-control" id="imagem" name="imagem" value="<?php echo $imagem; ?>" required>
 						</div>

@@ -89,3 +89,6 @@ VALUES ('DISCENTES_E_EGRESSOS', 'Discentes e Egressos', '<p>Alunos matriculados 
         <ul>
             <li><strong>Não há formandos até o momento. Previsão de primeira formatura em 2018/1.</strong></li>
         </ul>');
+
+INSERT INTO Noticia (titulo, conteudo, fonte, imagem, status, dataCadastro, dataPublicacao, Usuario_id, CategoriaNoticia_id)
+VALUES ('Bitcoin bate recorde de valor', 'Valor do bitcoin atinge máxima histórica de USD 6.000,00.', 'MercadoBitcoin', 'https://www.thesun.co.uk/wp-content/uploads/2017/03/nintchdbpict000306226097.jpg?strip=all&w=960', 1, '2017-10-10', '2017-10-11', 2, 2);
