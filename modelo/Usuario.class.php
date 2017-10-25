@@ -130,7 +130,7 @@ class Usuario implements JsonSerializable{
             $this->senha = $resultado[0]["senha"];
             $this->status = $resultado[0]["status"];
             $this->tipoUsuario_id = $resultado[0]["TipoUsuario_id"];
-			//$this->dataUltimoAcesso = $resultado[0]["dataUltimoAcesso"];
+			$this->dataUltimoAcesso = $resultado[0]["dataUltimoAcesso"];
             return true;	
         } else {
             return false;
@@ -149,7 +149,7 @@ class Usuario implements JsonSerializable{
             $this->email = $resultado[0]["email"];
             $this->status = $resultado[0]["status"];
             $this->tipoUsuario_id = $resultado[0]["TipoUsuario_id"];
-			//$this->dataUltimoAcesso = $resultado[0]["dataUltimoAcesso"];
+			$this->dataUltimoAcesso = $resultado[0]["dataUltimoAcesso"];
             return true;	
         } else {
             return false;
@@ -185,7 +185,7 @@ class Usuario implements JsonSerializable{
                 $usuario->setSenha($resultado['senha']);
                 $usuario->setStatus($resultado['status']);
                 $usuario->setTipoUsuario_id($resultado['TipoUsuario_id']);
-				//$usuario->setDataUltimoAcesso($resultado['dataUltimoAcesso'];
+				$usuario->setDataUltimoAcesso($resultado['dataUltimoAcesso']);
                 $usuarios[] = $usuario;
             }
             return $usuarios;
@@ -209,7 +209,7 @@ class Usuario implements JsonSerializable{
                 $usuario->setSenha($resultado['senha']);
                 $usuario->setStatus($resultado['status']);
                 $usuario->setTipoUsuario_id($resultado['TipoUsuario_id']);
-				//$usuario->setDataUltimoAcesso($resultado['dataUltimoAcesso'];
+				$usuario->setDataUltimoAcesso($resultado['dataUltimoAcesso']);
                 $usuarios[] = $usuario;
             }
             return $usuarios;
