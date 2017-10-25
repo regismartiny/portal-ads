@@ -27,7 +27,8 @@
             }else {
                 //codigo 406 - not acceptable
                 http_response_code(406);
-                echo "Dados incompletos";            }
+                echo "Dados incompletos";
+            }
         }else{
             //codigo 400 - bad request
             http_response_code(400);

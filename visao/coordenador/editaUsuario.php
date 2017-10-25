@@ -14,6 +14,7 @@
 	$siapeMatricula = $usuario->getSiapeMatricula();
 	$email = $usuario->getEmail();
 	$tipoUsuario_id = $usuario->getTipoUsuario_id();
+	$ativo = $usuario->getStatus() == 1;
 ?>
 
    <div class="row" >
@@ -37,6 +38,12 @@
 						<label for="email" class="col-12 col-md-5 col-form-label">E-mail (Opcional):</label>
 						<div class="col-12 col-md-7">
 							<input type="email" class="form-control" id="email" name="email" value="<?php echo $email; ?>">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="status" class="col-12 col-md-5 col-form-label">Ativo:</label>
+						<div class="col-12 col-md-7">
+							<input type="checkbox" class="form-control" id="status" name="status"<?php if ($ativo) echo ' checked';?>>
 						</div>
 					</div>
 					<div id="result" class="status"></div>

@@ -133,8 +133,9 @@ class ControleUsuario
 		$usuario->filtrarUsuario();
 	}	
 	
-	public function editar($dados) {		
-        $usuario = new Usuario($dados['id'], $dados['siapeMatricula'], $dados['nome'], $dados['email']);
+	public function editar($dados) {
+        $status = isset($dados['status']) ? 1 : 0;
+        $usuario = new Usuario($dados['id'], $dados['siapeMatricula'], $dados['nome'], $dados['email'], null, $status);
         return $usuario->atualizar();
     }
 
