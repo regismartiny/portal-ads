@@ -134,7 +134,8 @@ class ControleUsuario
 	}	
 	
 	public function editar($dados) {
-        $status = isset($dados['status']) ? 1 : 0;
+        $desativar = !isset($dados['status']);
+        $status =  $desativar && $this->usuarioPodeSerDesativado($dados['id']) ? 0 : 1;
         $usuario = new Usuario($dados['id'], $dados['siapeMatricula'], $dados['nome'], $dados['email'], null, $status);
         return $usuario->atualizar();
     }

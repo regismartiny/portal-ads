@@ -5,9 +5,9 @@
 
 	$dados = clearArray($_GET);
 
-	$nControle = new ControleUsuario();
+	$uControle = new ControleUsuario();
 
-	$usuario = $nControle->listarUm($dados['id']);
+	$usuario = $uControle->listarUm($dados['id']);
 	
 	$idUsuario = $usuario->getId();
 	$nome = $usuario->getNome();
@@ -15,6 +15,7 @@
 	$email = $usuario->getEmail();
 	$tipoUsuario_id = $usuario->getTipoUsuario_id();
 	$ativo = $usuario->getStatus() == 1;
+	$naoPodeSerDesativado = !$uControle->usuarioPodeSerDesativado($idUsuario);
 ?>
 
    <div class="row" >
@@ -43,7 +44,7 @@
 					<div class="form-group row">
 						<label for="status" class="col-12 col-md-5 col-form-label">Ativo:</label>
 						<div class="col-12 col-md-7">
-							<input type="checkbox" class="form-control" id="status" name="status"<?php if ($ativo) echo ' checked';?>>
+							<input type="checkbox" class="form-control" id="status" name="status"<?php if ($ativo) {echo ' checked';} if ($naoPodeSerDesativado) echo ' disabled'?>>
 						</div>
 					</div>
 					<div id="result" class="status"></div>
