@@ -144,7 +144,7 @@
 		<input class="col-sm-12" type="text" id="myInput" placeholder="Procure por um nome..." title="A busca realizada incluirá usuários de todos os tipos">
 
 		<div class="form-group row">
-			<label for="nome" class="col-sm-12 col-md-5 col-form-label">Filtro por tipo:</label>
+			<label for="nome" class="col-sm-12 col-md-5 col-form-label">Filtro por tipo</label>
 			<div class="col-sm-12 col-md-7">
 				<div class="btn-group  col-ml-auto" role="group" aria-label="Tipos de Usuário">
 					<button type="button" class="btn btn btn-outline-default btn-filter selected" data-target="0">Todos</button>

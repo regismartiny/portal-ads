@@ -5,9 +5,9 @@
 
 	$dados = clearArray($_GET);
 
-	$uControle = new ControleUsuario();
+	$nControle = new ControleUsuario();
 
-	$usuario = $uControle->listarUm($dados['id']);
+	$usuario = $nControle->listarUm($dados['id']);
 	
 	$idUsuario = $usuario->getId();
 	$nome = $usuario->getNome();
@@ -15,7 +15,6 @@
 	$email = $usuario->getEmail();
 	$tipoUsuario_id = $usuario->getTipoUsuario_id();
 	$ativo = $usuario->getStatus() == 1;
-	$naoPodeSerDesativado = !$uControle->usuarioPodeSerDesativado($idUsuario);
 ?>
 
    <div class="row" >
@@ -24,27 +23,27 @@
 				<form id="ajax-form" method='post' action='/controle/processaEditaUsuario.php'>
 					<input type="hidden" class="form-control" id="id" name="id" value="<?php echo $idUsuario; ?>">
 					<div class="form-group row">
-						<label for="nome" class="col-12 col-md-5 col-form-label">Nome Completo:</label>
+						<label for="nome" class="col-12 col-md-5 col-form-label">Nome Completo</label>
 						<div class="col-12 col-md-7">
 							<input type="text" class="form-control" id="nome" name="nome" value="<?php echo $nome; ?>" required>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="siapeMatricula" class="col-12 col-md-5 col-form-label">Matricula / SIAPE:</label>
+						<label for="siapeMatricula" class="col-12 col-md-5 col-form-label">Matrícula / SIAPE</label>
 						<div class="col-12 col-md-7">
 							<input type="number" class="form-control" id="siapeMatricula" name="siapeMatricula" value="<?php echo $siapeMatricula; ?>" required>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="email" class="col-12 col-md-5 col-form-label">E-mail (Opcional):</label>
+						<label for="email" class="col-12 col-md-5 col-form-label">E-mail (Opcional)</label>
 						<div class="col-12 col-md-7">
 							<input type="email" class="form-control" id="email" name="email" value="<?php echo $email; ?>">
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="status" class="col-12 col-md-5 col-form-label">Ativo:</label>
+						<label for="status" class="col-12 col-md-5 col-form-label">Ativo</label>
 						<div class="col-12 col-md-7">
-							<input type="checkbox" class="form-control" id="status" name="status"<?php if ($ativo) {echo ' checked';} if ($naoPodeSerDesativado) echo ' disabled'?>>
+							<input type="checkbox" class="form-control" id="status" name="status"<?php if ($ativo) echo ' checked';?>>
 						</div>
 					</div>
 					<div id="result" class="status"></div>
