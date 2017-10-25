@@ -19,7 +19,7 @@
 							<h1 class="col-sm-12 col-form-label">Cadastro de Notícias</h1>
 						</div>
 						<div class="form-group row">
-							<label for="categoriaNoticia_id" class="col-sm-4 col-form-label">Categoria:</label>
+							<label for="categoriaNoticia_id" class="col-sm-4 col-form-label">Categoria</label>
 							<div class="col-sm-8">
 								<select class="col custom-select" id="categoriaNoticia_id" name="categoriaNoticia_id" required>
 									<?php 
@@ -29,25 +29,25 @@
 							</div>
 						</div>	
 						<div class="form-group row">
-							<label for="titulo" class="col-sm-12 col-md-4 col-form-label">Título:</label>
+							<label for="titulo" class="col-sm-12 col-md-4 col-form-label">Título</label>
 							<div class="col-sm-12 col-md-8">
 								<input type="text" class="form-control" id="titulo" name='titulo' required>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="conteudo" class="col-sm-12 col-md-4 col-form-label">Conteúdo:</label>
+							<label for="conteudo" class="col-sm-12 col-md-4 col-form-label">Conteúdo</label>
 							<div class="col-sm-12 col-md-8">
 								<textarea class="form-control" id="conteudo" name='conteudo' required></textarea>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="fonte" class="col-sm-12 col-md-4 col-form-label">Fonte:</label>
+							<label for="fonte" class="col-sm-12 col-md-4 col-form-label">Fonte</label>
 							<div class="col-sm-12 col-md-8">
 								<input type="text" class="form-control" id="fonte" name='fonte' required>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="imagem" class="col-sm-12 col-md-4 col-form-label">Link para Imagem:</label>
+							<label for="imagem" class="col-sm-12 col-md-4 col-form-label">Link para Imagem</label>
 							<div class="col-sm-12 col-md-8">
 								<input type="text" class="form-control" id="imagem" name='imagem' required>
 							</div>
