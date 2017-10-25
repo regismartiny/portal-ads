@@ -11,31 +11,31 @@ $siapeMatricula = $dados['siapeMatricula'];
 		<form id="form" method="post" action="/controle/processaPrimeiroAcesso.php">
 		<input type="hidden" class="form-control" id="siapeMatricula"  name="siapeMatricula"  value="<?php echo $siapeMatricula; ?>">
 			<div class="form-group row">
-				<label for="senha" class="col-sm-12 col-md-5 col-form-label">Senha Atual:</label>
+				<label for="senha" class="col-sm-12 col-md-5 col-form-label">Senha Atual</label>
 				<div class="col-sm-12 col-md-7">
 					<input type="password" class="form-control" id="senhaAtual " name="senhaAtual" required>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="senha" class="col-sm-12 col-md-5 col-form-label">Senha Nova:</label>
+				<label for="senha" class="col-sm-12 col-md-5 col-form-label">Senha Nova</label>
 				<div class="col-sm-12 col-md-7">
 					<input type="password" class="form-control" id="senhaNova" name="senhaNova" required>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="senha" class="col-sm-12 col-md-5 col-form-label">Confirmação de Senha:</label>
+				<label for="senha" class="col-sm-12 col-md-5 col-form-label">Confirmação de Senha</label>
 				<div class="col-sm-12 col-md-7">
 					<input type="password" class="form-control" id="confSenha" name="confSenha" required>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="email" class="col-12 col-md-5 col-form-label">E-mail:</label>
+				<label for="email" class="col-12 col-md-5 col-form-label">E-mail</label>
 				<div class="col-12 col-md-7">
 					<input type="email" class="form-control" id="email" name="email" required>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="email" class="col-12 col-md-5 col-form-label">Confirmação de E-mail:</label>
+				<label for="email" class="col-12 col-md-5 col-form-label">Confirmação de E-mail</label>
 				<div class="col-12 col-md-7">
 					<input type="email" class="form-control" id="confEmail" name="confEmail" required>
 				</div>
