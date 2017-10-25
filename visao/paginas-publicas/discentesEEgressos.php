@@ -16,6 +16,6 @@
     </div>
 <?php 
     } else {
-        echo 'Não foram incontradas informações.';
+        echo 'Não foram encontradas informações.';
     } 
 ?>
