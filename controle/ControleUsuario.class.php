@@ -12,12 +12,12 @@ class ControleUsuario
                 $status = $usuario->getStatus();
 				$dua = $usuario->getDataUltimoAcesso();
                 if ($status == 1) { //usuario ativo
-                    //if($dua!=null){
+                    if($dua!=null){
 						return 2; //tudo ok
-						//$usuario->atualizaDataAcesso($matricula);
-					//}else{
-						//return 5; //tudo ok mas primeiro acesso. direciona para troca de senha;
-					//}
+						$usuario->atualizaDataAcesso($matricula);
+					}else{
+						return 5; //tudo ok mas primeiro acesso. direciona para troca de senha;
+					}
 										
                 }
                 return 4; //usuário bloqueado
@@ -33,17 +33,25 @@ class ControleUsuario
     }
 
     public function alterarSenha($siapeMatricula, $dados) {
-        $confirmacaoDeSenhaCorreta = strcasecmp($dados['senhaNova'], $dados['confSenha']) == 0;
+
+		$teste = strcasecmp($dados['senhaNova'], $dados['confSenha']);
+		//echo $teste;
+		if($teste==0){
+			//echo "oi";
+			$confirmacaoDeSenhaCorreta=true;
+		}
+		//$confirmacaoDeSenhaCorreta = strcasecmp($dados['senhaNova'], $dados['confSenha']) == 0;
         $senhaAtualENovaDiferentes = strcasecmp($dados['senhaAtual'], $dados['senhaNova']) != 0; 
-		if($confirmacaoDeSenhaCorreta) {
-            if ($senhaAtualENovaDiferentes) {
+		//if($confirmacaoDeSenhaCorreta==true) {
+		if($dados['senhaNova']==$dados['confSenha']){
+			if ($senhaAtualENovaDiferentes) {
                 $validacaoLogin = $this->validarLogin($siapeMatricula, $dados['senhaAtual']);
                 if ($validacaoLogin == 2) { //login válido
                     $senhaEncriptada = $this->encriptarSenha($dados['senhaNova']);
                     $usuario = new Usuario(null, $siapeMatricula, null, null, $senhaEncriptada);
                     $resposta = $usuario->atualizarSenha();
                     if ($resposta) {
-                        return 2; //senha alterada com sucesso
+						return 2; //senha alterada com sucesso
                     }
                 } else {
                     return $validacaoLogin;
