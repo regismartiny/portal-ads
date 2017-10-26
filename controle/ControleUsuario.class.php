@@ -13,9 +13,10 @@ class ControleUsuario
 				$dua = $usuario->getDataUltimoAcesso();
                 if ($status == 1) { //usuario ativo
                     if($dua!=null){
+						$usuario->atualizaDataSenha($matricula);
 						return 2; //tudo ok
-						$usuario->atualizaDataAcesso($matricula);
 					}else{
+                        $usuario->atualizaDataSenha($matricula);
 						return 5; //tudo ok mas primeiro acesso. direciona para troca de senha;
 					}
 										
@@ -34,19 +35,13 @@ class ControleUsuario
 
     public function alterarSenha($siapeMatricula, $dados) {
 
-		$teste = strcasecmp($dados['senhaNova'], $dados['confSenha']);
-		//echo $teste;
-		if($teste==0){
-			//echo "oi";
-			$confirmacaoDeSenhaCorreta=true;
-		}
-		//$confirmacaoDeSenhaCorreta = strcasecmp($dados['senhaNova'], $dados['confSenha']) == 0;
+		$confirmacaoDeSenhaCorreta = strcasecmp($dados['senhaNova'], $dados['confSenha']) == 0;
         $senhaAtualENovaDiferentes = strcasecmp($dados['senhaAtual'], $dados['senhaNova']) != 0; 
-		//if($confirmacaoDeSenhaCorreta==true) {
-		if($dados['senhaNova']==$dados['confSenha']){
+        
+        if($confirmacaoDeSenhaCorreta) {
 			if ($senhaAtualENovaDiferentes) {
                 $validacaoLogin = $this->validarLogin($siapeMatricula, $dados['senhaAtual']);
-                if ($validacaoLogin == 2) { //login válido
+                if ($validacaoLogin == 2 || $validacaoLogin == 5) { //login válido
                     $senhaEncriptada = $this->encriptarSenha($dados['senhaNova']);
                     $usuario = new Usuario(null, $siapeMatricula, null, null, $senhaEncriptada);
                     $resposta = $usuario->atualizarSenha();

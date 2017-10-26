@@ -73,6 +73,7 @@ $siapeMatricula = $dados['siapeMatricula'];
 				
 				if (resObj.sucesso) {
 					statusSucesso(mensagem);
+					window.location="#/visao/paginas-publicas/restrito.php"; 
 				} else {
 					statusErro(mensagem);
 				}

@@ -20,12 +20,9 @@
 		
 		if($resposta2 == 2){
 			
-			//print_r( $dados['siapeMatricula']);
-//			print_r($dados);
-	//		die;
+
 			$resposta = $cUsuario->alterarSenha($dados['siapeMatricula'], $dados);
-			echo $resposta;
-		
+			
 		
 			if ($resposta == 0) {
 				//Erro no processo
