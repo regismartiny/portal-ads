@@ -266,7 +266,7 @@ class Usuario implements JsonSerializable{
         return $con->executa($sql) > 0 ? 1 : 0;
     }
 	
-	public function atualizaDataSenha($matricula) {
+	public function atualizaDataAcesso($matricula) {
 		$con = new MySQL();		
         $sql = "UPDATE Usuario SET dataUltimoAcesso = now() WHERE siapeMatricula = '$matricula'";
         $con->executa($sql);

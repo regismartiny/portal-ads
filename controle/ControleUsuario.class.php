@@ -12,11 +12,10 @@ class ControleUsuario
                 $status = $usuario->getStatus();
 				$dua = $usuario->getDataUltimoAcesso();
                 if ($status == 1) { //usuario ativo
+                    $usuario->atualizaDataAcesso($matricula);
                     if($dua!=null){
-						$usuario->atualizaDataSenha($matricula);
 						return 2; //tudo ok
 					}else{
-                        $usuario->atualizaDataSenha($matricula);
 						return 5; //tudo ok mas primeiro acesso. direciona para troca de senha;
 					}
 										
