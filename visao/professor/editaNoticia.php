@@ -1,36 +1,41 @@
 <?php
-	
-	include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/CategoriaNoticia.class.php";
-	include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleNoticia.class.php";
-	include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
+	session_start();
+	if (!isset($_SESSION["tipoUsuario"]) || $_SESSION["tipoUsuario"]!=2 || !isset($_COOKIE["702741445"])){
+		header( 'Location: /controle/logout.php' );
+	}
+	else{
+		include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/CategoriaNoticia.class.php";
+		include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleNoticia.class.php";
+		include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
 
-	$dados = clearArray($_GET);
+		$dados = clearArray($_GET);
 
-	$nControle = new ControleNoticia();
+		$nControle = new ControleNoticia();
 
-	$noticia = $nControle->listarUm($dados['idNoticia']);
-	
-	$titulo = $noticia->titulo;
-	$conteudo = $noticia->conteudo;
-	$fonte = $noticia->fonte;
-	$imagem = $noticia->imagem;
-	$idNoticia = $noticia->id;
-	$categoriaNoticia_id = $noticia->categoriaNoticia_id;
-	
-	
-	function inserirCategoriaNoticiaNoCombo($idSelecionado){
+		$noticia = $nControle->listarUm($dados['idNoticia']);
+		
+		$titulo = $noticia->titulo;
+		$conteudo = $noticia->conteudo;
+		$fonte = $noticia->fonte;
+		$imagem = $noticia->imagem;
+		$idNoticia = $noticia->id;
+		$categoriaNoticia_id = $noticia->categoriaNoticia_id;
+		
+		
+		function inserirCategoriaNoticiaNoCombo($idSelecionado){
 
-		$categoriaNoticia = new CategoriaNoticia();
-		$categoriasNoticias = $categoriaNoticia->listarTodos();
-		$returnCategoriaNoticia = "";
-		foreach($categoriasNoticias as $categoria){
-			$returnCategoriaNoticia = $returnCategoriaNoticia."<option value=".$categoria->getId();
-			if($categoria->getId() == $idSelecionado) {
-				$returnCategoriaNoticia = $returnCategoriaNoticia." selected";
+			$categoriaNoticia = new CategoriaNoticia();
+			$categoriasNoticias = $categoriaNoticia->listarTodos();
+			$returnCategoriaNoticia = "";
+			foreach($categoriasNoticias as $categoria){
+				$returnCategoriaNoticia = $returnCategoriaNoticia."<option value=".$categoria->getId();
+				if($categoria->getId() == $idSelecionado) {
+					$returnCategoriaNoticia = $returnCategoriaNoticia." selected";
+				}
+				$returnCategoriaNoticia = $returnCategoriaNoticia.">".$categoria->getDescricao()."</option>";
 			}
-			$returnCategoriaNoticia = $returnCategoriaNoticia.">".$categoria->getDescricao()."</option>";
+			return $returnCategoriaNoticia;
 		}
-		return $returnCategoriaNoticia;
 	}
 ?>
 

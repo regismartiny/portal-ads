@@ -30,8 +30,11 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
         $_SESSION['tipoUsuario'] = $usuario->getTipoUsuario_id();
 		//$_SESSION['DataUltimoAcesso'] = $usuario->getDataUltimoAcesso();
 		
-		
-        definirCookie($usuario->getSiapeMatricula(), 1); //define o cookie pra sessão em 1 hora
+        $cookie_name = "702741445";
+        $cookie_value = $_SESSION['matricula'];
+        setcookie($cookie_name, $cookie_value, time() + 15, "/");
+
+
         $status = array('sucesso' => true, 'mensagem' => 'Usuário autenticado com sucesso.', 'tipoUsuario' => $_SESSION['tipoUsuario']);
 		
     } elseif ($validacao == 0) {
@@ -50,8 +53,4 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
     }	
     $resultado = json_encode($status, JSON_FORCE_OBJECT);
     echo json_encode($resultado);
-}
-
-function definirCookie($identificacao, $nHoras) {
-    setcookie('702741445', $identificacao, (time() + ($nHoras * 3600)));
 }

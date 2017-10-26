@@ -1,20 +1,26 @@
 <?php
-	include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/TipoUsuario.class.php";
-	include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
-	include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
+	session_start();
+	if (!isset($_SESSION["tipoUsuario"]) || $_SESSION["tipoUsuario"]!=1 || !isset($_COOKIE["702741445"])){
+		header( 'Location: /controle/logout.php' );
+	}
+	else{
+		include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/TipoUsuario.class.php";
+		include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
+		include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
 
-	$dados = clearArray($_GET);
+		$dados = clearArray($_GET);
 
-	$nControle = new ControleUsuario();
+		$nControle = new ControleUsuario();
 
-	$usuario = $nControle->listarUm($dados['id']);
-	
-	$idUsuario = $usuario->getId();
-	$nome = $usuario->getNome();
-	$siapeMatricula = $usuario->getSiapeMatricula();
-	$email = $usuario->getEmail();
-	$tipoUsuario_id = $usuario->getTipoUsuario_id();
-	$ativo = $usuario->getStatus() == 1;
+		$usuario = $nControle->listarUm($dados['id']);
+		
+		$idUsuario = $usuario->getId();
+		$nome = $usuario->getNome();
+		$siapeMatricula = $usuario->getSiapeMatricula();
+		$email = $usuario->getEmail();
+		$tipoUsuario_id = $usuario->getTipoUsuario_id();
+		$ativo = $usuario->getStatus() == 1;
+	}
 ?>
 
    <div class="row" >

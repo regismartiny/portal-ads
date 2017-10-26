@@ -1,20 +1,25 @@
 <?php
 	session_start();
-	if (isset($_SESSION['ultima_atividade']) && (time() - $_SESSION['ultima_atividade'] > 5)) {
-
-		// última atividade foi mais de 60 minutos atrás
-		session_unset();     // unset $_SESSION  
-		session_destroy();   // destroindo session data 
+	if (!isset($_SESSION["tipoUsuario"]) || $_SESSION["tipoUsuario"]!=2 || !isset($_COOKIE["702741445"])){
+		header( 'Location: /controle/logout.php' );
 	}
-	$_SESSION['ultima_atividade'] = time(); // update da ultima atividade
+	else{
+		if (isset($_SESSION['ultima_atividade']) && (time() - $_SESSION['ultima_atividade'] > 5)) {
+
+			// última atividade foi mais de 60 minutos atrás
+			session_unset();     // unset $_SESSION  
+			session_destroy();   // destroindo session data 
+		}
+		$_SESSION['ultima_atividade'] = time(); // update da ultima atividade
 
 
-	include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleNoticia.class.php";
-	include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/CategoriaNoticia.class.php";
-	$nControle = new ControleNoticia();
-	$categoriaNoticia = new CategoriaNoticia();
+		include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleNoticia.class.php";
+		include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/CategoriaNoticia.class.php";
+		$nControle = new ControleNoticia();
+		$categoriaNoticia = new CategoriaNoticia();
 
-	$noticias = $nControle->minhasNoticias($_SESSION['matricula']);
+		$noticias = $nControle->minhasNoticias($_SESSION['matricula']);
+	}
 	
 ?>
 <div class="row">

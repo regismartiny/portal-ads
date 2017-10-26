@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	if (!isset($_SESSION["tipoUsuario"]) || !isset($_COOKIE["702741445"])){
+		header( 'Location: /controle/logout.php' );
+	}
+?>
 <div class="row">
 	<div class="col-12 mx-auto">
 		<h2 class="titulo">Alteração de senha</h2>

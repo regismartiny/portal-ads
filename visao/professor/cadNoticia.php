@@ -1,16 +1,22 @@
 <?php
-	function inserirCategoriaNoticiaNoCombo(){
-		include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/CategoriaNoticia.class.php";
-		
-		$categoriaNoticia = new CategoriaNoticia(null,null,null);
-		$categoriasNoticias = $categoriaNoticia->getCategoriaNoticia();
-		$returnCategoriaNoticia = "";
-		foreach($categoriasNoticias as $row => $arrayInterno){
-			$categoriaNoticia = new categoriaNoticia($arrayInterno['id'],$arrayInterno['descricao'], $arrayInterno['cor']);
-			$returnCategoriaNoticia = $returnCategoriaNoticia."<option value=".$arrayInterno['id'].">".$arrayInterno['descricao']."</option>";
-		}
-		return $returnCategoriaNoticia;
-	}	
+	session_start();
+	if (!isset($_SESSION["tipoUsuario"]) || $_SESSION["tipoUsuario"]!=2 || !isset($_COOKIE["702741445"])){
+		header( 'Location: /controle/logout.php' );
+	}
+	else{
+		function inserirCategoriaNoticiaNoCombo(){
+			include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/CategoriaNoticia.class.php";
+			
+			$categoriaNoticia = new CategoriaNoticia(null,null,null);
+			$categoriasNoticias = $categoriaNoticia->getCategoriaNoticia();
+			$returnCategoriaNoticia = "";
+			foreach($categoriasNoticias as $row => $arrayInterno){
+				$categoriaNoticia = new categoriaNoticia($arrayInterno['id'],$arrayInterno['descricao'], $arrayInterno['cor']);
+				$returnCategoriaNoticia = $returnCategoriaNoticia."<option value=".$arrayInterno['id'].">".$arrayInterno['descricao']."</option>";
+			}
+			return $returnCategoriaNoticia;
+		}	
+	}
 ?>
 			<div class="row justify-content-center" >
 				<div class="col-12 mx-auto">
