@@ -32,7 +32,7 @@ if (!empty($_POST) && isset($_POST['matricula']) && isset($_POST['senha'])
 		
         $cookie_name = "702741445";
         $cookie_value = $_SESSION['matricula'];
-        setcookie($cookie_name, $cookie_value, time() + 15, "/");
+        setcookie($cookie_name, $cookie_value, time() + 3600, "/");
 
 
         $status = array('sucesso' => true, 'mensagem' => 'Usuário autenticado com sucesso.', 'tipoUsuario' => $_SESSION['tipoUsuario']);
