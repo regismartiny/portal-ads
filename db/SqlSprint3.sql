@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `portal-ads`.`Usuario` (
   `senha` VARCHAR(100) NOT NULL,
   `status` TINYINT(1) NOT NULL,
   `TipoUsuario_id` INT NOT NULL,
+  `dataUltimoAcesso` DATE NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Usuario_TipoUsuario_idx` (`TipoUsuario_id` ASC),
   UNIQUE INDEX `siapeMatricula_UNIQUE` (`siapeMatricula` ASC),
