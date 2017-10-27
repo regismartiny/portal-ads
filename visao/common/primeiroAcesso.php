@@ -9,7 +9,7 @@ $siapeMatricula = $dados['siapeMatricula'];
 		<h2 class="titulo">Alteração de senha</h2>
 				
 		<form id="form" method="post" action="/controle/processaPrimeiroAcesso.php">
-		<input type="hidden" class="form-control" id="siapeMatricula"  name="siapeMatricula"  value="<?php echo $siapeMatricula; ?>">
+			<input type="hidden" class="form-control" id="siapeMatricula"  name="siapeMatricula"  value="<?php echo $siapeMatricula; ?>">
 			<div class="form-group row">
 				<label for="senha" class="col-sm-12 col-md-5 col-form-label">Senha Atual</label>
 				<div class="col-sm-12 col-md-7">

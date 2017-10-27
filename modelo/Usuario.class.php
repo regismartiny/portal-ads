@@ -86,18 +86,9 @@ class Usuario implements JsonSerializable{
     public function setDataUltimoAcesso($dua) {
         $this->dataUltimoAcesso = $dua;
     }
-
-	
 	
     public function isAtivo() {
         return $this->status == 1;
-    }
-
-    public function atualizarSenha() {	
-        $con = new MySQL();
-        $sql = "UPDATE Usuario SET Senha = '$this->senha' WHERE siapeMatricula = '$this->siapeMatricula'";
-        $ok = $con->executa($sql) == 1; //ok
-        return $ok;
     }
 
     public function listarUm() {
@@ -257,19 +248,19 @@ class Usuario implements JsonSerializable{
         }else {
             $sql = "UPDATE Usuario SET status = 1 WHERE id = '$this->id'";
         }
-        $con->executa($sql);
+        return $con->executa($sql) > 0;
     }
 	
     public function atualizar() {
         $con = new MySQL();		
-        $sql = "UPDATE Usuario SET siapeMatricula = COALESCE(".(is_null($this->siapeMatricula)?'NULL':$this->siapeMatricula).",siapeMatricula), nome = COALESCE('$this->nome',nome), email = COALESCE('$this->email',email), senha = COALESCE(". (is_null($this->senha)?'NULL':$this->senha) .",senha), status = COALESCE(".(is_null($this->status)?'NULL':$this->status).",status), TipoUsuario_id = COALESCE(".(is_null($this->tipoUsuario_id)?'NULL':$this->tipoUsuario_id).",TipoUsuario_id) WHERE id = $this->id";
-        return $con->executa($sql) > 0 ? 1 : 0;
+        $sql = "UPDATE Usuario SET siapeMatricula = COALESCE(".(is_null($this->siapeMatricula)?'NULL':$this->siapeMatricula).",siapeMatricula), nome = COALESCE(" . (is_null($this->nome) ? 'NULL' : "'".$this->nome."'") . ",nome), email = COALESCE(".(is_null($this->email)?'NULL':"'".$this->email."'").",email), senha = COALESCE(". (is_null($this->senha)?'NULL':"'".$this->senha."'") .",senha), status = COALESCE(".(is_null($this->status)?'NULL':$this->status).",status), TipoUsuario_id = COALESCE(".(is_null($this->tipoUsuario_id)?'NULL':$this->tipoUsuario_id).",TipoUsuario_id) WHERE id = $this->id";
+        return $con->executa($sql) > 0;
     }
 	
-	public function atualizaDataAcesso($matricula) {
+	public function atualizarDataUltimoAcesso($siapeMatricula) {
 		$con = new MySQL();		
-        $sql = "UPDATE Usuario SET dataUltimoAcesso = now() WHERE siapeMatricula = '$matricula'";
-        $con->executa($sql);
+        $sql = "UPDATE Usuario SET dataUltimoAcesso = now() WHERE siapeMatricula = '$siapeMatricula'";
+        return $con->executa($sql) > 0;
     }
 
     public function jsonSerialize() {

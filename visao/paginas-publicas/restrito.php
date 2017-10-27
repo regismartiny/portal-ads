@@ -83,7 +83,6 @@
 
 	function direcionaPaginaPrimeiroAcesso() {
 		var siapeMatricula = $('#matricula').val();
-		window.location.hash = '/visao/common/primeiroAcesso.php?siapeMatricula='+siapeMatricula;
-		carregaPagina();
+		window.location.hash = '/visao/common/primeiroAcesso.php?siapeMatricula=' + siapeMatricula;
 	}
 </script>

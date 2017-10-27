@@ -3,20 +3,20 @@
 
     class ControleUsuario
     {    
-        public function validarLogin($matricula, $senha) {
-            $usuario = new Usuario(null, $matricula);
+        public function validarLogin($siapeMatricula, $senha) {
+            $usuario = new Usuario(null, $siapeMatricula);
             $ok = $usuario->listarUmPorSiapeMatricula();
             if ($ok) { //se existe um usuário com a matrícula informada
                 $senhaCorreta = $this->verificarSenha($senha, $usuario->getSenha());
                 if ($senhaCorreta) {
                     $status = $usuario->getStatus();
-                    $dua = $usuario->getDataUltimoAcesso();
                     if ($status == 1) { //usuario ativo
-                        $usuario->atualizaDataAcesso($matricula);
-                        if($dua!=null){
+                        $dtUltimoAcesso = $usuario->getDataUltimoAcesso();
+                        if($dtUltimoAcesso != null) {
+                            $usuario->atualizarDataUltimoAcesso($siapeMatricula);
                             return 2; //tudo ok
-                        }else{
-                            return 5; //tudo ok mas primeiro acesso. direciona para troca de senha;
+                        }else {
+                            return 5; //login ok, porém primeiro acesso
                         }
                                             
                     }
@@ -32,20 +32,22 @@
             return strcasecmp($senhaInformadaEncriptada, $senhaArmazenada) == 0;
         }
 
-        public function alterarSenha($siapeMatricula, $dados) {
+        public function alterarSenha($idUsuario, $dados) {
 
             $confirmacaoDeSenhaCorreta = strcasecmp($dados['senhaNova'], $dados['confSenha']) == 0;
             $senhaAtualENovaDiferentes = strcasecmp($dados['senhaAtual'], $dados['senhaNova']) != 0; 
             
             if($confirmacaoDeSenhaCorreta) {
                 if ($senhaAtualENovaDiferentes) {
-                    $validacaoLogin = $this->validarLogin($siapeMatricula, $dados['senhaAtual']);
+                    $validacaoLogin = $this->validarLogin($dados['siapeMatricula'], $dados['senhaAtual']);
                     if ($validacaoLogin == 2 || $validacaoLogin == 5) { //login válido
                         $senhaEncriptada = $this->encriptarSenha($dados['senhaNova']);
-                        $usuario = new Usuario(null, $siapeMatricula, null, null, $senhaEncriptada);
-                        $resposta = $usuario->atualizarSenha();
-                        if ($resposta) {
+                        $usuario = new Usuario($idUsuario, null, null, null, $senhaEncriptada);
+                        $sucesso = $usuario->atualizar();
+                        if ($sucesso) {
                             return 2; //senha alterada com sucesso
+                        } else {
+                            return 0; //erro na alteração da senha
                         }
                     } else {
                         return $validacaoLogin;
@@ -58,34 +60,35 @@
             }
         }
 
-        public function alterarEmail($dados) {
-            $confirmacaoDeEmailCorreta = strcasecmp($dados['email'], $dados['confEmail']) == 0;
+        public function alterarEmail($idUsuario, $dados) {
+            $email = $dados['email'];
+            $confirmacaoDeEmailCorreta = strcasecmp($email, $dados['confEmail']) == 0;
             if($confirmacaoDeEmailCorreta) {
-                $validacaoEmail = $this->validarEmail($dados['email']);
-                    if ($validacaoEmail == 2) { //login válido
-                        $usuario = new Usuario(null, null, null, $email);
-                        $resposta = $usuario->atualizarEmail();
-                        if ($resposta) {
-                            return 2; //senha alterada com sucesso
+                $validacaoEmail = $this->validarEmail($email);
+                    if (!$validacaoEmail) { //ok - email ainda não cadastrado
+                        $usuario = new Usuario($idUsuario, null, null, $email);
+                        $sucesso = $usuario->atualizar();
+                        if ($sucesso) {
+                            return 2; //email alterado com sucesso
+                        } else {
+                            return 3; //ocorreu um erro na atualização do email
                         }
                     } else {
-                        return $validacaoLogin;
+                        return 4; //email já existe
                     }
-            
             }else {
                 return 5;
             }
         }
 
+        public function atualizarDataUltimoAcesso($siapeMatricula) {
+            $usuario = new Usuario(null, $siapeMatricula);
+            return $usuario->atualizarDataUltimoAcesso($siapeMatricula);
+        }
+
         public function validarEmail($email) {
             $usuario = new Usuario(null, null, null, $email);
-            $ok = $usuario->listarUmPorEmail();
-            if (!$ok) { //se não existe um usuário com esse email informado
-                return 2; //tudo ok
-                                        
-            }else {  
-                return 4; //email já existe
-            }
+            return $usuario->listarUmPorEmail();
         }
         
         public function encriptarSenha($senha) {

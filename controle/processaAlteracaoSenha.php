@@ -9,7 +9,7 @@
 	
 	session_start();		//Inicia seção
 			
-	if (!empty($_POST) && isset($_POST['senhaAtual']) && isset($_POST['senhaNova']) && isset($_POST['confSenha'])) {
+	if (!empty($_POST) && isset($_POST['siapeMatricula']) && isset($_POST['senhaAtual']) && isset($_POST['senhaNova']) && isset($_POST['confSenha'])) {
 
 		include $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
 		include $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
@@ -18,7 +18,7 @@
 
 		$dados = clearArray($_POST);
 
-		$resposta = $cUsuario->alterarSenha($_SESSION['matricula'], $dados);
+		$resposta = $cUsuario->alterarSenha($_SESSION['usuario_id'], $dados);
 		
 		if ($resposta == 0) {
 			//Erro no processo

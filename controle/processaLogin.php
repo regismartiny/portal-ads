@@ -18,17 +18,22 @@
 
         $status = array();
         $validacao = $cUsuario->validarLogin($dados['matricula'], $dados['senha']);
-        if($validacao == 2) {
-            //tudo ok
+
+        if ($validacao == 2 || $validacao == 5) { //login ok
             session_start();
             $usuario = new Usuario(null, $dados['matricula']);
             $usuario->listarUmPorSiapeMatricula();
             $_SESSION['usuario_id'] = $usuario->getId();
+            $_SESSION['primeiroAcesso'] = true;
+        }
+
+        if($validacao == 2) {
+            //acesso normal
             $_SESSION['nomeUsuario'] = $usuario->getNome();
             $_SESSION['matricula'] = $usuario->getSiapeMatricula();
             $_SESSION['email'] = $usuario->getEmail();
             $_SESSION['tipoUsuario'] = $usuario->getTipoUsuario_id();
-            //$_SESSION['DataUltimoAcesso'] = $usuario->getDataUltimoAcesso();
+            $_SESSION['dataUltimoAcesso'] = $usuario->getDataUltimoAcesso();
             
             $cookie_name = "702741445";
             $cookie_value = $_SESSION['matricula'];
@@ -49,7 +54,7 @@
             $status = array('sucesso' => false, 'mensagem' => 'O usuário está bloqueado.');
         } elseif ($validacao == 5){
             //primeiro acesso
-            $status = array('sucesso' => true, 'mensagem' => 'Primeiro acesso. Usuário deve mudar a senha e Cadastrar Email válido.', 'primeiroAcesso' => true);
+            $status = array('sucesso' => true, 'mensagem' => 'Primeiro acesso. Você deve alterar a senha e cadastrar seu email.', 'primeiroAcesso' => true);
         }	
         $resultado = json_encode($status, JSON_FORCE_OBJECT);
         echo json_encode($resultado);
