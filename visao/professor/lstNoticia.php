@@ -4,15 +4,6 @@
 		header( 'Location: /controle/logout.php' );
 	}
 	else{
-		if (isset($_SESSION['ultima_atividade']) && (time() - $_SESSION['ultima_atividade'] > 5)) {
-
-			// última atividade foi mais de 60 minutos atrás
-			session_unset();     // unset $_SESSION  
-			session_destroy();   // destroindo session data 
-		}
-		$_SESSION['ultima_atividade'] = time(); // update da ultima atividade
-
-
 		include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleNoticia.class.php";
 		include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/CategoriaNoticia.class.php";
 		$nControle = new ControleNoticia();
