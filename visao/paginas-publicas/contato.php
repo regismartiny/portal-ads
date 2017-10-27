@@ -1,3 +1,4 @@
+<?php session_start(); ?>   
 <div class="row">
 	<div class="col mx-auto">
         <h2 class="titulo">Contato</h2>
@@ -15,13 +16,13 @@
             <div class="form-group row">
                 <label for="nome" class="col-sm-12 col-md-4 col-form-label">Seu nome</label>
                 <div class="col-sm-12 col-md-8">
-                    <input type="text" class="form-control" id="nome" name="nome" required>
+                    <input type="text" class="form-control" id="nome" name="nome" value="<?php if(isset($_SESSION['nomeUsuario'])){echo $_SESSION['nomeUsuario'];} ?>" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="email" class="col-sm-12 col-md-4 col-form-label">Seu e-mail</label>
                 <div class="col-sm-12 col-md-8">
-                    <input type="email" class="form-control" id="email" name="email" required>
+                    <input type="email" class="form-control" id="email" name="email" value="<?php if(isset($_SESSION['email'])){echo $_SESSION['email'];} ?>" required>
                 </div>
             </div>
             <div class="form-group row">
