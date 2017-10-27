@@ -128,7 +128,6 @@ class Usuario implements JsonSerializable{
         }
     }
 	
-	
 	public function listarUmPorEmail() {
         $con = new MySQL();
         $sql = "SELECT * FROM Usuario WHERE email='$this->email'";
@@ -142,20 +141,6 @@ class Usuario implements JsonSerializable{
             $this->tipoUsuario_id = $resultado[0]["TipoUsuario_id"];
 			$this->dataUltimoAcesso = $resultado[0]["dataUltimoAcesso"];
             return true;	
-        } else {
-            return false;
-        }
-    }
-	
-	
-	
-    
-    public function getUsuarioStatus($id) {
-        $con = new MySQL();
-        $sql = "SELECT status FROM Usuario WHERE id='$id'";
-        $resultado = $con->consulta($sql);
-        if (!empty($resultado)) {
-            return $resultado[0]["status"];
         } else {
             return false;
         }
@@ -240,8 +225,8 @@ class Usuario implements JsonSerializable{
 	    return $resposta;
     }
 	
-    public function modificarStatusUsuario() {
-        $status = $this->getUsuarioStatus($this->getId());
+    public function modificarStatus() {
+        $status = $this->getStatus();
         $con = new MySQL();
         if ($status == 1) {
             $sql = "UPDATE Usuario SET status = 0 WHERE id = '$this->id'";

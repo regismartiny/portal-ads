@@ -131,15 +131,13 @@ class Noticia
             return false;
         }
     }
-    
-        
+       
     public function inserir() {
         $con = new MySQL();
         $sql = "INSERT INTO Noticia (titulo, conteudo, fonte, imagem, status, dataCadastro, dataPublicacao, Usuario_id, CategoriaNoticia_id) 
                 VALUES ('$this->titulo', '$this->conteudo', '$this->fonte', '$this->imagem', '1', now(), now(), '$this->usuario_id', '$this->categoriaNoticia_id')";
         return $con->executa($sql) > 0 ? 1 : 0;
     }
-	
 	
 	public function atualizar() {
         $con = new MySQL();
@@ -151,6 +149,17 @@ class Noticia
         $con = new MySQL();
         $sql = "UPDATE Noticia SET status = $this->status WHERE id = $this->id";
         $con->executa($sql);
-    } 
+    }
+
+    public function modificarStatus() {
+        $status = $this->status;
+        $con = new MySQL();
+        if ($status == 1) {
+            $sql = "UPDATE Noticia SET status = 0 WHERE id = '$this->id'";
+        }else {
+            $sql = "UPDATE Noticia SET status = 1 WHERE id = '$this->id'";
+        }
+        return $con->executa($sql) > 0;
+    }
 }
 

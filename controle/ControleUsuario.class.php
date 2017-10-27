@@ -130,7 +130,8 @@
         
         public function modificarStatusUsuario($id) {
             $usuario = new Usuario($id);
-            $usuario->modificarStatusUsuario();
+            $usuario->listarUm();
+            return $usuario->modificarStatus();
         }
 
         public function filtrarUsuario($id) {
