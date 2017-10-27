@@ -1,93 +1,48 @@
 <?php
-	session_start();
-	if (!isset($_SESSION["tipoUsuario"]) || $_SESSION["tipoUsuario"]!=1 || !isset($_COOKIE["702741445"])){
-		header( 'Location: /controle/logout.php' );
-	}
-	else{
-		include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
-		include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
-
-		$uControle = new ControleUsuario();
-
-		if (!empty($_POST['alterarStatusId'])) {
-			$dados = clearArray($_POST);
-			$uControle->modificarStatusUsuario($dados['alterarStatusId']);
-			return;
-		}
-
-		include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/TipoUsuario.class.php";
-		
-		$tipoUsuario = new TipoUsuario();
-		$usuarios = $uControle->consultar();
-	}
+	include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
+	include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/TipoUsuario.class.php";
+	$uControle = new ControleUsuario();
+	$tipoUsuario = new TipoUsuario();
+	$usuarios = $uControle->consultar();
+	
 ?>
 <script>
-	var filtroTipo = 0;
-	var filtroNome = '';
-	$(document).ready(function () {
-		$('.btn-filter').on('click', function () {
-			filtroTipo = $(this).data('target');
-			filtroTipoEProcuraNomes();
-			
-		});
-		$('button').on('click', function() {
-			$('button').removeClass('selected');
-			$(this).addClass('selected');
-		});
-		$('#myInput').on('keyup', function() {
-			filtroNome = $(this).val();
-			filtroTipoEProcuraNomes();
-		});
-	});
 	function modificaStatus(id) {
 		$.ajax({
-			type: 'POST',
-			url: '<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>',
-			data: 'alterarStatusId=' + id
+			type: "POST",
+			url: 'modificarStatusUsuario.php',
+			data: "id="+id,
 		});
 	}
-
-	function filtroTipoEProcuraNomes() {
-		filtroNomeUpper = filtroNome.toUpperCase();
-		var jsonArrayUsuarios = <?php echo json_encode($usuarios); ?>;
-		var arrayIntermediario = [];
-		var arrayFiltrado = [];
-		for (var indice in jsonArrayUsuarios) {
-			if (jsonArrayUsuarios.hasOwnProperty(indice)) {
-				var usuario = jsonArrayUsuarios[indice];
-				if (filtroTipo == 2) {
-					if(usuario.tipoUsuario_id == 2) {
-						arrayIntermediario.push(usuario);
-					}
-				}else if(filtroTipo == 3){
-					if(usuario.tipoUsuario_id == 3) {
-						arrayIntermediario.push(usuario);
-					}
-				}else{
-					arrayIntermediario = jsonArrayUsuarios;
+	function procuraNomes() {
+		var input, filter, table, tr, td, i;
+		input = document.getElementById("myInput");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("tabelaUsuarios");
+		tr = table.getElementsByTagName("tr");
+		for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[1];
+			if (td) {
+				if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
 				}
-			}
+			}       
 		}
-		for(var indice in arrayIntermediario){
-			if (arrayIntermediario.hasOwnProperty(indice)) {
-				var usuario = arrayIntermediario[indice];
-				if(usuario.nome.toUpperCase().indexOf(filtroNomeUpper) > -1){
-					arrayFiltrado.push(usuario);
-				}
+	}
+	$(document).ready(function () {
+		$('.btn-filter').on('click', function () {
+			var $target = $(this).data('target');
+			if ($target != 0) {
+				$('.table tr').css('display', 'none');
+				$('.table tr[data-status="topo"]').fadeIn('slow');
+				$('.table tr[data-status="' + $target + '"]').fadeIn('slow');
+			} else {
+				$('.table tr').css('display', 'none').fadeIn('slow');
 			}
-		}
-		renderizarTabela(arrayFiltrado);
-	}
-	
-	function renderizarTabela(arrayFiltrado) {
-		var divTabela = $("#tabelaUsuarios");
-		
-		
-		var tabelaAtualizada = "<table id='tabelaUsuarios' class='table table-hover'><thead><tr data-status='topo'><th onclick='sortTable(0)'>Matrícula</th><th onclick='sortTable(1)'>Nome</th><th onclick='sortTable(2)' class='un'>Tipo</th><th onclick='sortTable(3)' class='un2'>Status</th></tr></thead>";
-
-		divTabela.html(tabelaAtualizada);
-	}
-
+		});
+	});
 	function sortTable(n) {
 		var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
 		table = document.getElementById("tabelaUsuarios");
@@ -142,12 +97,16 @@
 			}
 		}
 	}
+	$('button').on('click', function(){
+		$('button').removeClass('selected');
+		$(this).addClass('selected');
+	});
 </script>
 <div class="row">
 	<div class="col mx-auto">
 		<h2 class="titulo">Lista de Usuários</h2>
 		
-		<input class="col-sm-12" type="text" id="myInput" placeholder="Procure por um nome..." title="A busca realizada incluirá usuários de todos os tipos">
+		<input class="col-sm-12" type="text" id="myInput" onkeyup="procuraNomes()" placeholder="Procure por um nome..." title="A busca realizada incluirá usuários de todos os tipos">
 
 		<div class="form-group row">
 			<label for="nome" class="col-sm-12 col-md-5 col-form-label">Filtro por tipo</label>
