@@ -1,25 +1,24 @@
 <?php
 	session_start();
-	if (!isset($_SESSION["tipoUsuario"]) || $_SESSION["tipoUsuario"]!=1 || !isset($_COOKIE["702741445"])){
-		header( 'Location: /controle/logout.php' );
+	if (!isset($_SESSION["tipoUsuario"]) || $_SESSION["tipoUsuario"] != 1 || !isset($_COOKIE["702741445"])){
+		header('Location: /controle/logout.php');
+		return;
 	}
-	else{
-		include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
-		include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
+	include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleUsuario.class.php";
+	include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
 
-		$uControle = new ControleUsuario();
+	$uControle = new ControleUsuario();
 
-		if (!empty($_POST['alterarStatusId'])) {
-			$dados = clearArray($_POST);
-			$uControle->modificarStatusUsuario($dados['alterarStatusId']);
-			return;
-		}
-
-		include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/TipoUsuario.class.php";
-		
-		$tipoUsuario = new TipoUsuario();
-		$usuarios = $uControle->consultar();
+	if (!empty($_POST['alterarStatusId'])) {
+		$dados = clearArray($_POST);
+		$uControle->modificarStatusUsuario($dados['alterarStatusId']);
+		return;
 	}
+
+	include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/TipoUsuario.class.php";
+	
+	$tipoUsuario = new TipoUsuario();
+	$usuarios = $uControle->consultar();
 ?>
 <script>
 	var filtroTipo = 0;
