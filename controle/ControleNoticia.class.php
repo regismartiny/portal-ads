@@ -13,8 +13,8 @@
             }
         }
         
-        public function inserir($dados) {
-            $noticia = new Noticia(null, $dados['titulo'], $dados['conteudo'], $dados['fonte'], $dados['imagem'],1,null, null, $_SESSION['usuario_id'], $dados['categoriaNoticia_id']);
+        public function inserir($usuario, $dados) {
+            $noticia = new Noticia(null, $dados['titulo'], $dados['conteudo'], $dados['fonte'], $dados['imagem'],1,null, null, $usuario, $dados['categoriaNoticia_id']);
             return $noticia->inserir();
         }
         
