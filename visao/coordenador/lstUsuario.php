@@ -175,7 +175,7 @@
 				</thead>
 <?php
 		foreach($usuarios as $usuario) {
-			$tipoUsuario = new TipoUsuario($usuario->getId());
+			$tipoUsuario = new TipoUsuario($usuario->getTipoUsuario_id());
 			$tipoUsuario->listarUm();
 			$descricaoTipo = $tipoUsuario->getDescricao();
 			$idTipo = $tipoUsuario->getId();
@@ -199,9 +199,11 @@
 					<td class="un2">Ativo</td>
 <?php
 			}
-		}
 ?>
 				</tr>
+<?php
+		}
+?>
 			</table>
 <?php
 	}
