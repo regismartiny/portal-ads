@@ -99,11 +99,11 @@
         }
         
         public function inserir($dados) {
-            $tipoUsuario = $this->getTipoUsuario($dados['siapeMatricula']);
+            $tipoUsuario = $this->getTipoUsuario($dados['matricula']);
 
             if($tipoUsuario != 0){
-                $senhaEncriptada = $this->encriptarSenha($dados['senha']);
-                $usuario = new Usuario(null, $dados['siapeMatricula'], $dados['nome'], $dados['email'], $senhaEncriptada, 1, $tipoUsuario);
+                $senhaEncriptada = $this->encriptarSenha($dados['matricula']);
+                $usuario = new Usuario(null, $dados['matricula'], $dados['nome'], $dados['email'], $senhaEncriptada, 1, $tipoUsuario);
                 return $usuario->inserir();
             }
             return 4; //Matricula / SIAPE inválido
