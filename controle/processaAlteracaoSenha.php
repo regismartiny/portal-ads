@@ -50,3 +50,4 @@
 	$resultado = json_encode($status, JSON_FORCE_OBJECT);
 	echo json_encode($resultado);
 	
+?>
