@@ -21,7 +21,7 @@
 					<input type="submit" class="btn-login btn btn-primary btn-lg btn-block" name="login" value="Login" />
 				</div>
 				<div class="col-sm-12 col-md-8">
-					<a href="esqueciSenha.html" class="btn btn-danger btn-lg btn-block">Esqueci Minha Senha</a>
+					<a href="/visao/paginas-publicas/esqueciSenha.html" class="btn btn-danger btn-lg btn-block">Esqueci Minha Senha</a>
 				</div>
 			</div>
 		</form>
