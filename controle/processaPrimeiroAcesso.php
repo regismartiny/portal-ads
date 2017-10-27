@@ -43,7 +43,7 @@
 			else if($respostaSenha == 2) {
 				//Usuário e senha Certos e foi trocado a senha
 				$cUsuario->atualizarDataUltimoAcesso($_POST['siapeMatricula']);
-				$status = array('sucesso' => true, 'mensagem' => 'Senha alterada com sucesso.');
+				$status = array('sucesso' => true, 'mensagem' => 'Dados alterados com sucesso.');
 			}
 			else if($respostaSenha == 1) {
 				//Usuário Certo, Senha Errada
