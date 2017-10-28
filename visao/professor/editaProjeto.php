@@ -4,7 +4,7 @@
 		header( 'Location: /controle/logout.php' );
 	}
 	else{
-		//include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/CategoriaProjeto.class.php";
+		include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/CategoriaProjeto.class.php";
 		include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleProjeto.class.php";
 		include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
 
@@ -20,32 +20,6 @@
 		$idProjeto = $projeto->id;
 		
 		
-		/*function inserirCategoriaProjetoNoCombo($idSelecionado){
-
-			$categoriaProjeto = new CategoriaProjeto();
-			$categoriasProjetos = $categoriaProjeto->listarTodos();
-			$returnCategoriaProjeto = "";
-			foreach($categoriasProjetos as $categoria){
-				$returnCategoriaProjeto = $returnCategoriaProjeto."<option value=".$categoria->getId();
-				if($categoria->getId() == $idSelecionado) {
-					$returnCategoriaProjeto = $returnCategoriaProjeto." selected";
-				}
-				$returnCategoriaProjeto = $returnCategoriaProjeto.">".$categoria->getDescricao()."</option>";
-			}
-			return $returnCategoriaProjeto;
-			
-			<div class="form-group row">
-						<label for="categoriaProjeto_id" class="col-sm-4 col-form-label">Categoria</label>
-						<div class="col-sm-8">
-							<select class="col custom-select" id="categoriaProjeto_id" name="categoriaProjeto_id" required>
-								<?php 
-									echo inserirCategoriaProjetoNoCombo($categoriaProjeto_id);
-								?>
-							</select>
-						</div>
-					</div>	
-			
-		}*/
 	}
 ?>
 

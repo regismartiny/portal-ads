@@ -112,4 +112,11 @@ class InformacaoDoCurso
         $sql = "INSERT INTO InformacaoDoCurso (chave, titulo, conteudo) VALUES ('$this->chave', '$this->titulo', '$this->conteudo')";
         return $con->executa($sql) > 0;
     }
+	
+	public function atualizar() {
+        $con = new MySQL();
+        $sql = "UPDATE InformacaoDoCurso SET conteudo = '$this->conteudo' WHERE id = $this->id";
+
+        return $con->executa($sql) > 0 ? 1 : 0;
+    }
 }
