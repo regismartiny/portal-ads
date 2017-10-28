@@ -4,7 +4,6 @@
             <div class="card-block">
                 <?php 
                     include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleProjeto.class.php";
-                    //include_once $_SERVER['DOCUMENT_ROOT']."/modelo/CategoriaProjeto.class.php";
                     include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
 
                     $cProjeto = new ControleProjeto();
@@ -20,17 +19,7 @@
                         return;
                     }
 
-                    /*$categoria = new CategoriaProjeto($projeto->__get('categoriaProjeto_id'));
-                    $categoria = $categoria->listarUm();
-                    if ($categoria == false) {
-                        echo 'Categoria de Notícia não encontrada.';
-                        return;
-                    }
-                    $categoria = $categoria->getDescricao();
-					
-					<div><small class="text-muted">Categoria: <?php echo $categoria ?></small></div>
-					<div><small class="text-muted">Data de publicação: <?php echo date("d/m/Y", strtotime($projeto->__get('dataPublicacao'))) ?></small></div>
-					*/
+           
                 ?>
                 <h4 class="projeto-detalhe card-title"><?php echo $projeto->__get('titulo') ?></h4>
                 <p class="card-text"><?php echo $projeto->__get('conteudo') ?></p>
