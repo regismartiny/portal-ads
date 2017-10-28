@@ -1,19 +1,23 @@
 <?php
 	session_start();
 	if (!isset($_SESSION["tipoUsuario"]) || $_SESSION["tipoUsuario"]!=2 || !isset($_COOKIE["702741445"])){
-		header( 'Location: /controle/logout.php' );
+		header('Location: /controle/logout.php');
+		return;
 	}
-	else{
-		include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleProjeto.class.php";
-		//include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/CategoriaProjeto.class.php";
-		$nControle = new ControleProjeto();
-		//$categoriaProjeto = new CategoriaProjeto();
 
-		$projetos = $nControle->meusProjetos($_SESSION['matricula']);
-	}
+	include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleProjeto.class.php";
+	include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
 	
+	$nControle = new ControleProjeto();
+
+	if (!empty($_POST['alterarStatusId'])) {
+		$dados = clearArray($_POST);
+		$nControle->modificarStatusProjeto($dados['alterarStatusId']);
+	}
+
+	$projetos = $nControle->minhasProjetos($_SESSION['matricula']);
 ?>
-<div class="row">
+	<div class="row">
 	<div class="col mx-auto">
 		<h2 class="titulo">Meus Projetos</h2>
 		<?php
@@ -21,6 +25,7 @@
 				echo "<table class='table table-hover'>
 						<thead>
 							<tr>
+							<th>Número</th>
 							<th>Titulo</th>
 							<th>Data da Publicação</th>
 							<th>Status</th>
@@ -43,3 +48,13 @@
 		?>
 	</div>
 </div>
+
+<script>
+	function modificarStatus(id) {
+		$.ajax({
+			type: 'POST',
+			url: '<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>',
+			data: 'alterarStatusId=' + id
+		});
+	}
+</script>

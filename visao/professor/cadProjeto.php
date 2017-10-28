@@ -5,30 +5,6 @@
 		return;
 	}
 
-	/*include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/CategoriaNoticia.class.php";
-
-	function inserirCategoriaNoticiaNoCombo(){
-		$categoriaNoticia = new CategoriaNoticia(null,null,null);
-		$categoriasNoticias = $categoriaNoticia->listarTodos();
-		$returnCategoriaNoticia = "";
-		foreach($categoriasNoticias as $categoriaNoticia){
-			$returnCategoriaNoticia = $returnCategoriaNoticia."<option value=".$categoriaNoticia->getID().">".$categoriaNoticia->getDescricao()."</option>";
-		}
-		return $returnCategoriaNoticia;
-		
-		<div class="form-group row">
-				<label for="categoriaNoticia_id" class="col-sm-4 col-form-label">Categoria</label>
-				<div class="col-sm-8">
-					<select class="col custom-select" id="categoriaNoticia_id" name="categoriaNoticia_id" required>
-						<?php 
-							echo inserirCategoriaNoticiaNoCombo();
-						?>
-					</select>
-				</div>
-			</div>
-		
-		
-	}	*/
 ?>
 	<div class="col mx-auto">
 		<form id="ajax-form" method='post' action=''>
