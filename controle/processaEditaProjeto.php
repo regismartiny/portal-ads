@@ -9,17 +9,17 @@
         if (!empty($_POST)) {
             include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
             $dados = clearArray($_POST);
-            if (isset($dados['id']) && isset($dados['titulo']) && isset($dados['conteudo']) && isset($dados['imagem']) ) {
+            if (isset($dados['id']) && isset($dados['categoriaNoticia_id']) && isset($dados['titulo']) && isset($dados['conteudo']) && isset($dados['imagem']) && isset($dados['fonte']) ) {
             
-                include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleProjeto.class.php";
-                $nControle = new ControleProjeto();
+                include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleNoticia.class.php";
+                $nControle = new ControleNoticia();
             
                 $estado = $nControle->atualizar($dados);
                 
                 if ($estado == 1){
-                    $status = array('sucesso' => true, 'mensagem' => 'Projeto atualizado.');
+                    $status = array('sucesso' => true, 'mensagem' => 'Notícia atualizada.');
                 } else {
-                    $status = array('sucesso' => false, 'mensagem' => 'Falha na atualização do projeto.');
+                    $status = array('sucesso' => false, 'mensagem' => 'Falha na atualização da notícia.');
                 }
 
                 $resultado = json_encode($status, JSON_FORCE_OBJECT);
