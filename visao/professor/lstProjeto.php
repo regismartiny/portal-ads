@@ -26,7 +26,7 @@
 						<thead>
 							<tr>
 							<th>Número</th>
-							<th>Titulo</th>
+							<th>Título</th>
 							<th>Data da Publicação</th>
 							<th>Status</th>
 							</tr>
