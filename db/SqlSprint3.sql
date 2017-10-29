@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `portal-ads`.`Projeto` (
   `dataPublicacao` DATE NULL,
   `Usuario_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_Projetoss_Usuario1_idx` (`Usuario_id` ASC),
+  INDEX `fk_Projetos_Usuario1_idx` (`Usuario_id` ASC),
   CONSTRAINT `fk_Projetos_Usuario1`
     FOREIGN KEY (`Usuario_id`)
     REFERENCES `portal-ads`.`Usuario` (`id`)

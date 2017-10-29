@@ -23,7 +23,7 @@
             return $projeto->listarTodos();
         }
         
-        public function minhasProjetos($siapeMatricula) {   
+        public function meusProjetos($siapeMatricula) {   
             $projeto = new Projeto();
             return $projeto->listarPorMatricula($siapeMatricula);
         }

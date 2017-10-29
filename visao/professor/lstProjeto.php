@@ -15,7 +15,7 @@
 		$nControle->modificarStatusProjeto($dados['alterarStatusId']);
 	}
 
-	$projetos = $nControle->minhasProjetos($_SESSION['matricula']);
+	$projetos = $nControle->meusProjetos($_SESSION['matricula']);
 ?>
 	<div class="row">
 	<div class="col mx-auto">
