@@ -2,25 +2,23 @@
 	session_start();
 	if (!isset($_SESSION["tipoUsuario"]) || $_SESSION["tipoUsuario"]!=2 || !isset($_COOKIE["702741445"])){
 		header( 'Location: /controle/logout.php' );
+		return;
 	}
-	else{
-		include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/CategoriaProjeto.class.php";
-		include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleProjeto.class.php";
-		include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
 
-		$dados = clearArray($_GET);
+	include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/CategoriaProjeto.class.php";
+	include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleProjeto.class.php";
+	include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
 
-		$nControle = new ControleProjeto();
+	$dados = clearArray($_GET);
 
-		$projeto = $nControle->listarUm($dados['idProjeto']);
-		
-		$titulo = $projeto->titulo;
-		$conteudo = $projeto->conteudo;
-		$imagem = $projeto->imagem;
-		$idProjeto = $projeto->id;
-		
-		
-	}
+	$cProjeto = new ControleProjeto();
+
+	$projeto = $cProjeto->listarUm($dados['idProjeto']);
+	
+	$titulo = $projeto->titulo;
+	$conteudo = $projeto->conteudo;
+	$imagem = $projeto->imagem;
+	$idProjeto = $projeto->id;
 ?>
 
    <div class="row" >

@@ -18,10 +18,8 @@
 	}	
 ?>
 	<div class="col mx-auto">
+	<h2 class="titulo">Cadastro de Notícias</h2>
 		<form id="ajax-form" method='post' action=''>
-			<div class="form-group row">
-				<h1 class="col-sm-12 col-form-label">Cadastro de Notícias</h1>
-			</div>
 			<div class="form-group row">
 				<label for="categoriaNoticia_id" class="col-sm-4 col-form-label">Categoria</label>
 				<div class="col-sm-8">
