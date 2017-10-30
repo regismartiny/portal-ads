@@ -119,7 +119,7 @@
 	jQuery(document).ready(function($) {
 		$(".clickable-row").click(function() {
 			console.log($(this).data("href"));
-			window.location = $(this).data("href");
+			window.location = "/visao/index.php#/visao/coordenador/editaUsuario.php?id="+$(this).data("href");
 		});
 	});
 </script>
@@ -142,7 +142,7 @@
 		<div class="row">
 
 <?php
-	if($usuarios != false) {
+		if($usuarios != false) {
 ?>
 			<table id="tabelaUsuarios" class="table table-hover">
 				<thead>
@@ -154,39 +154,40 @@
 					</tr>
 				</thead>
 <?php
-		foreach($usuarios as $usuario) {
-			$tipoUsuario = new TipoUsuario($usuario->getTipoUsuario_id());
-			$tipoUsuario->listarUm();
-			$descricaoTipo = $tipoUsuario->getDescricao();
-			$idTipo = $tipoUsuario->getId();
+			foreach($usuarios as $usuario) {
+				$tipoUsuario = new TipoUsuario($usuario->getTipoUsuario_id());
+				$tipoUsuario->listarUm();
+				$descricaoTipo = $tipoUsuario->getDescricao();
+				$idTipo = $tipoUsuario->getId();
+				$idUsuario = $usuario->getId();
 ?>
-				<tr class='clickable-row' data-href='/visao/index.php#/visao/coordenador/editaUsuario.php?id=<?php echo $usuario->getId();?>' data-tipo = "<?php echo $idTipo; ?>" data-status="<?php echo $usuario->getTipoUsuario_id();?>">
+				<tr class='clickable-row' data-href='<?php echo $idUsuario;?>' data-tipo = "<?php echo $idTipo; ?>" data-status="<?php echo $usuario->getTipoUsuario_id();?>">
 					<td scope="row"><?php echo $usuario->getSiapeMatricula();?></td>
 					<td scope="row"><?php echo $usuario->getNome();?></td>
 					<td scope="row" class="un"><?php echo $descricaoTipo;?></td>
 <?php
-			if($uControle->usuarioPodeSerDesativado($usuario->getId())) {
+					if($uControle->usuarioPodeSerDesativado($idUsuario)) {
 ?>
-					<td class="un2">
-						<label class="switch">
-							<input type="checkbox" onclick="modificaStatus(<?php echo $usuario->getId();?>)" <?php if ($usuario->isAtivo()) echo 'checked';?>>
-							<span class="slider round"></span>
-						</label>
-					</td>
+						<td class="un2">
+							<label class="switch">
+								<input type="checkbox" onclick="modificaStatus(<?php echo $idUsuario;?>)" <?php if ($usuario->isAtivo()) echo 'checked';?>>
+								<span class="slider round"></span>
+							</label>
+						</td>
 <?php
-			}else {
+					}else {
 ?>
-					<td class="un2">Ativo</td>
+						<td class="un2">Ativo</td>
 <?php
-			}
+					}
 ?>
 				</tr>
 <?php
-		}
+			}
 ?>
 			</table>
 <?php
-	}
+		}
 ?>
 		</div>
 	</div>
