@@ -12,9 +12,9 @@
             if (isset($dados['id']) && isset($dados['titulo']) && isset($dados['conteudo']) && isset($dados['imagem']) ) {
             
                 include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleProjeto.class.php";
-                $nControle = new ControleProjeto();
+                $pControle = new ControleProjeto();
             
-                $estado = $nControle->atualizar($dados);
+                $estado = $pControle->atualizar($dados);
                 
                 if ($estado == 1){
                     $status = array('sucesso' => true, 'mensagem' => 'Projeto atualizado.');

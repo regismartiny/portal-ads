@@ -13,11 +13,11 @@
 
             $dados = clearArray($_POST);
 
-            $nControle = new ControleProjeto();     
+            $pControle = new ControleProjeto();     
             
             session_start();
         
-            $estado = $nControle->inserir($_SESSION['usuario_id'], $dados);
+            $estado = $pControle->inserir($_SESSION['usuario_id'], $dados);
 
             if ($estado == 1){
                 $status = array('sucesso' => true, 'mensagem' => 'Projeto adicionado com sucesso.');
