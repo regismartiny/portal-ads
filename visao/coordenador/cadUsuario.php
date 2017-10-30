@@ -6,7 +6,7 @@
 ?>
 <div class="row">
 	<div class="col mx-auto">
-		<h1 class="titulo">Cadastro de Usuários</h1>
+		<h2 class="titulo">Cadastro de Usuários</h2>
 		<form id="ajax-form" method="post" action="/controle/processaCadUsuario.php">
 			<div class="form-group row">
 				<label for="nome" class="col-12 col-md-5 col-form-label">Nome Completo</label>
