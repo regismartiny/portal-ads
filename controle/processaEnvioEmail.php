@@ -5,19 +5,20 @@
     header("Access-Control-Max-Age: 3600");
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
+    require '../lib/PHPMailer/src/Exception.php';
+    require '../lib/PHPMailer/src/PHPMailer.php';
+    require '../lib/PHPMailer/src/SMTP.php';
+    include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php"; 
+
     use PHPMailer\PHPMailer\PHPMailer;                                                  // Import PHPMailer classes into the global namespace
     use PHPMailer\PHPMailer\Exception;                                                  // These must be at the top of your script, not inside a function
-    
-    require 'PHPMailer/src/Exception.php';
-    require 'PHPMailer/src/PHPMailer.php';
-    require 'PHPMailer/src/SMTP.php';
-
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST)) {
-        $nome = $_POST["nome"];	                                                        // Pega o valor do campo Nome
-        $categoria = $_POST["categoria"];	                                            // Pega o valor do campo Telefone
-        $email = $_POST["email"];	                                                    // Pega o valor do campo Email
-        $mensagem = $_POST["mensagem"];	                                                // Pega os valores do campo Mensagem
+        $dados = clearArray($_POST);
+        $nome = $dados["nome"];	                                                        // Pega o valor do campo Nome
+        $categoria = $dados["categoria"];	                                            // Pega o valor do campo Telefone
+        $email = $dados["email"];	                                                    // Pega o valor do campo Email
+        $mensagem = $dados["mensagem"];	                                                // Pega os valores do campo Mensagem
         
         // Variável que junta os valores acima e monta o corpo do email
         $corpo = "Nome: $nome\n\nE-mail: $email\n\nCategoria: $categoria\n\nMensagem: $mensagem\n";
@@ -82,7 +83,7 @@
             $mail->send();                                                              //Envia o email
             $status = array('sucesso' => true, 'mensagem' => 'Email enviado com sucesso.');
         } catch (Exception $e) {
-            $status = array('sucesso' => false, 'mensagem' => 'O email não pode ser enviado. Codigo do erro: '.$mail->ErrorInfo);
+            $status = array('sucesso' => false, 'mensagem' => 'O email não pode ser enviado. Código do erro: '.$mail->ErrorInfo);
         }
     }else{
         $status = array('sucesso' => false, 'mensagem' => 'Oops! Houve um problema com o envio do formulário. Por favor tente enviar novamente.');

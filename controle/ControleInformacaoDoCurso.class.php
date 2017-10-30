@@ -36,5 +36,10 @@
             $informacao = new InformacaoDoCurso(null, $dados['chave'], $dados['titulo'], $dados['conteudo']);
             $informacao->inserir();
         }
+		
+		public function atualizar($dados) {
+		$informacao = new InformacaoDoCurso($dados['id'], null, null, $dados['conteudo']);
+            return $informacao->atualizar();
+        }
     }
 ?>

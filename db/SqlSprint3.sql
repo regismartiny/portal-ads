@@ -88,6 +88,29 @@ CREATE TABLE IF NOT EXISTS `portal-ads`.`Noticia` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `portal-ads`.`Projeto`
+-- -----------------------------------------------------
+
+
+CREATE TABLE IF NOT EXISTS `portal-ads`.`Projeto` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `titulo` VARCHAR(100) NOT NULL,
+  `conteudo` VARCHAR(2500) NOT NULL,
+  `imagem` VARCHAR(200) NULL,
+  `status` CHAR(1) NOT NULL,
+  `dataCadastro` DATE NOT NULL,
+  `dataPublicacao` DATE NULL,
+  `Usuario_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_Projetos_Usuario1_idx` (`Usuario_id` ASC),
+  CONSTRAINT `fk_Projetos_Usuario1`
+    FOREIGN KEY (`Usuario_id`)
+    REFERENCES `portal-ads`.`Usuario` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 
 -- -----------------------------------------------------
 -- Table `portal-ads`.`InformacaoDoCurso`

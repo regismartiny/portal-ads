@@ -130,7 +130,7 @@ class Usuario implements JsonSerializable{
 	
 	public function listarUmPorEmail() {
         $con = new MySQL();
-        $sql = "SELECT * FROM Usuario WHERE email='$this->email'";
+        $sql = "SELECT * FROM Usuario WHERE email='$this->email' AND id!='$this->id'";
         $resultado = $con->consulta($sql);
         if (!empty($resultado)) {
             $this->id = $resultado[0]["id"];

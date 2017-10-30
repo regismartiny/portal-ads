@@ -99,6 +99,8 @@
                                             <a class="dropdown-item" href="/visao/common/alteracaoSenha.php">Alterar Senha</a>
                                             <a class="dropdown-item" href="/visao/professor/cadNoticia.php">Cadastro de Notícias</a>
                                             <a class="dropdown-item" href="/visao/professor/lstNoticia.php">Lista de Noticías</a>
+											<a class="dropdown-item" href="/visao/professor/cadProjeto.php">Cadastro de Projetos</a>
+                                            <a class="dropdown-item" href="/visao/professor/lstProjeto.php">Lista de Projetos</a>
                                             <form method="post" action="/controle/logout.php">
                                                 <input type="submit" class="dropdown-item" name="botao" value="Sair">
                                             </form>

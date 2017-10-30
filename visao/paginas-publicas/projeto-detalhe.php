@@ -2,41 +2,33 @@
     <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
         <div class="card">
             <div class="card-block">
-                <h4 class="projeto-detalhe card-title">Título do Projeto</h4>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
-                    content is a little bit longer. This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit longer. This is a wider card with
-                    supporting text below as a natural lead-in to additional content. This content is a little bit
-                    longer. This is a wider card with supporting text below as a natural lead-in to additional content.
-                    This content is a little bit longer. This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This
-                    content is a little bit longer. This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit longer. This is a wider card with
-                    supporting text below as a natural lead-in to additional content. This content is a little bit
-                    longer. This is a wider card with supporting text below as a natural lead-in to additional content.
-                    This content is a little bit longer. This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This
-                    content is a little bit longer. This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit longer. This is a wider card with
-                    supporting text below as a natural lead-in to additional content. This content is a little bit
-                    longer. This is a wider card with supporting text below as a natural lead-in to additional content.
-                    This content is a little bit longer. This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This
-                    content is a little bit longer. This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit longer. This is a wider card with
-                    supporting text below as a natural lead-in to additional content. This content is a little bit
-                    longer. This is a wider card with supporting text below as a natural lead-in to additional content.
-                    This content is a little bit longer. This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit longer.
-                </p>
+                <?php 
+                    include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleProjeto.class.php";
+                    include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
+
+                    $cProjeto = new ControleProjeto();
+                    $dados = clearArray($_GET);
+                    if (!isset($dados['id']) || empty($dados['id'])) {
+                        echo 'Parâmetros incorretos.';
+                        return;
+                    }
+
+                    $projeto = $cProjeto->listarUm($dados['id']);
+                    if ($projeto == false) {
+                        echo 'Projeto não encontrado.';
+                        return;
+                    }
+
+           
+                ?>
+                <h4 class="projeto-detalhe card-title"><?php echo $projeto->__get('titulo') ?></h4>
+                <p class="card-text"><?php echo $projeto->__get('conteudo') ?></p>
             </div>
-            <img class="projeto-detalhe card-img-bottom" src="./img/projeto.png" alt="Imagem do projeto">
+            <img class="projeto-detalhe card-img-bottom" src="<?php echo $projeto->__get('imagem') ?>" alt="Imagem da notícia">
             <div class="card-footer">
-                <small class="text-muted">Finalidade: Google</small>
-                <div><small class="text-muted">Alunos: Régis Martiny, Fulano de Tal</small></div>
-                <div><small class="text-muted">Professores: Ana Lemke, Vinicius H. Ferreira</small></div>
-                <div><small class="text-muted">Disciplinas: Desenvolvimento de software</small></div>
-                <div><small class="text-muted">Data de publicação: 01/10/2017</small></div>
+                <small class="text-muted">Fonte: <?php echo $projeto->__get('fonte') ?></small>
+                
+				
             </div>
         </div>
     </div>

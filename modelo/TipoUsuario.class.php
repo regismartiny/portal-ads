@@ -44,5 +44,23 @@ include_once $_SERVER['DOCUMENT_ROOT']."/db/MySQL.class.php";
 				return false;
 			}
 		}
+
+		public function listarTodos() {
+			$con = new MySQL();
+			$sql = "SELECT * FROM TipoUsuario";
+			$resultados = $con->consulta($sql);
+			if (!empty($resultados)) {
+				$tipos = array();
+				foreach ($resultados as $resultado) {
+					$tipoUsuario = new TipoUsuario();
+					$tipoUsuario->setId($resultado['id']);
+					$tipoUsuario->setDescricao($resultado['descricao']);
+					$tipos[] = $tipoUsuario;
+				}
+				return $tipos;
+			}else {
+				return false;
+			}
+		}
 	}
 ?>
