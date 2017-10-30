@@ -83,6 +83,7 @@
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                             <a class="dropdown-item" href="/visao/common/alteracaoSenha.php">Alterar Senha</a>
                                             <a class="dropdown-item" href="/visao/coordenador/cadUsuario.php">Cadastro de Usuários</a>
+                                            <a class="dropdown-item" href="/visao/coordenador/cadUsuarioLote.php">Cadastro de Usuários em Lote</a>
                                             <a class="dropdown-item" href="/visao/coordenador/lstUsuario.php">Lista de Usuários</a>
                                             <form method="post" action="/controle/logout.php">
                                                 <input type="submit" id="link" class="dropdown-item" name="botao" value="Sair">

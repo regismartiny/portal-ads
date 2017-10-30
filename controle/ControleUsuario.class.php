@@ -112,15 +112,19 @@
             return 4; //Matricula / SIAPE inválido
         }
 
-        public function getTipoUsuario($siapeMatricula) {
-            $tipoUsuario = 0;
+        public function inserirLote($arquivos) {
+            $arquivo = $arquivos[0];
+            
+        }
 
+        public function getTipoUsuario($siapeMatricula) {
             if(strlen($siapeMatricula) == 7){
-                $tipoUsuario = 2;
-            }else if(strlen($siapeMatricula) == 12){
-                $tipoUsuario = 3;
+                return 2;
             }
-            return $tipoUsuario;
+            if(strlen($siapeMatricula) == 12){
+                return 3;
+            }
+            return 0;
         }
         
         public function consultar() {   
@@ -148,7 +152,8 @@
 
         public function usuarioPodeSerDesativado($id) {
             // implementar regra de verificação se usuário pode ser desativado
-            // quando o usuário não for do tipo admin ou quando houver outro usuário do tipo admin ativo
+            // Regra: pode desativar quando o usuário não for do tipo admin ou 
+            // quando houver outro usuário do tipo admin ativo
             return $id != 1; // temporário
         }
     }
