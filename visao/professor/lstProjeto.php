@@ -33,9 +33,9 @@
 						</thead>";
 				foreach($projetos as $projeto){
 					//print_r($projeto);	
-					echo "<tr><th scope='row'>".$projeto->id."</th>";
-					echo "<td><a href='/visao/professor/editaProjeto.php?idProjeto=".$projeto->id."'>".$projeto->titulo."</td>";
-					echo "<td>".$projeto->dataCadastro."</td>";
+					echo "<tr class='clickable-row' data-href=$projeto->id><th scope='row'>".$projeto->id."</th>";
+					echo "<td>$projeto->titulo</td>";
+					echo "<td>$projeto->dataCadastro</td>";
 					if($projeto->status == 0){
 						echo "<td>Aguardando</td>";
 					}else if($projeto->status == 1){
@@ -43,7 +43,7 @@
 					}else{
 						echo "<td>Reprovado</td>";
 					}
-
+					echo "</td>";
 				}
 				echo "</table>";
 			}
@@ -52,11 +52,10 @@
 </div>
 
 <script>
-	function modificarStatus(id) {
-		$.ajax({
-			type: 'POST',
-			url: '<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>',
-			data: 'alterarStatusId=' + id
+	jQuery(document).ready(function($) {
+		$(".clickable-row").click(function() {
+			console.log($(this).data("href"));
+			window.location = "/visao/index.php#/visao/professor/editaProjeto.php?idProjeto="+$(this).data("href");
 		});
-	}
+	});
 </script>

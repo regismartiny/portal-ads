@@ -59,7 +59,7 @@
 							<input type="submit" class="btn-login btn btn-primary btn-lg btn-block" name="botao" value="Salvar" />
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-6">
-							<input type="reset" class="btn btn-danger btn-lg btn-block" value="Limpar">
+						<a href="/visao/coordenador/lstUsuario.php" class="btn btn-danger btn-lg btn-block">Cancelar</a>
 						</div>
 					</div>
 				</form>		
