@@ -10,11 +10,6 @@
 	
 	$nControle = new ControleProjeto();
 
-	if (!empty($_POST['alterarStatusId'])) {
-		$dados = clearArray($_POST);
-		$nControle->modificarStatusProjeto($dados['alterarStatusId']);
-	}
-
 	$projetos = $nControle->meusProjetos($_SESSION['matricula']);
 ?>
 	<div class="row">

@@ -10,11 +10,6 @@
 	
 	$nControle = new ControleNoticia();
 
-	if (!empty($_POST['alterarStatusId'])) {
-		$dados = clearArray($_POST);
-		$nControle->modificarStatusNoticia($dados['alterarStatusId']);
-	}
-
 	$noticias = $nControle->minhasNoticias($_SESSION['matricula']);
 ?>
 <div class="row">
