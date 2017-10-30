@@ -135,7 +135,7 @@ class Noticia
     public function inserir() {
         $con = new MySQL();
         $sql = "INSERT INTO Noticia (titulo, conteudo, fonte, imagem, status, dataCadastro, dataPublicacao, Usuario_id, CategoriaNoticia_id) 
-                VALUES ('$this->titulo', '$this->conteudo', '$this->fonte', '$this->imagem', '1', now(), now(), '$this->usuario_id', '$this->categoriaNoticia_id')";
+                VALUES ('$this->titulo', '$this->conteudo', '$this->fonte', '$this->imagem', '$this->status', now(), now(), '$this->usuario_id', '$this->categoriaNoticia_id')";
         return $con->executa($sql) > 0 ? 1 : 0;
     }
 	

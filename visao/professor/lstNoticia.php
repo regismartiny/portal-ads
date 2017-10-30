@@ -36,10 +36,12 @@
 					echo "<tr><th scope='row'>".$noticia->id."</th>";
 					echo "<td><a href='/visao/professor/editaNoticia.php?idNoticia=".$noticia->id."'>".$noticia->titulo."</td>";
 					echo "<td>".$noticia->dataCadastro."</td>";
-					if($noticia->status == 1){
-						echo "<td><label class='switch'><input type='checkbox' checked><span class='slider round'></span></label><td>";
+					if($noticia->status == 0){
+						echo "<td>Aguardando</td>";
+					}else if($noticia->status == 1){
+						echo "<td>Aprovado</td>";
 					}else{
-						echo "<td><label class='switch'><input type='checkbox' ><span class='slider round'></span></label><td>";
+						echo "<td>Reprovado</td>";
 					}
 
 				}

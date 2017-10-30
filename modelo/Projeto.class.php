@@ -126,7 +126,7 @@ class Projeto
     public function inserir() {
         $con = new MySQL();
         $sql = "INSERT INTO Projeto (titulo, conteudo, imagem, status, dataCadastro, dataPublicacao, Usuario_id) 
-                VALUES ('$this->titulo', '$this->conteudo', '$this->imagem', '1', now(), now(), '$this->usuario_id')";
+                VALUES ('$this->titulo', '$this->conteudo', '$this->imagem', '$this->status', now(), now(), '$this->usuario_id')";
         return $con->executa($sql) > 0 ? 1 : 0;
     }
 	
