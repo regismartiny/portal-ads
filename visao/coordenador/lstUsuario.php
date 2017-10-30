@@ -111,17 +111,16 @@
 			}
 		}
 	}
-<<<<<<< HEAD
 	$('button').on('click', function(){
 		$('button').removeClass('selected');
 		$(this).addClass('selected');
-=======
+	});
+
 	jQuery(document).ready(function($) {
 		$(".clickable-row").click(function() {
 			console.log($(this).data("href"));
 			window.location = $(this).data("href");
 		});
->>>>>>> master
 	});
 </script>
 <div class="row">
