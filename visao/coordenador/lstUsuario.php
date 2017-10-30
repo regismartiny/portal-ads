@@ -141,6 +141,12 @@
 			}
 		}
 	}
+	jQuery(document).ready(function($) {
+		$(".clickable-row").click(function() {
+			console.log($(this).data("href"));
+			window.location = $(this).data("href");
+		});
+	});
 </script>
 <div class="row">
 	<div class="col mx-auto">
@@ -179,7 +185,7 @@
 			$descricaoTipo = $tipoUsuario->getDescricao();
 			$idTipo = $tipoUsuario->getId();
 ?>
-				<tr data-tipo = "<?php echo $idTipo; ?>" data-status="<?php echo $usuario->getTipoUsuario_id();?>">
+				<tr class='clickable-row' data-href='/visao/index.php#/visao/coordenador/editaUsuario.php?id=<?php echo $usuario->getId();?>' data-tipo = "<?php echo $idTipo; ?>" data-status="<?php echo $usuario->getTipoUsuario_id();?>">
 					<td scope="row"><?php echo $usuario->getSiapeMatricula();?></td>
 					<td scope="row"><?php echo $usuario->getNome();?></td>
 					<td scope="row" class="un"><?php echo $descricaoTipo;?></td>
