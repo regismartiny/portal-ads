@@ -36,10 +36,12 @@
 					echo "<tr><th scope='row'>".$projeto->id."</th>";
 					echo "<td><a href='/visao/professor/editaProjeto.php?idProjeto=".$projeto->id."'>".$projeto->titulo."</td>";
 					echo "<td>".$projeto->dataCadastro."</td>";
-					if($projeto->status == 1){
-						echo "<td><label class='switch'><input type='checkbox' checked><span class='slider round'></span></label><td>";
+					if($projeto->status == 0){
+						echo "<td>Aguardando</td>";
+					}else if($projeto->status == 1){
+						echo "<td>Aprovado</td>";
 					}else{
-						echo "<td><label class='switch'><input type='checkbox' ><span class='slider round'></span></label><td>";
+						echo "<td>Reprovado</td>";
 					}
 
 				}

@@ -5,7 +5,6 @@
 		return;
 	}
 
-	include_once $_SERVER["DOCUMENT_ROOT"]."/modelo/CategoriaProjeto.class.php";
 	include_once $_SERVER['DOCUMENT_ROOT']."/controle/ControleProjeto.class.php";
 	include_once $_SERVER['DOCUMENT_ROOT']."/controle/Util.php";
 

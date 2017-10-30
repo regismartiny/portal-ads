@@ -64,18 +64,18 @@
             $email = $dados['email'];
             $confirmacaoDeEmailCorreta = strcasecmp($email, $dados['confEmail']) == 0;
             if($confirmacaoDeEmailCorreta) {
-                $validacaoEmail = $this->validarEmail($email);
-                    if (!$validacaoEmail) { //ok - email ainda não cadastrado
-                        $usuario = new Usuario($idUsuario, null, null, $email);
-                        $sucesso = $usuario->atualizar();
-                        if ($sucesso) {
-                            return 2; //email alterado com sucesso
-                        } else {
-                            return 3; //ocorreu um erro na atualização do email
-                        }
+                $validacaoEmail = $this->validarEmail($idUsuario,$email);
+                if (!$validacaoEmail) { //ok - email ainda não cadastrado
+                    $usuario = new Usuario($idUsuario, null, null, $email);
+                    $sucesso = $usuario->atualizar();
+                    if ($sucesso) {
+                        return 2; //email alterado com sucesso
                     } else {
-                        return 4; //email já existe
+                        return 3; //ocorreu um erro na atualização do email
                     }
+                } else {
+                    return 4; //email já existe
+                }
             }else {
                 return 5;
             }
@@ -86,8 +86,8 @@
             return $usuario->atualizarDataUltimoAcesso($siapeMatricula);
         }
 
-        public function validarEmail($email) {
-            $usuario = new Usuario(null, null, null, $email);
+        public function validarEmail($idUsuario,$email) {
+            $usuario = new Usuario($idUsuario, null, null, $email);
             return $usuario->listarUmPorEmail();
         }
         
