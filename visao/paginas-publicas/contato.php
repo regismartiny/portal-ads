@@ -31,7 +31,7 @@
                     <textarea class="form-control" rows="3" id="mensagem" name="mensagem" cols="50" required></textarea>
                 </div>
             </div>
-            <div id="result" class="status"></div>
+            <div id="result" class="status alert" role="alert"></div>
             <br>
             <div class="form-group row">
                 <div class="col-sm-12 col-md-6 mx-auto">
@@ -49,28 +49,26 @@
 		statusProcessando();
 		
 		$.ajax({
-			type: "POST",
+			type: $form.attr('method'),
 			url: $form.attr('action'),
 			data: $form.serialize(),
 			success: function(response) {
 				console.log(response);			
 				let resObj = JSON.parse(response);
-				let mensagem = resObj.mensagem;
-				let sucesso = resObj.sucesso;
-				printaMensagem(mensagem);
+                if (resObj) {
+                    let sucesso = resObj.sucesso;
+                    let mensagem = resObj.mensagem;
+                    if (sucesso) {
+                        statusSucesso(mensagem);
+                    } else {
+                        statusErro(mensagem);
+                    }
+                }
 			},
 			error: function(response) {
 				console.log(response);
-				printaMensagem(mensagem);
+				statusErro('Erro no envio do formulário');
 			}
 		});
 	});
-
-	function statusProcessando() {
-		$("#result").html("Processando...");
-		$("#result").fadeIn(400);
-	}
-	function printaMensagem(status) {
-		$("#result").html(status);
-	}
 </script>
