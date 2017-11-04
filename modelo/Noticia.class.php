@@ -161,5 +161,15 @@ class Noticia
         }
         return $con->executa($sql) > 0;
     }
+	
+	public function remover($tipoUsuario){
+		$con = new MySQL();
+		if($tipoUsuario==1){//verifica se é o coordenador
+			$sql = "DELETE from Noticia WHERE id = '$this->id'";
+		}else{
+			$sql = "DELETE from Noticia WHERE id = '$this->id' AND usuario_id = '$this->usuario_id'";
+		}
+		$con->executa($sql);
+	}
 }
 

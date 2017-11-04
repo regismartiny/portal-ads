@@ -50,6 +50,11 @@
             $noticia = new Noticia($dados['id'], $dados['titulo'], $dados['conteudo'], $dados['fonte'], $dados['imagem'],1,null, null,null, $dados['categoriaNoticia_id']);
             return $noticia->atualizar();
         }
+		
+		public function remover ($id, $id_usuario, $tipoUsuario){
+			$noticia = new Noticia($id, null, null, null, null,null,null, null,$id_usuario, null);
+			return $noticia->remover($tipoUsuario);
+		}
 
     }
 ?>

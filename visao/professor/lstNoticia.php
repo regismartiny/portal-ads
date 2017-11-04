@@ -20,25 +20,27 @@
 				echo "<table class='table table-hover'>
 						<thead>
 							<tr>
-							<th>Número</th>
 							<th>Titulo</th>
 							<th>Data da Publicação</th>
+							<th></th>
 							<th>Status</th>
 							</tr>
 						</thead>";
 				foreach($noticias as $noticia){
-					//print_r($noticia);	
-					echo "<tr class='clickable-row' data-href=$noticia->id><th scope='row'>".$noticia->id."</th>";
-					echo "<td>$noticia->titulo</td>";
-					echo "<td>$noticia->dataCadastro</td>";
+					//echo "<tr class='clickable-row' data-href=$noticia->id>";
+					echo "<tr>";
+					echo "<td class='clickable-row' data-href=$noticia->id scope='row'>$noticia->titulo</td>";
+					echo "<td class='clickable-row' data-href=$noticia->id scope='row' align='center'>$noticia->dataCadastro</td>";
+					echo "<td class='clickable-delete' data-href=$noticia->id scope='row' bgcolor='RED'>Remover</td>";
+					
 					if($noticia->status == 0){
-						echo "<td>Aguardando</td>";
+						echo "<td bgcolor='BLUE'>Aguardando</td>";
 					}else if($noticia->status == 1){
-						echo "<td>Aprovado</td>";
+						echo "<td bgcolor='GREEN'>Aprovado</td>";
 					}else{
-						echo "<td>Reprovado</td>";
+						echo "<td bgcolor='ORANGE'>Reprovado</td>";
 					}
-					echo "</td>";
+					echo "</tr>";
 				}
 				echo "</table>";
 			}
@@ -52,5 +54,11 @@
 			console.log($(this).data("href"));
 			window.location = "/visao/index.php#/visao/professor/editaNoticia.php?idNoticia="+$(this).data("href");
 		});
+		
+		$(".clickable-delete").click(function() {
+			console.log($(this).data("href"));
+			window.location = "/visao/index.php#/controle/processaRemoveNoticia.php?idNoticia="+$(this).data("href");
+		});
 	});
+	
 </script>
