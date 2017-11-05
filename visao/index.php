@@ -85,6 +85,8 @@
                                             <a class="dropdown-item" href="/visao/coordenador/cadUsuario.php">Cadastro de Usuários</a>
                                             <a class="dropdown-item" href="/visao/coordenador/cadUsuarioLote.php">Cadastro de Usuários em Lote</a>
                                             <a class="dropdown-item" href="/visao/coordenador/lstUsuario.php">Lista de Usuários</a>
+											<a class="dropdown-item" href="/visao/coordenador/lstNoticia.php">Lista de Noticías</a>
+
                                             <form method="post" action="/controle/logout.php">
                                                 <input type="submit" id="link" class="dropdown-item" name="botao" value="Sair">
                                             </form>
