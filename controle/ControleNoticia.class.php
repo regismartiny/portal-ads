@@ -40,10 +40,10 @@
             }
         }
         
-        public function modificarStatusNoticia($id) {
+        public function modificarStatusNoticia($id,$status) {
             $noticia = new Noticia($id);
             $noticia->listarUm();
-            $noticia->modificarStatus();
+            $noticia->modificarStatus($status);
         }
         
         public function atualizar($dados) {

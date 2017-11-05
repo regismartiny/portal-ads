@@ -151,20 +151,19 @@ class Noticia
         $con->executa($sql);
     }
 
-    public function modificarStatus() {
+    public function modificarStatus($n) {
         $status = $this->status;
         $con = new MySQL();
-        if ($status == 1) {
-            $sql = "UPDATE Noticia SET status = 0 WHERE id = '$this->id'";
-        }else {
-            $sql = "UPDATE Noticia SET status = 1 WHERE id = '$this->id'";
+        if (($status != $n) && ($n > -1) && ($n<3)) {
+            $sql = "UPDATE Noticia SET status = $n WHERE id = '$this->id'";
+			return $con->executa($sql) > 0;
         }
-        return $con->executa($sql) > 0;
+        
     }
 	
 	public function remover($tipoUsuario){
 		$con = new MySQL();
-		if($tipoUsuario==1){//verifica se é o coordenador
+		if($tipoUsuario == 1){//verifica se é o coordenador
 			$sql = "DELETE from Noticia WHERE id = '$this->id'";
 		}else{
 			$sql = "DELETE from Noticia WHERE id = '$this->id' AND usuario_id = '$this->usuario_id'";
